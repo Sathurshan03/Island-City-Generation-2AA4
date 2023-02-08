@@ -58,6 +58,8 @@ When you develop features and enrich the product, remember that you have first t
 ## Backlog
 
 ### Definition of Done
+status:
+Pending (P), Started (S), Blocked (B), Done (D)
 
 -- Insert here your definition of done for your features --
 
@@ -76,7 +78,7 @@ When you develop features and enrich the product, remember that you have first t
 | F09   |  Show segments with calculated colours |   Sathurshan   |       |     |        |
 | F10   |  Generate centroid vertex of the polygons |  Sathurshan    |       |     |        |
 | F11   |  Generate neighbouring relations of the polygons |  Nirmal    |       |     |        |
-| F12   |  Provide debug mode |   Mithun   |       |     |        |
+| F12   |  Provide debug mode |   Sathurshan   |   02/08/2023    |  02/08/2023   |    D    |
 | F13   |  debug mode: polygon in black |  Mithun    |       |     |        |
 | F14   |  debug mode: centroid in red |  Mithun    |       |     |        |
 | F15   |  debug mode: neighbourhood relations in light grey |  Mithun    |       |     |        |
