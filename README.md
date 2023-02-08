@@ -67,7 +67,7 @@ Pending (P), Started (S), Blocked (B), Done (D)
 
 | Id | Feature title | Who? | Start | End | Status |
 |:--:|---------------|------|-------|-----|--------|
-| F01   |  User-friendly naming system to refer to spacing of grid |   Sathurshan   |       |     |        |
+| F01   |  Create a Mesh with a determined width and height |   Sathurshan   |   02/08/2023    |  02/08/2023   |   D     |
 | F02   |  Generate all Vertices for each polygons |  Nirmal    |       |     |        |
 | F03   |  Generate polygons on mesh |  Nirmal    |       |     |        |
 | F04   |  Generate segments on polygon |  Nirmal    |       |     |        |
