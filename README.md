@@ -2,7 +2,7 @@
 
   - Author #1 [email@mcmaster.ca]
   - Nirmal Chaudhari [chaudn12@mcmaster.ca]
-  - Author #3 [email@mcmaster.ca]
+  - Sathurshan Arulmohan [arulmohs@mcmaster.ca]
 
 ## How to run the product
 
