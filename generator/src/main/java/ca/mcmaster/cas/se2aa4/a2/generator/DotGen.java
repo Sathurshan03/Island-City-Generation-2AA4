@@ -20,7 +20,7 @@ public class DotGen {
     public Mesh generate() {
 
 
-        Vertex[][] vertice=new Vertex[width][height];
+        CustomVertex[][] vertice=new CustomVertex[width][height];
         List<Vertex> vertices=new ArrayList<>();
 
         List <Segment> segmentsy=new ArrayList<>();
@@ -29,9 +29,9 @@ public class DotGen {
 
         for(int x = 0; x < width; x += square_size) {
             for(int y = 0; y < height; y += square_size) {
-                Vertex new_v=Vertex.newBuilder().setX((double) x).setY((double) y).addProperties(randColor()).build();
+                CustomVertex new_v= new CustomVertex(x,y);
                 vertice[x/20][y/20]=new_v;
-                vertices.add(new_v);
+                vertices.add(new_v.getVertex());
 
             }
         }
@@ -39,7 +39,7 @@ public class DotGen {
         for(int x = 0; x < width; x += square_size) {
             for (int y = 0; y < height; y += square_size) {
                 if (x<width-20){
-                    Property c1 = segColor(vertice[x/20][y/20], vertice[(x + 20)/20][y/20]);
+                    Property c1 = segColor(vertice[x/20][y/20].getVertex(), vertice[(x + 20)/20][y/20].getVertex());
                     segments.add(Segment.newBuilder().setV1Idx(x).setV2Idx(x + square_size).addProperties(c1).build());
                 }
 
@@ -48,7 +48,7 @@ public class DotGen {
         for(int y = 0; y < height; y += square_size) {
             for (int x = 0; x < width; x += square_size) {
                 if (y<height-20){
-                    Property c2 = segColor(vertice[x/20][y/20], vertice[x/20][(y + 20)/20]);
+                    Property c2 = segColor(vertice[x/20][y/20].getVertex(), vertice[x/20][(y + 20)/20].getVertex());
                     segmentsy.add(Segment.newBuilder().setV1Idx(y).setV2Idx(y + square_size).addProperties(c2).build());
                 }
             }

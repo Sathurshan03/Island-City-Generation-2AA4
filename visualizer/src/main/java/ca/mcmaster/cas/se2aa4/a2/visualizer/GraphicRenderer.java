@@ -32,7 +32,7 @@ public class GraphicRenderer {
             double centre_x = v.getX() - (THICKNESS/2.0d);
             double centre_y = v.getY() - (THICKNESS/2.0d);
             Color old = canvas.getColor();
-            canvas.setColor(extractColor(v.getPropertiesList()));
+            canvas.setColor(extractVertexColor(v.getPropertiesList()));
             Ellipse2D point = new Ellipse2D.Double(centre_x, centre_y, THICKNESS, THICKNESS);
             canvas.fill(point);
             canvas.setColor(old);
@@ -93,6 +93,24 @@ public class GraphicRenderer {
         int green = Integer.parseInt(raw[1]);
         int blue = Integer.parseInt(raw[2]);
         return new Color(red, green, blue);
+    }
+
+    private Color extractVertexColor(List<Property> properties) {
+        String val = null;
+        for(Property p: properties) {
+            if (p.getKey().equals("rgb_color")) {
+                System.out.println(p.getValue());
+                val = p.getValue();
+            }
+        }
+        if (val == null)
+            return Color.BLACK;
+        String[] raw = val.split(",");
+        int red = Integer.parseInt(raw[0]);
+        int green = Integer.parseInt(raw[1]);
+        int blue = Integer.parseInt(raw[2]);
+        int transparency = Integer.parseInt(raw[3]);
+        return new Color(red, green, blue, transparency);
     }
 
 }
