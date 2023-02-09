@@ -15,7 +15,6 @@ import java.util.List;
 
 public class GraphicRenderer {
 
-    private static final int THICKNESS = 3;
     public void render(Mesh aMesh, Graphics2D canvas) {
         canvas.setColor(Color.BLACK);
         Stroke stroke = new BasicStroke(0.5f);
@@ -23,17 +22,20 @@ public class GraphicRenderer {
 
         List<Vertex> vertex_list=aMesh.getVerticesList();
 
-        List<Segment> segmentx=aMesh.getSegmentsList().subList(0,600);
-        List<Segment> segmenty=aMesh.getSegmentsList().subList(600,1200);
+        List<Segment> segmentx=aMesh.getSegmentsList().subList(0,650); // size: (width / spaceSize) * ((width / spaceSize) + 1)
+        List<Segment> segmenty=aMesh.getSegmentsList().subList(650,1300); // size: (height / spaceSize) * ((height / spaceSize) + 1)
 
 
         for (int i=0, j=0, k=0; i< vertex_list.size(); i++){
             Vertex v=vertex_list.get(i);
-            double centre_x = v.getX() - (THICKNESS/2.0d);
-            double centre_y = v.getY() - (THICKNESS/2.0d);
             Color old = canvas.getColor();
-            canvas.setColor(extractColor(v.getPropertiesList()));
-            Ellipse2D point = new Ellipse2D.Double(centre_x, centre_y, THICKNESS, THICKNESS);
+            canvas.setColor(extractVertexColor(v.getPropertiesList()));
+            double thickness = extractThickness(v.getPropertiesList());
+
+            double centre_x = v.getX() - (thickness/2.0d);
+            double centre_y = v.getY() - (thickness/2.0d);
+            
+            Ellipse2D point = new Ellipse2D.Double(centre_x, centre_y, thickness, thickness);
             canvas.fill(point);
             canvas.setColor(old);
 
@@ -48,7 +50,7 @@ public class GraphicRenderer {
             canvas.draw(line);
             canvas.setColor(old);
 
-            if (y==480){
+            if (y==500){
                 x+=20;
                 y=0;
             }else{
@@ -66,7 +68,7 @@ public class GraphicRenderer {
             canvas.draw(line);
             canvas.setColor(old);
 
-            if (x==480){
+            if (x==500){
                 y+=20;
                 x=0;
             }else{
@@ -93,6 +95,38 @@ public class GraphicRenderer {
         int green = Integer.parseInt(raw[1]);
         int blue = Integer.parseInt(raw[2]);
         return new Color(red, green, blue);
+    }
+
+    private double extractThickness(List<Property> properties) {
+        String val = null;
+        for(Property p: properties) {
+            if (p.getKey().equals("thickness")) {
+                val = p.getValue();
+            }
+        }
+        if (val == null)
+            return 0;
+        return Double.parseDouble(val);
+    }
+
+
+
+    private Color extractVertexColor(List<Property> properties) {
+        String val = null;
+        for(Property p: properties) {
+            if (p.getKey().equals("rgb_color")) {
+                System.out.println(p.getValue());
+                val = p.getValue();
+            }
+        }
+        if (val == null)
+            return Color.BLACK;
+        String[] raw = val.split(",");
+        int red = Integer.parseInt(raw[0]);
+        int green = Integer.parseInt(raw[1]);
+        int blue = Integer.parseInt(raw[2]);
+        int transparency = Integer.parseInt(raw[3]);
+        return new Color(red, green, blue, transparency);
     }
 
 }
