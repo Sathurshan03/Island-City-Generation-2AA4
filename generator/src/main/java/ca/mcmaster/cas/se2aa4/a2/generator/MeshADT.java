@@ -7,8 +7,8 @@ public class MeshADT {
 
     List<Object> mesh;
     private int precision;
-    private int height;
-    private int width;
+    protected int height;
+    protected int width;
 
     public MeshADT(int width, int height, int precision){
         mesh = new ArrayList<>();
