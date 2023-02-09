@@ -66,9 +66,9 @@ When you develop features and enrich the product, remember that you have first t
 | Id | Feature title | Who? | Start | End | Status |
 |:--:|---------------|------|-------|-----|--------|
 | F01   |  User-friendly naming system to refer to spacing of grid |   Sathurshan   |       |     |        |
-| F02   |  Generate all Vertices for each polygons |  Nirmal    |       |     |        |
+| F02   |  Generate all Vertices for each polygons |  Nirmal    |   02/09/2023	   |   02/09/2023	  |   D     |
 | F03   |  Generate polygons on mesh |  Nirmal    |       |     |        |
-| F04   |  Generate segments on polygon |  Nirmal    |       |     |        |
+| F04   |  Generate segments on polygon |  Nirmal    |   02/09/2023	    |  02/09/2023	   |   D     |
 | F05   |  Verticies colours have transparency attributes |   Sathurshan   |       |     |        |
 | F06   |  Segment colours have transparency attributes |   Sathurshan   |       |     |        |
 | F07   |  Show vertices with different thickness |  Sathurshan    |       |     |        |
