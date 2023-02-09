@@ -7,14 +7,17 @@ import java.awt.*;
 public class CustomVertex {
     double x;
     double y; 
+    private static final String THICKNESSVALUE = "4.0";
     Property colour;
     Vertex vertex;
+    Property thickness;
 
     public CustomVertex(double x, double y){
         this.x = x;
         this.y = y;
         this.colour = randColor();
-        this.vertex = Vertex.newBuilder().setX((double) x).setY((double) y).addProperties(colour).build();
+        this.thickness = Property.newBuilder().setKey("thickness").setValue(THICKNESSVALUE).build();
+        this.vertex = Vertex.newBuilder().setX((double) x).setY((double) y).addProperties(0,colour).addProperties(1,thickness).build();
     }
 
     public Vertex getVertex(){

@@ -15,7 +15,6 @@ import java.util.List;
 
 public class GraphicRenderer {
 
-    private static final int THICKNESS = 3;
     public void render(Mesh aMesh, Graphics2D canvas) {
         canvas.setColor(Color.BLACK);
         Stroke stroke = new BasicStroke(0.5f);
@@ -29,11 +28,14 @@ public class GraphicRenderer {
 
         for (int i=0, j=0, k=0; i< vertex_list.size(); i++){
             Vertex v=vertex_list.get(i);
-            double centre_x = v.getX() - (THICKNESS/2.0d);
-            double centre_y = v.getY() - (THICKNESS/2.0d);
             Color old = canvas.getColor();
             canvas.setColor(extractVertexColor(v.getPropertiesList()));
-            Ellipse2D point = new Ellipse2D.Double(centre_x, centre_y, THICKNESS, THICKNESS);
+            double thickness = extractThickness(v.getPropertiesList());
+
+            double centre_x = v.getX() - (thickness/2.0d);
+            double centre_y = v.getY() - (thickness/2.0d);
+            
+            Ellipse2D point = new Ellipse2D.Double(centre_x, centre_y, thickness, thickness);
             canvas.fill(point);
             canvas.setColor(old);
 
@@ -94,6 +96,20 @@ public class GraphicRenderer {
         int blue = Integer.parseInt(raw[2]);
         return new Color(red, green, blue);
     }
+
+    private double extractThickness(List<Property> properties) {
+        String val = null;
+        for(Property p: properties) {
+            if (p.getKey().equals("thickness")) {
+                val = p.getValue();
+            }
+        }
+        if (val == null)
+            return 0;
+        return Double.parseDouble(val);
+    }
+
+
 
     private Color extractVertexColor(List<Property> properties) {
         String val = null;
