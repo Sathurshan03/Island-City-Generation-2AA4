@@ -2,15 +2,12 @@ package ca.mcmaster.cas.se2aa4.a2.generator;
 
 import java.awt.Color;
 import java.util.ArrayList;
-import java.util.List;
-
-import ca.mcmaster.cas.se2aa4.a2.io.Structs.Vertex;
 
 public class RegularMesh extends MeshADT{
     int squareSize;
     CustomVertex[][] centroidVertice;
     CustomVertex[][] vertice;
-    List<Vertex> vertices;
+    
 
     public RegularMesh(int width, int height, int precision, int squareSize)
     {
@@ -54,17 +51,7 @@ public class RegularMesh extends MeshADT{
         return centroidVertice;
     }
 
-    public CustomVertex getConnectingVertexs(int x, int y){
+    public CustomVertex getConnectingVertices(int x, int y){
         return vertice[x][y];
-    }
-
-    public List<Vertex> getVertices(){
-        return vertices;
-    }
-
-    public void addVertex(Vertex vertex)
-    {
-        vertices.add(vertex);
-    }
-    
+    } 
 }

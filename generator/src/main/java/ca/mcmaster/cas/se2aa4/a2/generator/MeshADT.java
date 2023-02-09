@@ -3,12 +3,15 @@ package ca.mcmaster.cas.se2aa4.a2.generator;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MeshADT {
+import ca.mcmaster.cas.se2aa4.a2.io.Structs.Vertex;
+
+public abstract class MeshADT {
 
     List<Object> mesh;
     private int precision;
     protected int height;
     protected int width;
+    protected List<Vertex> vertices;
 
     public MeshADT(int width, int height, int precision){
         mesh = new ArrayList<>();
@@ -20,6 +23,15 @@ public class MeshADT {
     public int addPolygon(Object polygon){
         mesh.add(polygon);
         return mesh.indexOf(polygon);
+    }
+    
+    public void addVertex(Vertex vertex)
+    {
+        vertices.add(vertex);
+    }
+    
+    public List<Vertex> getVertices(){
+        return vertices;
     }
 
     public int getPrecision(){
@@ -34,4 +46,6 @@ public class MeshADT {
     public int getHeight(){
         return height;
     }
+
+    abstract public void createCentroidVertices();
 }
