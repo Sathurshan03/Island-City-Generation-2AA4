@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class RegularMesh extends MeshADT{
     int squareSize;
     CustomVertex[][] centroidVertice;
-    CustomVertex[][] vertice;
+    CustomVertex[][] connectingVertice;
     
 
     public RegularMesh(int width, int height, int precision, int squareSize)
@@ -33,15 +33,15 @@ public class RegularMesh extends MeshADT{
         }
     }
 
-    public void createConnectingVertices()
+    private void createConnectingVertices()
     {
         //Connecting vertices
-        vertice = new CustomVertex[width][height];
+        connectingVertice = new CustomVertex[width/squareSize + 1][height/squareSize + 1];
 
-        for(int x = 0; x <= width; x += squareSize) {
-            for(int y = 0; y <= height; y += squareSize) {
-                CustomVertex new_v= new CustomVertex(x,y);
-                vertice[x/20][y/20]=new_v;
+        for(int x = 0; x*squareSize <= width; x ++) {
+            for(int y = 0; y*squareSize <= height; y ++) {
+                CustomVertex new_v= new CustomVertex(x*squareSize,y*squareSize);
+                connectingVertice[x][y]=new_v;
                 addVertex(new_v.getVertex());
             }
         }
@@ -52,6 +52,6 @@ public class RegularMesh extends MeshADT{
     }
 
     public CustomVertex getConnectingVertices(int x, int y){
-        return vertice[x][y];
+        return connectingVertice[x][y];
     } 
 }

@@ -22,8 +22,8 @@ public class GraphicRenderer {
 
         List<Vertex> vertex_list=aMesh.getVerticesList();
 
-        List<Segment> segmentx=aMesh.getSegmentsList().subList(0,600);
-        List<Segment> segmenty=aMesh.getSegmentsList().subList(600,1200);
+        List<Segment> segmentx=aMesh.getSegmentsList().subList(0,650); // size: (width / spaceSize) * ((width / spaceSize) + 1)
+        List<Segment> segmenty=aMesh.getSegmentsList().subList(650,1300); // size: (height / spaceSize) * ((height / spaceSize) + 1)
 
 
         for (int i=0, j=0, k=0; i< vertex_list.size(); i++){
@@ -50,7 +50,7 @@ public class GraphicRenderer {
             canvas.draw(line);
             canvas.setColor(old);
 
-            if (y==480){
+            if (y==500){
                 x+=20;
                 y=0;
             }else{
@@ -68,7 +68,7 @@ public class GraphicRenderer {
             canvas.draw(line);
             canvas.setColor(old);
 
-            if (x==480){
+            if (x==500){
                 y+=20;
                 x=0;
             }else{

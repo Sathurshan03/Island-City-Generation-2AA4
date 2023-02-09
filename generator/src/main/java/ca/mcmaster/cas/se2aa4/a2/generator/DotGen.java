@@ -4,7 +4,6 @@ import java.awt.*;
 import java.util.*;
 import java.util.List;
 
-import ca.mcmaster.cas.se2aa4.a2.io.Structs.Vertex;
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Property;
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Segment;
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Mesh;
@@ -13,36 +12,35 @@ public class DotGen {
 
     private final int width = 500;
     private final int height = 500;
-    private final int square_size = 20;
+    private final int squareSize = 20;
 
     public Mesh generate() {
 
-        RegularMesh mesh = new RegularMesh(width, height, 2, square_size);
+        RegularMesh mesh = new RegularMesh(width, height, 2, squareSize);
         
         List <Segment> segmentsy=new ArrayList<>();
         List<Segment> segments=new ArrayList<>();
         
 
-        for(int x = 0; x <= width; x += square_size) {
-            for (int y = 0; y <= height; y += square_size) {
-                if (x<width-20){
-                    Property c1 = segColor(mesh.getConnectingVertices(x/20,y/20), mesh.getConnectingVertices((x + 20)/20,y/20));
-                    segments.add(Segment.newBuilder().setV1Idx(x).setV2Idx(x + square_size).addProperties(c1).build());
-                }
-
+        //Horizontal segments
+        for(int x = 0; x*squareSize < width ; x++) {
+            for (int y = 0; y*squareSize <= height; y++) {
+                
+                Property c1 = segColor(mesh.getConnectingVertices(x,y), mesh.getConnectingVertices(x+1,y));
+                segments.add(Segment.newBuilder().setV1Idx(x*squareSize).setV2Idx(x*squareSize + squareSize).addProperties(c1).build());
             }
+
         }
-        for(int y = 0; y < height; y += square_size) {
-            for (int x = 0; x < width; x += square_size) {
-                if (y<height-20){
-                    Property c2 = segColor(mesh.getConnectingVertices(x/20,y/20), mesh.getConnectingVertices(x/20,(y + 20)/20));
-                    segmentsy.add(Segment.newBuilder().setV1Idx(y).setV2Idx(y + square_size).addProperties(c2).build());
-                }
+        for(int y = 0; y*squareSize < height; y++) {
+            for (int x = 0; x*squareSize <= width; x++) {
+                Property c2 = segColor(mesh.getConnectingVertices(x,y), mesh.getConnectingVertices(x,y+1));
+                segmentsy.add(Segment.newBuilder().setV1Idx(y*squareSize).setV2Idx(y*squareSize + squareSize).addProperties(c2).build());
             }
 
         }
 
         segments.addAll(segmentsy);
+
 
 
 
