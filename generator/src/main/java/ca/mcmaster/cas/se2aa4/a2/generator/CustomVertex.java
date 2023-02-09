@@ -8,16 +8,24 @@ public class CustomVertex {
     double x;
     double y; 
     private static final String THICKNESSVALUE = "4.0";
-    Property colour;
+    Property colourProperty;
     Vertex vertex;
     Property thickness;
 
     public CustomVertex(double x, double y){
         this.x = x;
         this.y = y;
-        this.colour = randColor();
+        this.colourProperty = randColor();
         this.thickness = Property.newBuilder().setKey("thickness").setValue(THICKNESSVALUE).build();
-        this.vertex = Vertex.newBuilder().setX((double) x).setY((double) y).addProperties(0,colour).addProperties(1,thickness).build();
+        this.vertex = Vertex.newBuilder().setX((double) x).setY((double) y).addProperties(0,colourProperty).addProperties(1,thickness).build();
+    }
+
+    public CustomVertex(double x, double y, Color colour, String thicknessValue){
+        this.x = x;
+        this.y = y;
+        this.colourProperty = setColour(colour);
+        this.thickness = Property.newBuilder().setKey("thickness").setValue(thicknessValue).build();
+        this.vertex = Vertex.newBuilder().setX((double) x).setY((double) y).addProperties(0,this.colourProperty).addProperties(1,thickness).build();
     }
 
     public Vertex getVertex(){
@@ -25,7 +33,7 @@ public class CustomVertex {
     }
 
     public Color getColour(){
-        String colourVal = colour.getValue();
+        String colourVal = colourProperty.getValue();
 
         if (colourVal == null)
         {
@@ -41,7 +49,7 @@ public class CustomVertex {
         return new Color(red, green, blue, transparency);
     }
 
-    public Property randColor(){
+    private Property randColor(){
         Random bag = new Random();
         int red = bag.nextInt(255);
         int green = bag.nextInt(255);
@@ -49,8 +57,14 @@ public class CustomVertex {
         int transparency = bag.nextInt(155) + 100;
         String colorCode = red + "," + green + "," + blue + "," + transparency;
         Property color = Property.newBuilder().setKey("rgb_color").setValue(colorCode).build();
-
         return color;
+    }
+
+    private Property setColour(Color colour){
+        String colorCode = colour.getRed() + "," + colour.getGreen() + "," + colour.getBlue() + "," + colour.getAlpha();
+        Property colorProp = Property.newBuilder().setKey("rgb_color").setValue(colorCode).build();
+
+        return colorProp;
     }
     
 }
