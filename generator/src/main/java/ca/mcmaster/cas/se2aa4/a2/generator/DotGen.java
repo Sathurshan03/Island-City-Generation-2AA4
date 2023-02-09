@@ -1,10 +1,8 @@
 package ca.mcmaster.cas.se2aa4.a2.generator;
 
 import java.awt.*;
-import java.io.IOException;
 import java.util.*;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Vertex;
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Property;
@@ -17,52 +15,34 @@ public class DotGen {
     private final int height = 500;
     private final int square_size = 20;
 
+    static List <Segment> all_segments=new ArrayList<Segment>();
+    static List <Vertex> all_vertex=new ArrayList<Vertex>();
+
     public Mesh generate() {
 
+        List<Vertex> centroids=new ArrayList<Vertex>();
 
-        Vertex[][] vertice=new Vertex[width][height];
-        List<Vertex> vertices=new ArrayList<>();
+        int digit=20;
 
-        List <Segment> segmentsy=new ArrayList<>();
-        List<Segment> segments=new ArrayList<>();
-        // Create all the vertices
 
-        for(int x = 0; x < width; x += square_size) {
-            for(int y = 0; y < height; y += square_size) {
-                Vertex new_v=Vertex.newBuilder().setX((double) x).setY((double) y).addProperties(randColor()).build();
-                vertice[x/20][y/20]=new_v;
-                vertices.add(new_v);
-
+        for (int x=1; x<25; x++){
+            for (int y=1; y<25; y++){
+                Vertex new_v=Vertex.newBuilder().setX((double) x*digit).setY((double) y*digit).build();
+                centroids.add(new_v);
+                all_vertex.add(new_v);
             }
         }
 
-        for(int x = 0; x < width; x += square_size) {
-            for (int y = 0; y < height; y += square_size) {
-                if (x<width-20){
-                    Property c1 = segColor(vertice[x/20][y/20], vertice[(x + 20)/20][y/20]);
-                    segments.add(Segment.newBuilder().setV1Idx(x).setV2Idx(x + square_size).addProperties(c1).build());
-                }
-
-            }
+        for (Vertex v:centroids){
+            Polygon curr_polygon=new Polygon();
         }
-        for(int y = 0; y < height; y += square_size) {
-            for (int x = 0; x < width; x += square_size) {
-                if (y<height-20){
-                    Property c2 = segColor(vertice[x/20][y/20], vertice[x/20][(y + 20)/20]);
-                    segmentsy.add(Segment.newBuilder().setV1Idx(y).setV2Idx(y + square_size).addProperties(c2).build());
-                }
-            }
-
-        }
-
-        segments.addAll(segmentsy);
 
 
 
 
         // Distribute colors randomly. Vertices are immutable, need to enrich them
 
-        return Mesh.newBuilder().addAllSegments(segments).addAllVertices(vertices).build();
+        return Mesh.newBuilder().addAllVertices(all_vertex).addAllSegments(all_segments).build();
     }
 
     public Property segColor(Vertex v1, Vertex v2){
