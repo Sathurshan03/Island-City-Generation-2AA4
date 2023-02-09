@@ -2,6 +2,7 @@ package ca.mcmaster.cas.se2aa4.a2.generator;
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Property;
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Vertex;
 import java.util.*;
+import java.awt.*;
 
 public class CustomVertex {
     double x;
@@ -18,6 +19,23 @@ public class CustomVertex {
 
     public Vertex getVertex(){
         return vertex;
+    }
+
+    public Color getColour(){
+        String colourVal = colour.getValue();
+
+        if (colourVal == null)
+        {
+            return Color.BLACK;
+        }
+
+        String[] raw = colourVal.split(",");
+        int red = Integer.parseInt(raw[0]);
+        int green = Integer.parseInt(raw[1]);
+        int blue = Integer.parseInt(raw[2]);
+        int transparency = Integer.parseInt(raw[3]);
+
+        return new Color(red, green, blue, transparency);
     }
 
     public Property randColor(){
