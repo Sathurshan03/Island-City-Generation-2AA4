@@ -72,17 +72,16 @@ Pending (P), Started (S), Blocked (B), Done (D)
 | F03   |  Generate polygons on mesh |  Nirmal    |       |     |        |
 | F04   |  Generate segments on polygon |  Nirmal    |       |     |        |
 | F05   |  Verticies colours have transparency attributes |   Sathurshan   |   02/09/2023    |  02/09/2023   |   D     |
-| F06   |  Segment colours have transparency attributes |   Sathurshan   |       |     |        |
-| F07   |  Show vertices with different thickness |  Sathurshan    |       |     |        |
-| F08   |  Show segments with different thickness |  Sathurshan    |       |     |        |
-| F09   |  Show segments with calculated colours |   Sathurshan   |       |     |        |
-| F10   |  Generate centroid vertex of the polygons |  Sathurshan    |       |     |        |
+| F06   |  Segment colours have transparency attributes |   Mithun   |       |     |        |
+| F07   |  Show vertices with different thickness |  Sathurshan    |   02/09/2023    |   02/09/2023  |    D    |
+| F08   |  Show segments with different thickness |  Mithun    |       |     |        |
+| F09   |  Show segments with calculated colours |   Mithun   |       |     |        |
+| F10   |  Generate centroid vertex of the polygons |  Sathurshan    |  02/09/2023     |   02/09/2023  |  D      |
 | F11   |  Generate neighbouring relations of the polygons |  Nirmal    |       |     |        |
 | F12   |  Provide debug mode |   Sathurshan   |   02/08/2023    |  02/08/2023   |    D    |
 | F13   |  debug mode: polygon in black |  Mithun    |       |     |        |
-| F14   |  debug mode: centroid in red |  Mithun    |       |     |        |
+| F14   |  debug mode: centroid in red |  Sathurshan    |       |     |        |
 | F15   |  debug mode: neighbourhood relations in light grey |  Mithun    |       |     |        |
-| F16   |  provide option to switch between debug mode |   Mithun   |       |     |        |
 
 
 
