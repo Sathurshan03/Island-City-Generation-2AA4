@@ -1,6 +1,6 @@
 # Assignment A2: Mesh Generator
 
-  - Author #1 [email@mcmaster.ca]
+  - Mithun Paramathasan [paramatm@mcmaster.ca]
   - Nirmal Chaudhari [chaudn12@mcmaster.ca]
   - Sathurshan Arulmohan [arulmohs@mcmaster.ca]
 
