@@ -84,7 +84,7 @@ Pending (P), Started (S), Blocked (B), Done (D)
 | F03   |  Generate polygons on mesh |  Nirmal    |       |     |        |
 | F04   |  Generate segments on polygon |  Nirmal    |       |     |        |
 | F05   |  Verticies colours have transparency attributes |   Sathurshan   |   02/09/2023    |  02/09/2023   |   D     |
-| F06   |  Segment colours have transparency attributes |   Mithun   |       |     |        |
+| F06   |  Segment colours have transparency attributes |   Mithun   |   2/10/2023    |  2/10/2023   |    D    |
 | F07   |  Show vertices with different thickness |  Sathurshan    |   02/09/2023    |   02/09/2023  |    D    |
 | F08   |  Show segments with different thickness |  Mithun    |       |     |        |
 | F09   |  Show segments with calculated colours |   Mithun   |       |     |        |
