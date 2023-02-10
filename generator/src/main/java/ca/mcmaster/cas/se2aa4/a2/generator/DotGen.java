@@ -40,7 +40,10 @@ public class DotGen {
             for (int y = 0; y < height; y += square_size) {
                 if (x<width-20){
                     Property c1 = segColor(vertice[x/20][y/20], vertice[(x + 20)/20][y/20]);
-                    segments.add(Segment.newBuilder().setV1Idx(x).setV2Idx(x + square_size).addProperties(c1).build());
+                    Segments new_segment = new Segments(x,x+square_size);
+                    new_segment.setColour(c1);
+                    segments.add(new_segment.getSegment());
+//                    segments.add(Segment.newBuilder().setV1Idx(x).setV2Idx(x + square_size).addProperties(c1).build());
                 }
 
             }
@@ -49,7 +52,10 @@ public class DotGen {
             for (int x = 0; x < width; x += square_size) {
                 if (y<height-20){
                     Property c2 = segColor(vertice[x/20][y/20], vertice[x/20][(y + 20)/20]);
-                    segmentsy.add(Segment.newBuilder().setV1Idx(y).setV2Idx(y + square_size).addProperties(c2).build());
+                    Segments new_segment = new Segments(x,x+square_size);
+                    new_segment.setColour(c2);
+                    segments.add(new_segment.getSegment());
+//                    segmentsy.add(Segment.newBuilder().setV1Idx(y).setV2Idx(y + square_size).addProperties(c2).build());
                 }
             }
 
