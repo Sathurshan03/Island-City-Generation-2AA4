@@ -1,5 +1,8 @@
 package ca.mcmaster.cas.se2aa4.a2.generator;
 
+import ca.mcmaster.cas.se2aa4.a2.io.Structs;
+import ca.mcmaster.cas.se2aa4.a2.io.Structs.Vertex;
+
 import java.awt.Color;
 import java.util.ArrayList;
 
@@ -7,6 +10,8 @@ public class RegularMesh extends MeshADT{
     int squareSize;
     CustomVertex[][] centroidVertice;
     CustomVertex[][] connectingVertice;
+
+
     
 
     public RegularMesh(int width, int height, int precision, int squareSize)
@@ -14,8 +19,17 @@ public class RegularMesh extends MeshADT{
         super(width, height, precision);
         this.squareSize = squareSize;
         vertices = new ArrayList<>();
+        centroids=new ArrayList<>();
+        segments=new ArrayList<>();
         createCentroidVertices();
-        createConnectingVertices();
+
+
+        for (int i=0; i<centroids.size(); i++){
+            CustomPolygon polygon=new CustomPolygon(centroids.get(i));
+            addPolygon(polygon.polygon);
+        }
+
+
     }
 
     public void createCentroidVertices(){
@@ -28,24 +42,11 @@ public class RegularMesh extends MeshADT{
                 double yPos = y*squareSize + squareSize/2;
                 CustomVertex new_v= new CustomVertex(xPos, yPos ,new Color(254,0,0,254), "2.0");
                 centroidVertice[x][y]=new_v;
-                addVertex(new_v.getVertex());
+                centroids.add(new_v.getVertex());
             }
         }
     }
 
-    private void createConnectingVertices()
-    {
-        //Connecting vertices
-        connectingVertice = new CustomVertex[width/squareSize + 1][height/squareSize + 1];
-
-        for(int x = 0; x*squareSize <= width; x ++) {
-            for(int y = 0; y*squareSize <= height; y ++) {
-                CustomVertex new_v= new CustomVertex(x*squareSize,y*squareSize);
-                connectingVertice[x][y]=new_v;
-                addVertex(new_v.getVertex());
-            }
-        }
-    }
 
     public CustomVertex[][] getCentroidVertices(){
         return centroidVertice;

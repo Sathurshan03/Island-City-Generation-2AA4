@@ -4,14 +4,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Vertex;
+import ca.mcmaster.cas.se2aa4.a2.io.Structs.Polygon;
+
+import ca.mcmaster.cas.se2aa4.a2.io.Structs.Segment;
 
 public abstract class MeshADT {
 
-    List<Object> mesh;
+    protected static List<Polygon> mesh;
     private int precision;
     protected int height;
     protected int width;
-    protected List<Vertex> vertices;
+    protected static List<CustomVertex> vertices;
+
+
+    protected static List<Vertex> centroids;
+    public static List<Segment> segments;
+
+    public MeshADT(){
+        this.mesh=new ArrayList<>();
+
+    }
 
     public MeshADT(int width, int height, int precision){
         mesh = new ArrayList<>();
@@ -20,18 +32,22 @@ public abstract class MeshADT {
         this.precision = precision;
     }
 
-    public int addPolygon(Object polygon){
+    public void addPolygon(Polygon polygon){
         mesh.add(polygon);
-        return mesh.indexOf(polygon);
     }
     
-    public void addVertex(Vertex vertex)
+    public void addVertex(CustomVertex vertex)
     {
         vertices.add(vertex);
     }
     
     public List<Vertex> getVertices(){
-        return vertices;
+        List<Vertex> reg_vertices=new ArrayList<>();
+
+        for (CustomVertex v: vertices){
+            reg_vertices.add(v.getVertex());
+        }
+        return reg_vertices;
     }
 
     public int getPrecision(){
@@ -47,5 +63,6 @@ public abstract class MeshADT {
         return height;
     }
 
-    abstract public void createCentroidVertices();
+
+
 }

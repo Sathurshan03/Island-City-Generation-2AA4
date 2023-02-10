@@ -3,8 +3,9 @@ import ca.mcmaster.cas.se2aa4.a2.io.Structs.Property;
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Vertex;
 import java.util.*;
 import java.awt.*;
+import java.util.List;
 
-public class CustomVertex {
+public class CustomVertex{
     double x;
     double y; 
     private static final String THICKNESSVALUE = "4.0";
@@ -49,7 +50,7 @@ public class CustomVertex {
         return new Color(red, green, blue, transparency);
     }
 
-    private Property randColor(){
+    protected Property randColor(){
         Random bag = new Random();
         int red = bag.nextInt(255);
         int green = bag.nextInt(255);
@@ -60,11 +61,18 @@ public class CustomVertex {
         return color;
     }
 
+
     private Property setColour(Color colour){
         String colorCode = colour.getRed() + "," + colour.getGreen() + "," + colour.getBlue() + "," + colour.getAlpha();
         Property colorProp = Property.newBuilder().setKey("rgb_color").setValue(colorCode).build();
 
         return colorProp;
     }
-    
+
+
+
+
+
+
+
 }
