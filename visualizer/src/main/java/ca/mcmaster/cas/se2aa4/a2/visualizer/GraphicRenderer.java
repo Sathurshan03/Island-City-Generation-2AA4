@@ -16,7 +16,7 @@ import java.util.List;
 
 public class GraphicRenderer {
 
-    public void render(Mesh aMesh, Graphics2D canvas) {
+    public void render(Mesh aMesh, Graphics2D canvas, Boolean debug) {
 
         //Set up the canvas
         canvas.setColor(Color.BLACK);
@@ -66,6 +66,16 @@ public class GraphicRenderer {
                     canvas.setColor(old);
                     segmentVisual.draw();
                 }
+            }
+        }
+
+        //draw centroid in red
+        if (debug)
+        {
+            //centroid points are stored in last |polygons| of vertexVisualsList
+            for (int i = 1; i <= polygons.size(); i ++)
+            {
+                drawVertex(vertexVisualsList, canvas, vertexVisualsList.size() - i );
             }
         }
     }
