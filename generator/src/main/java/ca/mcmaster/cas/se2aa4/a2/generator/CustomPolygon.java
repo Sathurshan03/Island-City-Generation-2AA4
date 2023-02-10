@@ -43,6 +43,10 @@ public class CustomPolygon extends MeshADT{
         return Arrays.asList(v1,v2,v3,v4);
     }
 
+    public Polygon gePolygon(){
+        return polygon;
+    }
+
     protected List<Segment> makeSegments(CustomVertex v1, CustomVertex v2, CustomVertex v3, CustomVertex v4){
         Segment s1=makeSegment(vertices.indexOf(v1),vertices.indexOf(v2));
         Segment s2=makeSegment(vertices.indexOf(v2),vertices.indexOf(v3));

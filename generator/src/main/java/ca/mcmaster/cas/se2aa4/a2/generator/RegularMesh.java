@@ -23,10 +23,9 @@ public class RegularMesh extends MeshADT{
         segments=new ArrayList<>();
         createCentroidVertices();
 
-
         for (int i=0; i<centroids.size(); i++){
             CustomPolygon polygon=new CustomPolygon(centroids.get(i));
-            addPolygon(polygon.polygon);
+            addPolygon(polygon.gePolygon());
         }
 
 
