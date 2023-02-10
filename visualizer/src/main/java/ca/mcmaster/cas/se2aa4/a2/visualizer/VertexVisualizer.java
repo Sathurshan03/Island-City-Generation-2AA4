@@ -10,14 +10,14 @@ import ca.mcmaster.cas.se2aa4.a2.io.Structs.Property;
 public class VertexVisualizer {
     private double X;
     private double Y;
-    private Boolean isDrawn;
+    private Boolean drawn;
     private Vertex vertex;
 
     public VertexVisualizer (Vertex vertex)
     {
         this.X = vertex.getX();
         this.Y = vertex.getY();
-        this.isDrawn = false;
+        this.drawn = false;
         this.vertex = vertex;
         
     }
@@ -31,6 +31,11 @@ public class VertexVisualizer {
         return Y;
     }
 
+    public boolean isDrawn()
+    {
+        return drawn;
+    }
+
     public Color getColor(){
         return extractVertexColor(vertex.getPropertiesList());
     }
@@ -39,8 +44,8 @@ public class VertexVisualizer {
         return extractThickness(vertex.getPropertiesList());
     }
 
-    public void drawn(){
-        isDrawn = true; 
+    public void draw(){
+        drawn = true; 
     }
 
     public Ellipse2D getPoint(){
