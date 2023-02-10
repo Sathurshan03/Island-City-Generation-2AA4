@@ -45,6 +45,9 @@ public class GraphicRenderer {
         for (Segment s : segmentx) {
             Color old = canvas.getColor();
             canvas.setColor(extractSegmentColor(s.getPropertiesList()));
+            float segThickness = extractThickness(s.getPropertiesList());
+            Stroke newStroke = new BasicStroke(segThickness);
+            canvas.setStroke(newStroke);
             Line2D line = new Line2D.Double(s.getV1Idx(), y, s.getV2Idx(), y);
             canvas.draw(line);
             canvas.setColor(old);
@@ -63,6 +66,9 @@ public class GraphicRenderer {
         for (Segment s : segmenty) {
             Color old = canvas.getColor();
             canvas.setColor(extractSegmentColor(s.getPropertiesList()));
+            float segThickness = extractThickness(s.getPropertiesList());
+            Stroke newStroke = new BasicStroke(segThickness);
+            canvas.setStroke(newStroke);
             Line2D line = new Line2D.Double(x, s.getV1Idx(), x, s.getV2Idx());
             canvas.draw(line);
             canvas.setColor(old);
@@ -94,6 +100,19 @@ public class GraphicRenderer {
         int blue = Integer.parseInt(raw[2]);
         return new Color(red, green, blue);
     }
+
+    public float extractThickness(List<Property> properties){
+        String val = null;
+        for(Property p: properties) {
+            if (p.getKey().equals("thickness")) {
+                val = p.getValue();
+            }
+        }
+        if (val == null)
+            return 0;
+        return Float.parseFloat(val);
+    }
+
         private Color extractSegmentColor(List<Property> properties) {
             String val = null;
             for (Property p : properties) {
