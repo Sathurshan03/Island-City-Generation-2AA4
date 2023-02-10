@@ -25,34 +25,30 @@ public class GraphicRenderer {
         canvas.setStroke(stroke);
 
         List<Integer> drawn_vertex=new ArrayList<>();
-
         List<Integer> drawn_segment=new ArrayList<>();
 
 
         List<Vertex> vertex_list=aMesh.getVerticesList();
-        
         List<VertexVisualizer> vertexVisualsList = new ArrayList<>();
         for (Vertex vertex : vertex_list){
             vertexVisualsList.add(new VertexVisualizer(vertex));
         }
 
-
-        List<Segment> segment=aMesh.getSegmentsList(); // size: (height / spaceSize) * ((height / spaceSize) + 1)
+        List<Segment> segments=aMesh.getSegmentsList(); // size: (height / spaceSize) * ((height / spaceSize) + 1)
+        List<SegmentVisualizer> segmentVisualsList = new ArrayList<>();
+        for (Segment segment : segments){
+            segmentVisualsList.add(new SegmentVisualizer(segment));
+        }
 
         List<Polygon> polygons=aMesh.getPolygonsList();
         Ellipse2D point;
 
-        System.out.println(polygons.size());
 
-        for (Polygon p:polygons){
-            
-            
-            System.out.println(5);
-            
+        for (Polygon p:polygons){                        
             for (Integer i:p.getSegmentIdxsList()){
-                Segment s=segment.get(i);
-                Integer v1=s.getV1Idx();
-                Integer v2=s.getV2Idx();
+                SegmentVisualizer segmentVisual = segmentVisualsList.get(i);
+                Integer v1= segmentVisual.getVertedIDX1();
+                Integer v2= segmentVisual.getVertedIDX2();
                 
 
                 if (!drawn_vertex.contains(v1)) {
@@ -62,7 +58,6 @@ public class GraphicRenderer {
                     canvas.setColor(vertexVisual.getColor());
 
                     point = vertexVisual.getPoint();
-
                     canvas.fill(point);
                     
                     canvas.setColor(old);
@@ -75,7 +70,6 @@ public class GraphicRenderer {
                     Color old = canvas.getColor();
 
                     canvas.setColor(vertexVisual.getColor());
-
                     point = vertexVisual.getPoint();
 
                     canvas.fill(point);
@@ -87,8 +81,14 @@ public class GraphicRenderer {
 
                 if (!drawn_segment.contains(i)){
                     Color old = canvas.getColor();
-                    canvas.setColor(extractColor(s.getPropertiesList()));
-                    Line2D line = new Line2D.Double(vertex_list.get(v1).getX(), vertex_list.get(v1).getY(), vertex_list.get(v2).getX(), vertex_list.get(v2).getY());
+                    canvas.setColor(segmentVisual.getColor());
+                    
+                    double x1 = vertexVisualsList.get(v1).getX();
+                    double y1 = vertexVisualsList.get(v1).getY();
+                    double x2 = vertexVisualsList.get(v2).getX();
+                    double y2 = vertexVisualsList.get(v2).getY();
+                    Line2D line = segmentVisual.getLine(x1, y1, x2, y2);
+
                     canvas.draw(line);
                     canvas.setColor(old);
                     drawn_segment.add(i);
@@ -97,22 +97,7 @@ public class GraphicRenderer {
         }
     }
 
-    private Color extractColor(List<Property> properties) {
-        String val = null;
-        for(Property p: properties) {
-            if (p.getKey().equals("rgb_color")) {
-                System.out.println(p.getValue());
-                val = p.getValue();
-            }
-        }
-        if (val == null)
-            return Color.BLACK;
-        String[] raw = val.split(",");
-        int red = Integer.parseInt(raw[0]);
-        int green = Integer.parseInt(raw[1]);
-        int blue = Integer.parseInt(raw[2]);
-        return new Color(red, green, blue);
-    }
+
 
 
 
