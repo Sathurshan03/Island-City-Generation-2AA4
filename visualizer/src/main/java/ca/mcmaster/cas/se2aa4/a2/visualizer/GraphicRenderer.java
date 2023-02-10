@@ -3,6 +3,7 @@ package ca.mcmaster.cas.se2aa4.a2.visualizer;
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Mesh;
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Vertex;
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Segment;
+import ca.mcmaster.cas.se2aa4.a2.io.Structs.Polygon;
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Property;
 
 import java.awt.Graphics2D;
@@ -11,22 +12,85 @@ import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Line2D;
+import java.util.ArrayList;
 import java.util.List;
 
 public class GraphicRenderer {
 
     public void render(Mesh aMesh, Graphics2D canvas) {
+
+
         canvas.setColor(Color.BLACK);
         Stroke stroke = new BasicStroke(0.5f);
         canvas.setStroke(stroke);
 
+        List<Integer> drawn_vertex=new ArrayList<>();
+
+        List<Integer> drawn_segment=new ArrayList<>();
+
+
         List<Vertex> vertex_list=aMesh.getVerticesList();
 
-        List<Segment> segmentx=aMesh.getSegmentsList().subList(0,650); // size: (width / spaceSize) * ((width / spaceSize) + 1)
-        List<Segment> segmenty=aMesh.getSegmentsList().subList(650,1300); // size: (height / spaceSize) * ((height / spaceSize) + 1)
+        List<Segment> segment=aMesh.getSegmentsList(); // size: (height / spaceSize) * ((height / spaceSize) + 1)
+
+        List<Polygon> polygons=aMesh.getPolygonsList();
+
+        for (Polygon p:polygons){
+            for (Integer i:p.getSegmentIdxsList()){
+                Segment s=segment.get(i);
+                Integer v1=s.getV1Idx();
+                Integer v2=s.getV2Idx();
+
+                if (!drawn_vertex.contains(v1)) {
+                    Vertex v=vertex_list.get(v1);
+                    Color old = canvas.getColor();
+                    canvas.setColor(extractVertexColor(v.getPropertiesList()));
+                    double thickness = extractThickness(v.getPropertiesList());
+
+                    double centre_x = v.getX() - (thickness/2.0d);
+                    double centre_y = v.getY() - (thickness/2.0d);
+
+                    Ellipse2D point = new Ellipse2D.Double(centre_x, centre_y, thickness, thickness);
+                    canvas.fill(point);
+                    canvas.setColor(old);
+                    drawn_vertex.add(v1);
+                }
+
+                if (!drawn_vertex.contains(v2)){
+                    Vertex v=vertex_list.get(v2);
+                    Color old = canvas.getColor();
+                    canvas.setColor(extractVertexColor(v.getPropertiesList()));
+                    double thickness = extractThickness(v.getPropertiesList());
+
+                    double centre_x = v.getX() - (thickness/2.0d);
+                    double centre_y = v.getY() - (thickness/2.0d);
+
+                    Ellipse2D point = new Ellipse2D.Double(centre_x, centre_y, thickness, thickness);
+                    canvas.fill(point);
+                    canvas.setColor(old);
+                    drawn_vertex.add(v2);
+                }
 
 
-        for (int i=0, j=0, k=0; i< vertex_list.size(); i++){
+                if (!drawn_segment.contains(i)){
+                    Color old = canvas.getColor();
+                    canvas.setColor(extractColor(s.getPropertiesList()));
+                    Line2D line = new Line2D.Double(vertex_list.get(v1).getX(), vertex_list.get(v1).getY(), vertex_list.get(v2).getX(), vertex_list.get(v2).getY());
+                    canvas.draw(line);
+                    canvas.setColor(old);
+                    drawn_segment.add(i);
+                }
+
+
+
+
+
+
+            }
+        }
+
+
+        for (int i=0; i< vertex_list.size(); i++){
             Vertex v=vertex_list.get(i);
             Color old = canvas.getColor();
             canvas.setColor(extractVertexColor(v.getPropertiesList()));
@@ -34,46 +98,19 @@ public class GraphicRenderer {
 
             double centre_x = v.getX() - (thickness/2.0d);
             double centre_y = v.getY() - (thickness/2.0d);
-            
+
             Ellipse2D point = new Ellipse2D.Double(centre_x, centre_y, thickness, thickness);
             canvas.fill(point);
             canvas.setColor(old);
 
         }
 
-        int x=0;
-        int y=0;
-        for (Segment s: segmentx){
-            Color old=canvas.getColor();
+        for (Segment s: segment) {
+            Color old = canvas.getColor();
             canvas.setColor(extractColor(s.getPropertiesList()));
-            Line2D line=new Line2D.Double(s.getV1Idx(), y, s.getV2Idx(), y);
+            Line2D line = new Line2D.Double(vertex_list.get(s.getV1Idx()).getX(), vertex_list.get(s.getV1Idx()).getY(), vertex_list.get(s.getV2Idx()).getX(), vertex_list.get(s.getV2Idx()).getY());
             canvas.draw(line);
             canvas.setColor(old);
-
-            if (y==500){
-                x+=20;
-                y=0;
-            }else{
-                y+=20;
-            }
-
-        }
-
-        x=0;
-        y=0;
-        for (Segment s: segmenty){
-            Color old=canvas.getColor();
-            canvas.setColor(extractColor(s.getPropertiesList()));
-            Line2D line=new Line2D.Double(x, s.getV1Idx(), x, s.getV2Idx());
-            canvas.draw(line);
-            canvas.setColor(old);
-
-            if (x==500){
-                y+=20;
-                x=0;
-            }else{
-                x+=20;
-            }
         }
 
 
