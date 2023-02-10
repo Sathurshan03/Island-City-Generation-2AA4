@@ -7,13 +7,15 @@ import java.awt.geom.Line2D;
 import java.util.List;
 
 public class SegmentVisualizer {
-    Boolean drawn;
-    Segment segment;
+    private Boolean drawn;
+    private Segment segment;
+    private Boolean debug;
 
-    public SegmentVisualizer(Segment segment)
+    public SegmentVisualizer(Segment segment, Boolean debug)
     {
         this.drawn = false;
         this.segment = segment;
+        this.debug = debug;
     }
 
     public int getVertedIDX1(){
@@ -38,6 +40,10 @@ public class SegmentVisualizer {
     }
 
     public Color getColor(){
+        if (debug)
+        {
+            return Color.BLACK;
+        }
         return extractColor(segment.getPropertiesList());
     }
 

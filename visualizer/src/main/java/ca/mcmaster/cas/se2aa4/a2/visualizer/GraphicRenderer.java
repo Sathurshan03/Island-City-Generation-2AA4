@@ -23,21 +23,32 @@ public class GraphicRenderer {
         Stroke stroke = new BasicStroke(0.5f);
         canvas.setStroke(stroke);
 
+        //Polygon information
+        List<Polygon> polygons=aMesh.getPolygonsList();
+
         //Vertex information
         List<Vertex> vertex_list=aMesh.getVerticesList();
         List<VertexVisualizer> vertexVisualsList = new ArrayList<>();
-        for (Vertex vertex : vertex_list){
-            vertexVisualsList.add(new VertexVisualizer(vertex));
+        for (int i = 0; i < vertex_list.size(); i++){
+            //centroid points are stored in last |polygons| of vertexVisualsList
+            if (i >= (vertex_list.size() - polygons.size()))
+            {
+                vertexVisualsList.add(new VertexVisualizer(vertex_list.get(i), debug, true));
+            }
+            else
+            {
+                vertexVisualsList.add(new VertexVisualizer(vertex_list.get(i), debug, false));
+            }
         }
 
         //Segment information
         List<Segment> segments=aMesh.getSegmentsList(); 
         List<SegmentVisualizer> segmentVisualsList = new ArrayList<>();
         for (Segment segment : segments){
-            segmentVisualsList.add(new SegmentVisualizer(segment));
+            segmentVisualsList.add(new SegmentVisualizer(segment, debug));
         }
 
-        List<Polygon> polygons=aMesh.getPolygonsList();
+        
 
 
         //Print Polygon one by one

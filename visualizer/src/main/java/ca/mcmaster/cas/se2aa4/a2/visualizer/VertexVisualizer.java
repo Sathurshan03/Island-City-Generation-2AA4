@@ -12,14 +12,17 @@ public class VertexVisualizer {
     private double Y;
     private Boolean drawn;
     private Vertex vertex;
+    private boolean debug;
+    private boolean isCentroid;
 
-    public VertexVisualizer (Vertex vertex)
+    public VertexVisualizer (Vertex vertex, Boolean debug, Boolean isCentroid)
     {
         this.X = vertex.getX();
         this.Y = vertex.getY();
         this.drawn = false;
         this.vertex = vertex;
-        
+        this.debug = debug;
+        this.isCentroid = isCentroid;
     }
     public double getX()
     {
@@ -37,6 +40,10 @@ public class VertexVisualizer {
     }
 
     public Color getColor(){
+        if (debug && !isCentroid)
+        {
+            return Color.BLACK;
+        }
         return extractVertexColor(vertex.getPropertiesList());
     }
 
