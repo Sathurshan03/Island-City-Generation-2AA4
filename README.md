@@ -86,7 +86,7 @@ Pending (P), Started (S), Blocked (B), Done (D)
 | F05   |  Verticies colours have transparency attributes |   Sathurshan   |   02/09/2023    |  02/09/2023   |   D     |
 | F06   |  Segment colours have transparency attributes |   Mithun   |   2/10/2023    |  2/10/2023   |    D    |
 | F07   |  Show vertices with different thickness |  Sathurshan    |   02/09/2023    |   02/09/2023  |    D    |
-| F08   |  Show segments with different thickness |  Mithun    |       |     |        |
+| F08   |  Show segments with different thickness |  Mithun    |   2/10/2023    |  2/10/2023  |    D    |
 | F09   |  Show segments with calculated colours |   Mithun   |       |     |        |
 | F10   |  Generate centroid vertex of the polygons |  Sathurshan    |  02/09/2023     |   02/09/2023  |  D      |
 >>>>>>> aa6f509a421a877bdedc64264604f0d1ed4fa288
