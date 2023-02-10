@@ -26,7 +26,7 @@ public class RegularMesh extends MeshADT{
 
         for (int i=0; i<centroids.size(); i++){
             CustomPolygon polygon=new CustomPolygon(centroids.get(i));
-            addPolygon(polygon.polygon);
+            addPolygon(polygon.gePolygon());
         }
 
 

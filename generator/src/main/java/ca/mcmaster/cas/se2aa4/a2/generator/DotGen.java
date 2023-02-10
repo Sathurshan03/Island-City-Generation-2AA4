@@ -20,8 +20,10 @@ public class DotGen {
 
         RegularMesh mesh = new RegularMesh(width, height, 2, squareSize);
 
+        System.out.println(mesh.mesh.size());
 
-        return Mesh.newBuilder().addAllPolygons(mesh.mesh).addAllSegments(mesh.segments).addAllVertices(mesh.getVertices()).addAllVertices(mesh.centroids).build();
+
+        return Mesh.newBuilder().addAllPolygons(mesh.getMesh()).addAllSegments(mesh.segments).addAllVertices(mesh.getVertices()).addAllVertices(mesh.centroids).build();
     }
 
 }
