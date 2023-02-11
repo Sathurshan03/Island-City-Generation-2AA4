@@ -1,10 +1,8 @@
 package ca.mcmaster.cas.se2aa4.a2.generator;
 
 import java.awt.*;
-import java.io.IOException;
 import java.util.*;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Vertex;
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Property;
@@ -40,8 +38,7 @@ public class DotGen {
             for (int y = 0; y < height; y += square_size) {
                 if (x<width-20){
                     Property c1 = segColor(vertice[x/20][y/20], vertice[(x + 20)/20][y/20]);
-                    Segments new_segment = new Segments(x,x+square_size);
-                    new_segment.setColour(c1);
+                    CustomSegments new_segment = new CustomSegments(x,x+square_size,c1,"3");
                     segments.add(new_segment.getSegment());
 //                    segments.add(Segment.newBuilder().setV1Idx(x).setV2Idx(x + square_size).addProperties(c1).build());
                 }
@@ -52,9 +49,8 @@ public class DotGen {
             for (int x = 0; x < width; x += square_size) {
                 if (y<height-20){
                     Property c2 = segColor(vertice[x/20][y/20], vertice[x/20][(y + 20)/20]);
-                    Segments new_segment = new Segments(x,x+square_size);
-                    new_segment.setColour(c2);
-                    segments.add(new_segment.getSegment());
+                    CustomSegments new_segment = new CustomSegments(y,y+square_size,c2,"3");
+                    segmentsy.add(new_segment.getSegment());
 //                    segmentsy.add(Segment.newBuilder().setV1Idx(y).setV2Idx(y + square_size).addProperties(c2).build());
                 }
             }
