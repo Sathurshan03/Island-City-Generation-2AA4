@@ -17,6 +17,7 @@ import java.util.Random;
 
 public class GraphicRenderer {
 
+
     public void render(Mesh aMesh, Graphics2D canvas, Boolean debug) {
 
         //Set up the canvas
@@ -24,8 +25,10 @@ public class GraphicRenderer {
         Stroke stroke = new BasicStroke(0.5f);
         canvas.setStroke(stroke);
 
+
         //Polygon information
         List<Polygon> polygons = aMesh.getPolygonsList();
+
 
         //Vertex information
         List<Vertex> vertex_list = aMesh.getVerticesList();
@@ -76,29 +79,28 @@ public class GraphicRenderer {
             }
         }
 
-        //draw centroid in red
-        if (debug) {
-            //centroid points are stored in last |polygons| of vertexVisualsList
-            for (int i = 1; i <= polygons.size(); i++) {
-                drawVertex(vertexVisualsList, canvas, vertexVisualsList.size() - i);
+            //draw centroid in red
+            if (debug) {
+                //centroid points are stored in last |polygons| of vertexVisualsList
+                for (int i = 1; i <= polygons.size(); i++) {
+                    drawVertex(vertexVisualsList, canvas, vertexVisualsList.size() - i);
+                }
+            }
+        }
+        protected void drawVertex (List < VertexVisualizer > vertexVisualsList, Graphics2D canvas,int pos){
+            //Print vertex with no overlaps
+            if (!vertexVisualsList.get(pos).isDrawn()) {
+                VertexVisualizer vertexVisual = vertexVisualsList.get(pos);
+                Color old = canvas.getColor();
+
+
+                canvas.setColor(vertexVisual.getColor());
+                Ellipse2D point = vertexVisual.getPoint();
+
+                canvas.fill(point);
+                canvas.setColor(old);
+                vertexVisual.draw();
             }
         }
     }
-
-    protected void drawVertex(List<VertexVisualizer> vertexVisualsList, Graphics2D canvas, int pos) {
-        //Print vertex with no overlaps
-        if (!vertexVisualsList.get(pos).isDrawn()) {
-            VertexVisualizer vertexVisual = vertexVisualsList.get(pos);
-            Color old = canvas.getColor();
-
-            canvas.setColor(vertexVisual.getColor());
-            Ellipse2D point = vertexVisual.getPoint();
-
-            canvas.fill(point);
-            canvas.setColor(old);
-            vertexVisual.draw();
-        }
-    }
-}
-
 
