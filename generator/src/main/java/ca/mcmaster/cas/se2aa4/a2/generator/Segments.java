@@ -40,7 +40,7 @@ public class Segments {
     }
 
 
-    public Property segColor(Vertex v1, Vertex v2) { // Do I need this method here if segment only accepts list index
+    public Property segColor(CustomVertex v1, CustomVertex v2) { // Do I need this method here if segment only accepts list index
                                                      // values for a vertex, need to send the actual vertex to generate a colour once object is instantiated?
         Color c1 = v1.getColour();
         Color c2 = v2.getColour();
