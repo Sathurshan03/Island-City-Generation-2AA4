@@ -14,13 +14,16 @@ public class CustomSegments {
     Property thicknessProp;
     Segment segment;
 
-    public CustomSegments(int v1, int v2, Color colour, String thickness) {
+    Integer centroid;
+
+    public CustomSegments(int v1, int v2, Color colour, String thickness, Integer centroid) {
         this.v1 = v1;
         this.v2 = v2;
         this.colourProp = setColour(colour);
         this.thicknessProp = Property.newBuilder().setKey("thickness").setValue(thickness).build();
         this.segment = Segment.newBuilder().setV1Idx(v1).setV2Idx(v2).addProperties(0,colourProp)
                 .addProperties(1,thicknessProp).build();
+        this.centroid=centroid;
     }
 
     public Segment getSegment(){

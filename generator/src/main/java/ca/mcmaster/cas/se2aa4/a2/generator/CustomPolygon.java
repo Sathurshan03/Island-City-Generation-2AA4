@@ -8,6 +8,7 @@ import ca.mcmaster.cas.se2aa4.a2.io.Structs.Polygon;
 
 
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -19,13 +20,19 @@ public class CustomPolygon extends MeshADT{
 
     protected List<Integer> segment_index;
 
-    protected Vertex centroid;
+    protected List<Integer> neighbours;
+
+    protected CustomVertex centroid;
+    protected Integer centroid_idx;
 
 
     protected Polygon polygon;
 
-    public CustomPolygon(Vertex centroid){
-        this.centroid=centroid;
+    public CustomPolygon(int centroid){
+        this.segment_index=new ArrayList<>();
+        this.neighbours=new ArrayList<>();
+        this.centroid=vertices.get(centroid);
+        this.centroid_idx=centroid;
         this.poly_vertices=makeVertices();
         this.poly_segment=makeSegments(poly_vertices.get(0), poly_vertices.get(1), poly_vertices.get(2), poly_vertices.get(3));
         this.polygon=makePolygon();
@@ -34,10 +41,10 @@ public class CustomPolygon extends MeshADT{
     protected List<CustomVertex> makeVertices(){
 
 
-        CustomVertex v1=makeVertex(centroid.getX()-10, centroid.getY()-10);
-        CustomVertex v2=makeVertex(centroid.getX()+10, centroid.getY()-10);
-        CustomVertex v3=makeVertex(centroid.getX()+10, centroid.getY()+10);
-        CustomVertex v4=makeVertex(centroid.getX()-10, centroid.getY()+10);
+        CustomVertex v1=makeVertex(centroid.x-10, centroid.y-10);
+        CustomVertex v2=makeVertex(centroid.x+10, centroid.y-10);
+        CustomVertex v3=makeVertex(centroid.x+10, centroid.y+10);
+        CustomVertex v4=makeVertex(centroid.x-10, centroid.y+10);
 
 
         return Arrays.asList(v1,v2,v3,v4);
@@ -53,7 +60,8 @@ public class CustomPolygon extends MeshADT{
         CustomSegments s3=makeSegment(vertices.indexOf(v3),vertices.indexOf(v4));
         CustomSegments s4=makeSegment(vertices.indexOf(v4),vertices.indexOf(v1));
 
-        this.segment_index=Arrays.asList(segments.indexOf(s1), segments.indexOf(s2), segments.indexOf(s3), segments.indexOf(s4));
+
+        this.segment_index.addAll(Arrays.asList(segments.indexOf(s1), segments.indexOf(s2), segments.indexOf(s3), segments.indexOf(s4)));
 
         return Arrays.asList(s1,s2,s3,s4);
 
@@ -62,7 +70,7 @@ public class CustomPolygon extends MeshADT{
 
 
     protected Polygon makePolygon(){
-        return Polygon.newBuilder().addAllSegmentIdxs(this.segment_index).build();
+        return Polygon.newBuilder().addAllSegmentIdxs(this.segment_index).addAllNeighborIdxs(neighbours).build();
     }
 
 
@@ -80,9 +88,13 @@ public class CustomPolygon extends MeshADT{
     }
 
     private CustomSegments makeSegment(int v1, int v2){
-        CustomSegments s=new CustomSegments(v1,v2,calcColor(vertices.get(v1),vertices.get(v2)), "0.5f");
+        CustomSegments s=new CustomSegments(v1,v2,calcColor(vertices.get(v1),vertices.get(v2)), "0.5f", this.centroid_idx);
         for (CustomSegments c: segments){
             if ((c.v1==s.v1 & c.v2==s.v2) | (c.v2==s.v1 & c.v1==s.v2) ){
+                this.neighbours.add(c.centroid);
+                CustomSegments new_s=new CustomSegments(this.centroid_idx,c.centroid,Color.GRAY, "0.5f", this.centroid_idx);
+                segments.add(new_s);
+                this.segment_index.add(segments.indexOf(new_s));
                 return c;
             }
         }

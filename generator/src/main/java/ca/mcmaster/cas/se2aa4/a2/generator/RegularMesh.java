@@ -19,12 +19,13 @@ public class RegularMesh extends MeshADT{
         super(width, height, precision);
         this.squareSize = squareSize;
         vertices = new ArrayList<>();
-        centroids=new ArrayList<>();
         segments=new ArrayList<>();
         createCentroidVertices();
 
-        for (int i=0; i<centroids.size(); i++){
-            CustomPolygon polygon=new CustomPolygon(centroids.get(i));
+        int centroid_size=vertices.size();
+
+        for (int i=0; i<centroid_size; i++){
+            CustomPolygon polygon=new CustomPolygon(i);
             addPolygon(polygon.gePolygon());
         }
 
@@ -41,7 +42,7 @@ public class RegularMesh extends MeshADT{
                 double yPos = y*squareSize + squareSize/2;
                 CustomVertex new_v= new CustomVertex(xPos, yPos ,new Color(254,0,0,254), "2.0");
                 centroidVertice[x][y]=new_v;
-                centroids.add(new_v.getVertex());
+                vertices.add(new_v);
             }
         }
     }
