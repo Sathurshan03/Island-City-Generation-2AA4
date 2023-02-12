@@ -67,30 +67,17 @@ Pending (P), Started (S), Blocked (B), Done (D)
 
 | Id | Feature title | Who? | Start | End | Status |
 |:--:|---------------|------|-------|-----|--------|
-<<<<<<< HEAD
-| F01   |  User-friendly naming system to refer to spacing of grid |   Sathurshan   |       |     |        |
-| F02   |  Generate all Vertices for each polygons |  Nirmal    |   02/09/2023	   |   02/09/2023	  |   D     |
-| F03   |  Generate polygons on mesh |  Nirmal    |       |     |        |
-| F04   |  Generate segments on polygon |  Nirmal    |   02/09/2023	    |  02/09/2023	   |   D     |
-| F05   |  Verticies colours have transparency attributes |   Sathurshan   |       |     |        |
-| F06   |  Segment colours have transparency attributes |   Sathurshan   |       |     |        |
-| F07   |  Show vertices with different thickness |  Sathurshan    |       |     |        |
-| F08   |  Show segments with different thickness |  Sathurshan    |       |     |        |
-| F09   |  Show segments with calculated colours |   Sathurshan   |       |     |        |
-| F10   |  Generate centroid vertex of the polygons |  Sathurshan    |       |     |        |
-=======
 | F01   |  Create a Mesh with a determined width and height |   Sathurshan   |   02/08/2023    |  02/08/2023   |   D     |
-| F02   |  Generate all Vertices for each polygons |  Nirmal    |       |     |        |
-| F03   |  Generate polygons on mesh |  Nirmal    |       |     |        |
-| F04   |  Generate segments on polygon |  Nirmal    |       |     |        |
+| F02   |  Generate all Vertices for each polygons |  Nirmal    |    02/09/2023   |  02/09/2023   |    D    |
+| F03   |  Generate polygons on mesh |  Nirmal    |    02/10/2023   |  02/10/2023   |   D     |
+| F04   |  Generate segments on polygon |  Nirmal    |   02/09/2023    |  02/09/2023   |   D     |
 | F05   |  Verticies colours have transparency attributes |   Sathurshan   |   02/09/2023    |  02/09/2023   |   D     |
 | F06   |  Segment colours have transparency attributes |   Mithun   |       |     |        |
 | F07   |  Show vertices with different thickness |  Sathurshan    |   02/09/2023    |   02/09/2023  |    D    |
 | F08   |  Show segments with different thickness |  Mithun    |       |     |        |
 | F09   |  Show segments with calculated colours |   Mithun   |       |     |        |
 | F10   |  Generate centroid vertex of the polygons |  Sathurshan    |  02/09/2023     |   02/09/2023  |  D      |
->>>>>>> aa6f509a421a877bdedc64264604f0d1ed4fa288
-| F11   |  Generate neighbouring relations of the polygons |  Nirmal    |       |     |        |
+| F11   |  Generate neighbouring relations of the polygons |  Nirmal    |   02/12/2023    |  02/12/2023   |    D    |
 | F12   |  Provide debug mode |   Sathurshan   |   02/08/2023    |  02/08/2023   |    D    |
 | F13   |  debug mode: polygon in black |  Mithun    |       |     |        |
 | F14   |  debug mode: centroid in red |  Sathurshan    |       |     |        |
