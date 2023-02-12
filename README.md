@@ -1,6 +1,6 @@
 # Assignment A2: Mesh Generator
 
-  - Author #1 [email@mcmaster.ca]
+  - Mithun Paramathasan [paramatm@mcmaster.ca]
   - Nirmal Chaudhari [chaudn12@mcmaster.ca]
   - Sathurshan Arulmohan [arulmohs@mcmaster.ca]
 
@@ -72,15 +72,15 @@ Pending (P), Started (S), Blocked (B), Done (D)
 | F03   |  Generate polygons on mesh |  Nirmal    |    02/10/2023   |  02/10/2023   |   D     |
 | F04   |  Generate segments on polygon |  Nirmal    |   02/09/2023    |  02/09/2023   |   D     |
 | F05   |  Verticies colours have transparency attributes |   Sathurshan   |   02/09/2023    |  02/09/2023   |   D     |
-| F06   |  Segment colours have transparency attributes |   Mithun   |       |     |        |
+| F06   |  Segment colours have transparency attributes |   Mithun   |   2/10/2023    |  2/10/2023   |    D    |
 | F07   |  Show vertices with different thickness |  Sathurshan    |   02/09/2023    |   02/09/2023  |    D    |
-| F08   |  Show segments with different thickness |  Mithun    |       |     |        |
+| F08   |  Show segments with different thickness |  Mithun    |   2/10/2023    |  2/10/2023  |    D    |
 | F09   |  Show segments with calculated colours |   Mithun   |       |     |        |
 | F10   |  Generate centroid vertex of the polygons |  Sathurshan    |  02/09/2023     |   02/09/2023  |  D      |
 | F11   |  Generate neighbouring relations of the polygons |  Nirmal    |   02/12/2023    |  02/12/2023   |    D    |
 | F12   |  Provide debug mode |   Sathurshan   |   02/08/2023    |  02/08/2023   |    D    |
-| F13   |  debug mode: polygon in black |  Mithun    |       |     |        |
-| F14   |  debug mode: centroid in red |  Sathurshan    |       |     |        |
+| F13   |  debug mode: polygon in black |  Sathurshan    |   02/11/2023    |  02/11/2023   |     D   |
+| F14   |  debug mode: centroid in red |  Sathurshan    |  02/11/2023     |  02/11/2023   |    D    |
 | F15   |  debug mode: neighbourhood relations in light grey |  Mithun    |       |     |        |
 
 
