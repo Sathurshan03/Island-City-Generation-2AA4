@@ -88,8 +88,8 @@ public class GraphicRenderer {
                     Integer v1 = segmentVisual.getVertedIDX1();
                     Integer v2 = segmentVisual.getVertedIDX2();
 
-                    drawVertex(vertexVisualsList, canvas, v1);
-                    drawVertex(vertexVisualsList, canvas, v2);
+                    // drawVertex(vertexVisualsList, canvas, v1);
+                    // drawVertex(vertexVisualsList, canvas, v2);
 
                     if (!segmentVisual.isDrawn()){
                         Color old = canvas.getColor();
@@ -111,13 +111,13 @@ public class GraphicRenderer {
             }
         }
 
-//            //draw centroid in red
-//            if (debug) {
-//                //centroid points are stored in last |polygons| of vertexVisualsList
-//                for (int i = 0; i < polygons.size(); i++) {
-//                    drawVertex(vertexVisualsList, canvas, i);
-//                }
-//            }
+           //draw centroid in red
+           if (debug) {
+               //centroid points are stored in last |polygons| of vertexVisualsList
+               for (int i = 0; i < polygons.size(); i++) {
+                   drawVertex(vertexVisualsList, canvas, i);
+               }
+           }
         }
         protected void drawVertex (List < VertexVisualizer > vertexVisualsList, Graphics2D canvas,int pos){
             //Print vertex with no overlaps
