@@ -30,7 +30,7 @@ public class CustomPolygon extends MeshADT{
 
     protected Polygon polygon;
 
-    public CustomPolygon(Vertex centroid, int precision){
+    public CustomPolygon(int centroid, int precision){
         this.segment_index=new ArrayList<>();
         this.neighbours=new ArrayList<>();
         this.centroid=centroids.get(centroid);
