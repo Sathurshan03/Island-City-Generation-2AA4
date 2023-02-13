@@ -13,3 +13,6 @@
 |  Feb 9, 2023  |  Sathurshan       |  Vertices arrays index by position and not by size   |  
 |  Feb 10, 2023  |  Sathurshan       |  Paid back Technical debt by making visualization classes for vertex and segments   |  
 |  Feb 10, 2023  |  Sathurshan       |  Debug mode for visualizing polygons and centroids in a different color |  
+|  Feb 13, 2023  |  Sathurshan       |  Ensured precision model is in place |  
+|  Feb 13, 2023  |  Sathurshan       |  Answered question 2 and 3 of task 2 for the report |
+|  Feb 13, 2023  |  Sathurshan       |  Created release 2 on github |    
