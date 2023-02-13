@@ -17,7 +17,7 @@ public abstract class MeshADT {
     protected static List<CustomVertex> vertices;
 
 
-    protected static List<Vertex> centroids;
+    protected static List<CustomVertex> centroids;
     public static List<CustomSegments> segments;
 
     public MeshADT(){
@@ -61,6 +61,16 @@ public abstract class MeshADT {
             reg_segments.add(s.getSegment());
         }
         return reg_segments;
+    }
+
+    public List<Vertex> getCentroids(){
+        List<Vertex> reg_centroids=new ArrayList<>();
+
+        for (CustomVertex v:centroids){
+            reg_centroids.add(v.getVertex());
+        }
+
+        return reg_centroids;
     }
 
     public int getPrecision(){
