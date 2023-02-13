@@ -24,6 +24,10 @@ public class VertexVisualizer {
         this.debug = debug;
         this.isCentroid = isCentroid;
     }
+
+    public boolean isCentroid(){
+            return isCentroid;
+    };
     public double getX()
     {
         return X;

@@ -55,10 +55,10 @@ public class CustomPolygon extends MeshADT{
     }
 
     protected List<CustomSegments> makeSegments(CustomVertex v1, CustomVertex v2, CustomVertex v3, CustomVertex v4){
-        CustomSegments s1=makeSegment(vertices.indexOf(v1)+centroids.size(),vertices.indexOf(v2)+centroids.size());
-        CustomSegments s2=makeSegment(vertices.indexOf(v2)+centroids.size(),vertices.indexOf(v3)+centroids.size());
-        CustomSegments s3=makeSegment(vertices.indexOf(v3)+centroids.size(),vertices.indexOf(v4)+centroids.size());
-        CustomSegments s4=makeSegment(vertices.indexOf(v4)+centroids.size(),vertices.indexOf(v1)+centroids.size());
+        CustomSegments s1=makeSegment(vertices.indexOf(v1),vertices.indexOf(v2));
+        CustomSegments s2=makeSegment(vertices.indexOf(v2),vertices.indexOf(v3));
+        CustomSegments s3=makeSegment(vertices.indexOf(v3),vertices.indexOf(v4));
+        CustomSegments s4=makeSegment(vertices.indexOf(v4),vertices.indexOf(v1));
 
 
         this.segment_index.addAll(Arrays.asList(segments.indexOf(s1), segments.indexOf(s2), segments.indexOf(s3), segments.indexOf(s4)));
@@ -88,11 +88,11 @@ public class CustomPolygon extends MeshADT{
     }
 
     private CustomSegments makeSegment(int v1, int v2){
-        CustomSegments s=new CustomSegments(v1,v2,calcColor(vertices.get(v1-centroids.size()),vertices.get(v2-centroids.size())), "0.5f", this.centroid_idx);
+        CustomSegments s=new CustomSegments(v1,v2,calcColor(vertices.get(v1),vertices.get(v2)), "0.5f", this.centroid_idx);
         for (CustomSegments c: segments){
             if ((c.v1==s.v1 & c.v2==s.v2) | (c.v2==s.v1 & c.v1==s.v2) ){
                 this.neighbours.add(c.centroid);
-                CustomSegments new_s=new CustomSegments(this.centroid_idx,c.centroid,Color.GRAY, "0.5f", this.centroid_idx);
+                CustomSegments new_s=new CustomSegments(this.centroid_idx-centroids.size(),c.centroid-centroids.size(),Color.GRAY, "0.5f", this.centroid_idx);
                 segments.add(new_s);
                 this.segment_index.add(segments.indexOf(new_s));
                 return c;
