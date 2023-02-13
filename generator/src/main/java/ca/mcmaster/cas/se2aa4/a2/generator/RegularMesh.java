@@ -25,7 +25,7 @@ public class RegularMesh extends MeshADT{
 
 
         for (int i=0; i<centroids.size(); i++){
-            CustomPolygon polygon=new CustomPolygon(i);
+            CustomPolygon polygon=new CustomPolygon(i, precision);
             addPolygon(polygon.gePolygon());
         }
 
@@ -40,7 +40,7 @@ public class RegularMesh extends MeshADT{
             for(int y = 0 ; y*squareSize + squareSize/2 < height; y ++) {
                 double xPos = x*squareSize + squareSize/2;
                 double yPos = y*squareSize + squareSize/2;
-                CustomVertex new_v= new CustomVertex(xPos, yPos ,new Color(254,0,0,254), "2.0");
+                CustomVertex new_v= new CustomVertex(xPos, yPos ,new Color(254,0,0,254), "2.0", precision);
                 centroidVertice[x][y]=new_v;
                 centroids.add(new_v);
             }
