@@ -11,7 +11,7 @@ import ca.mcmaster.cas.se2aa4.a2.io.Structs.Segment;
 public abstract class MeshADT {
 
     private List<Polygon> mesh;
-    private int precision;
+    protected int precision;
     protected int height;
     protected int width;
     protected static List<CustomVertex> vertices;

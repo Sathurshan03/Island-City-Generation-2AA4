@@ -15,6 +15,7 @@ public class CustomPolygon extends MeshADT{
 
     protected List<CustomVertex> poly_vertices;
     protected List<Segment> poly_segment;
+    protected int precision;
 
 
     protected List<Integer> segment_index;
@@ -24,8 +25,9 @@ public class CustomPolygon extends MeshADT{
 
     protected Polygon polygon;
 
-    public CustomPolygon(Vertex centroid){
+    public CustomPolygon(Vertex centroid, int precision){
         this.centroid=centroid;
+        this.precision = precision;
         this.poly_vertices=makeVertices();
         this.poly_segment=makeSegments(poly_vertices.get(0), poly_vertices.get(1), poly_vertices.get(2), poly_vertices.get(3));
         this.polygon=makePolygon();
@@ -67,7 +69,7 @@ public class CustomPolygon extends MeshADT{
 
 
     private CustomVertex makeVertex(double x, double y){
-        CustomVertex v=new CustomVertex(x,y);
+        CustomVertex v=new CustomVertex(x,y,precision);
 
         for (CustomVertex c: vertices){
             if (c.x==v.x & c.y==v.y){
