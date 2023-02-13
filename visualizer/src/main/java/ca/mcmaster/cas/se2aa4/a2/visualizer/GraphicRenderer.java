@@ -59,23 +59,42 @@ public class GraphicRenderer {
                 Integer v1 = segmentVisual.getVertedIDX1()+polygons.size();
                 Integer v2 = segmentVisual.getVertedIDX2()+polygons.size();
 
+                drawVertex(vertexVisualsList, canvas, v1);
+                drawVertex(vertexVisualsList, canvas, v2);
 
-                if (!vertexVisualsList.get(v1).isCentroid() | debug){
+                if (!segmentVisual.isDrawn()){
+                    Color old = canvas.getColor();
+
+                    canvas.setColor(segmentVisual.getColor());
+
+                    double x1 = vertexVisualsList.get(v1).getX();
+                    double y1 = vertexVisualsList.get(v1).getY();
+                    double x2 = vertexVisualsList.get(v2).getX();
+                    double y2 = vertexVisualsList.get(v2).getY();
+                    Line2D line = segmentVisual.getLine(x1, y1, x2, y2);
+
+                    canvas.draw(line);
+                    canvas.setColor(old);
+                    segmentVisual.draw();
+
+                }
+
+            }
+
+            if (debug){
+                for (Integer i : polygon.getNeighborIdxsList()) {
+                    SegmentVisualizer segmentVisual = segmentVisualsList.get(i);
+
+                    Integer v1 = segmentVisual.getVertedIDX1();
+                    Integer v2 = segmentVisual.getVertedIDX2();
 
                     drawVertex(vertexVisualsList, canvas, v1);
                     drawVertex(vertexVisualsList, canvas, v2);
 
-                    //Print the segment that hasn't been drawn yet
-                    if (!segmentVisual.isDrawn()) {
+                    if (!segmentVisual.isDrawn()){
                         Color old = canvas.getColor();
 
-                        if (vertexVisualsList.get(v1).isCentroid()){
-                            canvas.setColor(Color.gray);
-                        }else{
-                            canvas.setColor(segmentVisual.getColor());
-                        }
-
-
+                        canvas.setColor(Color.gray);
 
                         double x1 = vertexVisualsList.get(v1).getX();
                         double y1 = vertexVisualsList.get(v1).getY();
@@ -89,7 +108,6 @@ public class GraphicRenderer {
                     }
 
                 }
-
             }
         }
 
