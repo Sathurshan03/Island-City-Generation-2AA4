@@ -12,7 +12,8 @@ public class Generator {
 
         RegularMesh mesh = new RegularMesh(width, height, 2, squareSize);
 
-        return Mesh.newBuilder().addAllPolygons(mesh.getMesh()).addAllSegments(mesh.segments).addAllVertices(mesh.getCentroids()).addAllVertices(mesh.getVertices()).build();
+        return Mesh.newBuilder().addAllPolygons(mesh.getMesh()).addAllSegments(mesh.getSegments()).addAllVertices(mesh.getCentroids()).addAllVertices(mesh.getVertices()).build();
+
     }
 
 }
