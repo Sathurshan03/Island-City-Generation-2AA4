@@ -10,7 +10,7 @@ import ca.mcmaster.cas.se2aa4.a2.io.Structs.Segment;
 
 public abstract class MeshADT {
 
-    protected List<Polygon> mesh;
+    private List<Polygon> mesh;
     private int precision;
     protected int height;
     protected int width;
@@ -35,6 +35,7 @@ public abstract class MeshADT {
     public List<Polygon> getMesh(){
         return this.mesh;
     }
+
 
     public void addPolygon(Polygon polygon){
         this.mesh.add(polygon);

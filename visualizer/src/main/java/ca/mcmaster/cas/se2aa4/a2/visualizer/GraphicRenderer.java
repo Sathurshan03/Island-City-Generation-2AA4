@@ -34,8 +34,8 @@ public class GraphicRenderer {
         List<Vertex> vertex_list = aMesh.getVerticesList();
         List<VertexVisualizer> vertexVisualsList = new ArrayList<>();
         for (int i = 0; i < vertex_list.size(); i++) {
-            //centroid points are stored in last |polygons| of vertexVisualsList
-            if (i >= (vertex_list.size() - polygons.size())) {
+            //centroid points are stored in first |polygons| of vertexVisualsList
+            if (i < polygons.size()) {
                 vertexVisualsList.add(new VertexVisualizer(vertex_list.get(i), debug, true));
             } else {
                 vertexVisualsList.add(new VertexVisualizer(vertex_list.get(i), debug, false));
@@ -55,13 +55,13 @@ public class GraphicRenderer {
             //Get the polygon's vertex and segment visualization information
             for (Integer i : polygon.getSegmentIdxsList()) {
                 SegmentVisualizer segmentVisual = segmentVisualsList.get(i);
-                Integer v1 = segmentVisual.getVertedIDX1();
-                Integer v2 = segmentVisual.getVertedIDX2();
+                Integer v1 = segmentVisual.getVertedIDX1() + polygons.size();
+                Integer v2 = segmentVisual.getVertedIDX2() + polygons.size();
 
                 drawVertex(vertexVisualsList, canvas, v1);
                 drawVertex(vertexVisualsList, canvas, v2);
 
-                //Print the segment is it hasn't been drawn yet
+                //Print the segment that hasn't been drawn yet
                 if (!segmentVisual.isDrawn()) {
                     Color old = canvas.getColor();
                     canvas.setColor(segmentVisual.getColor());
@@ -82,8 +82,8 @@ public class GraphicRenderer {
             //draw centroid in red
             if (debug) {
                 //centroid points are stored in last |polygons| of vertexVisualsList
-                for (int i = 1; i <= polygons.size(); i++) {
-                    drawVertex(vertexVisualsList, canvas, vertexVisualsList.size() - i);
+                for (int i = 0; i < polygons.size(); i++) {
+                    drawVertex(vertexVisualsList, canvas, i);
                 }
             }
         }
