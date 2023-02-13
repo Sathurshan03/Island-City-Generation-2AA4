@@ -63,8 +63,7 @@ public class CustomPolygon extends MeshADT{
         CustomSegments s3=makeSegment(vertices.indexOf(v3),vertices.indexOf(v4));
         CustomSegments s4=makeSegment(vertices.indexOf(v4),vertices.indexOf(v1));
 
-
-        this.segment_index.addAll(Arrays.asList(segments.indexOf(s1), segments.indexOf(s2), segments.indexOf(s3), segments.indexOf(s4)));
+        segment_index=Arrays.asList(segments.indexOf(s1), segments.indexOf(s2), segments.indexOf(s3), segments.indexOf(s4));
 
         return Arrays.asList(s1,s2,s3,s4);
 
@@ -94,10 +93,9 @@ public class CustomPolygon extends MeshADT{
         CustomSegments s=new CustomSegments(v1,v2,calcColor(vertices.get(v1),vertices.get(v2)), "0.5f", this.centroid_idx);
         for (CustomSegments c: segments){
             if ((c.v1==s.v1 & c.v2==s.v2) | (c.v2==s.v1 & c.v1==s.v2) ){
-                this.neighbours.add(c.centroid);
-                CustomSegments new_s=new CustomSegments(this.centroid_idx-centroids.size(),c.centroid-centroids.size(),Color.GRAY, "0.5f", this.centroid_idx);
+                CustomSegments new_s=new CustomSegments(this.centroid_idx,c.centroid,Color.GRAY, "0.5f", this.centroid_idx);
                 segments.add(new_s);
-                this.segment_index.add(segments.indexOf(new_s));
+                this.neighbours.add(segments.indexOf(new_s));
                 return c;
             }
         }
