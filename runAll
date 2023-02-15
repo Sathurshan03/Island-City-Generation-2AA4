@@ -1,6 +1,6 @@
 mvn install
 cd generator
-java -jar generator.jar sample.Mesh
+java -jar generator.jar sample.Mesh 
 ls -lh sample.mesh
 cd ..
 cd visualizer
