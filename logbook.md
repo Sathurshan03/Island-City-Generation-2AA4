@@ -16,3 +16,4 @@
 |  Feb 13, 2023  |  Sathurshan       |  Ensured precision model is in place |  
 |  Feb 13, 2023  |  Sathurshan       |  Answered question 2 and 3 of task 2 for the report |
 |  Feb 13, 2023  |  Sathurshan       |  Created release 2 on github |    
+|  Feb 15, 2023  |  Sathurshan       |  Got Command line arguments for number of polygons, widht and height of canvas and integrated with the code |    
