@@ -98,6 +98,6 @@ Pending (P), Started (S), Blocked (B), Done (D)
 | F20   |  Choose number of polygons from command line |  Sathurshan  |   02/15/2023    |   02/15/2023  |   D     |
 | F21   |  Choose relaxation level from command line |    |       |     |        |
 | F22   |  Choose width and height from command line | Sathurshan   |   02/15/2023    |  02/15/2023   |    D    |
-| F23   |  Command line have -h (help) option |    |       |     |        |
+| F23   |  Command line have -h (help) option |  Sathurshan  |   02/15/2023    |  02/15/2023   |    D    |
 
 
