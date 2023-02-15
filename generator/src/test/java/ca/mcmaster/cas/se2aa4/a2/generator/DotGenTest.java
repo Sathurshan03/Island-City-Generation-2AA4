@@ -11,7 +11,7 @@ public class DotGenTest {
     public void meshIsNotNull() {
         Generator generator = new Generator();
         int numberPolygons = 100;
-        Structs.Mesh aMesh = generator.generate(numberPolygons);
+        Structs.Mesh aMesh = generator.generate(numberPolygons, 500, 500);
         assertNotNull(aMesh);
     }
 

@@ -10,20 +10,34 @@ public class Main {
     public static void main(String[] args) throws IOException, ParseException {
         Options options = new Options();
         options.addOption("numPoly", true, "Number of Polygons");
+        options.addOption("width", true, "Width of Canvas");
+        options.addOption("height", true, "Height of Canvas");
         //HelpFormatter formatter = new HelpFormatter();
         //formatter.printHelp("help", options);
-
+        
+        //default values
+        int numberPolygons = 0;
+        int canvasWidth = 500;
+        int canvasHeight = 500;
+        
         CommandLineParser parser = new DefaultParser();
         CommandLine cmd = parser.parse(options, args);
         String numPoly = cmd.getOptionValue("numPoly");
-        int numberPolygons = 0;
+        String width = cmd.getOptionValue("width");
+        String height = cmd.getOptionValue("height");
+
         if(numPoly != null){
             numberPolygons = Integer.parseInt(numPoly);
         }
- 
+        if(width != null){
+            canvasWidth = Integer.parseInt(width);
+        }
+        if(height != null){
+            canvasHeight = Integer.parseInt(height);
+        }
         
         Generator generator = new Generator();
-        Mesh myMesh = generator.generate(numberPolygons);
+        Mesh myMesh = generator.generate(numberPolygons, canvasWidth, canvasHeight);
         MeshFactory factory = new MeshFactory();
         factory.write(myMesh, args[0]);
     }
