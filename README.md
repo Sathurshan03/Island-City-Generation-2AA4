@@ -98,5 +98,6 @@ Pending (P), Started (S), Blocked (B), Done (D)
 | F20   |  Choose number of polygons from command line |    |       |     |        |
 | F21   |  Choose relaxation level from command line |    |       |     |        |
 | F22   |  Choose width and height from command line |    |       |     |        |
+| F23   |  Command line have -h (help) option |    |       |     |        |
 
 
