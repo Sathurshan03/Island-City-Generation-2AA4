@@ -15,6 +15,7 @@ public abstract class MeshADT {
     protected int height;
     protected int width;
     protected static List<CustomVertex> vertices;
+    protected int numPolygons;
 
 
     protected static List<CustomVertex> centroids;
@@ -25,11 +26,12 @@ public abstract class MeshADT {
 
     }
 
-    public MeshADT(int width, int height, int precision){
+    public MeshADT(int width, int height, int precision, int numPolygons){
         this.mesh = new ArrayList<>();
         this.width = width;
         this.height = height;
         this.precision = precision;
+        this.numPolygons = numPolygons;
     }
 
     public List<Polygon> getMesh(){
