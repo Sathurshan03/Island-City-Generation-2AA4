@@ -91,6 +91,12 @@ Pending (P), Started (S), Blocked (B), Done (D)
 | F13   |  debug mode: polygon in black |  Sathurshan    |   02/11/2023    |  02/11/2023   |     D   |
 | F14   |  debug mode: centroid in red |  Sathurshan    |  02/11/2023     |  02/11/2023   |    D    |
 | F15   |  debug mode: neighbourhood relations in light grey |  Mithun    |       |     |        |
-
+| F16   |  Crop mesh to expected size |      |       |     |        |
+| F17   |  Polygons randomly placed on meshed |     |       |     |        |
+| F18   |  Generate irregular polygons |    |       |     |        |
+| F19   |  Choose type of mesh from command line |    |       |     |        |
+| F20   |  Choose number of polygons from command line |    |       |     |        |
+| F21   |  Choose relaxation level from command line |    |       |     |        |
+| F22   |  Choose width and height from command line |    |       |     |        |
 
 
