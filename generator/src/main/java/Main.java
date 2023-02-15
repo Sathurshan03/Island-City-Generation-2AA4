@@ -12,8 +12,8 @@ public class Main {
         options.addOption("numPoly", true, "Number of Polygons");
         options.addOption("width", true, "Width of Canvas");
         options.addOption("height", true, "Height of Canvas");
-        //HelpFormatter formatter = new HelpFormatter();
-        //formatter.printHelp("help", options);
+        options.addOption(new Option("h", "help", false, "Available Options and Command Line Arguments"));
+        
         
         //default values
         int numberPolygons = 0;
@@ -25,6 +25,13 @@ public class Main {
         String numPoly = cmd.getOptionValue("numPoly");
         String width = cmd.getOptionValue("width");
         String height = cmd.getOptionValue("height");
+
+        if(cmd.hasOption("-help")) {
+            //ADD MORE INSTRUCTIONS HERE TO EXPLAIN HOW TO USE COMMAND LINE ARGUMENTS
+            HelpFormatter formatter = new HelpFormatter();
+            formatter.printHelp("help", options);
+            return;
+        }
 
         if(numPoly != null){
             numberPolygons = Integer.parseInt(numPoly);
