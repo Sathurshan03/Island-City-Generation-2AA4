@@ -8,8 +8,8 @@ import java.awt.*;
 public class CustomSegments {
 
     private static final String THICKNESS = "3";
-    int v1;
-    int v2;
+    double v1;
+    double v2;
     Property colourProp;
     Property thicknessProp;
     Segment segment;
