@@ -16,7 +16,7 @@ public class RegularMesh extends MeshADT{
 
     public RegularMesh(int width, int height, int precision, int squareSize)
     {
-        super(width, height, precision);
+        super(width, height, precision, width*height/squareSize^2);
         this.squareSize = squareSize;
         centroids=new ArrayList<>();
         vertices = new ArrayList<>();
