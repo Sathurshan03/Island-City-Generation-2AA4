@@ -33,12 +33,25 @@ public class CustomPolygon extends MeshADT{
     public CustomPolygon(int centroid, int precision){
         this.segment_index=new ArrayList<>();
         this.neighbours=new ArrayList<>();
+        this.poly_segment=new ArrayList<>();
         this.centroid=centroids.get(centroid);
         this.centroid_idx=centroid;
         this.precision = precision;
         this.poly_vertices=makeVertices();
-        this.poly_segment=makeSegments(poly_vertices.get(0), poly_vertices.get(1), poly_vertices.get(2), poly_vertices.get(3));
+        makeSegments();
         this.polygon=makePolygon();
+    }
+
+    public CustomPolygon(List<CustomVertex> cusVertices){
+        this.segment_index=new ArrayList<>();
+        this.neighbours=new ArrayList<>();
+        this.poly_segment=new ArrayList<>();
+        this.poly_vertices=cusVertices;
+        for (CustomVertex v:poly_vertices){
+            vertices.add(v);
+        }
+        makeSegments();
+        this.polygon=Polygon.newBuilder().addAllSegmentIdxs(this.segment_index).addAllNeighborIdxs(this.neighbours).build();
     }
 
     protected List<CustomVertex> makeVertices(){
@@ -57,22 +70,30 @@ public class CustomPolygon extends MeshADT{
         return polygon;
     }
 
-    protected List<CustomSegments> makeSegments(CustomVertex v1, CustomVertex v2, CustomVertex v3, CustomVertex v4){
-        CustomSegments s1=makeSegment(vertices.indexOf(v1),vertices.indexOf(v2));
-        CustomSegments s2=makeSegment(vertices.indexOf(v2),vertices.indexOf(v3));
-        CustomSegments s3=makeSegment(vertices.indexOf(v3),vertices.indexOf(v4));
-        CustomSegments s4=makeSegment(vertices.indexOf(v4),vertices.indexOf(v1));
-
-        segment_index=Arrays.asList(segments.indexOf(s1), segments.indexOf(s2), segments.indexOf(s3), segments.indexOf(s4));
-
-        return Arrays.asList(s1,s2,s3,s4);
-
+    protected void makeSegments(){
+        for (int i=1; i<poly_vertices.size(); i++){
+            CustomSegments s=makeSegment(vertices.indexOf(poly_vertices.get(i-1)),vertices.indexOf(poly_vertices.get(i)));
+            poly_segment.add(s);
+            segment_index.add(segments.indexOf(s));
+        }
+        CustomSegments s=makeSegment(vertices.indexOf(poly_vertices.get(0)),vertices.indexOf(poly_vertices.get(poly_vertices.size()-1)));
+        poly_segment.add(s);
+        segment_index.add(segments.indexOf(s));
     }
 
 
 
     protected Polygon makePolygon(){
         return Polygon.newBuilder().addAllSegmentIdxs(this.segment_index).addAllNeighborIdxs(neighbours).build();
+    }
+
+    private void makeIrregularVertex(CustomVertex v){
+        for (CustomVertex c: vertices){
+            if (c.x==v.x & c.y==v.y){
+                return;
+            }
+        }
+        vertices.add(v);
     }
 
 
