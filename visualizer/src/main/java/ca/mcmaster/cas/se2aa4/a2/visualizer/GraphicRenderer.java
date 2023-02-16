@@ -88,8 +88,8 @@ public class GraphicRenderer {
                     Integer v1 = segmentVisual.getVertedIDX1();
                     Integer v2 = segmentVisual.getVertedIDX2();
 
-                    // drawVertex(vertexVisualsList, canvas, v1);
-                    // drawVertex(vertexVisualsList, canvas, v2);
+                     drawVertex(vertexVisualsList, canvas, v1);
+                     drawVertex(vertexVisualsList, canvas, v2);
 
                     if (!segmentVisual.isDrawn()){
                         Color old = canvas.getColor();

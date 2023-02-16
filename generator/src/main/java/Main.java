@@ -28,6 +28,7 @@ public class Main {
         CommandLineParser parser = new DefaultParser();
         CommandLine cmd = parser.parse(options, args);
         String numPoly = cmd.getOptionValue("numPoly");
+
         String width = cmd.getOptionValue("width");
         String height = cmd.getOptionValue("height");
         String relation = cmd.getOptionValue("relation");

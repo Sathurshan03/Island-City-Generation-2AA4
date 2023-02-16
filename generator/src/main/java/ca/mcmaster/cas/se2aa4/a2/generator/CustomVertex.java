@@ -8,7 +8,7 @@ import org.decimal4j.util.DoubleRounder;
 public class CustomVertex{
     double x;
     double y; 
-    private static final String THICKNESSVALUE = "4.0";
+    private static final String THICKNESSVALUE = "2.0";
     Property colourProperty;
     Vertex vertex;
     Property thickness;
