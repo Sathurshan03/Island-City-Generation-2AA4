@@ -7,6 +7,7 @@ import ca.mcmaster.cas.se2aa4.a2.io.Structs.Vertex;
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Polygon;
 
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Segment;
+import org.locationtech.jts.geom.Coordinate;
 
 public abstract class MeshADT {
 
@@ -15,6 +16,8 @@ public abstract class MeshADT {
     protected int height;
     protected int width;
     protected static List<CustomVertex> vertices;
+
+    protected static List<Coordinate> collection_centroid;
 
 
     protected static List<CustomVertex> centroids;

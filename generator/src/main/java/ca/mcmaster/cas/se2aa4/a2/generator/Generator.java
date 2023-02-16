@@ -10,10 +10,9 @@ public class Generator {
 
     public Mesh generate() {
 
-        RegularMesh mesh = new RegularMesh(width, height, 2, squareSize);
+        IrregularMesh mesh = new IrregularMesh(width, height, 2);
 
         return Mesh.newBuilder().addAllPolygons(mesh.getMesh()).addAllSegments(mesh.getSegments()).addAllVertices(mesh.getCentroids()).addAllVertices(mesh.getVertices()).build();
-
     }
 
 }
