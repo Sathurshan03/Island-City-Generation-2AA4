@@ -18,19 +18,31 @@ public class GeoStruct extends MeshADT {
     //Stores the CustomPolygon equivalent
     protected CustomPolygon cusPolygon;
 
+    private boolean isValid;
 
 
 
 
-    public GeoStruct(Polygon init_poly, int index){
+
+    public GeoStruct(Polygon init_poly, int centroidIndex, int newIndex){
 
         this.geoPolygon=init_poly;
 
         this.new_poly_vertex=getCustomVertices();
 
-        this.cusPolygon=new CustomPolygon(new_poly_vertex,index);
+        if (new_poly_vertex.size() >= 3) //polygon is valid if there are atleast 3 vertex
+        {
+            isValid = true;
+            this.cusPolygon=new CustomPolygon(new_poly_vertex,centroidIndex,newIndex);
+        }
+        else{
+            isValid = false;
+        }
 
+    }
 
+    public boolean isPolygon(){
+        return isValid;
     }
 
     //returns the custom Polygon that has been fully converted from the geo.Polygon.
@@ -43,18 +55,32 @@ public class GeoStruct extends MeshADT {
     public List<CustomVertex> getCustomVertices(){
         //List that will store the vertices of this polygon.
         List<CustomVertex> curr_vertices=new ArrayList<>();
+        List<CustomVertex> polygonVertices=new ArrayList<>();
+        int numVertex = 0;
 
         //Iterates through all vertices for that polygon.
         for (Coordinate i: geoPolygon.getCoordinates()){
             //Temporary fix until I can figure out why width won't work
-            if (i.getX()<=500 & i.getY()<=500){
+            if (i.getX()>= 0 && i.getX()<=500 && i.getY()>= 0 && i.getY()<=500){
                 CustomVertex new_vertex=new CustomVertex(i.getX(),i.getY(),2);
-                //Adds new vertices only if they haven't been added before
-                curr_vertices.add(checkVertex(new_vertex));
+               
+                curr_vertices.add(new_vertex);
+                numVertex++;
+                
+            }
+        }
+        
+        for (CustomVertex vertex: curr_vertices)
+        {
+            CustomVertex point = checkVertex(vertex);
+            if (!polygonVertices.contains(point)) {
+                polygonVertices.add(point);
             }
         }
 
-        return curr_vertices;
+
+
+        return polygonVertices;
 
     }
 

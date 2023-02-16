@@ -5,7 +5,7 @@ import java.util.*;
 import java.awt.*;
 import org.decimal4j.util.DoubleRounder;
 
-public class CustomVertex{
+public class CustomVertex {
     double x;
     double y; 
     private static final String THICKNESSVALUE = "2.0";
@@ -32,6 +32,15 @@ public class CustomVertex{
 
     public Vertex getVertex(){
         return vertex;
+    }
+
+    public double getX()
+    {
+        return x;
+    }
+    public double getY()
+    {
+        return y;
     }
 
     public Color getColour(){
@@ -68,11 +77,4 @@ public class CustomVertex{
 
         return colorProp;
     }
-
-
-
-
-
-
-
 }

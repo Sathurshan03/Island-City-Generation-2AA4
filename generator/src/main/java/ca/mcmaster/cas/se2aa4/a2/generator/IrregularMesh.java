@@ -37,12 +37,17 @@ public class IrregularMesh extends MeshADT {
         List<Polygon> polygons = voronoiDiagramBuilder.getSubdivision().getVoronoiCellPolygons(geometryFactory);
 
         //goes through each geo.Polygon and converts it to a CustomPolygon.
+        List<CustomVertex> confirmedVertex = new ArrayList<>();
+        int newIndex = 0;
         for (int i=0; i<polygons.size(); i++){
-            GeoStruct conversion=new GeoStruct(polygons.get(i), i);
-            addPolygon(conversion.getCusPolygon().gePolygon());
-
+            GeoStruct conversion=new GeoStruct(polygons.get(i), i, newIndex);
+            if (conversion.isPolygon()){
+                addPolygon(conversion.getCusPolygon().gePolygon());
+                newIndex++;
+                confirmedVertex.add(centroids.get(i));
+            }
         }
-
+        centroids = confirmedVertex;
     }
 
     public List<Coordinate> getCoordinates(){

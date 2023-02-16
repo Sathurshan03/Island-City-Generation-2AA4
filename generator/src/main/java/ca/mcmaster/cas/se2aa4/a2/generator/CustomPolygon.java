@@ -43,7 +43,7 @@ public class CustomPolygon extends MeshADT{
     }
 
     //new constructor for irregular polygon use.
-    public CustomPolygon(List<CustomVertex> cusVertices, int centroid_idx){
+    public CustomPolygon(List<CustomVertex> cusVertices, int centroid_idx, int newCentroidIndex){
         //initializes all of the required lists.
         this.segment_index=new ArrayList<>();
         this.neighbours=new ArrayList<>();
@@ -52,7 +52,7 @@ public class CustomPolygon extends MeshADT{
         //finds associated centroid, and centroid index.
         //Not necessary right now, but still need to check whether polygon creation in geom retained the order of centroids (most likely didn't).
         this.centroid=centroids.get(centroid_idx);
-        this.centroid_idx=centroid_idx;
+        this.centroid_idx=newCentroidIndex;
 
 
         this.poly_vertices=cusVertices;
