@@ -14,22 +14,32 @@ public class IrregularMesh extends MeshADT {
 
     public IrregularMesh(int width, int height, int precision, int numPolygons){
         super(width,height, precision, numPolygons);
+
+        //will be used to store the coordinates of centroid for geo.polygon.
         collection_centroid =new ArrayList<>();
+
+        //will be used to store the CustomVertex version of centroids.
         centroids=new ArrayList<>();
+
         vertices=new ArrayList<>();
         segments=new ArrayList<>();
+
+        //generates the centroids in random order.
         createCentroids();
 
+        //Generates the polygons using Voronoi
         GeometryFactory geometryFactory = new GeometryFactory();
         VoronoiDiagramBuilder voronoiDiagramBuilder = new VoronoiDiagramBuilder();
         voronoiDiagramBuilder.setSites(collection_centroid);
         List<Polygon> polygons = voronoiDiagramBuilder.getSubdivision().getVoronoiCellPolygons(geometryFactory);
 
-
-        for (Polygon i:polygons){
-            GeoStruct conversion=new GeoStruct(i);
+        //goes through each geo.Polygon and converts it to a CustomPolygon.
+        for (int i=0; i<polygons.size(); i++){
+            GeoStruct conversion=new GeoStruct(polygons.get(i), i);
             addPolygon(conversion.getCusPolygon().gePolygon());
+
         }
+
     }
 
     public void createCentroids(){

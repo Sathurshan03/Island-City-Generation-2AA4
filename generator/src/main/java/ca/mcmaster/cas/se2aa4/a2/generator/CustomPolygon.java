@@ -42,16 +42,26 @@ public class CustomPolygon extends MeshADT{
         this.polygon=makePolygon();
     }
 
-    public CustomPolygon(List<CustomVertex> cusVertices){
+    //new constructor for irregular polygon use.
+    public CustomPolygon(List<CustomVertex> cusVertices, int centroid_idx){
+        //initializes all of the required lists.
         this.segment_index=new ArrayList<>();
         this.neighbours=new ArrayList<>();
         this.poly_segment=new ArrayList<>();
+
+        //finds associated centroid, and centroid index.
+        //Not necessary right now, but still need to check whether polygon creation in geom retained the order of centroids (most likely didn't).
+        this.centroid=centroids.get(centroid_idx);
+        this.centroid_idx=centroid_idx;
+
+
         this.poly_vertices=cusVertices;
-        for (CustomVertex v:poly_vertices){
-            vertices.add(v);
-        }
+
+        //creates necessary segments. Directly checks for overlap.
         makeSegments();
-        this.polygon=Polygon.newBuilder().addAllSegmentIdxs(this.segment_index).addAllNeighborIdxs(this.neighbours).build();
+
+        //struct.polygon creation without neighbouring polygons.
+        this.polygon=Polygon.newBuilder().addAllSegmentIdxs(this.segment_index).build();
     }
 
     protected List<CustomVertex> makeVertices(){
@@ -87,14 +97,6 @@ public class CustomPolygon extends MeshADT{
         return Polygon.newBuilder().addAllSegmentIdxs(this.segment_index).addAllNeighborIdxs(neighbours).build();
     }
 
-    private void makeIrregularVertex(CustomVertex v){
-        for (CustomVertex c: vertices){
-            if (c.x==v.x & c.y==v.y){
-                return;
-            }
-        }
-        vertices.add(v);
-    }
 
 
     private CustomVertex makeVertex(double x, double y){
@@ -113,7 +115,7 @@ public class CustomPolygon extends MeshADT{
     private CustomSegments makeSegment(int v1, int v2){
         CustomSegments s=new CustomSegments(v1,v2,calcColor(vertices.get(v1),vertices.get(v2)), "0.5f", this.centroid_idx);
         for (CustomSegments c: segments){
-            if ((c.v1==s.v1 & c.v2==s.v2) | (c.v2==s.v1 & c.v1==s.v2) ){
+            if ((c.v1==s.v1 & c.v2==s.v2 | c.v2==s.v1 & c.v1==s.v2 )){
                 CustomSegments new_s=new CustomSegments(this.centroid_idx,c.centroid,Color.GRAY, "0.5f", this.centroid_idx);
                 segments.add(new_s);
                 this.neighbours.add(segments.indexOf(new_s));

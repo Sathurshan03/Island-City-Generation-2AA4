@@ -11,8 +11,8 @@ public class Generator {
     public Mesh generate(int numberPolygons) {
 
 
-        //RegularMesh mesh = new RegularMesh(width, height, 2, squareSize);
-        IrregularMesh mesh = new IrregularMesh(width, height, 2, numberPolygons);
+//        RegularMesh mesh = new RegularMesh(width, height, 2, squareSize);
+        IrregularMesh mesh = new IrregularMesh(width, height, 2,numberPolygons);
 
         return Mesh.newBuilder().addAllPolygons(mesh.getMesh()).addAllSegments(mesh.getSegments()).addAllVertices(mesh.getCentroids()).addAllVertices(mesh.getVertices()).build();
     }
