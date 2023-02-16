@@ -9,8 +9,10 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import org.locationtech.jts.geom.Coordinate;
 
 public class IrregularMesh extends MeshADT {
+    List<Coordinate> centroidCoordinates;
 
     public IrregularMesh(int width, int height, int precision, int numPolygons){
         super(width,height, precision, numPolygons);
@@ -27,6 +29,7 @@ public class IrregularMesh extends MeshADT {
         //generates the centroids in random order.
         createCentroids();
 
+
         //Generates the polygons using Voronoi
         GeometryFactory geometryFactory = new GeometryFactory();
         VoronoiDiagramBuilder voronoiDiagramBuilder = new VoronoiDiagramBuilder();
@@ -42,18 +45,23 @@ public class IrregularMesh extends MeshADT {
 
     }
 
+    public List<Coordinate> getCoordinates(){
+        return centroidCoordinates;
+    }
+
     public void createCentroids(){
         Random rand=new Random();
 
         for (int i=0; i<super.numPolygons; i++){
             double random_x= rand.nextDouble(0,width);
             double random_y=rand.nextDouble(0,height);
+            Coordinate coordinate = new Coordinate(random_x, random_y);
 
             CustomVertex new_centroid=new CustomVertex(random_x,random_y,new Color(254,0,0,254), "2.0", precision);
 
             centroids.add(new_centroid);
-            collection_centroid.add(new Coordinate(random_x,random_y));
 
+            collection_centroid.add(coordinate);
         }
 
     }

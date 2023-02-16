@@ -12,6 +12,7 @@ public class CustomVertex{
     Property colourProperty;
     Vertex vertex;
     Property thickness;
+    
 
     public CustomVertex(double x, double y, int precision){
         this.x = DoubleRounder.round(x, precision);
