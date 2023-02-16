@@ -18,3 +18,5 @@
 |  Feb 13, 2023  |  Sathurshan       |  Created release 2 on github |    
 |  Feb 15, 2023  |  Nirmal, Sathurshan       |  Planning out new features for task 3 business logic |    
 |  Feb 15, 2023  |  Sathurshan       |  Got Command line arguments for type of mesh, number of polygons, width and height of canvas and integrated with the code |    
+|  Feb 16, 2023  |  Sathurshan       |  Fixed merge conflicts |    
+|  Feb 16, 2023  |  Sathurshan       |  Adding documentation for new command line arguments |    
