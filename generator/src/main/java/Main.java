@@ -16,7 +16,7 @@ public class Main {
         CommandLineParser parser = new DefaultParser();
         CommandLine cmd = parser.parse(options, args);
         String numPoly = cmd.getOptionValue("numPoly");
-        int numberPolygons = 0;
+        int numberPolygons = 500;
         if(numPoly != null){
             numberPolygons = Integer.parseInt(numPoly);
         }
