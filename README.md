@@ -1,8 +1,8 @@
 # Assignment A2: Mesh Generator
-
   - Mithun Paramathasan [paramatm@mcmaster.ca]
   - Nirmal Chaudhari [chaudn12@mcmaster.ca]
   - Sathurshan Arulmohan [arulmohs@mcmaster.ca]
+
 
 ## How to run the product
 
