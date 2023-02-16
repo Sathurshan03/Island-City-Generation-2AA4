@@ -3,8 +3,7 @@ package ca.mcmaster.cas.se2aa4.a2.generator;
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Mesh;
 
 import java.io.IOException;
-import java.util.List;
-import org.locationtech.jts.geom.Coordinate;
+
 
 public class Generator {
 
@@ -23,8 +22,6 @@ public class Generator {
         else{
             throw new IOException("No type of mesh determine. Can not generate a mesh");
         }
-
-        return Mesh.newBuilder().addAllPolygons(mesh.getMesh()).addAllSegments(mesh.getSegments()).addAllVertices(mesh.getCentroids()).addAllVertices(mesh.getVertices()).build();
     }
 
 }
