@@ -15,7 +15,7 @@ import org.locationtech.jts.geom.Coordinate;
 public class IrregularMesh extends MeshADT {
     List<Coordinate> centroidCoordinates;
 
-    public IrregularMesh(int width, int height, int precision, int numPolygons){
+    public IrregularMesh(int width, int height, int precision, int numPolygons, int relationLevel){
         super(width,height, precision, numPolygons);
 
         //will be used to store the coordinates of centroid for geo.polygon.
@@ -38,7 +38,7 @@ public class IrregularMesh extends MeshADT {
         List<Polygon> polygons = voronoiDiagramBuilder.getSubdivision().getVoronoiCellPolygons(geometryFactory);
 
         List<Coordinate> newVertices= new ArrayList<>();
-        for (int i = 0; i < 20; i++)
+        for (int i = 0; i < relationLevel; i++)
         {
             //Set the site to the vertex of all polygons
             newVertices = new ArrayList<>();

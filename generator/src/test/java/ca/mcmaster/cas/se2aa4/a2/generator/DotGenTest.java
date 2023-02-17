@@ -13,7 +13,7 @@ public class DotGenTest {
     public void meshIsNotNull() throws IOException {
         Generator generator = new Generator();
         int numberPolygons = 100;
-        Structs.Mesh aMesh = generator.generate(numberPolygons, 500, 500, MeshType.GRID);
+        Structs.Mesh aMesh = generator.generate(numberPolygons, 500, 500, MeshType.GRID, 5);
         assertNotNull(aMesh);
     }
 

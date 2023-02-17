@@ -72,7 +72,7 @@ public class Main {
         //NEED TO STILL USE relationLevel
 
         Generator generator = new Generator();
-        Mesh myMesh = generator.generate(numberPolygons, canvasWidth, canvasHeight, meshType);
+        Mesh myMesh = generator.generate(numberPolygons, canvasWidth, canvasHeight, meshType, relationLevel);
         MeshFactory factory = new MeshFactory();
         factory.write(myMesh, args[0]);
     }
