@@ -66,6 +66,17 @@ In debug mode, it will visualize the polygon's segments and vertices as black, c
  java -jar visualizer.jar ../generator/sample.mesh sample.svg -X
  ```
 
+### Example runs
+To see a examples of the mesh, run any one of the scripts below in the main directory. The mesh will be saved as ../generator/sample.mesh.
+
+```./runAll```
+
+```./runAllDebug```
+
+```./runAllIrregular```
+
+```./runAllDebugIrregular```
+
 
 ## How to contribute to the project
 
