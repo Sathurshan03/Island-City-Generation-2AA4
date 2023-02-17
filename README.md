@@ -100,7 +100,7 @@ Pending (P), Started (S), Blocked (B), Done (D)
 | F13   |  debug mode: polygon in black |  Sathurshan    |   02/11/2023    |  02/11/2023   |     D   |
 | F14   |  debug mode: centroid in red |  Sathurshan    |  02/11/2023     |  02/11/2023   |    D    |
 | F15   |  debug mode: neighbourhood relations in light grey |  Mithun    |       |     |        |
-| F16   |  Crop mesh to expected size |   Nirmal   |    02/15/2023   |     |    P    |
+| F16   |  Crop mesh to expected size |   Nirmal   |    02/15/2023   |  02/17/2023   |    D    |
 | F17   |  Polygons randomly placed on meshed |  Nirmal   |   02/15/2023    |  02/15/2023   |    D    |
 | F18   |  Generate irregular polygons |  Nirmal  |    02/15/2023   |  02/15/2023   |    D    |
 | F19   |  Choose type of mesh from command line | Sathurshan   |   02/15/2023    |  02/15/2023   |    D    |
