@@ -19,4 +19,7 @@
 |  Feb 15, 2023  |  Nirmal, Sathurshan       |  Planning out new features for task 3 business logic |    
 |  Feb 15, 2023  |  Sathurshan       |  Got Command line arguments for type of mesh, number of polygons, width and height of canvas and integrated with the code |    
 |  Feb 16, 2023  |  Sathurshan       |  Fixed merge conflicts |    
-|  Feb 16, 2023  |  Sathurshan       |  Adding documentation for new command line arguments |    
+|  Feb 16, 2023  |  Sathurshan       |  Adding documentation for new command line arguments |  
+|  Feb 16, 2023  |  Sathurshan       |  Fix indexing of centroids so that llyod relaxation can be applied (technical debt fixed) |  
+|  Feb 17, 2023  |  Sathurshan       |  Applied Llyod Relaxation |  
+|  Feb 17, 2023  |  Sathurshan       |  Appended documentations for automatic scripts |    
