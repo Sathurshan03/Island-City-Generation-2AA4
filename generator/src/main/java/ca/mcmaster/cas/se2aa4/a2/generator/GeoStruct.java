@@ -66,13 +66,14 @@ public class GeoStruct extends MeshADT {
         //Iterates through all vertices for that polygon.
         for (Coordinate i: geoPolygon.getCoordinates()){
             //Temporary fix until I can figure out why width won't work
-            if (i.getX()>= 0 && i.getX()<=500 && i.getY()>= 0 && i.getY()<=500){
-                CustomVertex new_vertex=new CustomVertex(i.getX(),i.getY(),2);
-               
-                curr_vertices.add(new_vertex);
-                numVertex++;
-                
-            }
+            double x=i.getX();
+            double y=i.getY();
+
+            CustomVertex new_vertex=new CustomVertex(x,y,2);
+
+            curr_vertices.add(new_vertex);
+            numVertex++;
+
         }
         
         for (CustomVertex vertex: curr_vertices)
