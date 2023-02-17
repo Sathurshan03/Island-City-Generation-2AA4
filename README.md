@@ -105,7 +105,7 @@ Pending (P), Started (S), Blocked (B), Done (D)
 | F18   |  Generate irregular polygons |  Nirmal  |    02/15/2023   |  02/15/2023   |    D    |
 | F19   |  Choose type of mesh from command line | Sathurshan   |   02/15/2023    |  02/15/2023   |    D    |
 | F20   |  Choose number of polygons from command line |  Sathurshan  |   02/15/2023    |   02/15/2023  |   D     |
-| F21   |  Choose relaxation level from command line |    |       |     |        |
+| F21   |  Choose relaxation level from command line | Sathurshan   |  02/17/2023     |   02/17/2023  |    D    |
 | F22   |  Choose width and height from command line | Sathurshan   |   02/15/2023    |  02/15/2023   |    D    |
 | F23   |  Command line have -h (help) option |  Sathurshan  |   02/15/2023    |  02/15/2023   |    D    |
 
