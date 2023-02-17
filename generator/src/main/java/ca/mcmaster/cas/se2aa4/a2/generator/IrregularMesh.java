@@ -36,6 +36,24 @@ public class IrregularMesh extends MeshADT {
         voronoiDiagramBuilder.setSites(collection_centroid);
         List<Polygon> polygons = voronoiDiagramBuilder.getSubdivision().getVoronoiCellPolygons(geometryFactory);
 
+        List<Coordinate> newVertices= new ArrayList<>();
+        for (int i = 0; i < 20; i++)
+        {
+            //Set the site to the vertex of all polygons
+            newVertices = new ArrayList<>();
+            for (Polygon polygon:polygons){
+                newVertices.add(polygon.getCentroid().getCoordinate());
+            }
+
+            //Recompute with voronoi
+            geometryFactory = new GeometryFactory();
+            voronoiDiagramBuilder = new VoronoiDiagramBuilder();
+            voronoiDiagramBuilder.setSites(newVertices);
+            polygons = voronoiDiagramBuilder.getSubdivision().getVoronoiCellPolygons(geometryFactory);
+        }
+
+        convertCoordinateToVertex(newVertices);
+
         //goes through each geo.Polygon and converts it to a CustomPolygon.
         List<CustomVertex> confirmedVertex = new ArrayList<>();
         int newIndex = 0;
@@ -52,6 +70,15 @@ public class IrregularMesh extends MeshADT {
 
     public List<Coordinate> getCoordinates(){
         return centroidCoordinates;
+    }
+
+    public void convertCoordinateToVertex(List<Coordinate> newVertices){
+        centroids.clear();
+        for (Coordinate vertex: newVertices){
+            double x = vertex.getX();
+            double y = vertex.getY();
+            centroids.add(new CustomVertex(x,y,new Color(254,0,0,254), "2.0", precision));
+        }
     }
 
     public void createCentroids(){
