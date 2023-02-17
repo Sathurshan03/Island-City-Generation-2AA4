@@ -14,6 +14,7 @@ import org.locationtech.jts.geom.Coordinate;
 
 public class IrregularMesh extends MeshADT {
     List<Coordinate> centroidCoordinates;
+    List<Polygon> polygons;
 
     public IrregularMesh(int width, int height, int precision, int numPolygons, int relationLevel){
         super(width,height, precision, numPolygons);
@@ -35,7 +36,8 @@ public class IrregularMesh extends MeshADT {
         GeometryFactory geometryFactory = new GeometryFactory();
         VoronoiDiagramBuilder voronoiDiagramBuilder = new VoronoiDiagramBuilder();
         voronoiDiagramBuilder.setSites(collection_centroid);
-        List<Polygon> polygons = voronoiDiagramBuilder.getSubdivision().getVoronoiCellPolygons(geometryFactory);
+        polygons = voronoiDiagramBuilder.getSubdivision().getVoronoiCellPolygons(geometryFactory);
+        keepInsideMesh();
 
         List<Coordinate> newVertices= new ArrayList<>();
         for (int i = 0; i < relationLevel; i++)
@@ -51,21 +53,7 @@ public class IrregularMesh extends MeshADT {
             voronoiDiagramBuilder = new VoronoiDiagramBuilder();
             voronoiDiagramBuilder.setSites(newVertices);
             polygons = voronoiDiagramBuilder.getSubdivision().getVoronoiCellPolygons(geometryFactory);
-            for (Polygon p:polygons){
-                //go through all connecting vertex and resize if goes outside width or height.
-                for (Coordinate pi:p.getCoordinates()){
-                    if (pi.getX()>width){
-                        pi.setX(width);
-                    }else if (pi.getX()<0){
-                        pi.setX(0);
-                    }
-                    if (pi.getY()>width){
-                        pi.setY(width);
-                    }else if (pi.getY()<0){
-                        pi.setY(0);
-                    }
-                }
-            }
+            keepInsideMesh();
         }
 
         convertCoordinateToVertex(newVertices);
@@ -86,6 +74,24 @@ public class IrregularMesh extends MeshADT {
         centroids=confirmedVertex;
 
 
+    }
+    public void keepInsideMesh()
+    {
+        for (Polygon p:polygons){
+            //go through all connecting vertex and resize if goes outside width or height.
+            for (Coordinate pi:p.getCoordinates()){
+                if (pi.getX()>width){
+                    pi.setX(width);
+                }else if (pi.getX()<0){
+                    pi.setX(0);
+                }
+                if (pi.getY()>height){
+                    pi.setY(height);
+                }else if (pi.getY()<0){
+                    pi.setY(0);
+                }
+            }
+        }
     }
 
     public List<Coordinate> getCoordinates(){
