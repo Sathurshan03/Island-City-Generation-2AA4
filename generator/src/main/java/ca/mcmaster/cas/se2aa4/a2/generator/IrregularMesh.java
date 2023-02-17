@@ -9,6 +9,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import ca.mcmaster.cas.se2aa4.a2.io.Structs;
 import org.locationtech.jts.geom.Coordinate;
 
 public class IrregularMesh extends MeshADT {
@@ -59,13 +60,17 @@ public class IrregularMesh extends MeshADT {
         int newIndex = 0;
         for (int i=0; i<polygons.size(); i++){
             GeoStruct conversion=new GeoStruct(polygons.get(i), i, newIndex);
+
             if (conversion.isPolygon()){
-                addPolygon(conversion.getCusPolygon().gePolygon());
+                CustomPolygon poly=conversion.getCusPolygon();
+                addPolygon(poly.gePolygon());
                 newIndex++;
-                confirmedVertex.add(centroids.get(i));
+                confirmedVertex.add(poly.centroid);
             }
         }
-        centroids = confirmedVertex;
+        centroids=confirmedVertex;
+
+
     }
 
     public List<Coordinate> getCoordinates(){
