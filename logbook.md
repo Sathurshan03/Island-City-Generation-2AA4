@@ -42,3 +42,4 @@
 |  Feb 17, 2023  |  Sathurshan       |  Appended documentations for automatic scripts |    
 |  Feb 17, 2023  |  Nirmal       |  Centering all centroids on mesh   |
 |  Feb 17, 2023  |  Nirmal       |  Perfectly resizes to width and height   |
+|  Feb 21, 2023  |  Sathurshan       |  Created a commandLineReader class that takes care of all the command line operations   |
