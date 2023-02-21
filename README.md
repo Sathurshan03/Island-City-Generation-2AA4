@@ -1,8 +1,8 @@
 # Assignment A2: Mesh Generator
+  - Mithun Paramathasan [paramatm@mcmaster.ca]
+  - Nirmal Chaudhari [chaudn12@mcmaster.ca]
+  - Sathurshan Arulmohan [arulmohs@mcmaster.ca]
 
-  - Author #1 [email@mcmaster.ca]
-  - Author #2 [chaudn12@mcmaster.ca]
-  - Author #3 [email@mcmaster.ca]
 
 ## How to run the product
 
@@ -22,34 +22,61 @@ After installation, you'll find an application named `generator.jar` in the `gen
 
 ### Generator
 
-To run the generator, go to the `generator` directory, and use `java -jar` to run the product. The product takes one single argument (so far), the name of the file where the generated mesh will be stored as binary.
+To run the generator, go to the `generator` directory, and use `java -jar` to run the product. Sample.mesh is the binary file containing the mesh.
 
+#### Grid-Based Mesh
 ```
-mosser@azrael A2 % cd generator 
-mosser@azrael generator % java -jar generator.jar sample.mesh
-mosser@azrael generator % ls -lh sample.mesh
--rw-r--r--  1 mosser  staff    29K 29 Jan 10:52 sample.mesh
-mosser@azrael generator % 
+cd generator 
+java -jar generator.jar sample.mesh -grid [-width] [-height]
+ls -lh sample.mesh
 ```
+`width` and `height` default is 500px and are optional to change in the command line. 
+
+Example: `java -jar generator.jar sample.mesh -grid -width 400 -height 400`
+
+#### Irregular Mesh
+```
+cd generator 
+java -jar generator.jar sample.mesh -irregular -numPoly [-width]  [-height] [-relation]
+ls -lh sample.mesh
+```
+`numPoly` is the number of polygons to generate on the mesh.\
+`width` and `height` default is 500px and are optional to change in the command line. \
+`relation` default is 1 and value can be changed for any values greater than 1 to smooth the mesh.
+
+Example: `java -jar generator.jar sample.mesh -irregular -numPoly 500 -width 600 -height 600 -relation 3`
 
 ### Visualizer
 
-To visualize an existing mesh, go the the `visualizer` directory, and use `java -jar` to run the product. The product take two arguments (so far): the file containing the mesh, and the name of the file to store the visualization (as an SVG image).
+To visualize an existing mesh, go the the `visualizer` directory, and use `java -jar` to run the product. The product takes in the file containing the mesh, and the name of the file to store the visualization (as an SVG image).
 
 ```
-mosser@azrael A2 % cd visualizer 
-mosser@azrael visualizer % java -jar visualizer.jar ../generator/sample.mesh sample.svg
-
-... (lots of debug information printed to stdout) ...
-
-mosser@azrael visualizer % ls -lh sample.svg
--rw-r--r--  1 mosser  staff    56K 29 Jan 10:53 sample.svg
-mosser@azrael visualizer %
+cd visualizer 
+java -jar visualizer.jar ../generator/sample.mesh sample.svg [-X]
+ls -lh sample.svg
 ```
 To viualize the SVG file:
 
   - Open it with a web browser
   - Convert it into something else with tool slike `rsvg-convert`
+
+### Debug Visualizer
+In debug mode, it will visualize the polygon's segments and vertices as black, centroid as red and neighbouring relations as grey. Debug mode uses the flag `-X`
+ ```
+ java -jar visualizer.jar ../generator/sample.mesh sample.svg -X
+ ```
+
+### Example runs
+To see a examples of the mesh, run any one of the scripts below in the main directory. The mesh will be saved as ../generator/sample.mesh.
+
+```./runAll```
+
+```./runAllDebug```
+
+```./runAllIrregular```
+
+```./runAllDebugIrregular```
+
 
 ## How to contribute to the project
 
@@ -58,6 +85,10 @@ When you develop features and enrich the product, remember that you have first t
 ## Backlog
 
 ### Definition of Done
+A feature is determined as done if it succesfully accomplishes the minimum of the feature without affecting previous features implemented. It shoul not introduce no more than 30 minutes of technical debt. 
+
+status:
+Pending (P), Started (S), Blocked (B), Done (D)
 
 -- Insert here your definition of done for your features --
 
@@ -65,6 +96,28 @@ When you develop features and enrich the product, remember that you have first t
 
 | Id | Feature title | Who? | Start | End | Status |
 |:--:|---------------|------|-------|-----|--------|
-|    |               |      |       |     |        |
+| F01   |  Create a Mesh with a determined width and height |   Sathurshan   |   02/08/2023    |  02/08/2023   |   D     |
+| F02   |  Generate all Vertices for each polygons |  Nirmal    |    02/09/2023   |  02/09/2023   |    D    |
+| F03   |  Generate polygons on mesh |  Nirmal    |    02/10/2023   |  02/10/2023   |   D     |
+| F04   |  Generate segments on polygon |  Nirmal    |   02/09/2023    |  02/09/2023   |   D     |
+| F05   |  Verticies colours have transparency attributes |   Sathurshan   |   02/09/2023    |  02/09/2023   |   D     |
+| F06   |  Segment colours have transparency attributes |   Mithun   |   2/10/2023    |  2/10/2023   |    D    |
+| F07   |  Show vertices with different thickness |  Sathurshan    |   02/09/2023    |   02/09/2023  |    D    |
+| F08   |  Show segments with different thickness |  Mithun    |   2/10/2023    |  2/10/2023  |    D    |
+| F09   |  Show segments with calculated colours |   Mithun   |       |     |        |
+| F10   |  Generate centroid vertex of the polygons |  Sathurshan    |  02/09/2023     |   02/09/2023  |  D      |
+| F11   |  Generate neighbouring relations of the polygons |  Nirmal    |   02/12/2023    |  02/12/2023   |    D    |
+| F12   |  Provide debug mode |   Sathurshan   |   02/08/2023    |  02/08/2023   |    D    |
+| F13   |  debug mode: polygon in black |  Sathurshan    |   02/11/2023    |  02/11/2023   |     D   |
+| F14   |  debug mode: centroid in red |  Sathurshan    |  02/11/2023     |  02/11/2023   |    D    |
+| F15   |  debug mode: neighbourhood relations in light grey |  Mithun    |       |     |        |
+| F16   |  Crop mesh to expected size |   Nirmal   |    02/15/2023   |  02/17/2023   |    D    |
+| F17   |  Polygons randomly placed on meshed |  Nirmal   |   02/15/2023    |  02/15/2023   |    D    |
+| F18   |  Generate irregular polygons |  Nirmal  |    02/15/2023   |  02/15/2023   |    D    |
+| F19   |  Choose type of mesh from command line | Sathurshan   |   02/15/2023    |  02/15/2023   |    D    |
+| F20   |  Choose number of polygons from command line |  Sathurshan  |   02/15/2023    |   02/15/2023  |   D     |
+| F21   |  Choose relaxation level from command line | Sathurshan   |  02/17/2023     |   02/17/2023  |    D    |
+| F22   |  Choose width and height from command line | Sathurshan   |   02/15/2023    |  02/15/2023   |    D    |
+| F23   |  Command line have -h (help) option |  Sathurshan  |   02/15/2023    |  02/15/2023   |    D    |
 
 
