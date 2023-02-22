@@ -43,7 +43,7 @@ public class CustomPolygon extends MeshADT{
     }
 
     //new constructor for irregular polygon use.
-    public CustomPolygon(List<CustomVertex> cusVertices, CustomVertex centroid, int centroid_idx, int newCentroidIndex){
+    public CustomPolygon(List<CustomVertex> cusVertices, CustomVertex centroid, int newCentroidIndex){
         //initializes all of the required lists.
         this.segment_index=new ArrayList<>();
         this.neighbours=new ArrayList<>();

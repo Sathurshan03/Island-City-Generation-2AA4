@@ -9,12 +9,12 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import ca.mcmaster.cas.se2aa4.a2.io.Structs;
-import org.locationtech.jts.geom.Coordinate;
 
 public class IrregularMesh extends MeshADT {
-    List<Coordinate> centroidCoordinates;
-    List<Polygon> polygons;
+    GeometryFactory geometryFactory = new GeometryFactory();
+    VoronoiDiagramBuilder voronoiDiagramBuilder = new VoronoiDiagramBuilder();
+
+
 
     public IrregularMesh(int width, int height, int precision, int numPolygons, int relationLevel){
         super(width,height, precision, numPolygons);
@@ -28,56 +28,70 @@ public class IrregularMesh extends MeshADT {
         vertices=new ArrayList<>();
         segments=new ArrayList<>();
 
+
         //generates the centroids in random order.
         createCentroids();
 
 
         //Generates the polygons using Voronoi
-        GeometryFactory geometryFactory = new GeometryFactory();
-        VoronoiDiagramBuilder voronoiDiagramBuilder = new VoronoiDiagramBuilder();
-        voronoiDiagramBuilder.setSites(collection_centroid);
-        polygons = voronoiDiagramBuilder.getSubdivision().getVoronoiCellPolygons(geometryFactory);
-        keepInsideMesh();
+        List<Polygon> geo_polygons = VoronoiGen(collection_centroid);
 
-        List<Coordinate> newVertices= new ArrayList<>();
-        for (int i = 0; i < relationLevel; i++)
-        {
-            //Set the site to the vertex of all polygons
-            newVertices = new ArrayList<>();
-            for (Polygon polygon:polygons){
-                newVertices.add(polygon.getCentroid().getCoordinate());
-            }
+        //Keeps all polygons within the width and height.
+        keepInsideMesh(geo_polygons);
 
-            //Recompute with voronoi
-            geometryFactory = new GeometryFactory();
-            voronoiDiagramBuilder = new VoronoiDiagramBuilder();
-            voronoiDiagramBuilder.setSites(newVertices);
-            polygons = voronoiDiagramBuilder.getSubdivision().getVoronoiCellPolygons(geometryFactory);
-            keepInsideMesh();
-        }
+        //Applying Lyold Relaxation
+        geo_polygons=Relaxation(geo_polygons, relationLevel);
 
-        convertCoordinateToVertex(newVertices);
 
         //goes through each geo.Polygon and converts it to a CustomPolygon.
-        List<CustomVertex> confirmedVertex = new ArrayList<>();
         int newIndex = 0;
-        for (int i=0; i<polygons.size(); i++){
-            GeoStruct conversion=new GeoStruct(polygons.get(i), i, newIndex);
+        for (int i = 0; i< geo_polygons.size(); i++){
+            GeoStruct conversion=new GeoStruct(geo_polygons.get(i), newIndex);
 
             if (conversion.isPolygon()){
                 CustomPolygon poly=conversion.getCusPolygon();
                 addPolygon(poly.gePolygon());
                 newIndex++;
-                confirmedVertex.add(poly.centroid);
+                centroids.add(poly.centroid);
             }
         }
-        centroids=confirmedVertex;
+
+    }
+
+
+    public List<Polygon> VoronoiGen(List<Coordinate> collection_centroid){
+        voronoiDiagramBuilder.setSites(collection_centroid);
+        return voronoiDiagramBuilder.getSubdivision().getVoronoiCellPolygons(geometryFactory);
+    }
+
+
+
+    public List<Polygon> Relaxation(List<Polygon> polygons, int level){
+        for (int i = 0; i < level; i++)
+        {
+            //Set the site to the vertex of all polygons
+            collection_centroid = new ArrayList<>();
+            for (Polygon polygon: polygons){
+                collection_centroid.add(polygon.getCentroid().getCoordinate());
+            }
+
+            //Recompute with voronoi
+            voronoiDiagramBuilder = new VoronoiDiagramBuilder();
+
+            polygons=VoronoiGen(collection_centroid);
+
+            keepInsideMesh(polygons);
+        }
+        return polygons;
 
 
     }
-    public void keepInsideMesh()
+
+
+
+    public void keepInsideMesh(List<Polygon> polygons)
     {
-        for (Polygon p:polygons){
+        for (Polygon p: polygons){
             //go through all connecting vertex and resize if goes outside width or height.
             for (Coordinate pi:p.getCoordinates()){
                 if (pi.getX()>width){
@@ -94,18 +108,7 @@ public class IrregularMesh extends MeshADT {
         }
     }
 
-    public List<Coordinate> getCoordinates(){
-        return centroidCoordinates;
-    }
 
-    public void convertCoordinateToVertex(List<Coordinate> newVertices){
-        centroids.clear();
-        for (Coordinate vertex: newVertices){
-            double x = vertex.getX();
-            double y = vertex.getY();
-            centroids.add(new CustomVertex(x,y,new Color(254,0,0,254), "2.0", precision));
-        }
-    }
 
     public void createCentroids(){
         Random rand=new Random();
@@ -114,10 +117,6 @@ public class IrregularMesh extends MeshADT {
             double random_x= rand.nextDouble(0,width);
             double random_y=rand.nextDouble(0,height);
             Coordinate coordinate = new Coordinate(random_x, random_y);
-
-            CustomVertex new_centroid=new CustomVertex(random_x,random_y,new Color(254,0,0,254), "2.0", precision);
-
-            centroids.add(new_centroid);
 
             collection_centroid.add(coordinate);
         }
