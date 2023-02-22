@@ -85,7 +85,7 @@ public class CommandLineReader {
         }
         if(spacing != null){
             gridSpacing = Integer.parseInt(spacing);
-            if (gridSpacing <= 0){
+            if (gridSpacing < 10){
                 gridSpacing = 20;
             }
         }
