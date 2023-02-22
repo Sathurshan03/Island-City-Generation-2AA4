@@ -3,7 +3,6 @@ package ca.mcmaster.cas.se2aa4.a2.visualizer;
 import java.awt.Color;
 import java.util.List;
 import java.awt.geom.Ellipse2D;
-
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Vertex;
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Property;
 
@@ -44,6 +43,7 @@ public class VertexVisualizer {
     }
 
     public Color getColor(){
+        //A vertex is black if it is not a centroid and is in debug mode
         if (debug && !isCentroid)
         {
             return Color.BLACK;
@@ -60,6 +60,7 @@ public class VertexVisualizer {
     }
 
     public Ellipse2D getPoint(){
+        //Get the position of the vertex to draw
         double thickness = getThickness();
 
         double centre_x = X - (thickness/2.0d);
@@ -72,6 +73,8 @@ public class VertexVisualizer {
 
 
     private Color extractVertexColor(List<Property> properties) {
+        //Get the colour for the vertex 
+
         String val = null;
 
         //Get the colours properties
@@ -96,6 +99,7 @@ public class VertexVisualizer {
     }
 
     private double extractThickness(List<Property> properties) {
+        //Get the "thickness" of the vertex (size)
         String val = null;
         for(Property p: properties) {
             if (p.getKey().equals("thickness")) {

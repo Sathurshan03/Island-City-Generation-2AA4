@@ -13,22 +13,16 @@ import java.awt.geom.Ellipse2D;
 import java.awt.geom.Line2D;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class GraphicRenderer {
-
-
     public void render(Mesh aMesh, Graphics2D canvas, Boolean debug) {
-
         //Set up the canvas
         canvas.setColor(Color.BLACK);
         Stroke stroke = new BasicStroke(0.5f);
         canvas.setStroke(stroke);
 
-
         //Polygon information
         List<Polygon> polygons = aMesh.getPolygonsList();
-
 
         //Vertex information
         List<Vertex> vertex_list = aMesh.getVerticesList();
@@ -49,19 +43,20 @@ public class GraphicRenderer {
             segmentVisualsList.add(new SegmentVisualizer(segment, debug));
         }
 
-
         //Print Polygon one by one
         for (Polygon polygon : polygons) {
-            //Get the polygon's vertex and segment visualization information
+            //print each segment of that polygon one by one 
             for (Integer i : polygon.getSegmentIdxsList()) {
                 SegmentVisualizer segmentVisual = segmentVisualsList.get(i);
 
+                //Get the two vertices of the segment 
                 Integer v1 = segmentVisual.getVertedIDX1()+polygons.size();
                 Integer v2 = segmentVisual.getVertedIDX2()+polygons.size();
 
                 drawVertex(vertexVisualsList, canvas, v1);
                 drawVertex(vertexVisualsList, canvas, v2);
 
+                //Only draw the segment if it had not been drawn
                 if (!segmentVisual.isDrawn()){
                     Color old = canvas.getColor();
 
@@ -76,11 +71,10 @@ public class GraphicRenderer {
                     canvas.draw(line);
                     canvas.setColor(old);
                     segmentVisual.draw();
-
                 }
-
             }
 
+            //print neighbouring relations in debug mode of that polygon
             if (debug){
                 for (Integer i : polygon.getNeighborIdxsList()) {
                     SegmentVisualizer segmentVisual = segmentVisualsList.get(i);
@@ -88,9 +82,11 @@ public class GraphicRenderer {
                     Integer v1 = segmentVisual.getVertedIDX1();
                     Integer v2 = segmentVisual.getVertedIDX2();
 
+                    //Get the two vertices of the segment 
                      drawVertex(vertexVisualsList, canvas, v1);
                      drawVertex(vertexVisualsList, canvas, v2);
 
+                    //Only draw the segment if it had not been drawn
                     if (!segmentVisual.isDrawn()){
                         Color old = canvas.getColor();
 
@@ -106,14 +102,13 @@ public class GraphicRenderer {
                         canvas.setColor(old);
                         segmentVisual.draw();
                     }
-
                 }
             }
         }
 
            //draw centroid in red
            if (debug) {
-               //centroid points are stored in last |polygons| of vertexVisualsList
+               //centroid points are stored in first |polygons| of vertexVisualsList
                for (int i = 0; i < polygons.size(); i++) {
                    drawVertex(vertexVisualsList, canvas, i);
                }
@@ -125,7 +120,6 @@ public class GraphicRenderer {
                 VertexVisualizer vertexVisual = vertexVisualsList.get(pos);
                 Color old = canvas.getColor();
 
-
                 canvas.setColor(vertexVisual.getColor());
                 Ellipse2D point = vertexVisual.getPoint();
 
@@ -135,4 +129,3 @@ public class GraphicRenderer {
             }
         }
     }
-

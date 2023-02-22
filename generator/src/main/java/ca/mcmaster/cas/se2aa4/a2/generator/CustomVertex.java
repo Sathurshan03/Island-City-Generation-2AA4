@@ -15,6 +15,7 @@ public class CustomVertex {
     
 
     public CustomVertex(double x, double y, int precision){
+        //Constructor for centroid vertex
         this.x = DoubleRounder.round(x, precision);
         this.y = DoubleRounder.round(y, precision);
         this.colourProperty = randColor();
@@ -23,6 +24,7 @@ public class CustomVertex {
     }
 
     public CustomVertex(double x, double y, Color colour, String thicknessValue, int precision){
+        //constructor for polygon vertex
         this.x = DoubleRounder.round(x, precision);
         this.y = DoubleRounder.round(y, precision);
         this.colourProperty = setColour(colour);
@@ -44,6 +46,7 @@ public class CustomVertex {
     }
 
     public Color getColour(){
+        //Gets the color of the vertex stored in the vertex struct
         String colourVal = colourProperty.getValue();
 
         if (colourVal == null)
@@ -61,6 +64,7 @@ public class CustomVertex {
     }
 
     protected Property randColor(){
+        //Randomly generate a colour for the vertex
         Random bag = new Random();
         int red = bag.nextInt(255);
         int green = bag.nextInt(255);
@@ -68,10 +72,12 @@ public class CustomVertex {
         int transparency = bag.nextInt(155) + 100;
         String colorCode = red + "," + green + "," + blue + "," + transparency;
         Property color = Property.newBuilder().setKey("rgb_color").setValue(colorCode).build();
-        return color;    }
+        return color;    
+    }
 
 
     private Property setColour(Color colour){
+        //sets the color of the vertex to the vertex struct property
         String colorCode = colour.getRed() + "," + colour.getGreen() + "," + colour.getBlue() + "," + colour.getAlpha();
         Property colorProp = Property.newBuilder().setKey("rgb_color").setValue(colorCode).build();
 

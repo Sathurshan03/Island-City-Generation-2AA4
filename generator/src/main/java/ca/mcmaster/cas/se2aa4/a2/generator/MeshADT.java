@@ -17,16 +17,12 @@ public abstract class MeshADT {
     protected int width;
     protected static List<CustomVertex> vertices;
     protected int numPolygons;
-
     protected static List<Coordinate> collection_centroid;
-
-
     protected static List<CustomVertex> centroids;
     public static List<CustomSegments> segments;
 
     public MeshADT(){
         this.mesh=new ArrayList<>();
-
     }
 
     public MeshADT(int width, int height, int precision, int numPolygons){
@@ -91,7 +87,4 @@ public abstract class MeshADT {
     public int getHeight(){
         return height;
     }
-
-
-
 }

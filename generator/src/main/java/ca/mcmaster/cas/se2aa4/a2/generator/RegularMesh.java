@@ -1,8 +1,5 @@
 package ca.mcmaster.cas.se2aa4.a2.generator;
 
-import ca.mcmaster.cas.se2aa4.a2.io.Structs;
-import ca.mcmaster.cas.se2aa4.a2.io.Structs.Vertex;
-
 import java.awt.Color;
 import java.util.ArrayList;
 
@@ -10,9 +7,6 @@ public class RegularMesh extends MeshADT{
     int squareSize;
     CustomVertex[][] centroidVertice;
     CustomVertex[][] connectingVertice;
-
-
-    
 
     public RegularMesh(int width, int height, int precision, int squareSize)
     {
@@ -23,17 +17,15 @@ public class RegularMesh extends MeshADT{
         segments=new ArrayList<>();
         createCentroidVertices();
 
-
+        //Create a polygon for each vertex
         for (int i=0; i<centroids.size(); i++){
             CustomPolygon polygon=new CustomPolygon(i, precision);
             addPolygon(polygon.gePolygon());
         }
-
-
     }
 
     public void createCentroidVertices(){
-        //Centroid vertices
+        //Create the centroid vertices for grid mesh: equally spaced out
         centroidVertice = new CustomVertex[width/20][height/ 20];
         
         for(int x = 0 ; x*squareSize + squareSize/2 < width; x++) {
@@ -46,7 +38,6 @@ public class RegularMesh extends MeshADT{
             }
         }
     }
-
 
     public CustomVertex[][] getCentroidVertices(){
         return centroidVertice;
