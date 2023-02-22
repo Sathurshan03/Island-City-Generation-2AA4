@@ -20,7 +20,7 @@ public class RegularMesh extends MeshADT{
         //Create a polygon for each vertex
         for (int i=0; i<centroids.size(); i++){
             CustomPolygon polygon=new CustomPolygon(i, precision);
-            addPolygon(polygon.gePolygon());
+            addPolygon(polygon.getPolygon());
         }
     }
 

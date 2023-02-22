@@ -80,7 +80,7 @@ public class CustomPolygon extends MeshADT{
         return Arrays.asList(v1,v2,v3,v4);
     }
 
-    public Polygon gePolygon(){
+    public Polygon getPolygon(){
         return polygon;
     }
 

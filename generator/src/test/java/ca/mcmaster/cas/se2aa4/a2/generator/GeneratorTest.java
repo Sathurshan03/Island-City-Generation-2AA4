@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.io.IOException;
 
 
-public class DotGenTest {
+public class GeneratorTest {
 
     @Test
     public void meshIsNotNull() throws IOException {

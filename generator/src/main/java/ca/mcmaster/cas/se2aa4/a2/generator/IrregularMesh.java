@@ -50,7 +50,7 @@ public class IrregularMesh extends MeshADT {
 
             if (conversion.isPolygon()){
                 CustomPolygon poly=conversion.getCusPolygon();
-                addPolygon(poly.gePolygon());
+                addPolygon(poly.getPolygon());
                 newIndex++;
                 centroids.add(poly.centroid);
             }
