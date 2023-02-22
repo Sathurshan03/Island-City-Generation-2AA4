@@ -23,5 +23,4 @@ public class Generator {
             throw new IOException("No type of mesh determine. Can not generate a mesh");
         }
     }
-
 }

@@ -17,6 +17,7 @@ public class CustomPolygon extends MeshADT{
     protected List<CustomVertex> poly_vertices;
 
     protected List<CustomSegments> poly_segment;
+    protected List<Integer> indexNeighbourCentroids;
     protected int precision;
     protected int squareSize;
 
@@ -45,7 +46,25 @@ public class CustomPolygon extends MeshADT{
     }
 
     //new constructor for irregular polygon use.
-    public CustomPolygon(List<CustomVertex> cusVertices, CustomVertex centroid, int newCentroidIndex){
+//    public CustomPolygon(List<CustomVertex> cusVertices, CustomVertex centroid, int centroid_idx, int newCentroidIndex){
+//        //initializes all of the required lists.
+//        this.segment_index=new ArrayList<>();
+//        this.neighbours=new ArrayList<>();
+//        this.poly_segment=new ArrayList<>();
+//
+//        //finds associated centroid, and centroid index.
+//        //Not necessary right now, but still need to check whether polygon creation in geom retained the order of centroids (most likely didn't).
+//        this.centroid=centroid;
+//        this.centroid_idx=newCentroidIndex;
+//        this.poly_vertices=cusVertices;
+//
+//        //creates necessary segments. Directly checks for overlap.
+//        makeSegments();
+//
+//        //struct.polygon creation without neighbouring polygons.
+//        this.polygon=Polygon.newBuilder().addAllSegmentIdxs(this.segment_index).build();
+//    }
+    public CustomPolygon(List<CustomVertex> cusVertices, CustomVertex centroid, int newCentroidIndex, List<Integer> indexNeighbourCentroids){
         //initializes all of the required lists.
         this.segment_index=new ArrayList<>();
         this.neighbours=new ArrayList<>();
@@ -55,15 +74,14 @@ public class CustomPolygon extends MeshADT{
         //Not necessary right now, but still need to check whether polygon creation in geom retained the order of centroids (most likely didn't).
         this.centroid=centroid;
         this.centroid_idx=newCentroidIndex;
-
-
         this.poly_vertices=cusVertices;
+        this.indexNeighbourCentroids = indexNeighbourCentroids;
 
         //creates necessary segments. Directly checks for overlap.
         makeSegments();
 
         //struct.polygon creation without neighbouring polygons.
-        this.polygon=Polygon.newBuilder().addAllSegmentIdxs(this.segment_index).build();
+        this.polygon=Polygon.newBuilder().addAllSegmentIdxs(this.segment_index).addAllNeighborIdxs(neighbours).build();
     }
 
     public CustomVertex getCentroid(){
@@ -95,6 +113,14 @@ public class CustomPolygon extends MeshADT{
         CustomSegments s=makeSegment(vertices.indexOf(poly_vertices.get(0)),vertices.indexOf(poly_vertices.get(poly_vertices.size()-1)));
         poly_segment.add(s);
         segment_index.add(segments.indexOf(s));
+
+        if(indexNeighbourCentroids != null) {
+            for(int i=0; i<indexNeighbourCentroids.size(); i++){
+                CustomSegments new_s=new CustomSegments(this.centroid_idx,indexNeighbourCentroids.get(i),Color.GRAY, "0.5f", this.centroid_idx);
+                segments.add(new_s);
+                this.neighbours.add(segments.indexOf(new_s));
+            }
+        }
     }
 
 
@@ -122,9 +148,11 @@ public class CustomPolygon extends MeshADT{
         CustomSegments s=new CustomSegments(v1,v2,calcColor(vertices.get(v1),vertices.get(v2)), "0.5f", this.centroid_idx);
         for (CustomSegments c: segments){
             if ((c.v1==s.v1 & c.v2==s.v2 | c.v2==s.v1 & c.v1==s.v2 )){
-                CustomSegments new_s=new CustomSegments(this.centroid_idx,c.centroid,Color.GRAY, "0.5f", this.centroid_idx);
-                segments.add(new_s);
-                this.neighbours.add(segments.indexOf(new_s));
+                if (indexNeighbourCentroids==null){
+                    CustomSegments new_s=new CustomSegments(this.centroid_idx,c.centroid,Color.GRAY, "0.5f", this.centroid_idx);
+                    segments.add(new_s);
+                    this.neighbours.add(segments.indexOf(new_s));
+                }
                 return c;
             }
         }

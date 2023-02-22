@@ -24,9 +24,28 @@ public class GeoStruct extends MeshADT {
 
 
 
+//    public GeoStruct(Polygon init_poly, int centroidIndex, int newIndex){
+//
+//        this.geoPolygon=init_poly;
+//
+//        this.new_poly_vertex=getCustomVertices();
+//
+//        this.centroid=new CustomVertex(init_poly.getCentroid().getX(), init_poly.getCentroid().getY(), Color.RED, "2.0", 2);
+//
+//
+//        if (new_poly_vertex.size() >= 3) //polygon is valid if there are atleast 3 vertex
+//        {
+//            isValid = true;
+//            this.cusPolygon=new CustomPolygon(new_poly_vertex,this.centroid,centroidIndex,newIndex);
+//        }
+//        else{
+//            isValid = false;
+//        }
+//
+//    }
 
 
-    public GeoStruct(Polygon init_poly, int newIndex){
+    public GeoStruct(Polygon init_poly, int newIndex, List<Integer> indexNeighbourCentroids){
 
         this.geoPolygon=init_poly;
 
@@ -38,7 +57,8 @@ public class GeoStruct extends MeshADT {
         if (new_poly_vertex.size() >= 3) //polygon is valid if there are atleast 3 vertex
         {
             isValid = true;
-            this.cusPolygon=new CustomPolygon(new_poly_vertex,this.centroid,newIndex);
+
+            this.cusPolygon=new CustomPolygon(new_poly_vertex,this.centroid,newIndex,indexNeighbourCentroids);
         }
         else{
             isValid = false;
