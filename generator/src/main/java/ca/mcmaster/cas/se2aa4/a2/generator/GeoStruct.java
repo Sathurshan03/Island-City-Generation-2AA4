@@ -26,7 +26,7 @@ public class GeoStruct extends MeshADT {
 
 
 
-    public GeoStruct(Polygon init_poly, int centroidIndex, int newIndex){
+    public GeoStruct(Polygon init_poly, int newIndex){
 
         this.geoPolygon=init_poly;
 
@@ -38,7 +38,7 @@ public class GeoStruct extends MeshADT {
         if (new_poly_vertex.size() >= 3) //polygon is valid if there are atleast 3 vertex
         {
             isValid = true;
-            this.cusPolygon=new CustomPolygon(new_poly_vertex,this.centroid,centroidIndex,newIndex);
+            this.cusPolygon=new CustomPolygon(new_poly_vertex,this.centroid,newIndex);
         }
         else{
             isValid = false;
