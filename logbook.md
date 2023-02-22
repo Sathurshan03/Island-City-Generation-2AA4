@@ -46,3 +46,5 @@
 |  Feb 21, 2023  |  Sathurshan       |  Created test cases to check if consecutive segments are stored in polygons and if centroids are printed as red in debug mode   |
 |  Feb 21, 2023  |  Sathurshan       |  Created a new command line argument that allows the user to choose grid spacing for grid mesh |
 |  Feb 22, 2023  |  Sathurshan       |  Added pictures of examples outputs to ReadMe file  |
+|  Feb 23, 2023  |  Sathurshan       |  Worked on the report for questions from task 3 and conclusion |
+|  Feb 23, 2023  |  Sathurshan       |  Created more test cases for vertex class and for checking all vertices are within the set width and height range |
