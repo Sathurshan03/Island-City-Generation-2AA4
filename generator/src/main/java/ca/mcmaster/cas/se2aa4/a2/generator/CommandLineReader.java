@@ -49,7 +49,7 @@ public class CommandLineReader {
 
         //Help option
         if(cmd.hasOption("-help")) {
-            System.out.println("Grid-Based Mesh: java -jar generator.jar sample.mesh -grid [-width] [-height]");
+            System.out.println("Grid-Based Mesh: java -jar generator.jar sample.mesh -grid [-width] [-height] [-spacing]");
             System.out.println("Irregular Mesh: java -jar generator.jar sample.mesh -irregular -numPoly [-width] [-height] [-relation]");
             HelpFormatter formatter = new HelpFormatter();
             formatter.printHelp("help", options);

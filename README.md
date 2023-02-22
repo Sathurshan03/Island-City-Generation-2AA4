@@ -27,10 +27,10 @@ To run the generator, go to the `generator` directory, and use `java -jar` to ru
 #### Grid-Based Mesh
 ```
 cd generator 
-java -jar generator.jar sample.mesh -grid [-width] [-height]
+java -jar generator.jar sample.mesh -grid [-width] [-height] [-spacing]
 ls -lh sample.mesh
 ```
-`width` and `height` default is 500px and are optional to change in the command line. 
+`width` and `height` default is 500px while `spacing` default is 20 and are optional to change in the command line. Note that the minimum spacing is 10. 
 
 Example: `java -jar generator.jar sample.mesh -grid -width 400 -height 400`
 
@@ -71,11 +71,19 @@ To see a examples of the mesh, run any one of the scripts below in the main dire
 
 ```./runAll```
 
+![My Image](images/grid.png)
+
 ```./runAllDebug```
+
+![My Image](images/gridDebug.png)
 
 ```./runAllIrregular```
 
+![My Image](images/irregular.png)
+
 ```./runAllDebugIrregular```
+
+![My Image](images/irregularDebug.png)
 
 
 ## How to contribute to the project
