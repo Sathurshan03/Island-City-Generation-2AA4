@@ -2,6 +2,7 @@ package ca.mcmaster.cas.se2aa4.a2.generator;
 
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.List;
 
 public class RegularMesh extends MeshADT{
     int squareSize;

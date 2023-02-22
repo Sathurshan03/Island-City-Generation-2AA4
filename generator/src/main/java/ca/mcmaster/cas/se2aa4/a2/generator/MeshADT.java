@@ -11,7 +11,7 @@ import org.locationtech.jts.geom.Coordinate;
 
 public abstract class MeshADT {
 
-    private List<Polygon> mesh;
+    public List<Polygon> mesh;
     protected int precision;
     protected int height;
     protected int width;
