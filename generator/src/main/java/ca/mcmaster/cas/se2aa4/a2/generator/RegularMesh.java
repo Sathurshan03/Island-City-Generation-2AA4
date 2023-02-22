@@ -19,14 +19,14 @@ public class RegularMesh extends MeshADT{
 
         //Create a polygon for each vertex
         for (int i=0; i<centroids.size(); i++){
-            CustomPolygon polygon=new CustomPolygon(i, precision);
+            CustomPolygon polygon=new CustomPolygon(i, precision, squareSize);
             addPolygon(polygon.getPolygon());
         }
     }
 
     public void createCentroidVertices(){
         //Create the centroid vertices for grid mesh: equally spaced out
-        centroidVertice = new CustomVertex[width/20][height/ 20];
+        centroidVertice = new CustomVertex[width/squareSize][height/ squareSize];
         
         for(int x = 0 ; x*squareSize + squareSize/2 < width; x++) {
             for(int y = 0 ; y*squareSize + squareSize/2 < height; y ++) {

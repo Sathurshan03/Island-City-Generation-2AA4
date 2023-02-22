@@ -13,7 +13,7 @@ public class GeneratorTest {
     public void meshIsNotNull() throws IOException {
         Generator generator = new Generator();
         int numberPolygons = 100;
-        Structs.Mesh aMesh = generator.generate(numberPolygons, 500, 500, MeshType.GRID, 5);
+        Structs.Mesh aMesh = generator.generate(numberPolygons, 500, 500, MeshType.GRID, 5, 20);
         assertNotNull(aMesh);
     }
 

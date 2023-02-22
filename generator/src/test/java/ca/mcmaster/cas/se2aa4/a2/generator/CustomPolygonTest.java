@@ -11,7 +11,7 @@ public class CustomPolygonTest {
     public void consecutiveSegments() {
         //tests that the segments are stores in consecutive order
         RegularMesh mesh = new RegularMesh(40, 40, 2, 20);
-        CustomPolygon polygon =new CustomPolygon(0, 2);
+        CustomPolygon polygon =new CustomPolygon(0, 2, 20);
 
         List<CustomSegments> segments = polygon.poly_segment;
 
@@ -37,7 +37,7 @@ public class CustomPolygonTest {
         cusVertices.add(new CustomVertex(2, 3, 2));
         cusVertices.add(new CustomVertex(5, 10, 2));
         cusVertices.add(new CustomVertex(4, 8, 2));
-        CustomPolygon polygon =new CustomPolygon(0, 2);
+        CustomPolygon polygon =new CustomPolygon(0, 2, 20);
 
         List<CustomSegments> segments = polygon.poly_segment;
 

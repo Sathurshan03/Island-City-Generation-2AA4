@@ -7,13 +7,11 @@ import java.io.IOException;
 
 public class Generator {
 
-    private final int squareSize = 20;
-    
-    public Mesh generate(int numberPolygons, int width, int height, MeshType meshType, int relationLevel) throws IOException{
+    public Mesh generate(int numberPolygons, int width, int height, MeshType meshType, int relationLevel, int gridSpacing) throws IOException{
 
         if (meshType.equals(MeshType.GRID)){
             //GRID based mesh
-            RegularMesh mesh = new RegularMesh(width, height, 2, squareSize); 
+            RegularMesh mesh = new RegularMesh(width, height, 2, gridSpacing); 
             return Mesh.newBuilder().addAllPolygons(mesh.getMesh()).addAllSegments(mesh.getSegments()).addAllVertices(mesh.getCentroids()).addAllVertices(mesh.getVertices()).build();
         }
         else if (meshType.equals(MeshType.IRREGULAR)){
