@@ -18,14 +18,9 @@ public class CustomPolygonTest {
         for (int i = 0; i < segments.size() - 1; i++){
             CustomSegments s1 = segments.get(i);
             CustomSegments s2 = segments.get(i + 1);
-            if (s1.getSegment().getV2Idx() == s2.getSegment().getV2Idx() || s1.getSegment().getV2Idx() == s2.getSegment().getV1Idx()){
-                assert(true);
-            }
-            else{
-                assert(false);
-            }
-        }
-        
+      
+            assertTrue(s1.getSegment().getV2Idx() == s2.getSegment().getV2Idx() || s1.getSegment().getV2Idx() == s2.getSegment().getV1Idx());   
+        }  
     }
 
     @Test
@@ -44,14 +39,7 @@ public class CustomPolygonTest {
         for (int i = 0; i < segments.size() - 1; i++){
             CustomSegments s1 = segments.get(i);
             CustomSegments s2 = segments.get(i + 1);
-            if (s1.getSegment().getV2Idx() == s2.getSegment().getV2Idx() || s1.getSegment().getV2Idx() == s2.getSegment().getV1Idx()){
-                assert(true);
-            }
-            else{
-                assert(false);
-            }
+            assert(s1.getSegment().getV2Idx() == s2.getSegment().getV2Idx() || s1.getSegment().getV2Idx() == s2.getSegment().getV1Idx());
         }
-
-    }
-    
+    }    
 }

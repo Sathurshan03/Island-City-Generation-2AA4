@@ -10,12 +10,12 @@ _This section needs to be edited to reflect how the user can interact with thefe
 
 ### Installation instructions
 
-This product is handled by Maven, as a multi-module project. We assume here that you have cloned the project in a directory named `A2`
+This product is handled by Maven, as a multi-module project. 
 
 To install the different tooling on your computer, simply run:
 
 ```
-mosser@azrael A2 % mvn install
+mvn install
 ```
 
 After installation, you'll find an application named `generator.jar` in the `generator` directory, and a file named `visualizer.jar` in the `visualizer` one. 
@@ -98,7 +98,6 @@ A feature is determined as done if it succesfully accomplishes the minimum of th
 status:
 Pending (P), Started (S), Blocked (B), Done (D)
 
--- Insert here your definition of done for your features --
 
 ### Product Backlog
 
