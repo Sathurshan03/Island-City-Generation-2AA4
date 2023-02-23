@@ -1,9 +1,5 @@
 package ca.mcmaster.cas.se2aa4.a2.generator;
 
-import ca.mcmaster.cas.se2aa4.a2.io.Structs.Vertex;
-import ca.mcmaster.cas.se2aa4.a2.io.Structs.Property;
-
-import ca.mcmaster.cas.se2aa4.a2.io.Structs.Segment;
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Polygon;
 
 
@@ -18,7 +14,6 @@ public class CustomPolygon extends MeshADT{
 
     protected List<CustomSegments> poly_segment;
     protected List<Integer> indexNeighbourCentroids;
-    protected int precision;
 
 
     protected List<Integer> segment_index;
@@ -37,9 +32,9 @@ public class CustomPolygon extends MeshADT{
         this.poly_segment=new ArrayList<>();
         this.centroid=centroids.get(centroid);
         this.centroid_idx=centroid;
-        this.precision = precision;
         this.poly_vertices=makeVertices();
-        makeSegments();
+        this.poly_segment=makeSegments();
+        this.segment_index=getSegmentIndex(this.poly_segment);
         this.polygon=makePolygon();
     }
 
@@ -50,17 +45,19 @@ public class CustomPolygon extends MeshADT{
         this.poly_segment=new ArrayList<>();
 
         //finds associated centroid, and centroid index.
-        //Not necessary right now, but still need to check whether polygon creation in geom retained the order of centroids (most likely didn't).
         this.centroid=centroid;
         this.centroid_idx=newCentroidIndex;
         this.poly_vertices=cusVertices;
         this.indexNeighbourCentroids = indexNeighbourCentroids;
 
         //creates necessary segments. Directly checks for overlap.
-        makeSegments();
+        this.poly_segment=makeSegments();
+        this.segment_index=getSegmentIndex(this.poly_segment);
+
+        makeNeighbourSegments();
 
         //struct.polygon creation without neighbouring polygons.
-        this.polygon=Polygon.newBuilder().addAllSegmentIdxs(this.segment_index).addAllNeighborIdxs(neighbours).build();
+        this.polygon=makePolygon();
     }
 
     public CustomVertex getCentroid(){
@@ -83,21 +80,32 @@ public class CustomPolygon extends MeshADT{
         return polygon;
     }
 
+    protected List<Integer> getSegmentIndex(List<CustomSegments> partSegments){
+        List<Integer> indexes=new ArrayList<>();
+        for (CustomSegments s: partSegments){
+            indexes.add(segments.indexOf(s));
+        }
+        return indexes;
+
+    }
 
 
-    protected void makeSegments(){
+    protected List<CustomSegments> makeSegments(){
+        List<CustomSegments> curr_segments=new ArrayList<>();
         for (int i=1; i<poly_vertices.size(); i++){
             CustomSegments s=makeSegment(vertices.indexOf(poly_vertices.get(i-1)),vertices.indexOf(poly_vertices.get(i)));
-            poly_segment.add(s);
-            segment_index.add(segments.indexOf(s));
+            curr_segments.add(s);
         }
         CustomSegments s=makeSegment(vertices.indexOf(poly_vertices.get(0)),vertices.indexOf(poly_vertices.get(poly_vertices.size()-1)));
-        poly_segment.add(s);
-        segment_index.add(segments.indexOf(s));
+        curr_segments.add(s);
+        return curr_segments;
+    }
 
+
+    protected void makeNeighbourSegments(){
         if(indexNeighbourCentroids != null) {
-            for(int i=0; i<indexNeighbourCentroids.size(); i++){
-                CustomSegments new_s=new CustomSegments(this.centroid_idx,indexNeighbourCentroids.get(i),Color.GRAY, "0.5f", this.centroid_idx);
+            for (Integer i: indexNeighbourCentroids){
+                CustomSegments new_s=new CustomSegments(this.centroid_idx,i,Color.GRAY, "0.5f", this.centroid_idx);
                 segments.add(new_s);
                 this.neighbours.add(segments.indexOf(new_s));
             }
@@ -107,7 +115,7 @@ public class CustomPolygon extends MeshADT{
 
 
     protected Polygon makePolygon(){
-        return Polygon.newBuilder().addAllSegmentIdxs(this.segment_index).addAllNeighborIdxs(neighbours).build();
+        return Polygon.newBuilder().addAllSegmentIdxs(this.segment_index).addAllNeighborIdxs(this.neighbours).build();
     }
 
 
