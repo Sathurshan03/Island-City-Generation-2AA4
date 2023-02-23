@@ -11,6 +11,7 @@ public class CommandLineReader {
     int canvasWidth = 500;
     int canvasHeight = 500;
     int relationLevel = 0;
+    int gridSpacing = 20;
     MeshType meshType;
     Options options;
     String fileName;
@@ -30,6 +31,7 @@ public class CommandLineReader {
         options.addOption(new Option("hth", "height", true, "Height of Canvas"));
         options.addOption(new Option("rl", "relation", true, "Relaxation level for Llyod relaxation"));
         options.addOption(new Option("h", "help", false, "Available Options and Command Line Arguments"));
+        options.addOption(new Option("s", "spacing", true, "Grid spacing amount"));
     }
 
     private void checkOptions(String[] args) throws ParseException, IOException{
@@ -42,11 +44,12 @@ public class CommandLineReader {
         String width = cmd.getOptionValue("width");
         String height = cmd.getOptionValue("height");
         String relation = cmd.getOptionValue("relation");
+        String spacing = cmd.getOptionValue("spacing");
         
 
         //Help option
         if(cmd.hasOption("-help")) {
-            System.out.println("Grid-Based Mesh: java -jar generator.jar sample.mesh -grid [-width] [-height]");
+            System.out.println("Grid-Based Mesh: java -jar generator.jar sample.mesh -grid [-width] [-height] [-spacing]");
             System.out.println("Irregular Mesh: java -jar generator.jar sample.mesh -irregular -numPoly [-width] [-height] [-relation]");
             HelpFormatter formatter = new HelpFormatter();
             formatter.printHelp("help", options);
@@ -80,12 +83,18 @@ public class CommandLineReader {
         if(relation != null){
             relationLevel = Integer.parseInt(relation);
         }
+        if(spacing != null){
+            gridSpacing = Integer.parseInt(spacing);
+            if (gridSpacing < 10){
+                gridSpacing = 20;
+            }
+        }
     }
     public Mesh createMesh() throws IOException
     {
         //Generate the mesh based on the inputs from the command line
         Generator generator = new Generator();
-        return generator.generate(numberPolygons, canvasWidth, canvasHeight, meshType, relationLevel);
+        return generator.generate(numberPolygons, canvasWidth, canvasHeight, meshType, relationLevel, gridSpacing);
     }
     public String getFileName(){
         return fileName;

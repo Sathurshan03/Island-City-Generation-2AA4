@@ -10,12 +10,12 @@ _This section needs to be edited to reflect how the user can interact with thefe
 
 ### Installation instructions
 
-This product is handled by Maven, as a multi-module project. We assume here that you have cloned the project in a directory named `A2`
+This product is handled by Maven, as a multi-module project. 
 
 To install the different tooling on your computer, simply run:
 
 ```
-mosser@azrael A2 % mvn install
+mvn install
 ```
 
 After installation, you'll find an application named `generator.jar` in the `generator` directory, and a file named `visualizer.jar` in the `visualizer` one. 
@@ -27,10 +27,10 @@ To run the generator, go to the `generator` directory, and use `java -jar` to ru
 #### Grid-Based Mesh
 ```
 cd generator 
-java -jar generator.jar sample.mesh -grid [-width] [-height]
+java -jar generator.jar sample.mesh -grid [-width] [-height] [-spacing]
 ls -lh sample.mesh
 ```
-`width` and `height` default is 500px and are optional to change in the command line. 
+`width` and `height` default is 500px while `spacing` default is 20 and are optional to change in the command line. Note that the minimum spacing is 10. 
 
 Example: `java -jar generator.jar sample.mesh -grid -width 400 -height 400`
 
@@ -71,11 +71,19 @@ To see a examples of the mesh, run any one of the scripts below in the main dire
 
 ```./runAll```
 
+![My Image](images/grid.png)
+
 ```./runAllDebug```
+
+![My Image](images/gridDebug.png)
 
 ```./runAllIrregular```
 
+![My Image](images/irregular.png)
+
 ```./runAllDebugIrregular```
+
+![My Image](images/irregularDebug.png)
 
 
 ## How to contribute to the project
@@ -90,7 +98,6 @@ A feature is determined as done if it succesfully accomplishes the minimum of th
 status:
 Pending (P), Started (S), Blocked (B), Done (D)
 
--- Insert here your definition of done for your features --
 
 ### Product Backlog
 
@@ -119,5 +126,6 @@ Pending (P), Started (S), Blocked (B), Done (D)
 | F21   |  Choose relaxation level from command line | Sathurshan   |  02/17/2023     |   02/17/2023  |    D    |
 | F22   |  Choose width and height from command line | Sathurshan   |   02/15/2023    |  02/15/2023   |    D    |
 | F23   |  Command line have -h (help) option |  Sathurshan  |   02/15/2023    |  02/15/2023   |    D    |
+| F24   |  Choose grid box size for gird base mesh from command line |  Sathurshan  |   02/21/2023    |  02/21/2023   |    D    |
 
 

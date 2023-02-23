@@ -15,6 +15,8 @@ public class CustomPolygon extends MeshADT{
     protected List<CustomSegments> poly_segment;
     protected List<Integer> indexNeighbourCentroids;
 
+    protected int squareSize;
+
 
     protected List<Integer> segment_index;
 
@@ -26,12 +28,13 @@ public class CustomPolygon extends MeshADT{
 
     protected Polygon polygon;
 
-    public CustomPolygon(int centroid, int precision){
+    public CustomPolygon(int centroid, int precision, int squareSize){
         this.segment_index=new ArrayList<>();
         this.neighbours=new ArrayList<>();
         this.poly_segment=new ArrayList<>();
         this.centroid=centroids.get(centroid);
         this.centroid_idx=centroid;
+        this.squareSize = squareSize;
         this.poly_vertices=makeVertices();
         this.poly_segment=makeSegments();
         this.segment_index=getSegmentIndex(this.poly_segment);
@@ -65,12 +68,12 @@ public class CustomPolygon extends MeshADT{
     }
 
     protected List<CustomVertex> makeVertices(){
+        double offset = squareSize / 2;
 
-
-        CustomVertex v1=makeVertex(centroid.x-10, centroid.y-10);
-        CustomVertex v2=makeVertex(centroid.x+10, centroid.y-10);
-        CustomVertex v3=makeVertex(centroid.x+10, centroid.y+10);
-        CustomVertex v4=makeVertex(centroid.x-10, centroid.y+10);
+        CustomVertex v1=makeVertex(centroid.x-offset, centroid.y-offset);
+        CustomVertex v2=makeVertex(centroid.x+offset, centroid.y-offset);
+        CustomVertex v3=makeVertex(centroid.x+offset, centroid.y+offset);
+        CustomVertex v4=makeVertex(centroid.x-offset, centroid.y+offset);
 
 
         return Arrays.asList(v1,v2,v3,v4);
