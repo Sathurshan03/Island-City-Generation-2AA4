@@ -45,6 +45,7 @@ public class CustomVertex {
         return y;
     }
 
+
     public Color getColour(){
         //Gets the color of the vertex stored in the vertex struct
         String colourVal = colourProperty.getValue();

@@ -8,42 +8,55 @@ import java.awt.*;
 public class CustomSegments {
 
     private static final String THICKNESS = "3";
-    double v1;
-    double v2;
+    double v1_idx;
+    double v2_idx;
+
+    CustomVertex v1;
+
+    CustomVertex v2;
     Property colourProp;
     Property thicknessProp;
     Segment segment;
 
     Integer centroid;
 
-    public CustomSegments(int v1, int v2, Color colour, String thickness, Integer centroid) {
-        this.v1 = v1;
-        this.v2 = v2;
-        this.colourProp = setColour(colour);
+    //Used to generate regular segments (not connecting).
+    public CustomSegments(int v1_idx, int v2_idx, CustomVertex v1, CustomVertex v2, String thickness, Integer centroid) {
+        this.v1_idx = v1_idx;
+        this.v2_idx = v2_idx;
+        this.v1=v1;
+        this.v2=v2;
+        this.colourProp = setColour(calcColor(v1,v2));
         this.thicknessProp = Property.newBuilder().setKey("thickness").setValue(thickness).build();
-        this.segment = Segment.newBuilder().setV1Idx(v1).setV2Idx(v2).addProperties(0,colourProp)
+        this.segment = Segment.newBuilder().setV1Idx(v1_idx).setV2Idx(v2_idx).addProperties(0,colourProp)
                 .addProperties(1,thicknessProp).build();
         this.centroid=centroid;
     }
 
-    public Segment getSegment(){
-        return segment;
+    //Used to generate neighbouring segments, where color is fixed.
+    public CustomSegments(int v1_idx, int v2_idx, CustomVertex v1, CustomVertex v2, String thickness) {
+        this.v1_idx = v1_idx;
+        this.v2_idx = v2_idx;
+        this.v1=v1;
+        this.v2=v2;
+        this.colourProp = setColour(Color.GRAY);
+        this.thicknessProp = Property.newBuilder().setKey("thickness").setValue(thickness).build();
+        this.segment = Segment.newBuilder().setV1Idx(v1_idx).setV2Idx(v2_idx).addProperties(0,colourProp)
+                .addProperties(1,thicknessProp).build();
     }
 
-    public Color getColour(){
-        String colourVal = colourProp.getValue();
 
-        if (colourVal == null)
-        {
-            return Color.BLACK;
-        }
-        String[] raw = colourVal.split(",");
-        int red = Integer.parseInt(raw[0]);
-        int green = Integer.parseInt(raw[1]);
-        int blue = Integer.parseInt(raw[2]);
-        int transparency = Integer.parseInt(raw[3]);
+    protected Color calcColor(CustomVertex v1, CustomVertex v2){
+        Color c1=v1.getColour();
+        Color c2=v2.getColour();
+        int red=(c1.getRed()+c2.getRed())/2;
+        int blue=(c1.getBlue()+c2.getBlue())/2;
+        int green=(c1.getGreen()+c2.getGreen())/2;
+        return new Color(red,blue,green);
+    }
 
-        return new Color(red, green, blue, transparency);
+    public Segment getSegment(){
+        return segment;
     }
 
     public Property setColour(Color colour){

@@ -52,13 +52,15 @@ import java.util.Random;
             for (int i = 0; i < geo_polygon.size(); i++) {
                 List<Integer> indexNeighbourCentroids = Triangulation(geo_polygon.get(i), geo_polygon);
 
+                CustomVertex currCentroids=new CustomVertex(geo_polygon.get(i).getCentroid().getX(), geo_polygon.get(i).getCentroid().getY(), Color.RED, "2.0", 2);
+                centroids.add(currCentroids);
+
                 GeoStruct conversion = new GeoStruct(geo_polygon.get(i), newIndex, indexNeighbourCentroids);
 
                 if (conversion.isPolygon()) {
                     CustomPolygon poly = conversion.getCusPolygon();
                     addPolygon(poly.getPolygon());
                     newIndex++;
-                    centroids.add(poly.centroid);
                 }
             }
 
