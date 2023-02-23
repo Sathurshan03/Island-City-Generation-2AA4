@@ -8,7 +8,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class CustomPolygon extends MeshADT{
+
+public class CustomPolygon{
 
     private List<CustomVertex> poly_vertices;
     private List<CustomSegments> poly_segment;
@@ -19,12 +20,20 @@ public class CustomPolygon extends MeshADT{
     private Boolean isRegular;
     private Polygon polygon;
 
+    private List<CustomVertex> centroids=MeshADT.getCustomCentroids();
+    private List<CustomVertex> vertices=MeshADT.getAllCustomVertices();
+
+    private List<CustomSegments> segments=MeshADT.getCustomSegments();
+
+    private int precision=MeshADT.getPrecision();
+
+
 
     public CustomPolygon(int centroid, int squareSize){
         this.isRegular=true;
 
         this.neighbours=new ArrayList<>();
-        this.centroid=centroids.get(centroid);
+        this.centroid=MeshADT.getCustomCentroids().get(centroid);
         this.centroid_idx=centroid;
 
         this.poly_vertices=makeVertices(squareSize);

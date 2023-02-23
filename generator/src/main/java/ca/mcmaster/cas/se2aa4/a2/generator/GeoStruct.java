@@ -8,7 +8,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GeoStruct extends MeshADT {
+public class GeoStruct {
     //Will store the vertices of polygon in customvertex form.
     protected List<CustomVertex> new_poly_vertex;
 
@@ -20,6 +20,8 @@ public class GeoStruct extends MeshADT {
 
     private boolean isValid;
 
+    private List<CustomVertex> vertices=MeshADT.getAllCustomVertices();
+    private int precision=MeshADT.getPrecision();
 
 
 
@@ -43,6 +45,10 @@ public class GeoStruct extends MeshADT {
 
     }
 
+    public List<CustomVertex> getCurrVertices(){
+        return this.new_poly_vertex;
+    }
+
     public boolean isPolygon(){
         return isValid;
     }
@@ -57,8 +63,6 @@ public class GeoStruct extends MeshADT {
     public List<CustomVertex> getCustomVertices(){
         //List that will store the vertices of this polygon.
         List<CustomVertex> curr_vertices=new ArrayList<>();
-        List<CustomVertex> polygonVertices=new ArrayList<>();
-        int numVertex = 0;
 
         //Iterates through all vertices for that polygon.
         for (Coordinate i: geoPolygon.getCoordinates()){
@@ -66,24 +70,14 @@ public class GeoStruct extends MeshADT {
             double x=i.getX();
             double y=i.getY();
 
-            CustomVertex new_vertex=new CustomVertex(x,y,2);
+            CustomVertex new_vertex=checkVertex(new CustomVertex(x,y,precision));
 
             curr_vertices.add(new_vertex);
-            numVertex++;
-
-        }
-        
-        for (CustomVertex vertex: curr_vertices)
-        {
-            CustomVertex point = checkVertex(vertex);
-            if (!polygonVertices.contains(point)) {
-                polygonVertices.add(point);
-            }
         }
 
 
 
-        return polygonVertices;
+        return curr_vertices;
 
     }
 

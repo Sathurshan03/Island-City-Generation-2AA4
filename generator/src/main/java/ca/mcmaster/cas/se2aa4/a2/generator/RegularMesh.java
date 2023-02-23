@@ -21,6 +21,8 @@ public class RegularMesh extends MeshADT{
         //Create a polygon for each vertex
         for (int i=0; i<centroids.size(); i++){
             CustomPolygon polygon=new CustomPolygon(i, squareSize);
+            vertices.addAll(polygon.getPolyVertices());
+            segments.addAll(polygon.getPolySegments());
             addPolygon(polygon.getPolygon());
         }
     }

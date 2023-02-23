@@ -12,7 +12,7 @@ import org.locationtech.jts.geom.Coordinate;
 public abstract class MeshADT {
 
     public List<Polygon> mesh;
-    protected int precision;
+    protected static int precision;
     protected int height;
     protected int width;
     protected static List<CustomVertex> vertices;
@@ -24,6 +24,7 @@ public abstract class MeshADT {
     public MeshADT(){
         this.mesh=new ArrayList<>();
     }
+
 
     public MeshADT(int width, int height, int precision, int numPolygons){
         this.mesh = new ArrayList<>();
@@ -56,6 +57,20 @@ public abstract class MeshADT {
         return reg_vertices;
     }
 
+    public static List<CustomVertex> getAllCustomVertices(){
+        return vertices;
+    }
+
+    public static List<CustomSegments> getCustomSegments(){
+        return segments;
+    }
+
+    public static List<CustomVertex> getCustomCentroids(){
+        return centroids;
+    }
+
+
+
     public List<Segment> getSegments(){
         List<Segment> reg_segments=new ArrayList<>();
 
@@ -75,7 +90,7 @@ public abstract class MeshADT {
         return reg_centroids;
     }
 
-    public int getPrecision(){
+    public static int getPrecision(){
         return precision;
     }
 

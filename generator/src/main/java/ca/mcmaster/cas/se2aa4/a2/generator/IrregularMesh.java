@@ -56,9 +56,11 @@ import java.util.Random;
                 centroids.add(currCentroids);
 
                 GeoStruct conversion = new GeoStruct(geo_polygon.get(i), newIndex, indexNeighbourCentroids);
+                vertices.addAll(conversion.getCurrVertices());
 
                 if (conversion.isPolygon()) {
                     CustomPolygon poly = conversion.getCusPolygon();
+                    segments.addAll(poly.getPolySegments());
                     addPolygon(poly.getPolygon());
                     newIndex++;
                 }
