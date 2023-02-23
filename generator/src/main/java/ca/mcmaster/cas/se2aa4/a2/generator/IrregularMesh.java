@@ -17,38 +17,37 @@ import java.util.Random;
     public class IrregularMesh extends MeshADT {
         VoronoiDiagramBuilder voronoiDiagramBuilder = new VoronoiDiagramBuilder();
         GeometryFactory geometryFactory = new GeometryFactory();
-
-
         Geometry triangles;
 
         public IrregularMesh(int width, int height, int precision, int numPolygons, int relationLevel) {
             super(width, height, precision, numPolygons);
 
-            //will be used to store the coordinates of centroid for geo.polygon.
-            collection_centroid = new ArrayList<>();
-
-            //will be used to store the CustomVertex version of centroids.
+            //will be used to store the CustomVertex version of collection_centroid centroids.
             centroids = new ArrayList<>();
 
+            //Will be used to store all vertices and segments.
             vertices = new ArrayList<>();
             segments = new ArrayList<>();
 
 
-            //generates the centroids in random order.
-            createCentroids();
+            //generates the initial centroids in random order.
+            collection_centroid = createCentroids();
 
 
-            //Generates the polygons using Voronoi
+            //Generates the geometry type polygons using Voronoi
             List<Polygon> geo_polygon = VoronoiGen(collection_centroid);
+
+            //Resizes the polygons to stay within boundary.
             keepInsideMesh(geo_polygon);
 
+            //Applies Llyod relaxation to polygons.
             geo_polygon = Relaxation(geo_polygon, relationLevel);
 
-
+            //Recreating centroids that are more centered to polygon.
             centroids.clear();
-            //goes through each geo.Polygon and converts it to a CustomPolygon.
             int newIndex = 0;
 
+            //goes through each geo.Polygon and converts it to a CustomPolygon.
             for (int i = 0; i < geo_polygon.size(); i++) {
                 List<Integer> indexNeighbourCentroids = Triangulation(geo_polygon.get(i), geo_polygon);
 
@@ -58,6 +57,7 @@ import java.util.Random;
                 GeoStruct conversion = new GeoStruct(geo_polygon.get(i), newIndex, indexNeighbourCentroids);
                 vertices.addAll(conversion.getCurrVertices());
 
+                //Checks whether polygon has at least 3 sides.
                 if (conversion.isPolygon()) {
                     CustomPolygon poly = conversion.getCusPolygon();
                     segments.addAll(poly.getPolySegments());
@@ -69,12 +69,14 @@ import java.util.Random;
         }
 
 
+        //Uses Voronoi algorithm to generate all polygons using centroids.
         public List<Polygon> VoronoiGen(List<Coordinate> collection_centroid) {
             voronoiDiagramBuilder.setSites(collection_centroid);
             return voronoiDiagramBuilder.getSubdivision().getVoronoiCellPolygons(geometryFactory);
         }
 
 
+        //Applies Llyod Relaxation.
         public List<Polygon> Relaxation(List<Polygon> polygons, int level) {
             for (int i = 0; i < level; i++) {
                 //Set the site to the vertex of all polygons
@@ -95,6 +97,7 @@ import java.util.Random;
 
         }
 
+        //Calculates all neighbours using DelaunayTriangulation Algorithm.
         public List<Integer> Triangulation(Polygon p1, List<Polygon> polygons) {
             DelaunayTriangulationBuilder delaunayTriangulationBuilder = new DelaunayTriangulationBuilder();
             delaunayTriangulationBuilder.setSites(collection_centroid);
@@ -136,6 +139,7 @@ import java.util.Random;
             return indexNeighbourCentroids;
         }
 
+
         public void keepInsideMesh(List<Polygon> polygons) {
             for (Polygon p : polygons) {
                 //go through all connecting vertex and resize if goes outside width or height.
@@ -154,24 +158,18 @@ import java.util.Random;
             }
         }
 
-        public void convertCoordinateToVertex(List<Coordinate> newVertices) {
-            centroids.clear();
-            for (Coordinate vertex : newVertices) {
-                double x = vertex.getX();
-                double y = vertex.getY();
-                centroids.add(new CustomVertex(x, y, new Color(254, 0, 0, 254), "2.0", precision));
-            }
-        }
-
-        public void createCentroids() {
+        public List<Coordinate> createCentroids() {
             Random rand = new Random();
+            List<Coordinate> centroids=new ArrayList<>();
+
 
             for (int i = 0; i < super.numPolygons; i++) {
                 double random_x = rand.nextDouble(0, width);
                 double random_y = rand.nextDouble(0, height);
                 Coordinate coordinate = new Coordinate(random_x, random_y);
 
-                collection_centroid.add(coordinate);
+                centroids.add(coordinate);
             }
+            return centroids;
         }
     }

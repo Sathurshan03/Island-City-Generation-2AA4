@@ -6,14 +6,15 @@ import java.awt.*;
 import org.decimal4j.util.DoubleRounder;
 
 public class CustomVertex {
-    double x;
-    double y; 
+    private double x;
+    private double y;
     private static final String THICKNESSVALUE = "2.0";
-    Property colourProperty;
-    Vertex vertex;
-    Property thickness;
-    
+    private Property colourProperty;
+    private Vertex vertex;
+    private Property thickness;
 
+
+    //Constructor for regular vertices.
     public CustomVertex(double x, double y, int precision){
         //Constructor for centroid vertex
         this.x = DoubleRounder.round(x, precision);
@@ -23,6 +24,7 @@ public class CustomVertex {
         this.vertex = Vertex.newBuilder().setX((double) x).setY((double) y).addProperties(0,colourProperty).addProperties(1,thickness).build();
     }
 
+    //Constructor for centroids.
     public CustomVertex(double x, double y, Color colour, String thicknessValue, int precision){
         //constructor for polygon vertex
         this.x = DoubleRounder.round(x, precision);
@@ -64,7 +66,7 @@ public class CustomVertex {
         return new Color(red, green, blue, transparency);
     }
 
-    protected Property randColor(){
+    private Property randColor(){
         //Randomly generate a colour for the vertex
         Random bag = new Random();
         int red = bag.nextInt(255);
