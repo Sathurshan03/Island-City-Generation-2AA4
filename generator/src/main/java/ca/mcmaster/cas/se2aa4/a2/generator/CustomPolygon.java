@@ -43,25 +43,6 @@ public class CustomPolygon extends MeshADT{
         this.polygon=makePolygon();
     }
 
-    //new constructor for irregular polygon use.
-//    public CustomPolygon(List<CustomVertex> cusVertices, CustomVertex centroid, int centroid_idx, int newCentroidIndex){
-//        //initializes all of the required lists.
-//        this.segment_index=new ArrayList<>();
-//        this.neighbours=new ArrayList<>();
-//        this.poly_segment=new ArrayList<>();
-//
-//        //finds associated centroid, and centroid index.
-//        //Not necessary right now, but still need to check whether polygon creation in geom retained the order of centroids (most likely didn't).
-//        this.centroid=centroid;
-//        this.centroid_idx=newCentroidIndex;
-//        this.poly_vertices=cusVertices;
-//
-//        //creates necessary segments. Directly checks for overlap.
-//        makeSegments();
-//
-//        //struct.polygon creation without neighbouring polygons.
-//        this.polygon=Polygon.newBuilder().addAllSegmentIdxs(this.segment_index).build();
-//    }
     public CustomPolygon(List<CustomVertex> cusVertices, CustomVertex centroid, int newCentroidIndex, List<Integer> indexNeighbourCentroids){
         //initializes all of the required lists.
         this.segment_index=new ArrayList<>();
@@ -101,6 +82,8 @@ public class CustomPolygon extends MeshADT{
     public Polygon getPolygon(){
         return polygon;
     }
+
+
 
     protected void makeSegments(){
         for (int i=1; i<poly_vertices.size(); i++){
