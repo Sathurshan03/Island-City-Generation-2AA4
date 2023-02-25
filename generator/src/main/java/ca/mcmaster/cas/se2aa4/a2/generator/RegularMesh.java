@@ -16,11 +16,13 @@ public class RegularMesh extends MeshADT{
         centroids=new ArrayList<>();
         vertices = new ArrayList<>();
         segments=new ArrayList<>();
+        //Generates all centroids that Polygon will be built off.
         createCentroidVertices();
 
         //Create a polygon for each vertex
         for (int i=0; i<centroids.size(); i++){
             CustomPolygon polygon=new CustomPolygon(i, squareSize);
+            //Adds each polygon's vertices and segments to the overall list.
             vertices.addAll(polygon.getPolyVertices());
             segments.addAll(polygon.getPolySegments());
             addPolygon(polygon.getPolygon());

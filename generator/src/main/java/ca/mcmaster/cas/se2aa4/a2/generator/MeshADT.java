@@ -34,11 +34,12 @@ public abstract class MeshADT {
         this.numPolygons = numPolygons;
     }
 
+    //Returns list of polygon objects.
     public List<Polygon> getMesh(){
         return this.mesh;
     }
 
-
+    //Adds individual polygons to the mesh consisting of all polygons.
     public void addPolygon(Polygon polygon){
         this.mesh.add(polygon);
     }
@@ -47,7 +48,8 @@ public abstract class MeshADT {
     {
         vertices.add(vertex);
     }
-    
+
+    //Returns the Vertex equivalent List of CustomVertex.
     public List<Vertex> getVertices(){
         List<Vertex> reg_vertices=new ArrayList<>();
 
@@ -56,6 +58,7 @@ public abstract class MeshADT {
         }
         return reg_vertices;
     }
+
 
     public static List<CustomVertex> getAllCustomVertices(){
         return vertices;
@@ -70,7 +73,7 @@ public abstract class MeshADT {
     }
 
 
-
+    //Returns the Segment equivalent of the List of CustomSegments.
     public List<Segment> getSegments(){
         List<Segment> reg_segments=new ArrayList<>();
 
@@ -80,6 +83,7 @@ public abstract class MeshADT {
         return reg_segments;
     }
 
+    //Returns the Vertex equivalent of all Centroids.
     public List<Vertex> getCentroids(){
         List<Vertex> reg_centroids=new ArrayList<>();
 
