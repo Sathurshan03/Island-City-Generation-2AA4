@@ -45,6 +45,12 @@
 |  Feb 21, 2023  |  Sathurshan       |  Created a commandLineReader class that takes care of all the command line operations   |
 |  Feb 21, 2023  |  Sathurshan       |  Created test cases to check if consecutive segments are stored in polygons and if centroids are printed as red in debug mode   |
 |  Feb 21, 2023  |  Sathurshan       |  Created a new command line argument that allows the user to choose grid spacing for grid mesh |
+|  Feb 21, 2023  |  Nirmal       |  Restructured the IrregularMesh, CustomPolygon and GeoStruct to fix some technical debt.   |
+|  Feb 21, 2023  |  Nirmal       |  Merged Triangulation to main. Now polygons show neighbouring segments in debug mode.   |
 |  Feb 22, 2023  |  Sathurshan       |  Added pictures of examples outputs to ReadMe file  |
+|  Feb 22, 2023  |  Nirmal       |  Cleaned up the code more, and removed components that were commented out and not used.   |
 |  Feb 23, 2023  |  Sathurshan       |  Worked on the report for questions from task 3 and conclusion |
 |  Feb 23, 2023  |  Sathurshan       |  Created more test cases for vertex class and for checking all vertices are within the set width and height range |
+|  Feb 23, 2023  |  Nirmal       |   Focused on CustomPolygon to encapsulate class. Removed all dependency on MeshADT.  |
+|  Feb 23, 2023  |  Nirmal       |   Fixed classes to be more composition based, and removed unecessary inheritance.  |
+|  Feb 23-25, 2023  |  Nirmal       |   Commented classes in Generator  |
