@@ -23,8 +23,16 @@ public class RegularMesh extends MeshADT{
         for (int i=0; i<centroids.size(); i++){
             CustomPolygon polygon=new CustomPolygon(i, squareSize);
             //Adds each polygon's vertices and segments to the overall list.
-            vertices.addAll(polygon.getPolyVertices());
-            segments.addAll(polygon.getPolySegments());
+            for (CustomVertex v: polygon.getPolyVertices()){
+                if (!vertices.contains(v)){
+                    vertices.add(v);
+                }
+            }
+            for (CustomSegments s: polygon.getPolySegments()){
+                if (!segments.contains(s)){
+                    segments.add(s);
+                }
+            }
             addPolygon(polygon.getPolygon());
         }
     }

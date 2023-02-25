@@ -55,12 +55,21 @@ import java.util.Random;
                 centroids.add(currCentroids);
 
                 GeoStruct conversion = new GeoStruct(geo_polygon.get(i), newIndex, indexNeighbourCentroids);
-                vertices.addAll(conversion.getCurrVertices());
+                for (CustomVertex v: conversion.getCurrVertices()){
+                    if (!vertices.contains(v)){
+                        vertices.add(v);
+                    }
+                }
 
                 //Checks whether polygon has at least 3 sides.
                 if (conversion.isPolygon()) {
                     CustomPolygon poly = conversion.getCusPolygon();
                     segments.addAll(poly.getPolySegments());
+                    for (CustomSegments s: poly.getPolySegments()){
+                        if (!segments.contains(s)){
+                            segments.add(s);
+                        }
+                    }
                     addPolygon(poly.getPolygon());
                     newIndex++;
                 }

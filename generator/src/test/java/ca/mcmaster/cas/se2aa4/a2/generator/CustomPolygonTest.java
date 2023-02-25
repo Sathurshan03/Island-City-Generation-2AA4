@@ -42,4 +42,5 @@ public class CustomPolygonTest {
             assert(s1.getSegment().getV2Idx() == s2.getSegment().getV2Idx() || s1.getSegment().getV2Idx() == s2.getSegment().getV1Idx());
         }
     }
+
 }

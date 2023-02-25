@@ -13,6 +13,21 @@ import java.util.List;
 public class GeneratorTest {
 
     @Test
+    public void overlapCheck() throws IOException{
+        Generator generator = new Generator();
+        int numberPolygons = 100;
+        Structs.Mesh aMesh = generator.generate(numberPolygons, 500, 500, MeshType.GRID, 5, 20);
+
+        int num_vertices=(26*26)+(25*25);
+        int num_segments=(26*25)+(26*25)+(25*24)+(25*24);
+
+        int actual_vertices=aMesh.getVerticesCount();
+        int actual_segments=aMesh.getSegmentsCount();
+
+        assertTrue(num_vertices==actual_vertices && num_segments==actual_segments);
+    }
+
+    @Test
     public void meshIsNotNull() throws IOException {
         Generator generator = new Generator();
         int numberPolygons = 100;
