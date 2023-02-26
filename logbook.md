@@ -16,6 +16,11 @@
 |  Feb 9, 2023  |  Sathurshan       |  Vertices have different thickness (size) attributes   |   
 |  Feb 9, 2023  |  Sathurshan       |  Generate the centroid vertices   |   
 |  Feb 9, 2023  |  Sathurshan       |  Vertices arrays index by position and not by size   |  
+|  Feb 9, 2023  |  Mithun       |  Created a CustomSegments Class   |    
+|  Feb 10, 2023  |  Mithun       |  Segments have transparency attributes   |   
+|  Feb 10, 2023  |  Mithun       |  Segments have different thickness (size) attributes   |   
+|  Feb 10, 2023  |  Mithun       |  Segments have colour attribute for calculated colour   |
+|  Feb 10, 2023  |  Mithun       |  Resolved merge conflicts for segment branch   |
 |  Feb 10, 2023  |  Nirmal       |  Updated Polygon to use Custom Vertices   |
 |  Feb 10, 2023  |  Nirmal       |  Updated RegularMesh to create each indivdual polygon   |
 |  Feb 10, 2023  |  Nirmal       |  Updated graphics renderer to draw each individual polygon   |
@@ -23,6 +28,7 @@
 |  Feb 10, 2023  |  Sathurshan       |  Debug mode for visualizing polygons and centroids in a different color |  
 |  Feb 12, 2023  |  Nirmal       |  Modified Polygons to use CustomSegments   |
 |  Feb 12, 2023  |  Nirmal       |  Generated neighbouring relations for regular polygons   |
+|  Feb 13, 2023  |  Mithun       |  Created UML diagrams of generator and visualizer for task 2  |
 |  Feb 13, 2023  |  Sathurshan       |  Ensured precision model is in place |  
 |  Feb 13, 2023  |  Sathurshan       |  Answered question 2 and 3 of task 2 for the report |
 |  Feb 13, 2023  |  Sathurshan       |  Created release 2 on github |    
@@ -42,6 +48,9 @@
 |  Feb 17, 2023  |  Sathurshan       |  Appended documentations for automatic scripts |    
 |  Feb 17, 2023  |  Nirmal       |  Centering all centroids on mesh   |
 |  Feb 17, 2023  |  Nirmal       |  Perfectly resizes to width and height   |
+|  Feb 18, 2023  |  Mithun       |  Create delaunay triangulation using polygon centroids |    
+|  Feb 19, 2023  |  Mithun       |  Apply delaunay triangulation to check for polygon neighbours   |   
+|  Feb 21, 2023  |  Mithun       |  Create segments for the neighbourhood relationships  |
 |  Feb 21, 2023  |  Sathurshan       |  Created a commandLineReader class that takes care of all the command line operations   |
 |  Feb 21, 2023  |  Sathurshan       |  Created test cases to check if consecutive segments are stored in polygons and if centroids are printed as red in debug mode   |
 |  Feb 21, 2023  |  Sathurshan       |  Created a new command line argument that allows the user to choose grid spacing for grid mesh |
@@ -49,6 +58,8 @@
 |  Feb 21, 2023  |  Nirmal       |  Merged Triangulation to main. Now polygons show neighbouring segments in debug mode.   |
 |  Feb 22, 2023  |  Sathurshan       |  Added pictures of examples outputs to ReadMe file  |
 |  Feb 22, 2023  |  Nirmal       |  Cleaned up the code more, and removed components that were commented out and not used.   |
+|  Feb 23, 2023  |  Mithun       |  Created UML diagrams of generator and visualizer for final task  |
+|  Feb 23, 2023  |  Mithun       |  Gave justification for our class diagrams and how it aligned with our code design  |
 |  Feb 23, 2023  |  Sathurshan       |  Worked on the report for questions from task 3 and conclusion |
 |  Feb 23, 2023  |  Sathurshan       |  Created more test cases for vertex class and for checking all vertices are within the set width and height range |
 |  Feb 23, 2023  |  Nirmal       |   Focused on CustomPolygon to encapsulate class. Removed all dependency on MeshADT.  |
