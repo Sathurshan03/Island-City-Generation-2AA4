@@ -111,7 +111,7 @@ Pending (P), Started (S), Blocked (B), Done (D)
 | F06   |  Segment colours have transparency attributes |   Mithun   |   2/10/2023    |  2/10/2023   |    D    |
 | F07   |  Show vertices with different thickness |  Sathurshan    |   02/09/2023    |   02/09/2023  |    D    |
 | F08   |  Show segments with different thickness |  Mithun    |   2/10/2023    |  2/10/2023  |    D    |
-| F09   |  Show segments with calculated colours |   Mithun   |       |     |        |
+| F09   |  Show segments with calculated colours |   Mithun   |  2/10/2023  |  2/10/2023  |    D    |
 | F10   |  Generate centroid vertex of the polygons |  Sathurshan    |  02/09/2023     |   02/09/2023  |  D      |
 | F11   |  Generate neighbouring relations of the polygons |  Nirmal    |   02/12/2023    |  02/12/2023   |    D    |
 | F12   |  Provide debug mode |   Sathurshan   |   02/08/2023    |  02/08/2023   |    D    |
@@ -121,11 +121,13 @@ Pending (P), Started (S), Blocked (B), Done (D)
 | F16   |  Crop mesh to expected size |   Nirmal   |    02/15/2023   |  02/17/2023   |    D    |
 | F17   |  Polygons randomly placed on meshed |  Nirmal   |   02/15/2023    |  02/15/2023   |    D    |
 | F18   |  Generate irregular polygons |  Nirmal  |    02/15/2023   |  02/15/2023   |    D    |
-| F19   |  Choose type of mesh from command line | Sathurshan   |   02/15/2023    |  02/15/2023   |    D    |
-| F20   |  Choose number of polygons from command line |  Sathurshan  |   02/15/2023    |   02/15/2023  |   D     |
-| F21   |  Choose relaxation level from command line | Sathurshan   |  02/17/2023     |   02/17/2023  |    D    |
-| F22   |  Choose width and height from command line | Sathurshan   |   02/15/2023    |  02/15/2023   |    D    |
-| F23   |  Command line have -h (help) option |  Sathurshan  |   02/15/2023    |  02/15/2023   |    D    |
-| F24   |  Choose grid box size for gird base mesh from command line |  Sathurshan  |   02/21/2023    |  02/21/2023   |    D    |
+| F19   |  Determine neighbourhood relationships using delaunay triangulation | Mithun   |   02/18/2023    |  02/21/2023   |    D    |
+| F20   |  Generate neighbouring segments for each polygon | Mithun   |   02/18/2023    |  02/21/2023   |    D    |
+| F21   |  Choose type of mesh from command line | Sathurshan   |   02/15/2023    |  02/15/2023   |    D    |
+| F22   |  Choose number of polygons from command line |  Sathurshan  |   02/15/2023    |   02/15/2023  |   D     |
+| F23   |  Choose relaxation level from command line | Sathurshan   |  02/17/2023     |   02/17/2023  |    D    |
+| F24   |  Choose width and height from command line | Sathurshan   |   02/15/2023    |  02/15/2023   |    D    |
+| F25   |  Command line have -h (help) option |  Sathurshan  |   02/15/2023    |  02/15/2023   |    D    |
+| F26   |  Choose grid box size for gird base mesh from command line |  Sathurshan  |   02/21/2023    |  02/21/2023   |    D    |
 
 
