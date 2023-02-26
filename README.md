@@ -6,8 +6,6 @@
 
 ## How to run the product
 
-_This section needs to be edited to reflect how the user can interact with thefeature released in your project_
-
 ### Installation instructions
 
 This product is handled by Maven, as a multi-module project. 
@@ -117,7 +115,7 @@ Pending (P), Started (S), Blocked (B), Done (D)
 | F12   |  Provide debug mode |   Sathurshan   |   02/08/2023    |  02/08/2023   |    D    |
 | F13   |  debug mode: polygon in black |  Sathurshan    |   02/11/2023    |  02/11/2023   |     D   |
 | F14   |  debug mode: centroid in red |  Sathurshan    |  02/11/2023     |  02/11/2023   |    D    |
-| F15   |  debug mode: neighbourhood relations in light grey |  Mithun    |       |     |        |
+| F15   |  debug mode: neighbourhood relations in light grey |  Mithun    |  02/20/2023     | 02/25/2023    |  D      |
 | F16   |  Crop mesh to expected size |   Nirmal   |    02/15/2023   |  02/17/2023   |    D    |
 | F17   |  Polygons randomly placed on meshed |  Nirmal   |   02/15/2023    |  02/15/2023   |    D    |
 | F18   |  Generate irregular polygons |  Nirmal  |    02/15/2023   |  02/15/2023   |    D    |
