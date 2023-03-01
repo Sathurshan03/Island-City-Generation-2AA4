@@ -19,7 +19,7 @@ public class CustomVertexTest {
     @Test
     public void CentroidColour(){
         RegularMesh mesh = new RegularMesh(40, 40, 2, 20);
-        for(CustomVertex centroid: mesh.centroids){
+        for(CustomVertex centroid: mesh.getCustomCentroids()){
             assertEquals((new Color(254,0,0,254)).getRGB(), centroid.getColour().getRGB());
         }
     }
