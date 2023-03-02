@@ -14,11 +14,8 @@ import java.awt.geom.Ellipse2D;
 import java.awt.geom.Line2D;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.locationtech.jts.algorithm.ConvexHull;
 import org.locationtech.jts.geom.Coordinate;
-import org.locationtech.jts.geom.Geometry;
-import org.locationtech.jts.geom.GeometryFactory;
+
 
 public class GraphicRenderer {
     public void render(Mesh aMesh, Graphics2D canvas, Boolean debug) {
@@ -82,10 +79,11 @@ public class GraphicRenderer {
                     }
                     
                     Color old = canvas.getColor();
-
                     canvas.setColor(segmentVisual.getColor());
+                    
                     Line2D line = segmentVisual.getLine(x1, y1, x2, y2);
 
+                    canvas.setStroke(new BasicStroke(segmentVisual.getThickness()));
                     canvas.draw(line);
                     canvas.setColor(old);
                     segmentVisual.draw();
@@ -165,28 +163,13 @@ public class GraphicRenderer {
                 coordinates[i] = new Coordinate(v.getX(), v.getY());
             }
 
-            System.out.println("YEEEHAAA");
-            for (Coordinate kl: coordinates){
-                System.out.println(kl.getX() + " " + kl.getY());
-            }
 
-            // //Apply the convex Hull 
-            // GeometryFactory geometryFactory = new GeometryFactory();
-            // ConvexHull convexHull = new ConvexHull(coordinates, geometryFactory);
-            // Geometry shape = convexHull.getConvexHull();
-            // coordinates = shape.getCoordinates();
-
-            System.out.println("BREAK");
 
             java.awt.geom.Path2D.Double poly = new java.awt.geom.Path2D.Double();
             Coordinate coordinate = coordinates[0];
-            System.out.println(coordinates[0].getX() + " " + coordinates[0].getY());
-            System.out.println("Yo");
-            System.out.println(coordinates.length -1);
             poly.moveTo(coordinate.getX(), coordinate.getY());
             for (int i = 1; i < coordinates.length; i++){
                 coordinate = coordinates[i];
-                System.out.println(i + " " + coordinate.getX() + " " + coordinate.getY());
                 poly.lineTo(coordinate.getX(), coordinate.getY());
             }
             poly.closePath();
