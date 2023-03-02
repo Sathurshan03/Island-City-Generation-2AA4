@@ -108,4 +108,24 @@ abstract public class GeneratePolygon {
         this.poly_vertices = orderedVertices;
     }
 
+    public List<CustomSegments> getAllSegments(){
+        return this.poly_segment;
+    }
+
+    public List<CustomVertex> getAllVertices(){
+        return this.poly_vertices;
+    }
+
+    public List<Integer> getAllNeighbours(){
+        return this.neighbours;
+    }
+
+    public CustomVertex getCentroid(){
+        return this.centroid;
+    }
+
+    public List<Integer> getAllSegmentIdx(){
+        return this.segment_index;
+    }
+
 }
