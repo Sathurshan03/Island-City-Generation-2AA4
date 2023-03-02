@@ -38,7 +38,7 @@ import java.util.Random;
             List<Polygon> geo_polygon = VoronoiGen(collection_centroid);
 
             //Resizes the polygons to stay within boundary.
-            keepInsideMesh(geo_polygon);
+            reducePointRangeSize(geo_polygon);
 
             //Applies Llyod relaxation to polygons.
             geo_polygon = Relaxation(geo_polygon, relationLevel);
@@ -99,7 +99,7 @@ import java.util.Random;
 
                 polygons = VoronoiGen(collection_centroid);
 
-                keepInsideMesh(polygons);
+                reducePointRangeSize(polygons);
             }
             return polygons;
 
@@ -149,7 +149,8 @@ import java.util.Random;
         }
 
 
-        public void keepInsideMesh(List<Polygon> polygons) {
+        public void reducePointRangeSize(List<Polygon> polygons) {
+            //Bring the points closer to the canvas size to increase performance 
             for (Polygon p : polygons) {
                 //go through all connecting vertex and resize if goes outside width or height.
                 for (Coordinate pi : p.getCoordinates()) {
