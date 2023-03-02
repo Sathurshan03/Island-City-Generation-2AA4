@@ -13,8 +13,8 @@ public abstract class MeshADT {
 
     public List<Polygon> mesh;
     protected static int precision;
-    protected int height;
-    protected int width;
+    protected static int height;
+    protected static int width;
     protected static List<CustomVertex> vertices;
     protected int numPolygons;
     protected static List<Coordinate> collection_centroid;

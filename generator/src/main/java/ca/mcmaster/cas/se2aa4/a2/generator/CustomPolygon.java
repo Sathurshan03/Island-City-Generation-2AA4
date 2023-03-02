@@ -104,6 +104,5 @@ public class CustomPolygon{
     public Polygon getPolygon(){
         return polygon;
     }
-
 }
 

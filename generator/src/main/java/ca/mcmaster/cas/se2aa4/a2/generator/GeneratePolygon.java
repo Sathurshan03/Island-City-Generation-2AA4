@@ -11,21 +11,30 @@ import java.util.List;
 
 abstract public class GeneratePolygon {
 
-    protected List<CustomVertex> centroids=MeshADT.getCustomCentroids();
-    protected List<CustomVertex> vertices=MeshADT.getAllCustomVertices();
-    protected List<CustomSegments> segments=MeshADT.getCustomSegments();
+    protected List<CustomVertex> centroids;
+    protected List<CustomVertex> vertices;
+    protected List<CustomSegments> segments;
+    private int precision;
 
-    protected List<Integer> neighbours;
 
     protected CustomVertex centroid;
 
-    Integer centroid_idx;
+    protected Integer centroid_idx;
 
-    private int precision=MeshADT.getPrecision();
     protected List<CustomVertex> poly_vertices;
     protected List<CustomSegments> poly_segment;
     protected List<Integer> segment_index;
+    protected List<Integer> neighbours;
 
+
+    public GeneratePolygon(){
+        this.precision=MeshADT.getPrecision();
+        this.centroids=MeshADT.getCustomCentroids();
+        this.vertices=MeshADT.getAllCustomVertices();
+        this.segments=MeshADT.getCustomSegments();
+    }
+
+    abstract CustomSegments makeSegment(int v1, int v2);
 
 
     protected List<CustomSegments> makeSegments(List<CustomVertex> all_vertices){
@@ -38,9 +47,6 @@ abstract public class GeneratePolygon {
         curr_segments.add(s);
         return curr_segments;
     }
-
-
-    abstract CustomSegments makeSegment(int v1, int v2);
 
     public List<Integer> getSegmentIndex(List<CustomSegments> partSegments){
         List<Integer> indexes=new ArrayList<>();
@@ -58,10 +64,10 @@ abstract public class GeneratePolygon {
                 return c;
             }
         }
-
         vertices.add(v);
         return v;
     }
+
 
     protected void convexHull(){
         //orders the vertices in order so that the creation of segments will be in order
@@ -91,6 +97,7 @@ abstract public class GeneratePolygon {
                 double pointX = point.getX();
                 double pointY = point.getY();
                 if (x == pointX && y == pointY && !orderedVertices.contains(point)){
+                    point.inMesh();
                     orderedVertices.add(point);
                     break;
                 }

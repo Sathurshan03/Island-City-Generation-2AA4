@@ -6,27 +6,41 @@ import java.awt.geom.Ellipse2D;
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Vertex;
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Property;
 
-public class VertexVisualizer {
+public class VertexVisualizer implements colourExtraction{
     private double X;
     private double Y;
+    private double XCenter;
+    private double YCenter;
     private Boolean drawn;
-    private Vertex vertex;
-    private boolean debug;
     private boolean isCentroid;
+    private double thickness;
+    ExtractVertexInfo vertexInfo;
+    Color vertexColor;
 
     public VertexVisualizer (Vertex vertex, Boolean debug, Boolean isCentroid)
     {
-        this.X = vertex.getX();
-        this.Y = vertex.getY();
         this.drawn = false;
-        this.vertex = vertex;
-        this.debug = debug;
         this.isCentroid = isCentroid;
+        this.vertexInfo = new ExtractVertexInfo(vertex);
+        this.thickness = vertexInfo.getThickness();
+        this.X = vertexInfo.getX();
+        this.Y = vertexInfo.getY();
+        this.XCenter = vertexInfo.getX() - (thickness/2.0d);
+        this.YCenter = vertexInfo.getY()- (thickness/2.0d);
+
+        if (debug && !isCentroid)
+        {
+            this.vertexColor = Color.BLACK;
+        }
+        else{
+            this.vertexColor = extractColor(vertex.getPropertiesList());
+        }
     }
 
     public boolean isCentroid(){
             return isCentroid;
-    };
+    }
+
     public double getX()
     {
         return X;
@@ -37,50 +51,32 @@ public class VertexVisualizer {
         return Y;
     }
 
+    public Color getColor(){
+        return vertexColor;
+    }
+
     public boolean isDrawn()
     {
         return drawn;
     }
 
-    public Color getColor(){
-        //A vertex is black if it is not a centroid and is in debug mode
-        if (debug && !isCentroid)
-        {
-            return Color.BLACK;
-        }
-        return extractVertexColor(vertex.getPropertiesList());
-    }
-
-    private double getThickness(){
-        return extractThickness(vertex.getPropertiesList());
-    }
-
-    public void draw(){
+    public void drawn(){
         drawn = true; 
     }
 
     public Ellipse2D getPoint(){
-        //Get the position of the vertex to draw
-        double thickness = getThickness();
-
-        double centre_x = X - (thickness/2.0d);
-        double centre_y = Y - (thickness/2.0d);
-
-        Ellipse2D point = new Ellipse2D.Double(centre_x, centre_y, thickness, thickness);
+        Ellipse2D point = new Ellipse2D.Double(XCenter, YCenter, thickness, thickness);
 
         return point;
     }
 
-
-    private Color extractVertexColor(List<Property> properties) {
+    public Color extractColor(List<Property> properties) {
         //Get the colour for the vertex 
-
         String val = null;
 
         //Get the colours properties
         for(Property p: properties) {
             if (p.getKey().equals("rgb_color")) {
-                System.out.println(p.getValue());
                 val = p.getValue();
             }
         }
@@ -97,19 +93,4 @@ public class VertexVisualizer {
 
         return new Color(red, green, blue, transparency);
     }
-
-    private double extractThickness(List<Property> properties) {
-        //Get the "thickness" of the vertex (size)
-        String val = null;
-        for(Property p: properties) {
-            if (p.getKey().equals("thickness")) {
-                val = p.getValue();
-            }
-        }
-        if (val == null)
-            return 0;
-        return Double.parseDouble(val);
-    }
-
-
 }

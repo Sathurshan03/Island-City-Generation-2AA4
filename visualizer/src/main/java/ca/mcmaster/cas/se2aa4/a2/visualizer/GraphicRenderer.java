@@ -69,16 +69,18 @@ public class GraphicRenderer {
                 double x2 = vertexVisualsList.get(v2).getX();
                 double y2 = vertexVisualsList.get(v2).getY();
 
-                if (!pointsId.contains(v1)){
-                    pointsId.add(v1);
-                }
-                if (!pointsId.contains(v2)){
-                    pointsId.add(v2);
-                }
+
 
 
                 //Only draw the segment if it had not been drawn
                 if (!segmentVisual.isDrawn()){
+                    if(!pointsId.contains(v1)){
+                        pointsId.add(v1);
+                    }
+                    else{
+                        pointsId.add(v2);
+                    }
+                    
                     Color old = canvas.getColor();
 
                     canvas.setColor(segmentVisual.getColor());
@@ -87,6 +89,14 @@ public class GraphicRenderer {
                     canvas.draw(line);
                     canvas.setColor(old);
                     segmentVisual.draw();
+                }
+                else{
+                    if(!pointsId.contains(v2)){
+                        pointsId.add(v2);
+                    }
+                    else{
+                        pointsId.add(v1);
+                    }
                 }
             }
 
@@ -155,19 +165,28 @@ public class GraphicRenderer {
                 coordinates[i] = new Coordinate(v.getX(), v.getY());
             }
 
-            //Apply the convex Hull 
-            GeometryFactory geometryFactory = new GeometryFactory();
-            ConvexHull convexHull = new ConvexHull(coordinates, geometryFactory);
-            Geometry shape = convexHull.getConvexHull();
-            coordinates = shape.getCoordinates();
+            System.out.println("YEEEHAAA");
+            for (Coordinate kl: coordinates){
+                System.out.println(kl.getX() + " " + kl.getY());
+            }
 
-            
+            // //Apply the convex Hull 
+            // GeometryFactory geometryFactory = new GeometryFactory();
+            // ConvexHull convexHull = new ConvexHull(coordinates, geometryFactory);
+            // Geometry shape = convexHull.getConvexHull();
+            // coordinates = shape.getCoordinates();
+
+            System.out.println("BREAK");
 
             java.awt.geom.Path2D.Double poly = new java.awt.geom.Path2D.Double();
             Coordinate coordinate = coordinates[0];
+            System.out.println(coordinates[0].getX() + " " + coordinates[0].getY());
+            System.out.println("Yo");
+            System.out.println(coordinates.length -1);
             poly.moveTo(coordinate.getX(), coordinate.getY());
-            for (int i = 1; i < coordinates.length -1; i++){
+            for (int i = 1; i < coordinates.length; i++){
                 coordinate = coordinates[i];
+                System.out.println(i + " " + coordinate.getX() + " " + coordinate.getY());
                 poly.lineTo(coordinate.getX(), coordinate.getY());
             }
             poly.closePath();
@@ -199,7 +218,7 @@ public class GraphicRenderer {
 
                 canvas.fill(point);
                 canvas.setColor(old);
-                vertexVisual.draw();
+                vertexVisual.drawn();
             }
         }
     }
