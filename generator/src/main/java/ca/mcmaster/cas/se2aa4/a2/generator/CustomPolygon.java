@@ -4,6 +4,7 @@ import ca.mcmaster.cas.se2aa4.a2.io.Structs.Polygon;
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Property;
 
 import java.util.List;
+import java.util.Random;
 
 
 public class CustomPolygon{
@@ -70,6 +71,14 @@ public class CustomPolygon{
 
     //Creates and returns copy of polygon in type struct.Polygon.
     private Polygon makePolygon(){
+        Random bag = new Random();
+        int red = bag.nextInt(255);
+        int green = bag.nextInt(255);
+        int blue = bag.nextInt(255);
+        int transparency = bag.nextInt(155) + 100;
+        String colorCode = red + "," + green + "," + blue + "," + transparency;
+        Property color = Property.newBuilder().setKey("rgb_color").setValue(colorCode).build();
+        Property colourProperty=Property.newBuilder().setKey("background_color").setValue(colorCode).build();
         return Polygon.newBuilder().addAllSegmentIdxs(this.segment_index).addAllNeighborIdxs(this.neighbours).addProperties(0,colourProperty).build();
     }
 

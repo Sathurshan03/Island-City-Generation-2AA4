@@ -1,10 +1,5 @@
 package ca.mcmaster.cas.se2aa4.a2.generator;
 
-import org.locationtech.jts.algorithm.ConvexHull;
-import org.locationtech.jts.geom.Coordinate;
-import org.locationtech.jts.geom.Geometry;
-import org.locationtech.jts.geom.GeometryFactory;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -65,46 +60,6 @@ abstract public class GeneratePolygon {
         }
         vertices.add(v);
         return v;
-    }
-
-
-    protected void convexHull(){
-        //orders the vertices in order so that the creation of segments will be in order
-        List<CustomVertex> orderedVertices = new ArrayList<>();
-        GeometryFactory geometryFactory = new GeometryFactory();
-
-        //Create a Coordinate array
-        Coordinate coordinate [] = new Coordinate[this.poly_vertices.size()];
-
-        for (int i = 0; i < coordinate.length; i++){
-            CustomVertex vertex = poly_vertices.get(i);
-            coordinate[i] = new Coordinate(vertex.getX(), vertex.getY());
-        }
-
-        //Compute the Convex Hull
-        ConvexHull convexHull = new ConvexHull(coordinate, geometryFactory);
-        Geometry polygon = convexHull.getConvexHull();
-        coordinate = polygon.getCoordinates();
-
-        //refer the coordinates back to CustomVertex
-        for (Coordinate coord: coordinate){
-            double x = coord.getX();
-            double y = coord.getY();
-
-            //Find the corresponding CustomVertex
-            for (CustomVertex point: vertices){
-                double pointX = point.getX();
-                double pointY = point.getY();
-                if (x == pointX && y == pointY && !orderedVertices.contains(point)){
-                    point.inMesh();
-                    orderedVertices.add(point);
-                    break;
-                }
-            }
-        }
-
-        //update the polygon vertex (vertices are now in order)
-        this.poly_vertices = orderedVertices;
     }
 
     public List<CustomSegments> getAllSegments(){
