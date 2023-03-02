@@ -7,11 +7,8 @@ import java.awt.*;
 
 public class CustomSegments {
 
-    private static final String THICKNESS = "3";
     private int v1_idx;
     private int v2_idx;
-    private CustomVertex v1;
-    private CustomVertex v2;
     private Property colourProp;
     private Property thicknessProp;
     //stores the struct.segment equivalent.
@@ -24,8 +21,6 @@ public class CustomSegments {
     public CustomSegments(int v1_idx, int v2_idx, CustomVertex v1, CustomVertex v2, String thickness, Integer centroid) {
         this.v1_idx = v1_idx;
         this.v2_idx = v2_idx;
-        this.v1 = v1;
-        this.v2 = v2;
         this.colourProp = calcColor(v1, v2);
         this.thicknessProp = Property.newBuilder().setKey("thickness").setValue(thickness).build();
         this.segment = Segment.newBuilder().setV1Idx(v1_idx).setV2Idx(v2_idx).addProperties(0, colourProp)
@@ -37,8 +32,6 @@ public class CustomSegments {
     public CustomSegments(int v1_idx, int v2_idx, CustomVertex v1, CustomVertex v2, String thickness) {
         this.v1_idx = v1_idx;
         this.v2_idx = v2_idx;
-        this.v1 = v1;
-        this.v2 = v2;
         this.colourProp = setColour(Color.GRAY);
         this.thicknessProp = Property.newBuilder().setKey("thickness").setValue(thickness).build();
         this.segment = Segment.newBuilder().setV1Idx(v1_idx).setV2Idx(v2_idx).addProperties(0, colourProp)
@@ -61,11 +54,6 @@ public class CustomSegments {
         String colourCode = colour.getRed() + "," + colour.getBlue() + "," + colour.getGreen() + "," + colour.getAlpha();
         return Property.newBuilder().setKey("rgb_color").setValue(colourCode).build();
     }
-
-    private String getThickness() {
-        return thicknessProp.getValue();
-    }
-
 
     public Segment getSegment() {
         return segment;
