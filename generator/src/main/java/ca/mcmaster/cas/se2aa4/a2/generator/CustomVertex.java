@@ -12,6 +12,8 @@ public class CustomVertex {
     private Property colourProperty;
     private Vertex vertex;
     private Property thickness;
+    private int height = MeshADT.height;
+    private int width = MeshADT.width;
 
 
     //Constructor for regular vertices.
@@ -45,6 +47,19 @@ public class CustomVertex {
     public double getY()
     {
         return y;
+    }
+
+    public void inMesh(){
+        if (x > width) {
+            x = width;
+        } else if (x < 0) {
+            x = 0;
+        }
+        if (y > height) {
+            y = height;
+        } else if (y < 0) {
+            y = 0;
+        }
     }
 
 

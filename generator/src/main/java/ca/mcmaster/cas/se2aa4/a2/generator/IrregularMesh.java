@@ -153,13 +153,13 @@ import java.util.Random;
             for (Polygon p : polygons) {
                 //go through all connecting vertex and resize if goes outside width or height.
                 for (Coordinate pi : p.getCoordinates()) {
-                    if (pi.getX() > width) {
-                        pi.setX(width);
+                    if (pi.getX() > 1.01*width) {
+                        pi.setX(1.01*width);
                     } else if (pi.getX() < 0) {
                         pi.setX(0);
                     }
-                    if (pi.getY() > height) {
-                        pi.setY(height);
+                    if (pi.getY() > 1.01*height) {
+                        pi.setY(1.01*height);
                     } else if (pi.getY() < 0) {
                         pi.setY(0);
                     }
