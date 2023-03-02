@@ -199,7 +199,7 @@ public class GraphicRenderer {
 
                 canvas.fill(point);
                 canvas.setColor(old);
-                vertexVisual.draw();
+                vertexVisual.drawn();
             }
         }
     }
