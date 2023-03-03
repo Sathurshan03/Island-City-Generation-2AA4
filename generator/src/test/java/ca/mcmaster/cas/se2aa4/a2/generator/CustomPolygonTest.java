@@ -1,4 +1,9 @@
 package ca.mcmaster.cas.se2aa4.a2.generator;
+import ca.mcmaster.cas.se2aa4.a2.generator.Mesh.IrregularMesh;
+import ca.mcmaster.cas.se2aa4.a2.generator.Mesh.RegularMesh;
+import ca.mcmaster.cas.se2aa4.a2.generator.Polygon.CustomPolygon;
+import ca.mcmaster.cas.se2aa4.a2.generator.Polygon.GeneratePolygon;
+import ca.mcmaster.cas.se2aa4.a2.generator.Polygon.RegularPolygon;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

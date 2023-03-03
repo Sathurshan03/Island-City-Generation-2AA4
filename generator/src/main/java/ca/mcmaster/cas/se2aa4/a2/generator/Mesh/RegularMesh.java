@@ -1,9 +1,14 @@
-package ca.mcmaster.cas.se2aa4.a2.generator;
+package ca.mcmaster.cas.se2aa4.a2.generator.Mesh;
+
+import ca.mcmaster.cas.se2aa4.a2.generator.CustomVertex;
+import ca.mcmaster.cas.se2aa4.a2.generator.Polygon.CustomPolygon;
+import ca.mcmaster.cas.se2aa4.a2.generator.Polygon.GeneratePolygon;
+import ca.mcmaster.cas.se2aa4.a2.generator.Polygon.RegularPolygon;
 
 import java.awt.Color;
 import java.util.ArrayList;
 
-public class RegularMesh extends MeshADT{
+public class RegularMesh extends MeshADT {
     int squareSize;
     CustomVertex[][] centroidVertice;
     CustomVertex[][] connectingVertice;

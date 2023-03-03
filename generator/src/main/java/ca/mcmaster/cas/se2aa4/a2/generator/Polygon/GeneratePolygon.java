@@ -1,4 +1,8 @@
-package ca.mcmaster.cas.se2aa4.a2.generator;
+package ca.mcmaster.cas.se2aa4.a2.generator.Polygon;
+
+import ca.mcmaster.cas.se2aa4.a2.generator.CustomSegments;
+import ca.mcmaster.cas.se2aa4.a2.generator.CustomVertex;
+import ca.mcmaster.cas.se2aa4.a2.generator.Mesh.MeshADT;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +26,7 @@ abstract public class GeneratePolygon {
 
 
     public GeneratePolygon(){
-        this.precision=MeshADT.getPrecision();
+        this.precision= MeshADT.getPrecision();
         this.centroids=MeshADT.getCustomCentroids();
         this.vertices=MeshADT.getAllCustomVertices();
         this.segments=MeshADT.getCustomSegments();

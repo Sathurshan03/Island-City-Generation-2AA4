@@ -1,5 +1,7 @@
-package ca.mcmaster.cas.se2aa4.a2.generator;
+package ca.mcmaster.cas.se2aa4.a2.generator.Polygon;
 
+import ca.mcmaster.cas.se2aa4.a2.generator.CustomVertex;
+import ca.mcmaster.cas.se2aa4.a2.generator.Mesh.MeshADT;
 import org.locationtech.jts.geom.Coordinate;
 import org.locationtech.jts.geom.Polygon;
 
@@ -18,7 +20,7 @@ public class GeoStruct {
     private boolean isValid;
 
     //Gets all vertices and precision value from MeshADT.
-    private List<CustomVertex> vertices=MeshADT.getAllCustomVertices();
+    private List<CustomVertex> vertices= MeshADT.getAllCustomVertices();
     private int precision=MeshADT.getPrecision();
 
 

@@ -1,5 +1,8 @@
 package ca.mcmaster.cas.se2aa4.a2.generator;
 
+import ca.mcmaster.cas.se2aa4.a2.generator.Mesh.IrregularMesh;
+import ca.mcmaster.cas.se2aa4.a2.generator.Mesh.MeshType;
+import ca.mcmaster.cas.se2aa4.a2.generator.Mesh.RegularMesh;
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Mesh;
 
 import java.io.IOException;
@@ -11,7 +14,7 @@ public class Generator {
 
         if (meshType.equals(MeshType.GRID)){
             //GRID based mesh
-            RegularMesh mesh = new RegularMesh(width, height, 2, gridSpacing); 
+            RegularMesh mesh = new RegularMesh(width, height, 2, gridSpacing);
             return Mesh.newBuilder().addAllPolygons(mesh.getMesh()).addAllSegments(mesh.getSegments()).addAllVertices(mesh.getCentroids()).addAllVertices(mesh.getVertices()).build();
         }
         else if (meshType.equals(MeshType.IRREGULAR)){

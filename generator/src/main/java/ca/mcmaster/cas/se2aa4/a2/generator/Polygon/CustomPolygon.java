@@ -1,5 +1,7 @@
-package ca.mcmaster.cas.se2aa4.a2.generator;
+package ca.mcmaster.cas.se2aa4.a2.generator.Polygon;
 
+import ca.mcmaster.cas.se2aa4.a2.generator.CustomSegments;
+import ca.mcmaster.cas.se2aa4.a2.generator.CustomVertex;
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Polygon;
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Property;
 
