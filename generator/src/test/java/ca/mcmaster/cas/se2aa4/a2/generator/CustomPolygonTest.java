@@ -1,4 +1,9 @@
 package ca.mcmaster.cas.se2aa4.a2.generator;
+import ca.mcmaster.cas.se2aa4.a2.generator.Mesh.IrregularMesh;
+import ca.mcmaster.cas.se2aa4.a2.generator.Mesh.RegularMesh;
+import ca.mcmaster.cas.se2aa4.a2.generator.Polygon.CustomPolygon;
+import ca.mcmaster.cas.se2aa4.a2.generator.Polygon.GeneratePolygon;
+import ca.mcmaster.cas.se2aa4.a2.generator.Polygon.RegularPolygon;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -11,7 +16,8 @@ public class CustomPolygonTest {
     public void consecutiveSegments() {
         //tests that the segments are stores in consecutive order
         RegularMesh mesh = new RegularMesh(40, 40, 2, 20);
-        CustomPolygon polygon =new CustomPolygon(0,  20);
+        GeneratePolygon gen_poly=new RegularPolygon(0, 20);
+        CustomPolygon polygon =new CustomPolygon(gen_poly);
 
         List<CustomSegments> segments = polygon.getPolySegments();
 
@@ -32,7 +38,8 @@ public class CustomPolygonTest {
         cusVertices.add(new CustomVertex(2, 3, 2));
         cusVertices.add(new CustomVertex(5, 10, 2));
         cusVertices.add(new CustomVertex(4, 8, 2));
-        CustomPolygon polygon =new CustomPolygon(0, 20);
+        GeneratePolygon gen_poly=new RegularPolygon(0, 20);
+        CustomPolygon polygon =new CustomPolygon(gen_poly);
 
         List<CustomSegments> segments = polygon.getPolySegments();
 

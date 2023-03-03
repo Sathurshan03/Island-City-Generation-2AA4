@@ -1,4 +1,5 @@
 package ca.mcmaster.cas.se2aa4.a2.generator;
+import ca.mcmaster.cas.se2aa4.a2.generator.Mesh.RegularMesh;
 import org.junit.jupiter.api.Test;
 
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Property;

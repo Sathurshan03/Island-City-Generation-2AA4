@@ -1,4 +1,5 @@
 package ca.mcmaster.cas.se2aa4.a2.generator;
+import ca.mcmaster.cas.se2aa4.a2.generator.Mesh.MeshADT;
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Property;
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Vertex;
 import java.util.*;
@@ -13,8 +14,8 @@ public class CustomVertex {
     private Property vertexType;
     private Vertex vertex;
     private Property thickness;
-    private int height = MeshADT.height;
-    private int width = MeshADT.width;
+    private int height = MeshADT.getHeight();
+    private int width = MeshADT.getWidth();
 
 
     //Constructor for regular vertices.

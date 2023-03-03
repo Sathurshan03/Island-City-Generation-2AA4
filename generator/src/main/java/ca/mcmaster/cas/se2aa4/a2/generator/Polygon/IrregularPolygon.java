@@ -1,9 +1,12 @@
-package ca.mcmaster.cas.se2aa4.a2.generator;
+package ca.mcmaster.cas.se2aa4.a2.generator.Polygon;
+
+import ca.mcmaster.cas.se2aa4.a2.generator.CustomSegments;
+import ca.mcmaster.cas.se2aa4.a2.generator.CustomVertex;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class IrregularPolygon extends GeneratePolygon{
+public class IrregularPolygon extends GeneratePolygon {
 
     public IrregularPolygon(List<CustomVertex> cusVertices, int newCentroidIndex, List<Integer> indexNeighbourCentroids){
         this.centroid=centroids.get(newCentroidIndex);

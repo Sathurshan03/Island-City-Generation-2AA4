@@ -1,5 +1,8 @@
-package ca.mcmaster.cas.se2aa4.a2.generator;
+package ca.mcmaster.cas.se2aa4.a2.generator.Mesh;
 
+import ca.mcmaster.cas.se2aa4.a2.generator.CustomVertex;
+import ca.mcmaster.cas.se2aa4.a2.generator.Polygon.GeoStruct;
+import ca.mcmaster.cas.se2aa4.a2.generator.Polygon.CustomPolygon;
 import org.locationtech.jts.geom.*;
 import org.locationtech.jts.geom.Point;
 import org.locationtech.jts.geom.Polygon;

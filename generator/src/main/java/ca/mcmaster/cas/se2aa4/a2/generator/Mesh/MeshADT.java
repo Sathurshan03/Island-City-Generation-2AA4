@@ -1,8 +1,10 @@
-package ca.mcmaster.cas.se2aa4.a2.generator;
+package ca.mcmaster.cas.se2aa4.a2.generator.Mesh;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import ca.mcmaster.cas.se2aa4.a2.generator.CustomSegments;
+import ca.mcmaster.cas.se2aa4.a2.generator.CustomVertex;
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Vertex;
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Polygon;
 
@@ -98,12 +100,12 @@ public abstract class MeshADT {
         return precision;
     }
 
-    public int getWidth()
+    public static int getWidth()
     {
         return width;
     }
     
-    public int getHeight(){
+    public static int getHeight(){
         return height;
     }
 }
