@@ -11,6 +11,7 @@ public class CustomSegments {
     private int v2_idx;
     private Property colourProp;
     private Property thicknessProp;
+    Property segmentType;
     //stores the struct.segment equivalent.
     private Segment segment;
     //stores the centroid that segment is associated with (if not a connecting segment)
@@ -23,8 +24,9 @@ public class CustomSegments {
         this.v2_idx = v2_idx;
         this.colourProp = calcColor(v1, v2);
         this.thicknessProp = Property.newBuilder().setKey("thickness").setValue(thickness).build();
+        this.segmentType = Property.newBuilder().setKey("segmentType").setValue("Regular").build();
         this.segment = Segment.newBuilder().setV1Idx(v1_idx).setV2Idx(v2_idx).addProperties(0, colourProp)
-                .addProperties(1, thicknessProp).build();
+                .addProperties(1, thicknessProp).addProperties(2, segmentType).build();
         this.centroid = centroid;
     }
 
@@ -34,8 +36,9 @@ public class CustomSegments {
         this.v2_idx = v2_idx;
         this.colourProp = setColour(Color.GRAY);
         this.thicknessProp = Property.newBuilder().setKey("thickness").setValue(thickness).build();
+        this.segmentType = Property.newBuilder().setKey("segmentType").setValue("Neighbouring").build();
         this.segment = Segment.newBuilder().setV1Idx(v1_idx).setV2Idx(v2_idx).addProperties(0, colourProp)
-                .addProperties(1, thicknessProp).build();
+                .addProperties(1, thicknessProp).addProperties(2, segmentType).build();
     }
 
 

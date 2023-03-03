@@ -10,6 +10,7 @@ public class CustomVertex {
     private double y;
     private static final String THICKNESSVALUE = "2.0";
     private Property colourProperty;
+    private Property vertexType;
     private Vertex vertex;
     private Property thickness;
     private int height = MeshADT.height;
@@ -23,7 +24,8 @@ public class CustomVertex {
         this.y = DoubleRounder.round(y, precision);
         this.colourProperty = randColor();
         this.thickness = Property.newBuilder().setKey("thickness").setValue(THICKNESSVALUE).build();
-        this.vertex = Vertex.newBuilder().setX((double) x).setY((double) y).addProperties(0,colourProperty).addProperties(1,thickness).build();
+        this.vertexType = Property.newBuilder().setKey("vertexType").setValue("Regular").build();
+        this.vertex = Vertex.newBuilder().setX((double) x).setY((double) y).addProperties(0,colourProperty).addProperties(1,thickness).addProperties(2,vertexType).build();
     }
 
     //Constructor for centroids.
@@ -33,7 +35,8 @@ public class CustomVertex {
         this.y = DoubleRounder.round(y, precision);
         this.colourProperty = setColour(colour);
         this.thickness = Property.newBuilder().setKey("thickness").setValue(thicknessValue).build();
-        this.vertex = Vertex.newBuilder().setX((double) x).setY((double) y).addProperties(0,this.colourProperty).addProperties(1,thickness).build();
+        this.vertexType = Property.newBuilder().setKey("vertexType").setValue("Centroid").build();
+        this.vertex = Vertex.newBuilder().setX((double) x).setY((double) y).addProperties(0,this.colourProperty).addProperties(1,thickness).addProperties(2,vertexType).build();
     }
 
     public Vertex getVertex(){

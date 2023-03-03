@@ -1,28 +1,26 @@
 package ca.mcmaster.cas.se2aa4.a2.visualizer;
 
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Segment;
+import ca.mcmaster.cas.se2aa4.a2.io.Structs.Vertex;
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Property;
 import java.awt.Color;
 import java.awt.geom.Line2D;
 import java.util.List;
 
-public class SegmentVisualizer implements colourExtraction {
+public class SegmentVisualizer extends ExtractSegmentInfo implements colourExtraction {
     private Boolean drawn;
-    private ExtractSegmentInfo segmentInfo;
-    private int vertex1ID;
-    private int vertex2ID;
+    private Boolean referenced;
     private Color segmentColor;
-    private double thickness;
+    private String segmentType;
 
-    public SegmentVisualizer(Segment segment, Boolean debug)
+    public SegmentVisualizer(Segment segment, Boolean debug, List<Vertex> meshVertex, int offset) 
     {
+        super(segment,meshVertex,offset);
         this.drawn = false;
-        this.segmentInfo = new ExtractSegmentInfo(segment);
-        this.vertex1ID = segmentInfo.getVertedIDX1();
-        this.vertex2ID = segmentInfo.getVertedIDX2();
-        this.thickness = segmentInfo.getThickness();
+        this.referenced = false;
+        this.segmentType = segment.getProperties(2).getValue();
 
-        if (debug)
+        if (debug && !segmentType.equals("Neighbouring"))
         {
             segmentColor = Color.BLACK;
         }
@@ -32,24 +30,20 @@ public class SegmentVisualizer implements colourExtraction {
         }
     }
 
-    public int getVertedIDX1(){
-        return vertex1ID;
-    }
-
-    public int getVertedIDX2(){
-        return vertex2ID;
-    }
-
-    public float getThickness(){
-        return (float)thickness;
-    }
-
     public boolean isDrawn()
     {
         return drawn;
     }
     public void draw(){
         drawn = true;
+    }
+
+    public boolean isReferenced()
+    {
+        return this.referenced;
+    }
+    public void reference(){
+        this.referenced = true;
     }
 
     public Color getColor(){
@@ -67,7 +61,6 @@ public class SegmentVisualizer implements colourExtraction {
         //Get the colour properties of the lines
         for(Property p: properties) {
             if (p.getKey().equals("rgb_color")) {
-                System.out.println(p.getValue());
                 val = p.getValue();
             }
         }

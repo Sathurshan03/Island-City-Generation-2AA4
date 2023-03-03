@@ -11,7 +11,7 @@ import org.apache.commons.cli.*;
 
 public class Main {
 
-    public static void main(String[] args) throws IOException, ParseException {
+    public static void main(String[] args) throws Exception, IOException, ParseException {
         Boolean debug = false;
         Options options = new Options();
         options.addOption("X", false, "Debug Mode");

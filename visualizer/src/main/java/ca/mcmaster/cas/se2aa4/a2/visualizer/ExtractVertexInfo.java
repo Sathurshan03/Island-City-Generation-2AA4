@@ -6,9 +6,9 @@ import ca.mcmaster.cas.se2aa4.a2.io.Structs.Vertex;
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Property;
 
 public class ExtractVertexInfo {
-    private double X;
-    private double Y;
-    private double thickness; 
+    protected double X;
+    protected double Y;
+    protected double thickness; 
 
     public ExtractVertexInfo(Vertex vertex){
         this.X = vertex.getX();

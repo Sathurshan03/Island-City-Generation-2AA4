@@ -4,16 +4,21 @@ import java.util.List;
 
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Property;
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Segment;
+import ca.mcmaster.cas.se2aa4.a2.io.Structs.Vertex;
 
 public class ExtractSegmentInfo {
-    private int vertex1ID;
-    private int vertex2ID;
-    private double thickness;
+    protected int vertex1ID;
+    protected int vertex2ID;
+    protected double thickness;
+    protected Vertex v1;
+    protected Vertex v2;
 
-    public ExtractSegmentInfo (Segment segment){
-        this.vertex1ID = segment.getV1Idx();
-        this.vertex2ID = segment.getV2Idx();
+    public ExtractSegmentInfo (Segment segment, List<Vertex> meshVertex, int offset){
+        this.vertex1ID = segment.getV1Idx() + offset;
+        this.vertex2ID = segment.getV2Idx() + offset;
         this.thickness = extractThickness(segment.getPropertiesList());
+        this.v1 = meshVertex.get(vertex1ID);
+        this.v2 = meshVertex.get(vertex2ID);
     }
 
     public int getVertedIDX1(){
@@ -26,6 +31,14 @@ public class ExtractSegmentInfo {
 
     public double getThickness(){
         return thickness;
+    }
+
+    public Vertex getVertex1(){
+        return v1;
+    }
+
+    public Vertex getVertex2(){
+        return v2;
     }
 
     private double extractThickness(List<Property> properties) {

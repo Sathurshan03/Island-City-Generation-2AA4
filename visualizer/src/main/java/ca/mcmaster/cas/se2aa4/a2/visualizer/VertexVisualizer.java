@@ -6,27 +6,21 @@ import java.awt.geom.Ellipse2D;
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Vertex;
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Property;
 
-public class VertexVisualizer implements colourExtraction{
-    private double X;
-    private double Y;
+public class VertexVisualizer extends ExtractVertexInfo implements colourExtraction{
     private double XCenter;
     private double YCenter;
     private Boolean drawn;
     private boolean isCentroid;
-    private double thickness;
-    ExtractVertexInfo vertexInfo;
     Color vertexColor;
 
     public VertexVisualizer (Vertex vertex, Boolean debug, Boolean isCentroid)
     {
+        super(vertex);
         this.drawn = false;
         this.isCentroid = isCentroid;
-        this.vertexInfo = new ExtractVertexInfo(vertex);
-        this.thickness = vertexInfo.getThickness();
-        this.X = vertexInfo.getX();
-        this.Y = vertexInfo.getY();
-        this.XCenter = vertexInfo.getX() - (thickness/2.0d);
-        this.YCenter = vertexInfo.getY()- (thickness/2.0d);
+
+        this.XCenter = X - (thickness/2.0d);
+        this.YCenter = Y - (thickness/2.0d);
 
         if (debug && !isCentroid)
         {
@@ -39,16 +33,6 @@ public class VertexVisualizer implements colourExtraction{
 
     public boolean isCentroid(){
             return isCentroid;
-    }
-
-    public double getX()
-    {
-        return X;
-    }
-
-    public double getY()
-    {
-        return Y;
     }
 
     public Color getColor(){
