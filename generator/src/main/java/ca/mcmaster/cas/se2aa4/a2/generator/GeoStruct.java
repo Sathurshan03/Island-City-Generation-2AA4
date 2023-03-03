@@ -32,8 +32,9 @@ public class GeoStruct {
         if (new_poly_vertex.size() >= 3) //polygon is valid if there are atleast 3 vertex
         {
             isValid = true;
+            GeneratePolygon gen_poly=new IrregularPolygon( new_poly_vertex, newIndex, indexNeighbourCentroids);
 
-            this.cusPolygon=new CustomPolygon(new_poly_vertex,newIndex,indexNeighbourCentroids);
+            this.cusPolygon=new CustomPolygon(gen_poly);
         }
         else{
             isValid = false;
