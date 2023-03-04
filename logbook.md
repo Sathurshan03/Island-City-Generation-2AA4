@@ -65,8 +65,8 @@
 |  Feb 23, 2023  |  Nirmal       |   Focused on CustomPolygon to encapsulate class. Removed all dependency on MeshADT.  |
 |  Feb 23, 2023  |  Nirmal       |   Fixed classes to be more composition based, and removed unecessary inheritance.  |
 |  Feb 23-25, 2023  |  Nirmal       |   Commented classes in Generator  |
-|  March 1, 2023  |  Sathurshan       |   Applied Convex Hall since segments were actually not saved in order |
-|  March 1, 2023  |  Sathurshan       |   Added properties to visualizer subproject to output a colour fill for polygons |
-|  March 2, 2023  |  Sathurshan       |   Created classes to extract data from .mesh files |
-|  March 3, 2023  |  Sathurshan       |   Generalized commandLineReader as Interface to be used in other subprojects |
-|  March 3, 2023  |  Sathurshan       |   Updated Backlog with new features |
+|  Mar 1, 2023  |  Sathurshan       |   Applied Convex Hall since segments were actually not saved in order |
+|  Mar 1, 2023  |  Sathurshan       |   Added properties to visualizer subproject to output a colour fill for polygons |
+|  Mar 2, 2023  |  Sathurshan       |   Created classes to extract data from .mesh files |
+|  Mar 3, 2023  |  Sathurshan       |   Generalized commandLineReader as Interface to be used in other subprojects |
+|  Mar 3, 2023  |  Sathurshan       |   Updated Backlog with new features |
