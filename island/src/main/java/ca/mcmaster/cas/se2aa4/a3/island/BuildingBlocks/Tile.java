@@ -1,6 +1,7 @@
 package ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks;
 
 import ca.mcmaster.cas.se2aa4.a2.visualizer.ExtractPolygonInfo;
+import ca.mcmaster.cas.se2aa4.a3.island.Tiles.TileElement;
 import ca.mcmaster.cas.se2aa4.a3.island.Tiles.TileTypes;
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Polygon;
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Property;
@@ -12,7 +13,7 @@ import java.util.List;
 
 public class Tile extends ExtractPolygonInfo{
     TileVertex centroid;
-    TileTypes tileType;
+    public TileTypes tileType;
     List<TileSegment> tileSegmentList;
     List<TileSegment> neighbouringTileSegmentList;
     List<TileVertex> tileVerticesList;
@@ -31,6 +32,12 @@ public class Tile extends ExtractPolygonInfo{
     public void setTileType(TileTypes tileType){
         this.tileType = tileType;
     }
+    public Boolean isTileWater(){
+        if (tileType.getElememt().equals(TileElement.WATER)){
+            return true;
+        }
+        return false;
+    }
     
     public TileVertex getCentroid(){
         return centroid;
@@ -44,6 +51,10 @@ public class Tile extends ExtractPolygonInfo{
     public List<TileSegment> getNeighbouringTileSegments(){
         return neighbouringTileSegmentList;
     }
+    public List<Tile> getNeighbouringTile(){
+        return neighbouringTileList;
+    }
+
     public Boolean isTileVerticesListContains(TileVertex tileVertex){
         if (tileVerticesList.contains(tileVertex)){
             return false;
@@ -77,11 +88,5 @@ public class Tile extends ExtractPolygonInfo{
         for (TileSegment ts: tileSegmentList){
             ts.setColor(color);
         }
-
-        for (TileVertex tv: tileVerticesList){
-            tv.setColor(color);
-        }
-
-
     }
 }

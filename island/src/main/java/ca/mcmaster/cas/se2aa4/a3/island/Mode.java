@@ -141,22 +141,25 @@ public abstract class Mode {
                 }
             }
 
-            //Give the Neighbouring Tile Segments 
-            for (Integer j: polygon.getNeighborIdxsList()){
-                tile.addNeighbouringTileSegment(allSegmentInfoList.get(j));
-            }
             tiles.add(tile);
         }
     }
 
     private void setNeighbouringTiles(){
         //give each tile its neighbouring tile
-        for (Tile tile: tiles){
-            TileVertex tileCentroid = tile.getCentroid();
-            for (TileSegment tileSegment: tile.getNeighbouringTileSegments()){
-                int id = tileCentroid.equals(allVerticesInfoList.get(tileSegment.getVertedIDX1()))?tileSegment.getVertedIDX1(): tileSegment.getVertedIDX2();
-                tile.addNeighbouringTile(tiles.get(id));
-            }
+        int id1;
+        int id2;
+        Tile tile1;
+        Tile tile2;
+        for (TileSegment tileSegment: neighbouringSegmentInfoList){
+            id1 = tileSegment.getVertedIDX1();
+            id2 = tileSegment.getVertedIDX2();
+            tile1 = tiles.get(id1);
+            tile2 = tiles.get(id2);
+            tile1.addNeighbouringTileSegment(tileSegment);
+            tile1.addNeighbouringTile(tile2);
+            tile2.addNeighbouringTileSegment(tileSegment);
+            tile2.addNeighbouringTile(tile1);
         }
     }
 
