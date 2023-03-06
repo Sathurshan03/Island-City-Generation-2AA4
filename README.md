@@ -97,6 +97,10 @@ To see a examples of the mesh, run any one of the scripts below in the main dire
 
 ![My Image](images/irregularDebug.png)
 
+```./runSandbox```
+
+![My Image](images/sandbox.png)
+
 
 ## How to contribute to the project
 
