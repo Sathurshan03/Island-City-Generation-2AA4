@@ -4,14 +4,14 @@ import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.Tile;
 import java.util.List;
 import java.util.Random;
 
-public class Circle extends Shape{
+public class Rectangle extends Shape{
     double maxRadius;
     double radius;
     double meshCenterX;
     double meshCenterY;
     List<Tile> tiles;
     
-    public Circle (double width, double height, List<Tile> tiles){
+    public Rectangle (double width, double height, List<Tile> tiles){
         super();
 
         this.maxRadius = Double.compare(width, height) < 0? width/2: height/2;
@@ -31,16 +31,13 @@ public class Circle extends Shape{
     }
     public void markTiles(){
         //Any Tile's centroid that falls within the radius is considered as unmarked
-        double xDifference;
-        double yDifference;
-        double distance;
+        double lowerBoundX = meshCenterX - radius;
+        double upperBoundX = meshCenterX + radius;
+        double lowerBoundY = meshCenterY - radius;
+        double upperBoundY = meshCenterY + radius;
 
         for (Tile tile: tiles){
-            xDifference =tile.getCentroidX() - meshCenterX;
-            yDifference =tile.getCentroidY() - meshCenterY;
-            distance = Math.sqrt(Math.pow(xDifference,2) + Math.pow(yDifference, 2));
-
-            if(distance < radius){
+            if(tile.getCentroidX() >= lowerBoundX && tile.getCentroidX() <= upperBoundX && tile.getCentroidY() >= lowerBoundY && tile.getCentroidY() <= upperBoundY){
                 //in range
                 unMarkedtiles.add(tile);
             }
