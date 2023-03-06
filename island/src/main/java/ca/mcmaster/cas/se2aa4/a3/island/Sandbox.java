@@ -42,7 +42,7 @@ public class Sandbox extends Mode{
 
         //Set the unMarked Tiles color
         for(Tile tile: landTiles){
-            tile.setTileType(TileTypes.EMPTY);
+            tile.setTileType(TileTypes.UNDETERMINEDLAND);
         }
 
     }

@@ -3,7 +3,7 @@ import java.awt.Color;
 
 
 public enum TileTypes {
-    EMPTY(new Color(204,204,204,254)),
+    UNDETERMINEDLAND(new Color(252,228,162,254)),
     Ocean(new Color(0,0,153,254)),
     LAGOON(new Color(51,153,255, 254));
 
