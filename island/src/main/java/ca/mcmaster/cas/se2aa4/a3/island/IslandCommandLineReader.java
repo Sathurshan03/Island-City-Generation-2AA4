@@ -1,17 +1,22 @@
 package ca.mcmaster.cas.se2aa4.a3.island;
 
 import ca.mcmaster.cas.se2aa4.a2.generator.CommandLineReader;
+import ca.mcmaster.cas.se2aa4.a3.island.Shape.ShapeType;
+
 import org.apache.commons.cli.*;
 
 import java.io.IOException;
 
-public class CommandLineReaderIsland implements CommandLineReader {
+public class IslandCommandLineReader implements CommandLineReader {
     String inputMesh;
     String outputMesh;
     String mode;
+    String shape;
+    ModeType mapMode;
+    ShapeType shapeToUse;
     private Options options;
 
-    public CommandLineReaderIsland(String[] args) throws IOException, ParseException {
+    public IslandCommandLineReader(String[] args) throws IOException, ParseException {
         super();
         options = new Options();
         createOptions();
@@ -22,6 +27,7 @@ public class CommandLineReaderIsland implements CommandLineReader {
         options.addOption(new Option("i", "inputMesh", true, "Input Mesh"));
         options.addOption(new Option("o", "outputMesh", true, "Output Mesh"));
         options.addOption(new Option("m", "mode", true, "Map Mode"));
+        options.addOption(new Option("s", "shape", true, "Island Shape"));
     }
 
     public void checkOptions(String[] args) throws ParseException, IOException{
@@ -33,6 +39,7 @@ public class CommandLineReaderIsland implements CommandLineReader {
         inputMesh = cmd.getOptionValue("inputMesh");
         outputMesh = cmd.getOptionValue("outputMesh");
         mode = cmd.getOptionValue("mode");
+        shape = cmd.getOptionValue("shape");
 
 
         //Help option
@@ -43,14 +50,26 @@ public class CommandLineReaderIsland implements CommandLineReader {
             System.exit(0);
         }
 
-    }
+        //Set the mode to run
+        for(ModeType m: ModeType.values()){
+            String modeString = m.toString();
+            if (modeString.equals(mode))
+            {
+                mapMode = m;
+                break;
+            }
+        }
 
-//    public Structs.Mesh createMesh() throws IOException
-//    {
-//        //Generate the mesh based on the inputs from the command line
-//        Generator generator = new Generator();
-//        return generator.generate(numberPolygons, canvasWidth, canvasHeight, meshType, relationLevel, gridSpacing);
-//    }
+        for(ShapeType s: ShapeType.values()){
+            String shapeString = s.toString();
+            if (shapeString.equals(shape))
+            {
+                shapeToUse = s;
+                break;
+            }
+        }
+
+    }
 
     public String getInputMesh(){
         return inputMesh;
@@ -58,7 +77,13 @@ public class CommandLineReaderIsland implements CommandLineReader {
     public String getOutputMesh(){
         return outputMesh;
     }
-    public String getMode(){
-        return mode;
+    public ShapeType getShapeType(){
+        return shapeToUse;
+    }
+    public boolean isSandBoxMode(){
+        if (mapMode.equals(ModeType.SANDBOX)){
+            return true;
+        }
+        return false;
     }
 }

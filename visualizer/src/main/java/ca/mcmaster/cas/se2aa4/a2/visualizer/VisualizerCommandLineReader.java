@@ -1,12 +1,17 @@
 package ca.mcmaster.cas.se2aa4.a2.visualizer;
-import ca.mcmaster.cas.se2aa4.a2.generator.CommandLineReader;
 import java.io.IOException;
-import org.apache.commons.cli.*;
+import org.apache.commons.cli.ParseException;
+import ca.mcmaster.cas.se2aa4.a2.generator.CommandLineReader;
+import org.apache.commons.cli.Options;
+import org.apache.commons.cli.CommandLineParser;
+import org.apache.commons.cli.CommandLine;
+import org.apache.commons.cli.Option;
+import org.apache.commons.cli.DefaultParser;
 
-public class CommandLineReaderVisualizer implements CommandLineReader{
+public class VisualizerCommandLineReader implements CommandLineReader{
     private Boolean debug = false;
     private Options options;
-    public CommandLineReaderVisualizer(String[] args)throws IOException, ParseException{
+    public VisualizerCommandLineReader(String[] args)throws IOException, ParseException{
         super();
         options = new Options();
         createOptions();

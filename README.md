@@ -129,15 +129,15 @@ Pending (P), Started (S), Blocked (B), Done (D)
 | F26   |  Choose grid box size for gird base mesh from command line |  Sathurshan  |   02/21/2023    |  02/21/2023   |    D    |
 | F27   | User can enter map mode with -- mode via command line      | Mithun     |  |  | P  |
 | F28   | –help mode in the command line gives a description of how to use to command line  | Mithun |  |  | B(F27),B(F32),B(F38),B(F45),B(F46),B(F50),B(F52),B(F59),B(F83)|
-| F29   | Sandbox map mode can be activated  | Mithun     |  |  | B(F27)  |
+| F29   | Sandbox map mode can be activated  | Sathurshan     | 03/05/2023 | 03/05/2023 | D |
 | F30   | Regular map mode can be activated  | Mithun     |  |  | B(F27)  |
 | F31   | Heat map mode can be activated     | Mithun     |  |  | B(F27)  |
-| F32   | User can enter the shape of the island with -- shape via command line  | Mithun     |  |  | P   |
-| F33   | Islands have oval shape option   | Sathurshan |  |  | B(F33)  |
-| F34   | Islands have irregular shape option  | Sathurshan |  |  | B(F33)  |
-| F35   | Islands have circular shape option      | Sathurshan |  |  | B(F33) |
-| F36   | Islands have a rectangle shape option   | Sathurshan |  |  | B(F33) |
-| F37   | Islands have a ring shape option  | Sathurshan |  |  | B(F33) |
+| F32   | User can enter the shape of the island with -- shape via command line  | Sathurshan     | 03/05/2023 | 03/05/2023 | D   |
+| F33   | Islands have oval shape option   | Sathurshan |  |  | B(F32)  |
+| F34   | Islands have irregular shape option  | Sathurshan |  |  | B(F32)  |
+| F35   | Islands have circular shape option      | Sathurshan | 03/05/2023 | 03/05/2023 | D |
+| F36   | Islands have a rectangle shape option   | Sathurshan | 03/06/2023 | 03/06/2023 | D |
+| F37   | Islands have a ring shape option  | Sathurshan |  |  | B(F32) |
 | F38   | User can enter general elevation trend using  --altitude through the command prompt | Nirmal     |  |  | P |
 | F39   | Island altitude has “volcanic” option   | Nirmal     |  |  | B(F38)   |
 | F40   | Island altitude has “hill” option  | Nirmal     |  |  | B(F38)  |
@@ -164,12 +164,12 @@ Pending (P), Started (S), Blocked (B), Done (D)
 | F61   | Tropical Rain Forest type map generatable    | Mithun     |  |  | B(F59)   |
 | F62   | Temperate deciduous forest type map generatable  | Mithun     |  |  | B(F59)  |
 | F63   | Desert type map generable   | Mithun     |  |  | B(F59)     |
-| F64   | All tiles have assigned types for Sandbox     | Sathurshan |  |  | P  |
+| F64   | All tiles have assigned types for Sandbox     | Sathurshan | 03/06/2023 | 03/06/2023 | D  |
 | F65   | All land tiles have assigned biomes in relation to island biomes type  | Sathurshan |  |  | B(F60-F63),  B(F43), B(F57)   |
-| F66   | Display ocean tiles   | Sathurshan |  |  | B(F64)  |
+| F66   | Display ocean tiles   | Sathurshan | 03/06/2023 | 03/06/2023 | D  |
 | F67   | Display beach tiles   | Sathurshan |  |  | B(F64)   |
 | F68   | Display lake tiles  | Mithun     |  |  | B(F45)   |
-| F69   | Display lagoon tiles  | Mithun     |  |  | B(F64)    |
+| F69   | Display lagoon tiles  | Sathurshan     | 03/06/2023 | 03/06/2023 | D    |
 | F70   | Display ice tiles   | Sathurshan |  |  | B(F65)   |
 | F71   | Display snow tiles    | Sathurshan |  |  | B(F65)    |
 | F72   | Display tundra tiles      | Sathurshan |  |  | B(F65)     |

@@ -6,7 +6,7 @@ import java.io.IOException;
 import org.apache.commons.cli.*;
 
 
-public class CommandLineReaderGenerator implements CommandLineReader{
+public class GeneratorCommandLineReader implements CommandLineReader{
     //default values
     int numberPolygons = 0;
     int canvasWidth = 500;
@@ -17,7 +17,7 @@ public class CommandLineReaderGenerator implements CommandLineReader{
     String fileName;
     private Options options;
     
-    public CommandLineReaderGenerator(String[] args) throws IOException, ParseException{
+    public GeneratorCommandLineReader(String[] args) throws IOException, ParseException{
         super();
         options = new Options();
         createOptions();
