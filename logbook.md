@@ -70,3 +70,9 @@
 |  Mar 2, 2023  |  Sathurshan       |   Created classes to extract data from .mesh files |
 |  Mar 3, 2023  |  Sathurshan       |   Generalized commandLineReader as Interface to be used in other subprojects |
 |  Mar 3, 2023  |  Sathurshan       |   Updated Backlog with new features |
+|  Mar 5, 2023  |  Sathurshan       |   Creating Shapes for the island |
+|  Mar 5, 2023  |  Sathurshan       |   Creating Sandbox mode |
+|  Mar 5, 2023  |  Sathurshan       |   Extracting infromation and creating Tile classes for island sub project |
+|  Mar 6, 2023  |  Sathurshan       |   Neighbouring tiles are accessible |
+|  Mar 6, 2023  |  Sathurshan       |   Sandbox mode release created |
+
