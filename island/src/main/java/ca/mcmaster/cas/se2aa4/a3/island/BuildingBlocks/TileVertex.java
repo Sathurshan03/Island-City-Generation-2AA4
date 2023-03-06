@@ -5,28 +5,35 @@ import ca.mcmaster.cas.se2aa4.a2.io.Structs.Vertex;
 import ca.mcmaster.cas.se2aa4.a2.visualizer.ExtractVertexInfo;
 import java.awt.Color;
 import java.util.List;
+import java.util.ArrayList;
 
-public class TileVertex extends ExtractVertexInfo{
+public class TileVertex extends ExtractVertexInfo implements TileProperties{
     List<Color> colorList;
-    Color averageColor = Color.black;
+    Color averageColor = new Color(0, 0, 0, 0);
     String vertexType;
     Double thicknessDouble;
     public TileVertex(Vertex vertex)
     {
         super(vertex);
         this.thicknessDouble = thickness;
+        this.colorList = new ArrayList<>();
         this.vertexType = extractVertexType(vertex.getPropertiesList());
     }
 
+    public void setColor(Color color){
+        this.averageColor = color;
+    }
+
     public Vertex getVertex(){
-        String colorCode = averageColor.getRed() + "," + averageColor.getBlue() + "," + averageColor.getGreen() + "," + averageColor.getAlpha();
+        setAverageColor();
+        String colorCode = averageColor.getRed() + "," + averageColor.getGreen() + "," + averageColor.getBlue() + "," + averageColor.getAlpha();
         Property colorProperty = Property.newBuilder().setKey("rgb_color").setValue(colorCode).build();
         Property thicknessProp = Property.newBuilder().setKey("thickness").setValue(thicknessDouble.toString()).build();
         Property vertexTypeProp = Property.newBuilder().setKey("vertexType").setValue(vertexType).build();
         return Vertex.newBuilder().setX(X).setY(Y).addProperties(0,colorProperty).addProperties(1,thicknessProp).addProperties(2,vertexTypeProp).build();
     }
 
-    private String extractVertexType(List<Property> properties){
+    public String extractVertexType(List<Property> properties){
         //Get the "thickness" of the vertex (size)
         String val = null;
         for(Property p: properties) {
@@ -36,6 +43,29 @@ public class TileVertex extends ExtractVertexInfo{
             }
         }
         return val;
+    }
+
+    public void setAverageColor(){
+        //set the average color for the object
+        if (colorList.size()!=0 && !averageColor.equals(new Color(0, 0, 0, 0))){
+            int red = 0;
+            int green = 0;
+            int blue = 0;
+            int alpha = 0;
+
+            for (Color color: colorList){
+                red += color.getRed();
+                green += color.getGreen();
+                blue += color.getBlue();
+                alpha += color.getAlpha();
+            }
+            
+            red /= colorList.size();
+            green /= colorList.size();
+            blue /= colorList.size();
+            alpha /= colorList.size();
+            averageColor = new Color(red, green, blue, alpha);
+        }
     }
     
 }

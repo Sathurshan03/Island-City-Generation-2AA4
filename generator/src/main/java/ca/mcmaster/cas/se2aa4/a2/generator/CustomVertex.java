@@ -100,7 +100,7 @@ public class CustomVertex {
 
     private Property setColour(Color colour){
         //sets the color of the vertex to the vertex struct property
-        String colorCode = colour.getRed() + "," + colour.getGreen() + "," + colour.getBlue() + "," + colour.getAlpha();
+        String colorCode = colour.getRed() + "," + colour.getBlue() + "," + colour.getGreen() + "," + colour.getAlpha();
         Property colorProp = Property.newBuilder().setKey("rgb_color").setValue(colorCode).build();
 
         return colorProp;

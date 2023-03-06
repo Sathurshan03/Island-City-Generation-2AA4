@@ -49,12 +49,12 @@ public class CustomSegments {
         int red = (c1.getRed() + c2.getRed()) / 2;
         int blue = (c1.getBlue() + c2.getBlue()) / 2;
         int green = (c1.getGreen() + c2.getGreen()) / 2;
-        return setColour(new Color(red, blue, green));
+        return setColour(new Color(red, green, blue));
     }
 
     //Converts color to Property value.
     private Property setColour(Color colour) {
-        String colourCode = colour.getRed() + "," + colour.getBlue() + "," + colour.getGreen() + "," + colour.getAlpha();
+        String colourCode = colour.getRed() + "," + colour.getGreen() + "," + colour.getBlue() + "," + colour.getAlpha();
         return Property.newBuilder().setKey("rgb_color").setValue(colourCode).build();
     }
 

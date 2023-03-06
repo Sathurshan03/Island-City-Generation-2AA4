@@ -26,6 +26,7 @@ public abstract class Mode {
     List<TileSegment> allSegmentInfoList;
     List<TileSegment> segmentInfoList;
     List<TileSegment> neighbouringSegmentInfoList;
+    List<TileVertex> allVerticesInfoList;
     List<TileVertex> verticesInfoList;
     List<TileVertex> centroidInfoList;
     double width;
@@ -40,6 +41,7 @@ public abstract class Mode {
         this.allSegmentInfoList = new ArrayList<>();
         this.segmentInfoList = new ArrayList<>();
         this.neighbouringSegmentInfoList = new ArrayList<>();
+        this.allVerticesInfoList = new ArrayList<>();
         this.verticesInfoList = new ArrayList<>();
         this.centroidInfoList = new ArrayList<>();
         width = Double.MIN_VALUE;
@@ -52,11 +54,6 @@ public abstract class Mode {
         polygons = mesh.getPolygonsList();
         segments = mesh.getSegmentsList();
         vertices = mesh.getVerticesList();
-
-        //extract polygon information
-        for (Polygon polygon : polygons) {
-            tiles.add(new Tile(polygon, segments, vertices, polygons.size()));
-        }
 
         //extract segment information
         String type;
@@ -80,24 +77,59 @@ public abstract class Mode {
         }
 
         //extract vertices information
+        TileVertex tileVertex;
         for(Vertex vertex : vertices){
             Property vertexType = vertex.getProperties(2);
             type = vertexType.getValue();
+            tileVertex = new TileVertex(vertex);
             if (type.equals("Regular")){
-                verticesInfoList.add(new TileVertex(vertex));
+                verticesInfoList.add(tileVertex);
             }
             else if (type.equals("Centroid")){
-                centroidInfoList.add(new TileVertex(vertex));
+                centroidInfoList.add(tileVertex);
             }
             else{
                 throw new IOException("Invalid vertex type");
             }
+            allVerticesInfoList.add(tileVertex);
         }
 
-        //Polygons and its centroids are stored in the same order
-        for (int i = 0; i < tiles.size(); i++){
-            tiles.get(i).setCentroid(centroidInfoList.get(i));
+        //extract polygon information
+        Polygon polygon;
+        for (int i = 0; i < polygons.size(); i++) {
+            polygon = polygons.get(i);
+            Tile tile = new Tile(polygon, segments, vertices, polygons.size());
+            tile.setCentroid(centroidInfoList.get(i));
+
+            //Give tile the Tile Segments and Vertices that it holds
+            for (Integer j: polygon.getSegmentIdxsList()){
+                tileSegment = allSegmentInfoList.get(j);
+                tile.addTileSegment(tileSegment);
+
+                //add vertices only if it is not in the list 
+                tileVertex = allVerticesInfoList.get(tileSegment.getVertedIDX1());
+                if (tile.isTileVerticesListContains(tileVertex)){
+                    tile.addTileVertex(tileVertex);
+                }
+
+                tileVertex = allVerticesInfoList.get(tileSegment.getVertedIDX2());
+                if (tile.isTileVerticesListContains(tileVertex)){
+                    tile.addTileVertex(tileVertex);
+                }
+            }
+
+            //Give the Neighbouring Tile Segments 
+            for (Integer j: polygon.getNeighborIdxsList()){
+                tile.addNeighbouringTileSegment(allSegmentInfoList.get(j));
+            }
+
+
+
+            tiles.add(tile);
         }
+
+
+
 
         //Find the height and width of the mesh
         for (TileVertex v: verticesInfoList) {
