@@ -1,12 +1,12 @@
 package ca.mcmaster.cas.se2aa4.a3.island;
 
-public enum ModeType {
-    SANDBOX;
+public enum ShapeType {
+    TEMP;
 
     public String toString(){
         switch(this){
-        case SANDBOX :
-            return "sandbox";
+        case TEMP :
+            return "temp";
         }
         return null;
     }

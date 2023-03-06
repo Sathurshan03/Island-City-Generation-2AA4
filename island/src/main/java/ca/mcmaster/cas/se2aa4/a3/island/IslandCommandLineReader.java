@@ -9,7 +9,9 @@ public class IslandCommandLineReader implements CommandLineReader {
     String inputMesh;
     String outputMesh;
     String mode;
+    String shape;
     ModeType mapMode;
+    ShapeType shapeToUse;
     private Options options;
 
     public IslandCommandLineReader(String[] args) throws IOException, ParseException {
@@ -23,6 +25,7 @@ public class IslandCommandLineReader implements CommandLineReader {
         options.addOption(new Option("i", "inputMesh", true, "Input Mesh"));
         options.addOption(new Option("o", "outputMesh", true, "Output Mesh"));
         options.addOption(new Option("m", "mode", true, "Map Mode"));
+        options.addOption(new Option("s", "shape", true, "Island Shape"));
     }
 
     public void checkOptions(String[] args) throws ParseException, IOException{
@@ -34,6 +37,7 @@ public class IslandCommandLineReader implements CommandLineReader {
         inputMesh = cmd.getOptionValue("inputMesh");
         outputMesh = cmd.getOptionValue("outputMesh");
         mode = cmd.getOptionValue("mode");
+        shape = cmd.getOptionValue("shape");
 
 
         //Help option
@@ -45,11 +49,32 @@ public class IslandCommandLineReader implements CommandLineReader {
         }
 
         //Set the mode to run
-        if (mode.equals("sandbox")){
-            mapMode = ModeType.SANDBOX;
+        for(ModeType m: ModeType.values()){
+            String modeString = m.toString();
+            if (modeString.equals(mode))
+            {
+                mapMode = m;
+                break;
+            }
         }
-        else{
-            throw new IOException("Invalid mode type.");
+
+        //Error checks
+        if (mapMode.equals(null)){
+
+        }
+
+
+        for(ShapeType s: ShapeType.values()){
+            String shapeString = s.toString();
+            if (shapeString.equals(shape))
+            {
+                shapeToUse = s;
+                break;
+            }
+        }
+        //Error checks
+        if (shapeToUse == null){
+            throw new IOException("Invalid or no shape option entered");
         }
     }
 
@@ -58,6 +83,9 @@ public class IslandCommandLineReader implements CommandLineReader {
     }
     public String getOutputMesh(){
         return outputMesh;
+    }
+    public ShapeType getShapeType(){
+        return shapeToUse;
     }
     public boolean isSandBoxMode(){
         if (mapMode.equals(ModeType.SANDBOX)){

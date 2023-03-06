@@ -10,7 +10,7 @@ public class Main {
         IslandCommandLineReader commandReader = new IslandCommandLineReader(args);
 
         if (commandReader.isSandBoxMode()){
-            Sandbox sandbox = new Sandbox(commandReader.getInputMesh(), commandReader.getOutputMesh());
+            Sandbox sandbox = new Sandbox(commandReader.getInputMesh(), commandReader.getOutputMesh(), commandReader.getShapeType());
             sandbox.generate();
         }
     }
