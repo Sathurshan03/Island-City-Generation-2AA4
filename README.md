@@ -166,7 +166,7 @@ Pending (P), Started (S), Blocked (B), Done (D)
 | F63   | Desert type map generable   | Mithun     |  |  | B(F59)     |
 | F64   | All tiles have assigned types for Sandbox     | Sathurshan |  |  | P  |
 | F65   | All land tiles have assigned biomes in relation to island biomes type  | Sathurshan |  |  | B(F60-F63),  B(F43), B(F57)   |
-| F66   | Display ocean tiles   | Sathurshan |  |  | B(F64)  |
+| F66   | Display ocean tiles   | Sathurshan | 03/06/2023 | 03/06/2023 | D  |
 | F67   | Display beach tiles   | Sathurshan |  |  | B(F64)   |
 | F68   | Display lake tiles  | Mithun     |  |  | B(F45)   |
 | F69   | Display lagoon tiles  | Mithun     |  |  | B(F64)    |

@@ -17,7 +17,7 @@ public class RegularPolygon extends GeneratePolygon {
 
 
         this.poly_vertices= makeRegVertices(squareSize, centroids.get(centroid));
-//        convexHull();
+
         this.poly_segment=makeSegments(poly_vertices);
 
 

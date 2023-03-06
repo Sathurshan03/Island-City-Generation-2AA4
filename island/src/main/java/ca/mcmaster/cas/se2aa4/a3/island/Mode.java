@@ -23,6 +23,7 @@ public abstract class Mode {
     List<Segment> segments;
     List<Vertex> vertices;
     List<Tile> tiles;
+    List<TileSegment> allSegmentInfoList;
     List<TileSegment> segmentInfoList;
     List<TileSegment> neighbouringSegmentInfoList;
     List<TileVertex> verticesInfoList;
@@ -36,6 +37,7 @@ public abstract class Mode {
         this.shape = shape;
 
         this.tiles = new ArrayList<>();
+        this.allSegmentInfoList = new ArrayList<>();
         this.segmentInfoList = new ArrayList<>();
         this.neighbouringSegmentInfoList = new ArrayList<>();
         this.verticesInfoList = new ArrayList<>();
@@ -43,7 +45,6 @@ public abstract class Mode {
         width = Double.MIN_VALUE;
         height = Double.MIN_VALUE;
     }
-    public abstract Mesh getMesh();
 
     protected void extractInformation() throws IOException{
         //Extract the information about polygons, segments and vertices from the input mesh
@@ -59,14 +60,19 @@ public abstract class Mode {
 
         //extract segment information
         String type;
+        TileSegment tileSegment;
         for (Segment segment: segments){
             Property segmentType = segment.getProperties(2);
             type = segmentType.getValue();
             if (type.equals("Regular")){
-                segmentInfoList.add(new TileSegment(segment, vertices, polygons.size()));
+                tileSegment = new TileSegment(segment, vertices, polygons.size());
+                segmentInfoList.add(tileSegment);
+                allSegmentInfoList.add(tileSegment);
             }
             else if (type.equals("Neighbouring")){
-                neighbouringSegmentInfoList.add(new TileSegment(segment, vertices, 0));
+                tileSegment = new TileSegment(segment, vertices, 0);
+                neighbouringSegmentInfoList.add(tileSegment);
+                allSegmentInfoList.add(tileSegment);
             }
             else{
                 throw new IOException("Invalid segment type");
@@ -99,5 +105,36 @@ public abstract class Mode {
             height = (Double.compare(height, v.getY()) < 0? v.getY(): height);
         }
 
+    }
+
+    public Mesh getMesh(){
+        //Convert from custom shapes to Struct shapes
+        this.polygons = new ArrayList<>();
+        this.segments = new ArrayList<>();
+        this.vertices = new ArrayList<>();
+        List<Vertex> centroids = new ArrayList<>();
+
+        //Polygons
+        for (Tile tile: tiles){
+            polygons.add(tile.getPolygon());
+        }
+
+        //Segments
+        for (TileSegment tileSegment: allSegmentInfoList){
+            segments.add(tileSegment.getSegment());
+        }
+
+        //Vertices
+        for (TileVertex tileVertex: centroidInfoList){
+            centroids.add(tileVertex.getVertex());
+            vertices.add(tileVertex.getVertex());
+        }
+
+        for (TileVertex tileVertex: verticesInfoList){
+            vertices.add(tileVertex.getVertex());
+        }
+
+        
+        return Mesh.newBuilder().addAllPolygons(polygons).addAllSegments(segments).addAllVertices(centroids).addAllVertices(vertices).build();
     }
 }

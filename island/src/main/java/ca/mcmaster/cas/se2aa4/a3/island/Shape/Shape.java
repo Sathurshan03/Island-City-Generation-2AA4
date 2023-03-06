@@ -12,6 +12,6 @@ public abstract class Shape {
         markedtiles = new ArrayList<>();
     }
     public abstract List<Tile> getMarkedTiles();
-    public abstract List<Tile> getUnMarkedPolygons();
+    public abstract List<Tile> getUnMarkedTiles();
     public abstract void markTiles();
 }

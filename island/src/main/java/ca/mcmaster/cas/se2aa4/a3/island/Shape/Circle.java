@@ -13,8 +13,8 @@ public class Circle extends Shape{
     
     public Circle (double width, double height, List<Tile> tiles){
         super();
-        
-        this.maxRadius = Double.compare(width, height) < 0? height: width;
+
+        this.maxRadius = Double.compare(width, height) < 0? width/2: height/2;
         this.tiles = tiles;
 
         Random random = new Random();
@@ -26,7 +26,7 @@ public class Circle extends Shape{
     public List<Tile> getMarkedTiles(){
         return markedtiles;
     }
-    public List<Tile> getUnMarkedPolygons(){
+    public List<Tile> getUnMarkedTiles(){
         return unMarkedtiles;
     }
     public void markTiles(){
