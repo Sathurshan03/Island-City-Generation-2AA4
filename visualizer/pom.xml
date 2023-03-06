@@ -19,7 +19,7 @@
   <dependencies>
   	<dependency>
       <groupId>io.github.ace-design</groupId>
-      <artifactId>2aa4.mesh.generator</artifactId>
+      <artifactId>2aa4.mesh.tools</artifactId>
       <version>1.0</version>
     </dependency>
 	<dependency>

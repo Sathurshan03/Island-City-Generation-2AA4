@@ -1,6 +1,6 @@
 package ca.mcmaster.cas.se2aa4.a3.island;
 
-import ca.mcmaster.cas.se2aa4.a2.generator.CommandLineReader;
+import ca.mcmaster.cas.se2aa4.a3.tools.CommandLineReader;
 import ca.mcmaster.cas.se2aa4.a3.island.Shape.ShapeType;
 
 import org.apache.commons.cli.*;

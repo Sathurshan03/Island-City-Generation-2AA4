@@ -3,7 +3,8 @@ package ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks;
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Property;
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Segment;
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Vertex;
-import ca.mcmaster.cas.se2aa4.a2.visualizer.ExtractSegmentInfo;
+import ca.mcmaster.cas.se2aa4.a3.tools.ExtractSegmentInfo;
+
 import java.awt.Color;
 import java.util.List;
 import java.util.ArrayList;
