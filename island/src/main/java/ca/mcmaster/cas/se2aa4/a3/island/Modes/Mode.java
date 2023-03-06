@@ -1,4 +1,4 @@
-package ca.mcmaster.cas.se2aa4.a3.island;
+package ca.mcmaster.cas.se2aa4.a3.island.Modes;
 
 import java.io.IOException;
 import java.util.List;
@@ -194,4 +194,6 @@ public abstract class Mode {
         
         return Mesh.newBuilder().addAllPolygons(polygons).addAllSegments(segments).addAllVertices(centroids).addAllVertices(vertices).build();
     }
+
+    public abstract void generate();
 }
