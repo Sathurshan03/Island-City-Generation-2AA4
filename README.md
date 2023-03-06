@@ -132,12 +132,12 @@ Pending (P), Started (S), Blocked (B), Done (D)
 | F29   | Sandbox map mode can be activated  | Sathurshan     | 03/05/2023 | 03/05/2023 | D |
 | F30   | Regular map mode can be activated  | Mithun     |  |  | B(F27)  |
 | F31   | Heat map mode can be activated     | Mithun     |  |  | B(F27)  |
-| F32   | User can enter the shape of the island with -- shape via command line  | Mithun     |  |  | P   |
-| F33   | Islands have oval shape option   | Sathurshan |  |  | B(F33)  |
-| F34   | Islands have irregular shape option  | Sathurshan |  |  | B(F33)  |
-| F35   | Islands have circular shape option      | Sathurshan |  |  | B(F33) |
-| F36   | Islands have a rectangle shape option   | Sathurshan |  |  | B(F33) |
-| F37   | Islands have a ring shape option  | Sathurshan |  |  | B(F33) |
+| F32   | User can enter the shape of the island with -- shape via command line  | Sathurshan     | 03/05/2023 | 03/05/2023 | D   |
+| F33   | Islands have oval shape option   | Sathurshan |  |  | B(F32)  |
+| F34   | Islands have irregular shape option  | Sathurshan |  |  | B(F32)  |
+| F35   | Islands have circular shape option      | Sathurshan | 03/05/2023 | 03/05/2023 | D |
+| F36   | Islands have a rectangle shape option   | Sathurshan |  |  | B(F32) |
+| F37   | Islands have a ring shape option  | Sathurshan |  |  | B(F32) |
 | F38   | User can enter general elevation trend using  --altitude through the command prompt | Nirmal     |  |  | P |
 | F39   | Island altitude has “volcanic” option   | Nirmal     |  |  | B(F38)   |
 | F40   | Island altitude has “hill” option  | Nirmal     |  |  | B(F38)  |

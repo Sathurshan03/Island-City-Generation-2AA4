@@ -1,6 +1,8 @@
 package ca.mcmaster.cas.se2aa4.a3.island;
 
 import ca.mcmaster.cas.se2aa4.a2.generator.CommandLineReader;
+import ca.mcmaster.cas.se2aa4.a3.island.Shape.ShapeType;
+
 import org.apache.commons.cli.*;
 
 import java.io.IOException;
@@ -58,12 +60,6 @@ public class IslandCommandLineReader implements CommandLineReader {
             }
         }
 
-        //Error checks
-        if (mapMode.equals(null)){
-
-        }
-
-
         for(ShapeType s: ShapeType.values()){
             String shapeString = s.toString();
             if (shapeString.equals(shape))
@@ -72,10 +68,7 @@ public class IslandCommandLineReader implements CommandLineReader {
                 break;
             }
         }
-        //Error checks
-        if (shapeToUse == null){
-            throw new IOException("Invalid or no shape option entered");
-        }
+
     }
 
     public String getInputMesh(){

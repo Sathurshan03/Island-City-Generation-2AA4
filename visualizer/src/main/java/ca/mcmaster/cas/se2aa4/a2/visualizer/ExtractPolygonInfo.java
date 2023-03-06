@@ -12,10 +12,10 @@ public class ExtractPolygonInfo {
     protected List<Integer> neighbouringSegmentsID;
     protected List<Segment> segments;
     protected List<Segment> neighbouringSegments;
-    protected List<Segment> meshSegments;
-    protected List<Vertex> meshVertex;
+    private List<Segment> meshSegments;
+    private List<Vertex> meshVertex;
     protected List<Vertex> vertices;
-    protected int numPolygons;
+    private int numPolygons;
 
     public ExtractPolygonInfo(Polygon polygon, List<Segment> meshSegments, List<Vertex> meshVertex, int numPolygons){
         this.segmentIDs = polygon.getSegmentIdxsList();

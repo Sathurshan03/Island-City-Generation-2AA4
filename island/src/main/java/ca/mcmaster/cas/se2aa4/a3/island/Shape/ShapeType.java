@@ -1,12 +1,12 @@
-package ca.mcmaster.cas.se2aa4.a3.island;
+package ca.mcmaster.cas.se2aa4.a3.island.Shape;
 
 public enum ShapeType {
-    TEMP;
+    CIRCLE;
 
     public String toString(){
         switch(this){
-        case TEMP :
-            return "temp";
+        case CIRCLE :
+            return "circle";
         }
         return null;
     }
