@@ -5,13 +5,14 @@ import org.apache.commons.cli.*;
 
 import java.io.IOException;
 
-public class CommandLineReaderIsland implements CommandLineReader {
+public class IslandCommandLineReader implements CommandLineReader {
     String inputMesh;
     String outputMesh;
     String mode;
+    ModeType mapMode;
     private Options options;
 
-    public CommandLineReaderIsland(String[] args) throws IOException, ParseException {
+    public IslandCommandLineReader(String[] args) throws IOException, ParseException {
         super();
         options = new Options();
         createOptions();
@@ -43,14 +44,14 @@ public class CommandLineReaderIsland implements CommandLineReader {
             System.exit(0);
         }
 
+        //Set the mode to run
+        if (mode.equals("sandbox")){
+            mapMode = ModeType.SANDBOX;
+        }
+        else{
+            throw new IOException("Invalid mode type.");
+        }
     }
-
-//    public Structs.Mesh createMesh() throws IOException
-//    {
-//        //Generate the mesh based on the inputs from the command line
-//        Generator generator = new Generator();
-//        return generator.generate(numberPolygons, canvasWidth, canvasHeight, meshType, relationLevel, gridSpacing);
-//    }
 
     public String getInputMesh(){
         return inputMesh;
@@ -58,7 +59,10 @@ public class CommandLineReaderIsland implements CommandLineReader {
     public String getOutputMesh(){
         return outputMesh;
     }
-    public String getMode(){
-        return mode;
+    public boolean isSandBoxMode(){
+        if (mapMode.equals(ModeType.SANDBOX)){
+            return true;
+        }
+        return false;
     }
 }

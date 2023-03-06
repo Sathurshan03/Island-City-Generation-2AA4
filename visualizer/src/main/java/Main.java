@@ -1,6 +1,7 @@
+import ca.mcmaster.cas.se2aa4.a2.generator.CommandLineReader;
 import ca.mcmaster.cas.se2aa4.a2.io.MeshFactory;
 import ca.mcmaster.cas.se2aa4.a2.io.Structs;
-import ca.mcmaster.cas.se2aa4.a2.visualizer.CommandLineReaderVisualizer;
+import ca.mcmaster.cas.se2aa4.a2.visualizer.VisualizerCommandLineReader;
 import ca.mcmaster.cas.se2aa4.a2.visualizer.GraphicRenderer;
 import ca.mcmaster.cas.se2aa4.a2.visualizer.MeshDump;
 import ca.mcmaster.cas.se2aa4.a2.visualizer.SVGCanvas;
@@ -8,12 +9,12 @@ import ca.mcmaster.cas.se2aa4.a2.visualizer.SVGCanvas;
 import java.awt.*;
 import java.io.IOException;
 
-import org.apache.commons.cli.*;
+import org.apache.commons.cli.ParseException;
 
 public class Main {
 
     public static void main(String[] args) throws Exception, IOException, ParseException {
-        CommandLineReaderVisualizer commandLineReader = new CommandLineReaderVisualizer(args);
+        VisualizerCommandLineReader commandReader = new VisualizerCommandLineReader(args);
 
         // Extracting command line parameters
         String input = args[0];
@@ -30,7 +31,7 @@ public class Main {
         Graphics2D canvas = SVGCanvas.build((int) Math.ceil(max_x), (int) Math.ceil(max_y));
         GraphicRenderer renderer = new GraphicRenderer();
         // Painting the mesh on the canvas
-        renderer.render(aMesh, canvas, commandLineReader.isDebug());
+        renderer.render(aMesh, canvas, commandReader.isDebug());
         // Storing the result in an SVG file
         SVGCanvas.write(canvas, output);
         // Dump the mesh to stdout

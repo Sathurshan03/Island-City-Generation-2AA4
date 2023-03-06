@@ -129,7 +129,7 @@ Pending (P), Started (S), Blocked (B), Done (D)
 | F26   |  Choose grid box size for gird base mesh from command line |  Sathurshan  |   02/21/2023    |  02/21/2023   |    D    |
 | F27   | User can enter map mode with -- mode via command line      | Mithun     |  |  | P  |
 | F28   | –help mode in the command line gives a description of how to use to command line  | Mithun |  |  | B(F27),B(F32),B(F38),B(F45),B(F46),B(F50),B(F52),B(F59),B(F83)|
-| F29   | Sandbox map mode can be activated  | Mithun     |  |  | B(F27)  |
+| F29   | Sandbox map mode can be activated  | Sathurshan     | 03/05/2023 | 03/05/2023 | D |
 | F30   | Regular map mode can be activated  | Mithun     |  |  | B(F27)  |
 | F31   | Heat map mode can be activated     | Mithun     |  |  | B(F27)  |
 | F32   | User can enter the shape of the island with -- shape via command line  | Mithun     |  |  | P   |
