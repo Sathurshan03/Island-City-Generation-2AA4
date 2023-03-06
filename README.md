@@ -35,7 +35,7 @@ Example: `java -jar generator.jar sample.mesh -grid -width 400 -height 400`
 #### Irregular Mesh
 ```
 cd generator 
-java -jar generator.jar sample.mesh -irregular -numPoly [-width]  [-height] [-relation]
+java -jar generator.jar sample.mesh -irregular -numPoly [-width] [-height] [-relation]
 ls -lh sample.mesh
 ```
 `numPoly` is the number of polygons to generate on the mesh.\
@@ -43,6 +43,20 @@ ls -lh sample.mesh
 `relation` default is 1 and value can be changed for any values greater than 1 to smooth the mesh.
 
 Example: `java -jar generator.jar sample.mesh -irregular -numPoly 500 -width 600 -height 600 -relation 3`
+
+### Island
+Generates a map based on input mesh and command line arguments. 
+
+#### Sandbox 
+To run sandbox mode of the island generator, go to the `island` directory, and use `java -jar` to run the product. Use the mesh created by the generator as input mesh and enter .mesh file name to save the island generated map.  
+
+```
+cd island
+java -jar island.jar -input (input.mesh) -output (output.mesh) --mode sandbox
+```
+The output.mesh will be stored in the directory `island` by default.
+
+Example: `java -jar island.jar -i ../generator/sample.mesh -o sandbox.mesh --mode sandbox`
 
 ### Visualizer
 
