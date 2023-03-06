@@ -41,7 +41,7 @@ public class Sandbox extends Mode{
 
         //Set the unMarked Tiles color
         for(Tile tile: landTiles){
-            tile.setTileType(TileTypes.UNDETERMINEDLAND);
+            tile.setTileType(TileTypes.GRASSLAND);
         }
 
         //Set beach tiles 

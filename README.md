@@ -167,7 +167,7 @@ Pending (P), Started (S), Blocked (B), Done (D)
 | F64   | All tiles have assigned types for Sandbox     | Sathurshan | 03/06/2023 | 03/06/2023 | D  |
 | F65   | All land tiles have assigned biomes in relation to island biomes type  | Sathurshan |  |  | B(F60-F63),  B(F43), B(F57)   |
 | F66   | Display ocean tiles   | Sathurshan | 03/06/2023 | 03/06/2023 | D  |
-| F67   | Display beach tiles   | Sathurshan | 03/06/202 | 03/06/202 | D  |
+| F67   | Display beach tiles   | Sathurshan | 03/06/2023 | 03/06/2023 | D  |
 | F68   | Display lake tiles  | Mithun     |  |  | B(F45)   |
 | F69   | Display lagoon tiles  | Sathurshan     | 03/06/2023 | 03/06/2023 | D    |
 | F70   | Display ice tiles   | Sathurshan |  |  | B(F65)   |
@@ -177,7 +177,7 @@ Pending (P), Started (S), Blocked (B), Done (D)
 | F74   | Display forest tiles     | Nirmal     |  |  | B(F65)    |
 | F75   | Display jungle tiles    | Nirmal     |  |  | B(F65)   |
 | F76   | Display swamp tiles    | Nirmal     |  |  | B(F65)   |
-| F77   | Display grassland tiles     | Nirmal     |  |  | B(F65)   |
+| F77   | Display grassland tiles     | Sathurshan   | 03/06/202  | 03/06/202 | D   |
 | F78   | Display sandy desert tiles    | Nirmal     |  |  | B(F65)    |
 | F79   | Display savanna tiles      | Mithun     |  |  | B(F65)   |
 | F80   | Display clay tiles    | Mithun     |  |  | B(F65)      |
