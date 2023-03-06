@@ -1,6 +1,5 @@
 package ca.mcmaster.cas.se2aa4.a3.island;
 import java.io.IOException;
-import ca.mcmaster.cas.se2aa4.a2.io.Structs.Mesh;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.Tile;
 import ca.mcmaster.cas.se2aa4.a3.island.Shape.Circle;
 import ca.mcmaster.cas.se2aa4.a3.island.Shape.ShapeType;
@@ -45,6 +44,20 @@ public class Sandbox extends Mode{
             tile.setTileType(TileTypes.UNDETERMINEDLAND);
         }
 
+        //Set beach tiles 
+        determineBeachLand(landTiles);
+    }
+
+    private void determineBeachLand(List<Tile> landTiles){
+        //Any Tile that are neighbours to a water tile is a beach tile 
+        for(Tile tile: landTiles){
+            for(Tile neighbouringTile: tile.getNeighbouringTile()){
+                if (neighbouringTile.isTileWater()){
+                    tile.setTileType(TileTypes.BEACH);
+                    break;
+                }
+            }
+        }
     }
 
 }
