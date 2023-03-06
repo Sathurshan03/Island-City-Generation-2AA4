@@ -1,0 +1,8 @@
+mvn install
+cd island
+java -jar island.jar sample.Mesh -i ../generator/sample.mesh -o test.mesh -m sandbox -s rectangle
+ls -lh test.mesh
+cd ..
+cd visualizer
+java -jar visualizer.jar ../island/test.mesh sample.svg
+ls -lh sample.svg
