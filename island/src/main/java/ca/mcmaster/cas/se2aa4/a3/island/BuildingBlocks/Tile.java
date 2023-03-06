@@ -16,12 +16,14 @@ public class Tile extends ExtractPolygonInfo{
     List<TileSegment> tileSegmentList;
     List<TileSegment> neighbouringTileSegmentList;
     List<TileVertex> tileVerticesList;
+    List<Tile> neighbouringTileList;
     Color color;
     public Tile(Polygon polygon, List<Segment> meshSegments, List<Vertex> meshVertices, int numPolygons){
         super(polygon, meshSegments, meshVertices, numPolygons);
         tileSegmentList = new ArrayList<>();
         neighbouringTileSegmentList = new ArrayList<>();
         tileVerticesList = new ArrayList<>();
+        neighbouringTileList = new ArrayList<>();
     }
     public void setCentroid(TileVertex vertex){
         centroid = vertex;
@@ -29,11 +31,18 @@ public class Tile extends ExtractPolygonInfo{
     public void setTileType(TileTypes tileType){
         this.tileType = tileType;
     }
+    
+    public TileVertex getCentroid(){
+        return centroid;
+    }
     public double getCentroidX(){
         return centroid.getX();
     }
     public double getCentroidY(){
         return centroid.getY();
+    }
+    public List<TileSegment> getNeighbouringTileSegments(){
+        return neighbouringTileSegmentList;
     }
     public Boolean isTileVerticesListContains(TileVertex tileVertex){
         if (tileVerticesList.contains(tileVertex)){
@@ -41,7 +50,6 @@ public class Tile extends ExtractPolygonInfo{
         }
         return true;
     }
-
 
     public Polygon getPolygon(){
         //create the Struct Polygon of Tiles
@@ -60,6 +68,9 @@ public class Tile extends ExtractPolygonInfo{
     }
     public void addTileVertex(TileVertex tileVertex){
         tileVerticesList.add(tileVertex);
+    }
+    public void addNeighbouringTile(Tile tile){
+        neighbouringTileList.add(tile);
     }
     private void setColor(){
         //set the color of segments and vertices 

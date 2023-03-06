@@ -55,6 +55,20 @@ public abstract class Mode {
         segments = mesh.getSegmentsList();
         vertices = mesh.getVerticesList();
 
+        extractSegments();
+        extractVertex();
+        extractPolygon();
+        setNeighbouringTiles();
+
+        //Find the height and width of the mesh
+        for (TileVertex v: verticesInfoList) {
+            width = (Double.compare(width, v.getX()) < 0? v.getX(): width);
+            height = (Double.compare(height, v.getY()) < 0? v.getY(): height);
+        }
+
+    }
+
+    private void extractSegments() throws IOException{
         //extract segment information
         String type;
         TileSegment tileSegment;
@@ -75,8 +89,11 @@ public abstract class Mode {
                 throw new IOException("Invalid segment type");
             }
         }
+    }
 
+    private void extractVertex() throws IOException{
         //extract vertices information
+        String type;
         TileVertex tileVertex;
         for(Vertex vertex : vertices){
             Property vertexType = vertex.getProperties(2);
@@ -93,9 +110,15 @@ public abstract class Mode {
             }
             allVerticesInfoList.add(tileVertex);
         }
+    }
 
+
+    private void extractPolygon(){
         //extract polygon information
         Polygon polygon;
+        TileSegment tileSegment; 
+        TileVertex tileVertex;
+
         for (int i = 0; i < polygons.size(); i++) {
             polygon = polygons.get(i);
             Tile tile = new Tile(polygon, segments, vertices, polygons.size());
@@ -122,22 +145,21 @@ public abstract class Mode {
             for (Integer j: polygon.getNeighborIdxsList()){
                 tile.addNeighbouringTileSegment(allSegmentInfoList.get(j));
             }
-
-
-
             tiles.add(tile);
         }
-
-
-
-
-        //Find the height and width of the mesh
-        for (TileVertex v: verticesInfoList) {
-            width = (Double.compare(width, v.getX()) < 0? v.getX(): width);
-            height = (Double.compare(height, v.getY()) < 0? v.getY(): height);
-        }
-
     }
+
+    private void setNeighbouringTiles(){
+        //give each tile its neighbouring tile
+        for (Tile tile: tiles){
+            TileVertex tileCentroid = tile.getCentroid();
+            for (TileSegment tileSegment: tile.getNeighbouringTileSegments()){
+                int id = tileCentroid.equals(allVerticesInfoList.get(tileSegment.getVertedIDX1()))?tileSegment.getVertedIDX1(): tileSegment.getVertedIDX2();
+                tile.addNeighbouringTile(tiles.get(id));
+            }
+        }
+    }
+
 
     public Mesh getMesh(){
         //Convert from custom shapes to Struct shapes
