@@ -23,12 +23,37 @@ public class Circle extends Shape{
         this.meshCenterY = height /2;
         markTiles();
     }
+
+    public Circle (double width, double height, double centerX, double centerY, List<Tile> tiles){
+        super();
+        this.maxRadius = Double.compare(width, height) < 0? width/2: height/2;
+        this.tiles = tiles;
+
+        Random random = new Random();
+        this.radius = random.nextDouble(maxRadius*0.5,maxRadius);
+        this.meshCenterX = centerX;
+        this.meshCenterY = centerY;
+        markTiles();
+    }
+
+
     public List<Tile> getMarkedTiles(){
         return markedtiles;
     }
     public List<Tile> getUnMarkedTiles(){
         return unMarkedtiles;
     }
+    public double getRadius(){
+        return radius;
+    }
+    public double getCenterX(){
+        return meshCenterX;
+    }
+
+    public double getCenterY(){
+        return meshCenterY;
+    }
+
     public void markTiles(){
         //Any Tile's centroid that falls within the radius is considered as unmarked
         double xDifference;

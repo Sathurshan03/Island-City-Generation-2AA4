@@ -169,7 +169,7 @@ Pending (P), Started (S), Blocked (B), Done (D)
 | F66   | Display ocean tiles   | Sathurshan | 03/06/2023 | 03/06/2023 | D  |
 | F67   | Display beach tiles   | Sathurshan |  |  | B(F64)   |
 | F68   | Display lake tiles  | Mithun     |  |  | B(F45)   |
-| F69   | Display lagoon tiles  | Mithun     |  |  | B(F64)    |
+| F69   | Display lagoon tiles  | Sathurshan     | 03/06/2023 | 03/06/2023 | D    |
 | F70   | Display ice tiles   | Sathurshan |  |  | B(F65)   |
 | F71   | Display snow tiles    | Sathurshan |  |  | B(F65)    |
 | F72   | Display tundra tiles      | Sathurshan |  |  | B(F65)     |
