@@ -8,7 +8,7 @@ import java.util.List;
 
 public class Volcanic implements LandAltitude{
 
-    public AltitudeFunction function= (x,y)->{return 10000/(0.1*Math.pow((x-Mode.getWidth()/2),2)+0.1*Math.pow(y-Mode.getHeight()/2,2)+1);};
+    public AltitudeFunction function= (x,y)->{return (Mode.getWidth()/10)/((Mode.getWidth()/500000)*Math.pow((x-Mode.getWidth()/2),2)+(Mode.getWidth()/500000)*Math.pow(y-Mode.getHeight()/2,2)+1);};
 
     List<Tile> landTiles;
 
