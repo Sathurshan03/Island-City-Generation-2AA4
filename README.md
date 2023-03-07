@@ -156,8 +156,8 @@ Pending (P), Started (S), Blocked (B), Done (D)
 | F35   | Islands have circular shape option      | Sathurshan | 03/05/2023 | 03/05/2023 | D |
 | F36   | Islands have a rectangle shape option   | Sathurshan | 03/06/2023 | 03/06/2023 | D |
 | F37   | Islands have a ring shape option  | Sathurshan |  |  | B(F32) |
-| F38   | User can enter general elevation trend using  --altitude through the command prompt | Nirmal     |  |  | P |
-| F39   | Island altitude has “volcanic” option   | Nirmal     |  |  | B(F38)   |
+| F38   | User can enter general elevation trend using  --altitude through the command prompt | Nirmal     | 03/06/2023 | 03/06/2023 | D |
+| F39   | Island altitude has “volcanic” option   | Nirmal     | 03/06/2023 | 03/06/2023 | D   |
 | F40   | Island altitude has “hill” option  | Nirmal     |  |  | B(F38)  |
 | F41   | Island altitude has “flat” option  | Nirmal     |  |  | B(F38)  |
 | F42   | Island altitude has “random” option  | Nirmal     |  |  | B(F38)   |
