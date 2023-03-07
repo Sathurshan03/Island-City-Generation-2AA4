@@ -4,5 +4,5 @@ java -jar island.jar sample.Mesh -i ../generator/sample.mesh -o test.mesh -m san
 ls -lh test.mesh
 cd ..
 cd visualizer
-java -jar visualizer.jar ../island/test.mesh sample.svg
+java -jar visualizer.jar ../island/test.mesh sample.svg -X
 ls -lh sample.svg

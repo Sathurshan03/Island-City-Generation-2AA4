@@ -1,6 +1,12 @@
 package ca.mcmaster.cas.se2aa4.a3.island;
 import java.io.IOException;
+
+import ca.mcmaster.cas.se2aa4.a3.island.Altitude.Altitude;
+import ca.mcmaster.cas.se2aa4.a3.island.Altitude.LandAltitude;
+import ca.mcmaster.cas.se2aa4.a3.island.Altitude.Volcanic;
+import ca.mcmaster.cas.se2aa4.a3.island.Altitude.Water;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.Tile;
+import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.TileVertex;
 import ca.mcmaster.cas.se2aa4.a3.island.Shape.Circle;
 import ca.mcmaster.cas.se2aa4.a3.island.Shape.ShapeType;
 import ca.mcmaster.cas.se2aa4.a3.island.Tiles.TileTypes;
@@ -42,6 +48,24 @@ public class Sandbox extends Mode{
         //Set the unMarked Tiles color
         for(Tile tile: landTiles){
             tile.setTileType(TileTypes.UNDETERMINEDLAND);
+        }
+
+
+        Altitude land_elevation=new Altitude(new Volcanic(landTiles), new Water(lagoonTiles));
+
+
+        for (Tile t:landTiles){
+            for (TileVertex v: t.getTileVertices()){
+                v.setThickness(v.getElevation()/10000.0);
+            }
+
+        }
+
+        for (Tile t:lagoonTiles){
+            for (TileVertex v: t.getTileVertices()){
+                v.setThickness(v.getElevation()/10000.0);
+            }
+
         }
 
         //Set beach tiles 

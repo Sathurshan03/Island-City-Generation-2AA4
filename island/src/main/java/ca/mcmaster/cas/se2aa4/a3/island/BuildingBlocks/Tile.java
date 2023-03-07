@@ -80,6 +80,11 @@ public class Tile extends ExtractPolygonInfo{
     public void addTileVertex(TileVertex tileVertex){
         tileVerticesList.add(tileVertex);
     }
+
+    public List<TileVertex> getTileVertices(){
+        return this.tileVerticesList;
+    }
+    
     public void addNeighbouringTile(Tile tile){
         neighbouringTileList.add(tile);
     }

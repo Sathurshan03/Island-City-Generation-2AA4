@@ -11,6 +11,8 @@ public class TileVertex extends ExtractVertexInfo implements TileProperties{
     List<Color> colorList;
     Color averageColor = new Color(0, 0, 0, 0);
     String vertexType;
+
+    Double elevation;
     Double thicknessDouble;
     public TileVertex(Vertex vertex)
     {
@@ -23,6 +25,20 @@ public class TileVertex extends ExtractVertexInfo implements TileProperties{
     public void setColor(Color color){
         this.averageColor = color;
     }
+
+    public void setElevation(Double elevation){
+        this.elevation=elevation;
+    }
+
+    public Double getElevation(){
+        return this.elevation;
+    }
+
+    public void setThickness(Double new_thickness){
+        this.thicknessDouble=new_thickness;
+    }
+
+
 
     public Vertex getVertex(){
         setAverageColor();
