@@ -3,9 +3,7 @@ package ca.mcmaster.cas.se2aa4.a3.island.Modes;
 import java.io.IOException;
 import java.util.List;
 
-import ca.mcmaster.cas.se2aa4.a3.island.Altitude.Altitude;
-import ca.mcmaster.cas.se2aa4.a3.island.Altitude.Volcanic;
-import ca.mcmaster.cas.se2aa4.a3.island.Altitude.Water;
+import ca.mcmaster.cas.se2aa4.a3.island.Altitude.*;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.Tile;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.TileVertex;
 import ca.mcmaster.cas.se2aa4.a3.island.Shape.Shape;
@@ -14,8 +12,8 @@ import ca.mcmaster.cas.se2aa4.a3.island.Tiles.TileTypes;
 
 public class Regular extends Mode {
     
-    public Regular(String inputMesh, String outputMesh, ShapeType shapeType) throws IOException{
-        super(inputMesh, outputMesh, shapeType);
+    public Regular(String inputMesh, String outputMesh, ShapeType shapeType, AltitudeType altitudeType) throws IOException{
+        super(inputMesh, outputMesh, shapeType, altitudeType);
 
         //extract all the info from the input mesh
         extractInformation();
@@ -37,7 +35,9 @@ public class Regular extends Mode {
             tile.setTileType(TileTypes.GRASSLAND);
         }
 
-        Altitude land_elevation=new Altitude(new Volcanic(undecidedTiles), new Water(oceanTiles));
+        altitude.getAltitude(undecidedTiles);
+        AltitudeType.WATER.getAltitude(oceanTiles);
+
 
 
         for (Tile t:undecidedTiles){

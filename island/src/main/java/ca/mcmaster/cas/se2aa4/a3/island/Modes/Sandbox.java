@@ -1,8 +1,7 @@
 package ca.mcmaster.cas.se2aa4.a3.island.Modes;
 import java.io.IOException;
 
-import ca.mcmaster.cas.se2aa4.a3.island.Altitude.Altitude;
-import ca.mcmaster.cas.se2aa4.a3.island.Altitude.LandAltitude;
+import ca.mcmaster.cas.se2aa4.a3.island.Altitude.AltitudeType;
 import ca.mcmaster.cas.se2aa4.a3.island.Altitude.Volcanic;
 import ca.mcmaster.cas.se2aa4.a3.island.Altitude.Water;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.Tile;
@@ -16,7 +15,7 @@ import java.util.List;
 public class Sandbox extends Mode{
     
     public Sandbox(String inputMesh, String outputMesh) throws IOException{
-        super(inputMesh, outputMesh, ShapeType.CIRCLE);
+        super(inputMesh, outputMesh, ShapeType.CIRCLE, AltitudeType.VOLCANIC);
 
          //extract all the info from the input mesh
          extractInformation();
@@ -50,8 +49,8 @@ public class Sandbox extends Mode{
             tile.setTileType(TileTypes.GRASSLAND);
         }
 
-
-        Altitude land_elevation=new Altitude(new Volcanic(landTiles), new Water(lagoonTiles));
+        altitude.getAltitude(undecidedTiles);
+        AltitudeType.WATER.getAltitude(lagoonTiles);
 
 
         for (Tile t:landTiles){

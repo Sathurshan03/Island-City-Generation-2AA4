@@ -19,7 +19,7 @@ public class Main {
             mesh = sandbox.getMesh();
         }
         else if (commandReader.isRegularMode()){
-            Regular regular = new Regular(commandReader.getInputMesh(), commandReader.getOutputMesh(), commandReader.getShapeType());
+            Regular regular = new Regular(commandReader.getInputMesh(), commandReader.getOutputMesh(), commandReader.getShapeType(), commandReader.getAltitudeType());
             regular.generate();
             mesh = regular.getMesh();
         }

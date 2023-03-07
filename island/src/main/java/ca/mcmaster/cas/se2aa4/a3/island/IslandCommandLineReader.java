@@ -1,5 +1,6 @@
 package ca.mcmaster.cas.se2aa4.a3.island;
 
+import ca.mcmaster.cas.se2aa4.a3.island.Altitude.AltitudeType;
 import ca.mcmaster.cas.se2aa4.a3.tools.CommandLineReader;
 import ca.mcmaster.cas.se2aa4.a3.island.Modes.ModeType;
 import ca.mcmaster.cas.se2aa4.a3.island.Shape.ShapeType;
@@ -13,7 +14,11 @@ public class IslandCommandLineReader implements CommandLineReader {
     String outputMesh;
     String mode;
     String shape;
+
+    String elevation;
     ModeType mapMode;
+
+    AltitudeType altitude;
     ShapeType shapeToUse;
     private Options options;
 
@@ -29,6 +34,8 @@ public class IslandCommandLineReader implements CommandLineReader {
         options.addOption(new Option("o", "outputMesh", true, "Output Mesh"));
         options.addOption(new Option("m", "mode", true, "Map Mode"));
         options.addOption(new Option("s", "shape", true, "Island Shape"));
+        options.addOption(new Option("a", "altitude", true, "Island Elevation"));
+
     }
 
     public void checkOptions(String[] args) throws ParseException, IOException{
@@ -41,6 +48,9 @@ public class IslandCommandLineReader implements CommandLineReader {
         outputMesh = cmd.getOptionValue("outputMesh");
         mode = cmd.getOptionValue("mode");
         shape = cmd.getOptionValue("shape");
+        elevation=cmd.getOptionValue("altitude");
+
+
 
 
         //Help option
@@ -70,6 +80,15 @@ public class IslandCommandLineReader implements CommandLineReader {
             }
         }
 
+        for(AltitudeType a: AltitudeType.values()){
+            String altitudeString = a.toString();
+            if (altitudeString.equals(elevation))
+            {
+                altitude = a;
+                break;
+            }
+        }
+
     }
 
     public String getInputMesh(){
@@ -81,6 +100,11 @@ public class IslandCommandLineReader implements CommandLineReader {
     public ShapeType getShapeType(){
         return shapeToUse;
     }
+
+    public AltitudeType getAltitudeType(){
+        return altitude;
+    }
+
     public boolean isSandBoxMode(){
         if (mapMode.equals(ModeType.SANDBOX)){
             return true;

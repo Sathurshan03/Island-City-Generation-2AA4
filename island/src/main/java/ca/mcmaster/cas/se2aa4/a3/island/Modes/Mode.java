@@ -9,6 +9,7 @@ import ca.mcmaster.cas.se2aa4.a2.io.Structs.Polygon;
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Property;
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Segment;
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Vertex;
+import ca.mcmaster.cas.se2aa4.a3.island.Altitude.AltitudeType;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.Tile;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.TileSegment;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.TileVertex;
@@ -18,6 +19,8 @@ public abstract class Mode {
     String inputMesh;
     String outputMesh;
     ShapeType shape;
+
+    AltitudeType altitude;
     Mesh mesh;
     List<Polygon> polygons;
     List<Segment> segments;
@@ -32,11 +35,11 @@ public abstract class Mode {
     static  double width;
     static double height;
 
-    public Mode(String inputMesh, String outputMesh, ShapeType shape){
+    public Mode(String inputMesh, String outputMesh, ShapeType shape, AltitudeType altitude){
         this.inputMesh = inputMesh;
         this.outputMesh = outputMesh;
         this.shape = shape;
-
+        this.altitude=altitude;
         this.tiles = new ArrayList<>();
         this.allSegmentInfoList = new ArrayList<>();
         this.segmentInfoList = new ArrayList<>();

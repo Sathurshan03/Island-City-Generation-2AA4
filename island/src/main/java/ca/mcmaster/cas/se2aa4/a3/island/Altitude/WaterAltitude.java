@@ -1,6 +1,6 @@
 package ca.mcmaster.cas.se2aa4.a3.island.Altitude;
 
-public interface WaterAltitude {
+public interface WaterAltitude extends Altitude {
 
-    public void SetElevation();
+    //More functions to come in future.
 }
