@@ -2,12 +2,13 @@ package ca.mcmaster.cas.se2aa4.a3.island.Altitude;
 
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.Tile;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.TileVertex;
+import ca.mcmaster.cas.se2aa4.a3.island.Modes.Mode;
 
 import java.util.List;
 
 public class Volcanic implements LandAltitude{
 
-    public AltitudeFunction function= (x,y)->{return x*y;};
+    public AltitudeFunction function= (x,y)->{return 10000/(0.1*Math.pow((x-Mode.getWidth()/2),2)+0.1*Math.pow(y-Mode.getHeight()/2,2)+1);};
 
     List<Tile> landTiles;
 

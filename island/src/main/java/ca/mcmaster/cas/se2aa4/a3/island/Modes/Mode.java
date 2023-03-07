@@ -1,4 +1,4 @@
-package ca.mcmaster.cas.se2aa4.a3.island;
+package ca.mcmaster.cas.se2aa4.a3.island.Modes;
 
 import java.io.IOException;
 import java.util.List;
@@ -29,8 +29,8 @@ public abstract class Mode {
     List<TileVertex> allVerticesInfoList;
     List<TileVertex> verticesInfoList;
     List<TileVertex> centroidInfoList;
-    double width;
-    double height;
+    static  double width;
+    static double height;
 
     public Mode(String inputMesh, String outputMesh, ShapeType shape){
         this.inputMesh = inputMesh;
@@ -163,6 +163,16 @@ public abstract class Mode {
         }
     }
 
+    public static Double getWidth(){
+        return width;
+    }
+
+    public static Double getHeight(){
+        return height;
+    }
+
+
+
 
     public Mesh getMesh(){
         //Convert from custom shapes to Struct shapes
@@ -194,4 +204,6 @@ public abstract class Mode {
         
         return Mesh.newBuilder().addAllPolygons(polygons).addAllSegments(segments).addAllVertices(centroids).addAllVertices(vertices).build();
     }
+
+    public abstract void generate();
 }

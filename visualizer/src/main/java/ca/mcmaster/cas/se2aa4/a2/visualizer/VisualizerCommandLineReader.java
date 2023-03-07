@@ -1,7 +1,7 @@
 package ca.mcmaster.cas.se2aa4.a2.visualizer;
 import java.io.IOException;
 import org.apache.commons.cli.ParseException;
-import ca.mcmaster.cas.se2aa4.a2.generator.CommandLineReader;
+import ca.mcmaster.cas.se2aa4.a3.tools.CommandLineReader;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.CommandLine;

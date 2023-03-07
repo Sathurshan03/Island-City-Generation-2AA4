@@ -18,7 +18,7 @@ public class Water implements WaterAltitude {
 
         for(Tile tile: waterTiles){
             for (TileVertex vertex:tile.getTileVertices()){
-                vertex.setElevation(10000.0);
+                vertex.setElevation(1.0);
 
             }
         }

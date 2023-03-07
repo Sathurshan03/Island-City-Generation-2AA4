@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.util.List;
 import java.awt.geom.Ellipse2D;
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Vertex;
+import ca.mcmaster.cas.se2aa4.a3.tools.ExtractVertexInfo;
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Property;
 
 public class VertexVisualizer extends ExtractVertexInfo implements colourExtraction{

@@ -1,4 +1,4 @@
-package ca.mcmaster.cas.se2aa4.a3.island;
+package ca.mcmaster.cas.se2aa4.a3.island.Modes;
 import java.io.IOException;
 
 import ca.mcmaster.cas.se2aa4.a3.island.Altitude.Altitude;
@@ -47,7 +47,7 @@ public class Sandbox extends Mode{
 
         //Set the unMarked Tiles color
         for(Tile tile: landTiles){
-            tile.setTileType(TileTypes.UNDETERMINEDLAND);
+            tile.setTileType(TileTypes.GRASSLAND);
         }
 
 
@@ -56,14 +56,14 @@ public class Sandbox extends Mode{
 
         for (Tile t:landTiles){
             for (TileVertex v: t.getTileVertices()){
-                v.setThickness(v.getElevation()/10000.0);
+                v.setThickness(v.getElevation());
             }
 
         }
 
         for (Tile t:lagoonTiles){
             for (TileVertex v: t.getTileVertices()){
-                v.setThickness(v.getElevation()/10000.0);
+                v.setThickness(v.getElevation());
             }
 
         }

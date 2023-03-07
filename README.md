@@ -35,7 +35,7 @@ Example: `java -jar generator.jar sample.mesh -grid -width 400 -height 400`
 #### Irregular Mesh
 ```
 cd generator 
-java -jar generator.jar sample.mesh -irregular -numPoly [-width]  [-height] [-relation]
+java -jar generator.jar sample.mesh -irregular -numPoly [-width] [-height] [-relation]
 ls -lh sample.mesh
 ```
 `numPoly` is the number of polygons to generate on the mesh.\
@@ -43,6 +43,20 @@ ls -lh sample.mesh
 `relation` default is 1 and value can be changed for any values greater than 1 to smooth the mesh.
 
 Example: `java -jar generator.jar sample.mesh -irregular -numPoly 500 -width 600 -height 600 -relation 3`
+
+### Island
+Generates a map based on input mesh and command line arguments. 
+
+#### Sandbox 
+To run sandbox mode of the island generator, go to the `island` directory, and use `java -jar` to run the product. Use the mesh created by the generator as input mesh and enter .mesh file name to save the island generated map.  
+
+```
+cd island
+java -jar island.jar -input (input.mesh) -output (output.mesh) --mode sandbox
+```
+The output.mesh will be stored in the directory `island` by default.
+
+Example: `java -jar island.jar -i ../generator/sample.mesh -o sandbox.mesh --mode sandbox`
 
 ### Visualizer
 
@@ -82,6 +96,10 @@ To see a examples of the mesh, run any one of the scripts below in the main dire
 ```./runAllDebugIrregular```
 
 ![My Image](images/irregularDebug.png)
+
+```./runSandbox```
+
+![My Image](images/sandbox.png)
 
 
 ## How to contribute to the project
@@ -130,7 +148,7 @@ Pending (P), Started (S), Blocked (B), Done (D)
 | F27   | User can enter map mode with -- mode via command line      | Mithun     |  |  | P  |
 | F28   | –help mode in the command line gives a description of how to use to command line  | Mithun |  |  | B(F27),B(F32),B(F38),B(F45),B(F46),B(F50),B(F52),B(F59),B(F83)|
 | F29   | Sandbox map mode can be activated  | Sathurshan     | 03/05/2023 | 03/05/2023 | D |
-| F30   | Regular map mode can be activated  | Mithun     |  |  | B(F27)  |
+| F30   | Regular map mode can be activated  | Sathurshan     | 03/06/2023 | 03/06/2023 | D |
 | F31   | Heat map mode can be activated     | Mithun     |  |  | B(F27)  |
 | F32   | User can enter the shape of the island with -- shape via command line  | Sathurshan     | 03/05/2023 | 03/05/2023 | D   |
 | F33   | Islands have oval shape option   | Sathurshan |  |  | B(F32)  |
@@ -167,7 +185,7 @@ Pending (P), Started (S), Blocked (B), Done (D)
 | F64   | All tiles have assigned types for Sandbox     | Sathurshan | 03/06/2023 | 03/06/2023 | D  |
 | F65   | All land tiles have assigned biomes in relation to island biomes type  | Sathurshan |  |  | B(F60-F63),  B(F43), B(F57)   |
 | F66   | Display ocean tiles   | Sathurshan | 03/06/2023 | 03/06/2023 | D  |
-| F67   | Display beach tiles   | Sathurshan | 03/06/202 | 03/06/202 | D  |
+| F67   | Display beach tiles   | Sathurshan | 03/06/2023 | 03/06/2023 | D  |
 | F68   | Display lake tiles  | Mithun     |  |  | B(F45)   |
 | F69   | Display lagoon tiles  | Sathurshan     | 03/06/2023 | 03/06/2023 | D    |
 | F70   | Display ice tiles   | Sathurshan |  |  | B(F65)   |
@@ -177,7 +195,7 @@ Pending (P), Started (S), Blocked (B), Done (D)
 | F74   | Display forest tiles     | Nirmal     |  |  | B(F65)    |
 | F75   | Display jungle tiles    | Nirmal     |  |  | B(F65)   |
 | F76   | Display swamp tiles    | Nirmal     |  |  | B(F65)   |
-| F77   | Display grassland tiles     | Nirmal     |  |  | B(F65)   |
+| F77   | Display grassland tiles     | Sathurshan   | 03/06/202  | 03/06/202 | D   |
 | F78   | Display sandy desert tiles    | Nirmal     |  |  | B(F65)    |
 | F79   | Display savanna tiles      | Mithun     |  |  | B(F65)   |
 | F80   | Display clay tiles    | Mithun     |  |  | B(F65)      |
