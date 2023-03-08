@@ -199,7 +199,7 @@ Pending (P), Started (S), Blocked (B), Done (D)
 | F78   | Display sandy desert tiles    | Nirmal     |  |  | B(F65)    |
 | F79   | Display savanna tiles      | Mithun     |  |  | B(F65)   |
 | F80   | Display clay tiles    | Mithun     |  |  | B(F65)      |
-| F81   | Output default seed     | Sathurshan |  |  | P   |
+| F81   | Output default seed     | Sathurshan | 03/08/2023 | 03/08/2023 | D   |
 | F82   | Output all the user’s input parameters   | Mithun     |  |  | B(F27),B(F28),B(F32),B(F38),B(F45),B(F46),B(F50),B(F52),B(F59),B(F83) |
 | F83   | User can enter the seed to use via -–seed via the command line    | Sathurshan |  |  | P   |
 | F84   | Generate same seed map     | Sathurshan |  |  | B(F81), B(F83)   |
