@@ -161,48 +161,49 @@ Pending (P), Started (S), Blocked (B), Done (D)
 | F40   | Island altitude has “hill” option  | Nirmal     |  |  | B(F38)  |
 | F41   | Island altitude has “flat” option  | Nirmal     |  |  | B(F38)  |
 | F42   | Island altitude has “random” option  | Nirmal     |  |  | B(F38)   |
-| F43   | Each vertex has an associated temperature  | Nirmal     |  |  | B(F38)        |
-| F44   | Every polygon has an average temperature    | Nirmal     |  |  | B(F43)   |
-| F45   | User can enter the maximum number of lakes on the island using —lakes via the command line.   | Mithun     |  |  | B(F48)  |
-| F46   | User can enter the maximum number of rivers on the island using –rivers via the command line. | Sathurshan |  |  | P   |
-| F47   | Generate rivers on the island    | Sathurshan |  |  | B(F46)   |
-| F48   | Generate endorheic lakes   | Sathurshan |  |  | B(F47)   |
-| F49   | Merge rivers that intersect with each other | Sathurshan |  |  | B(F47)         |
-| F50   | User can enter the number of aquifers on the island using —aquifers via the command line.     | Mithun     |  |  | P  |
-| F51   | Generate aquifers on the island | Mithun     |  |  | B(F50)   |
-| F52   | User can enter soil absorption profile —soil via the command line.   | Nirmal     |  |  | P   |
-| F53   | Wet soil profile applied to map  | Nirmal     |  |  | B(F52)     |
-| F54   | Humid soil profile applied to map  | Nirmal     |  |  | B(F52)    |
-| F55   | Dry soil profile applied to map     | Nirmal     |  |  | B(F52)         |
-| F56   | Each land segment has a particular soil absorption.     | Nirmal     |  |  | B(F52)      |
-| F57   | Each land segment has particular humidity.   | Nirmal     |  |  | B(F56)     |
-| F58   | Humidity affects color brightness or darkness   | Nirmal     |  |  | B(F57),B(F64)   |
-| F59   | User can enter the biome type of the island using -–biomes via the command line.   | Mithun     |  |  | P |
-| F60   | Arctic type map generatable  | Mithun     |  |  | B(F59)  |
-| F61   | Tropical Rain Forest type map generatable    | Mithun     |  |  | B(F59)   |
-| F62   | Temperate deciduous forest type map generatable  | Mithun     |  |  | B(F59)  |
-| F63   | Desert type map generable   | Mithun     |  |  | B(F59)     |
-| F64   | All tiles have assigned types for Sandbox     | Sathurshan | 03/06/2023 | 03/06/2023 | D  |
-| F65   | All land tiles have assigned biomes in relation to island biomes type  | Sathurshan |  |  | B(F60-F63),  B(F43), B(F57)   |
-| F66   | Display ocean tiles   | Sathurshan | 03/06/2023 | 03/06/2023 | D  |
-| F67   | Display beach tiles   | Sathurshan | 03/06/2023 | 03/06/2023 | D  |
-| F68   | Display lake tiles  | Mithun     |  |  | B(F45)   |
-| F69   | Display lagoon tiles  | Sathurshan     | 03/06/2023 | 03/06/2023 | D    |
-| F70   | Display ice tiles   | Sathurshan |  |  | B(F65)   |
-| F71   | Display snow tiles    | Sathurshan |  |  | B(F65)    |
-| F72   | Display tundra tiles      | Sathurshan |  |  | B(F65)     |
-| F73   | Display taiga tiles     | Sathurshan |  |  | B(F65)  |
-| F74   | Display forest tiles     | Nirmal     |  |  | B(F65)    |
-| F75   | Display jungle tiles    | Nirmal     |  |  | B(F65)   |
-| F76   | Display swamp tiles    | Nirmal     |  |  | B(F65)   |
-| F77   | Display grassland tiles     | Sathurshan   | 03/06/202  | 03/06/202 | D   |
-| F78   | Display sandy desert tiles    | Nirmal     |  |  | B(F65)    |
-| F79   | Display savanna tiles      | Mithun     |  |  | B(F65)   |
-| F80   | Display clay tiles    | Mithun     |  |  | B(F65)      |
-| F81   | Output default seed     | Sathurshan | 03/08/2023 | 03/08/2023 | D   |
-| F82   | Output all the user’s input parameters   | Mithun     |  |  | B(F27),B(F28),B(F32),B(F38),B(F45),B(F46),B(F50),B(F52),B(F59),B(F83) |
-| F83   | User can enter the seed to use via -–seed via the command line    | Sathurshan |  |  | P   |
-| F84   | Generate same seed map     | Sathurshan |  |  | B(F81), B(F83)   |
-| F85   | Goods for each tile depending on tile conditions  | Mithun     |  |  | B(F57),B(F43)  |
+| F43   | Enter Debug Elevation mode from command line using -XE  | Nirmal     | 03/08/2023 | 03/08/2023 | D   |
+| F44   | Each vertex has an associated temperature  | Nirmal     |  |  | B(F38)        |
+| F45   | Every polygon has an average temperature    | Nirmal     |  |  | B(F43)   |
+| F46   | User can enter the maximum number of lakes on the island using —lakes via the command line.   | Mithun     |  |  | B(F48)  |
+| F47   | User can enter the maximum number of rivers on the island using –rivers via the command line. | Sathurshan |  |  | P   |
+| F48   | Generate rivers on the island    | Sathurshan |  |  | B(F46)   |
+| F49   | Generate endorheic lakes   | Sathurshan |  |  | B(F47)   |
+| F50   | Merge rivers that intersect with each other | Sathurshan |  |  | B(F47)         |
+| F51   | User can enter the number of aquifers on the island using —aquifers via the command line.     | Mithun     |  |  | P  |
+| F52   | Generate aquifers on the island | Mithun     |  |  | B(F50)   |
+| F53   | User can enter soil absorption profile —soil via the command line.   | Nirmal     |  |  | P   |
+| F54   | Wet soil profile applied to map  | Nirmal     |  |  | B(F52)     |
+| F55   | Humid soil profile applied to map  | Nirmal     |  |  | B(F52)    |
+| F56   | Dry soil profile applied to map     | Nirmal     |  |  | B(F52)         |
+| F57   | Each land segment has a particular soil absorption.     | Nirmal     |  |  | B(F52)      |
+| F58   | Each land segment has particular humidity.   | Nirmal     |  |  | B(F56)     |
+| F59   | Humidity affects color brightness or darkness   | Nirmal     |  |  | B(F57),B(F64)   |
+| F60   | User can enter the biome type of the island using -–biomes via the command line.   | Mithun     |  |  | P |
+| F61   | Arctic type map generatable  | Mithun     |  |  | B(F59)  |
+| F62   | Tropical Rain Forest type map generatable    | Mithun     |  |  | B(F59)   |
+| F63   | Temperate deciduous forest type map generatable  | Mithun     |  |  | B(F59)  |
+| F64   | Desert type map generable   | Mithun     |  |  | B(F59)     |
+| F65   | All tiles have assigned types for Sandbox     | Sathurshan | 03/06/2023 | 03/06/2023 | D  |
+| F66   | All land tiles have assigned biomes in relation to island biomes type  | Sathurshan |  |  | B(F60-F63),  B(F43), B(F57)   |
+| F67   | Display ocean tiles   | Sathurshan | 03/06/2023 | 03/06/2023 | D  |
+| F68   | Display beach tiles   | Sathurshan | 03/06/2023 | 03/06/2023 | D  |
+| F69   | Display lake tiles  | Mithun     |  |  | B(F45)   |
+| F70   | Display lagoon tiles  | Sathurshan     | 03/06/2023 | 03/06/2023 | D    |
+| F71   | Display ice tiles   | Sathurshan |  |  | B(F65)   |
+| F72   | Display snow tiles    | Sathurshan |  |  | B(F65)    |
+| F73   | Display tundra tiles      | Sathurshan |  |  | B(F65)     |
+| F74   | Display taiga tiles     | Sathurshan |  |  | B(F65)  |
+| F75   | Display forest tiles     | Nirmal     |  |  | B(F65)    |
+| F76   | Display jungle tiles    | Nirmal     |  |  | B(F65)   |
+| F77   | Display swamp tiles    | Nirmal     |  |  | B(F65)   |
+| F78   | Display grassland tiles     | Sathurshan   | 03/06/202  | 03/06/202 | D   |
+| F79   | Display sandy desert tiles    | Nirmal     |  |  | B(F65)    |
+| F80   | Display savanna tiles      | Mithun     |  |  | B(F65)   |
+| F81   | Display clay tiles    | Mithun     |  |  | B(F65)      |
+| F82   | Output default seed     | Sathurshan | 03/08/2023 | 03/08/2023 | D   |
+| F83   | Output all the user’s input parameters   | Mithun     |  |  | B(F27),B(F28),B(F32),B(F38),B(F45),B(F46),B(F50),B(F52),B(F59),B(F83) |
+| F84   | User can enter the seed to use via -–seed via the command line    | Sathurshan |  |  | P   |
+| F85   | Generate same seed map     | Sathurshan |  |  | B(F81), B(F83)   |
+| F86   | Goods for each tile depending on tile conditions  | Mithun     |  |  | B(F57),B(F43)  |
 
 
