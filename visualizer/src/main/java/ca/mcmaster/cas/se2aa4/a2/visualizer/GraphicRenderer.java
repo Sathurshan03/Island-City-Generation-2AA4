@@ -13,7 +13,7 @@ import java.util.List;
 
 
 public class GraphicRenderer {
-    public void render(Mesh aMesh, Graphics2D canvas, Boolean debug) throws Exception {
+    public void render(Mesh aMesh, Graphics2D canvas, Boolean debug, Boolean debugElevation) throws Exception {
         //Set up the canvas
         CanvasDrawer canvasDrawer = new CanvasDrawer(canvas, debug);
         canvasDrawer.setCanvas();
@@ -52,10 +52,10 @@ public class GraphicRenderer {
             Property vertexType = vertex.getProperties(2);
             type = vertexType.getValue();
             if (type.equals("Regular")){
-                vertexVisualsList.add(new VertexVisualizer(vertex, debug, false));
+                vertexVisualsList.add(new VertexVisualizer(vertex, debug, debugElevation,false));
             }
             else if (type.equals("Centroid")){
-                vertexVisualsList.add(new VertexVisualizer(vertex, debug, true));
+                vertexVisualsList.add(new VertexVisualizer(vertex, debug, debugElevation,true));
             }
             else{
                 throw new Exception("Invalid vertex type");

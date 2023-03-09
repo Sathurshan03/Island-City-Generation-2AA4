@@ -10,6 +10,8 @@ import org.apache.commons.cli.DefaultParser;
 
 public class VisualizerCommandLineReader implements CommandLineReader{
     private Boolean debug = false;
+
+    private Boolean debugElevation=false;
     private Options options;
     public VisualizerCommandLineReader(String[] args)throws IOException, ParseException{
         super();
@@ -20,6 +22,8 @@ public class VisualizerCommandLineReader implements CommandLineReader{
 
     public  void createOptions(){
         options.addOption(new Option("X", "debug", false, "Debug mode"));
+        options.addOption(new Option("XE", "debugElevation", false, "Debug Elevation mode"));
+
     }
 
     public  void checkOptions(String[] args)throws ParseException, IOException{
@@ -27,11 +31,17 @@ public class VisualizerCommandLineReader implements CommandLineReader{
         CommandLine cmd = parser.parse(options, args);
         if(cmd.hasOption("debug")) {
             debug = true;
+        }else if (cmd.hasOption("debugElevation")){
+            debugElevation=true;
         }
     }
 
     public boolean isDebug(){
        return debug; 
+    }
+
+    public boolean isElevation(){
+        return debugElevation;
     }
 
     

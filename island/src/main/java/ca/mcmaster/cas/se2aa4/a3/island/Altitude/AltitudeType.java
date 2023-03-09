@@ -1,21 +1,18 @@
 package ca.mcmaster.cas.se2aa4.a3.island.Altitude;
 
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.Tile;
-import ca.mcmaster.cas.se2aa4.a3.island.Shape.Circle;
-import ca.mcmaster.cas.se2aa4.a3.island.Shape.Rectangle;
-import ca.mcmaster.cas.se2aa4.a3.island.Shape.Shape;
 
 import java.util.List;
 
 public enum AltitudeType {
-    VOLCANIC,WATER;
+    VOLCANIC, OCEAN;
 
 
     public String toString(){
         switch(this){
             case VOLCANIC :
                 return "volcanic";
-            case WATER :
+            case OCEAN:
                 return "water";
         }
         return null;
@@ -24,8 +21,8 @@ public enum AltitudeType {
         switch(this){
             case VOLCANIC :
                 return new Volcanic(tiles);
-            case WATER:
-                return new Water(tiles);
+            case OCEAN:
+                return new Ocean(tiles);
         }
         return null;
     }

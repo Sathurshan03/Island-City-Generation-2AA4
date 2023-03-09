@@ -2,8 +2,6 @@ package ca.mcmaster.cas.se2aa4.a3.island.Modes;
 import java.io.IOException;
 
 import ca.mcmaster.cas.se2aa4.a3.island.Altitude.AltitudeType;
-import ca.mcmaster.cas.se2aa4.a3.island.Altitude.Volcanic;
-import ca.mcmaster.cas.se2aa4.a3.island.Altitude.Water;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.Tile;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.TileVertex;
 import ca.mcmaster.cas.se2aa4.a3.island.Shape.Circle;
@@ -50,7 +48,7 @@ public class Sandbox extends Mode{
         }
 
         altitude.getAltitude(undecidedTiles);
-        AltitudeType.WATER.getAltitude(lagoonTiles);
+        AltitudeType.OCEAN.getAltitude(lagoonTiles);
 
 
         for (Tile t:landTiles){

@@ -5,11 +5,11 @@ import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.TileVertex;
 
 import java.util.List;
 
-public class Water implements WaterAltitude {
+public class Ocean implements WaterAltitude {
 
     List<Tile> waterTiles;
 
-    public Water(List<Tile> tiles){
+    public Ocean(List<Tile> tiles){
         waterTiles=tiles;
         SetElevation();
     }
@@ -19,7 +19,6 @@ public class Water implements WaterAltitude {
         for(Tile tile: waterTiles){
             for (TileVertex vertex:tile.getTileVertices()){
                 vertex.setElevation(1.0);
-
             }
         }
     }

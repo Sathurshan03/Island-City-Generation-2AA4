@@ -11,10 +11,12 @@ public class VertexVisualizer extends ExtractVertexInfo implements colourExtract
     private double XCenter;
     private double YCenter;
     private Boolean drawn;
+
+
     private boolean isCentroid;
     Color vertexColor;
 
-    public VertexVisualizer (Vertex vertex, Boolean debug, Boolean isCentroid)
+    public VertexVisualizer (Vertex vertex, Boolean debug, Boolean debugElevation, Boolean isCentroid)
     {
         super(vertex);
         this.drawn = false;
@@ -23,11 +25,12 @@ public class VertexVisualizer extends ExtractVertexInfo implements colourExtract
         this.XCenter = X - (thickness/2.0d);
         this.YCenter = Y - (thickness/2.0d);
 
-        if (debug && !isCentroid)
-        {
+        if (debugElevation && !isCentroid){
             this.vertexColor = Color.BLACK;
-        }
-        else{
+            this.thickness=Double.valueOf(vertex.getProperties(3).getValue());
+        }else if (debug && !isCentroid){
+            this.vertexColor = Color.BLACK;
+        }else{
             this.vertexColor = extractColor(vertex.getPropertiesList());
         }
     }

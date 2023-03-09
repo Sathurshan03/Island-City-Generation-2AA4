@@ -36,23 +36,7 @@ public class Regular extends Mode {
         }
 
         altitude.getAltitude(undecidedTiles);
-        AltitudeType.WATER.getAltitude(oceanTiles);
-
-
-
-        for (Tile t:undecidedTiles){
-            for (TileVertex v: t.getTileVertices()){
-                v.setThickness(v.getElevation());
-            }
-
-        }
-
-        for (Tile t:oceanTiles){
-            for (TileVertex v: t.getTileVertices()){
-                v.setThickness(v.getElevation());
-            }
-
-        }
+        AltitudeType.OCEAN.getAltitude(oceanTiles);
         
     }
     

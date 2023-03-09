@@ -18,6 +18,7 @@ public class TileVertex extends ExtractVertexInfo implements TileProperties{
     public TileVertex(Vertex vertex)
     {
         super(vertex);
+        this.elevation=1.0;
         this.thicknessDouble = thickness;
         this.colorList = new ArrayList<>();
         this.vertexType = extractVertexType(vertex.getPropertiesList());
@@ -47,7 +48,8 @@ public class TileVertex extends ExtractVertexInfo implements TileProperties{
         Property colorProperty = Property.newBuilder().setKey("rgb_color").setValue(colorCode).build();
         Property thicknessProp = Property.newBuilder().setKey("thickness").setValue(thicknessDouble.toString()).build();
         Property vertexTypeProp = Property.newBuilder().setKey("vertexType").setValue(vertexType).build();
-        return Vertex.newBuilder().setX(X).setY(Y).addProperties(0,colorProperty).addProperties(1,thicknessProp).addProperties(2,vertexTypeProp).build();
+        Property elevationTypeProp = Property.newBuilder().setKey("vertexType").setValue(elevation.toString()).build();
+        return Vertex.newBuilder().setX(X).setY(Y).addProperties(0,colorProperty).addProperties(1,thicknessProp).addProperties(2,vertexTypeProp).addProperties(3,elevationTypeProp).build();
     }
 
     public String extractVertexType(List<Property> properties){
