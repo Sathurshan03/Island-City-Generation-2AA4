@@ -10,22 +10,8 @@ public class Volcanic implements LandAltitude{
 
     public AltitudeFunction function= (x,y)->{return (Mode.getWidth()/10)/((Mode.getWidth()/500000)*Math.pow((x-Mode.getWidth()/2),2)+(Mode.getWidth()/500000)*Math.pow(y-Mode.getHeight()/2,2)+1);};
 
-    List<Tile> landTiles;
-
-    public Volcanic(List<Tile> landTiles){
-        this.landTiles=landTiles;
-        SetElevation();
-    }
-
-
-    public void SetElevation(){
-
-        for(Tile tile: landTiles){
-            for (TileVertex vertex:tile.getTileVertices()){
-                vertex.setElevation(function.valueAt(vertex.getX(), vertex.getY()));
-
-            }
-        }
+    public AltitudeFunction getFunction(){
+        return this.function;
     }
 
 }

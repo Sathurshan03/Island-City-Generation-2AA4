@@ -2,26 +2,28 @@ package ca.mcmaster.cas.se2aa4.a3.island.Altitude;
 
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.Tile;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.TileVertex;
+import ca.mcmaster.cas.se2aa4.a3.island.Modes.Mode;
 
 import java.util.List;
+import java.util.Random;
 
 public class Ocean implements WaterAltitude {
 
-    List<Tile> waterTiles;
+    Double elevation;
 
-    public Ocean(List<Tile> tiles){
-        waterTiles=tiles;
-        SetElevation();
+    public AltitudeFunction function= (x,y)->{return elevation;};
+
+    public AltitudeFunction getFunction(){
+        findElevation();
+        return this.function;
     }
 
-    public void SetElevation(){
-
-        for(Tile tile: waterTiles){
-            for (TileVertex vertex:tile.getTileVertices()){
-                vertex.setElevation(1.0);
-            }
-        }
+    public void findElevation(){
+        Random rand=new Random();
+        elevation= rand.nextDouble();
     }
+
+
 
 
 }
