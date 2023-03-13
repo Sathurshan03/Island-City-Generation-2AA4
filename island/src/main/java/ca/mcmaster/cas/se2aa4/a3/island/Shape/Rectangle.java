@@ -1,8 +1,8 @@
 package ca.mcmaster.cas.se2aa4.a3.island.Shape;
 
+import ca.mcmaster.cas.se2aa4.a3.island.IslandCommandLineReader;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.Tile;
 import java.util.List;
-import java.util.Random;
 
 public class Rectangle extends Shape{
     double maxRadius;
@@ -17,8 +17,7 @@ public class Rectangle extends Shape{
         this.maxRadius = Double.compare(width, height) < 0? width/2: height/2;
         this.tiles = tiles;
 
-        Random random = new Random();
-        this.radius = random.nextDouble(maxRadius*0.5,maxRadius);
+        this.radius = IslandCommandLineReader.randomGenerator.getNextdouble(maxRadius*0.5,maxRadius);
         this.meshCenterX = width /2;
         this.meshCenterY = height /2;
         markTiles();

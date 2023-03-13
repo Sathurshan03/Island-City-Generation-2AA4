@@ -3,7 +3,7 @@ package ca.mcmaster.cas.se2aa4.a3.island;
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Mesh;
 import ca.mcmaster.cas.se2aa4.a3.island.Altitude.AltitudeType;
 import ca.mcmaster.cas.se2aa4.a3.tools.CommandLineReader;
-import ca.mcmaster.cas.se2aa4.a3.tools.RandomSeed;
+import ca.mcmaster.cas.se2aa4.a3.tools.RandomGenerator;
 import ca.mcmaster.cas.se2aa4.a3.island.Modes.ModeType;
 import ca.mcmaster.cas.se2aa4.a3.island.Modes.Regular;
 import ca.mcmaster.cas.se2aa4.a3.island.Modes.Sandbox;
@@ -27,13 +27,23 @@ public class IslandCommandLineReader implements CommandLineReader {
     ShapeType shapeToUse;
     private Options options;
 
-    public static RandomSeed random;
+    public static RandomGenerator randomGenerator;
 
     public IslandCommandLineReader(String[] args) throws IOException, ParseException {
         super();
         options = new Options();
         createOptions();
         checkOptions(args);
+
+        //Set the random generator class 
+        if (seed == null){
+            //Create new seed
+            randomGenerator = new RandomGenerator();
+        }
+        else{
+            //use the inputted seed
+            randomGenerator = new RandomGenerator(Long.parseLong(seed));
+        }
     }
     public void createOptions(){
         //Creates all the options for the command line
@@ -96,17 +106,6 @@ public class IslandCommandLineReader implements CommandLineReader {
                 break;
             }
         }
-
-        //Set the random generator class 
-        if (seed == null){
-            //Create new seed
-            random = new RandomSeed();
-        }
-        else{
-            //use the inputted seed
-            random = new RandomSeed(Long.parseLong(seed));
-        }
-
     }
     
     public String getOutputMeshFile(){

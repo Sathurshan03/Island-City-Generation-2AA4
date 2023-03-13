@@ -1,11 +1,6 @@
 package ca.mcmaster.cas.se2aa4.a3.island.Altitude;
 
-import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.Tile;
-import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.TileVertex;
-import ca.mcmaster.cas.se2aa4.a3.island.Modes.Mode;
-
-import java.util.List;
-import java.util.Random;
+import ca.mcmaster.cas.se2aa4.a3.island.IslandCommandLineReader;
 
 public class Ocean implements WaterAltitude {
 
@@ -19,8 +14,7 @@ public class Ocean implements WaterAltitude {
     }
 
     public void findElevation(){
-        Random rand=new Random();
-        elevation= rand.nextDouble();
+        elevation = IslandCommandLineReader.randomGenerator.getNextdouble();
     }
 
 

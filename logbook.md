@@ -75,4 +75,5 @@
 |  Mar 5, 2023  |  Sathurshan       |   Extracting infromation and creating Tile classes for island sub project |
 |  Mar 6, 2023  |  Sathurshan       |   Neighbouring tiles are accessible |
 |  Mar 6, 2023  |  Sathurshan       |   Sandbox mode release created |
+|  Mar 12, 2023  |  Sathurshan       |   Same map can br created using a seed |
 
