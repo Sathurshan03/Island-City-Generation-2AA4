@@ -7,10 +7,6 @@ import java.util.List;
 public class Rectangle extends Shape{
     double maxRadius;
     double radius;
-    double meshCenterX;
-    double meshCenterY;
-    List<Tile> tiles;
-    
     public Rectangle (double width, double height, List<Tile> tiles){
         super();
 

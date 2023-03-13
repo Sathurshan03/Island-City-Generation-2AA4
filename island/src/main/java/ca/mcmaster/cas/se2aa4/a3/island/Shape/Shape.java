@@ -5,6 +5,9 @@ import java.util.List;
 import java.util.ArrayList;
 
 public abstract class Shape {
+    double meshCenterX;
+    double meshCenterY;
+    List<Tile> tiles;
     List<Tile> unMarkedtiles;
     List<Tile> markedtiles;
     public Shape(){
