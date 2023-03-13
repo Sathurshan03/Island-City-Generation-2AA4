@@ -2,20 +2,30 @@ package ca.mcmaster.cas.se2aa4.a3.island.Shape;
 
 import ca.mcmaster.cas.se2aa4.a3.island.IslandCommandLineReader;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.Tile;
+import java.awt.geom.AffineTransform;
 import java.util.List;
 
+
 public class Rectangle extends Shape{
-    double maxRadius;
-    double radius;
+    double maxsize;
+    double rectangleWidth;
+    double rectangleHeight;
+    java.awt.Shape rectangle;
     public Rectangle (double width, double height, List<Tile> tiles){
         super();
 
-        this.maxRadius = Double.compare(width, height) < 0? width/2: height/2;
+        this.maxsize = Double.compare(width, height) < 0? width: height;
         this.tiles = tiles;
-
-        this.radius = IslandCommandLineReader.randomGenerator.getNextdouble(maxRadius*0.5,maxRadius);
+        this.rectangleWidth = IslandCommandLineReader.randomGenerator.getNextdouble(maxsize*0.5,maxsize*0.85);
+        this.rectangleHeight = IslandCommandLineReader.randomGenerator.getNextdouble(maxsize*0.5,maxsize*0.85);
         this.meshCenterX = width /2;
         this.meshCenterY = height /2;
+        int xStartingPoint = (int)(meshCenterX - rectangleWidth / 2);
+        int yStartingPoint = (int)(meshCenterY - rectangleHeight / 2);
+        double angleRad = IslandCommandLineReader.randomGenerator.getNextdouble(0, Math.PI/2);
+
+        java.awt.Rectangle basicRectangle = new java.awt.Rectangle(xStartingPoint, yStartingPoint, (int)rectangleWidth, (int)rectangleHeight);
+        this.rectangle  = AffineTransform.getRotateInstance(angleRad,meshCenterX, meshCenterY).createTransformedShape(basicRectangle);
         markTiles();
     }
     public List<Tile> getMarkedTiles(){
@@ -25,14 +35,10 @@ public class Rectangle extends Shape{
         return unMarkedtiles;
     }
     public void markTiles(){
-        //Any Tile's centroid that falls within the radius is considered as unmarked
-        double lowerBoundX = meshCenterX - radius;
-        double upperBoundX = meshCenterX + radius;
-        double lowerBoundY = meshCenterY - radius;
-        double upperBoundY = meshCenterY + radius;
+        //Any Tile's centroid that falls within the rectangle is considered as unmarked
 
         for (Tile tile: tiles){
-            if(tile.getCentroidX() >= lowerBoundX && tile.getCentroidX() <= upperBoundX && tile.getCentroidY() >= lowerBoundY && tile.getCentroidY() <= upperBoundY){
+            if(rectangle.contains(tile.getCentroidX(), tile.getCentroidY())){
                 //in range
                 unMarkedtiles.add(tile);
             }

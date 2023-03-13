@@ -77,4 +77,6 @@
 |  Mar 6, 2023  |  Sathurshan       |   Sandbox mode release created |
 |  Mar 12, 2023  |  Sathurshan       |   Same map can be created using a seed |
 |  Mar 13, 2023  |  Sathurshan       |   Test cases for creating the same map using a seed |
+|  Mar 13, 2023  |  Sathurshan       |   Islands have oval shape |
+|  Mar 13, 2023  |  Sathurshan       |   rectangular islands can be generated at an angle now |
 
