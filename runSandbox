@@ -7,5 +7,5 @@ cd island
 java -jar island.jar -i ../generator/sample.mesh -o sandbox.mesh --mode sandbox --shape circle
 cd ..
 cd visualizer
-java -jar visualizer.jar ../island/sandbox.mesh sample.svg -X
+java -jar visualizer.jar ../island/sandbox.mesh sample.svg
 ls -lh sample.svg

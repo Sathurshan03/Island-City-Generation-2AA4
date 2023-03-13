@@ -1,8 +1,11 @@
 package ca.mcmaster.cas.se2aa4.a3.island;
 
+import ca.mcmaster.cas.se2aa4.a2.io.Structs.Mesh;
 import ca.mcmaster.cas.se2aa4.a3.island.Altitude.AltitudeType;
 import ca.mcmaster.cas.se2aa4.a3.tools.CommandLineReader;
 import ca.mcmaster.cas.se2aa4.a3.island.Modes.ModeType;
+import ca.mcmaster.cas.se2aa4.a3.island.Modes.Regular;
+import ca.mcmaster.cas.se2aa4.a3.island.Modes.Sandbox;
 import ca.mcmaster.cas.se2aa4.a3.island.Shape.ShapeType;
 
 import org.apache.commons.cli.*;
@@ -10,8 +13,8 @@ import org.apache.commons.cli.*;
 import java.io.IOException;
 
 public class IslandCommandLineReader implements CommandLineReader {
-    String inputMesh;
-    String outputMesh;
+    String inputMeshFile;
+    String outputMeshFile;
     String mode;
     String shape;
 
@@ -44,14 +47,11 @@ public class IslandCommandLineReader implements CommandLineReader {
         CommandLine cmd = parser.parse(options, args);
 
         //extract the values from each option
-        inputMesh = cmd.getOptionValue("inputMesh");
-        outputMesh = cmd.getOptionValue("outputMesh");
+        inputMeshFile = cmd.getOptionValue("inputMesh");
+        outputMeshFile = cmd.getOptionValue("outputMesh");
         mode = cmd.getOptionValue("mode");
         shape = cmd.getOptionValue("shape");
         elevation=cmd.getOptionValue("altitude");
-
-
-
 
         //Help option
         if(cmd.hasOption("help")) {
@@ -90,31 +90,47 @@ public class IslandCommandLineReader implements CommandLineReader {
         }
 
     }
-
-    public String getInputMesh(){
-        return inputMesh;
-    }
-    public String getOutputMesh(){
-        return outputMesh;
-    }
-    public ShapeType getShapeType(){
-        return shapeToUse;
+    
+    public String getOutputMeshFile(){
+        return outputMeshFile;
     }
 
-    public AltitudeType getAltitudeType(){
-        return altitude;
-    }
-
-    public boolean isSandBoxMode(){
+    protected boolean isSandBoxMode(){
         if (mapMode.equals(ModeType.SANDBOX)){
             return true;
         }
         return false;
     }
-    public boolean isRegularMode(){
+    protected boolean isRegularMode(){
         if (mapMode.equals(ModeType.REGULAR)){
             return true;
         }
         return false;
+    }
+    public Mesh generateFromInputs() throws IOException{
+        RunMode runMode = new RunMode();
+        return runMode.getMesh();
+    }
+
+    private class RunMode{
+        Mesh mesh = null;
+        public RunMode() throws IOException{   
+            if (isSandBoxMode()){
+                Sandbox sandbox = new Sandbox(inputMeshFile, outputMeshFile);
+                sandbox.generate();
+                mesh = sandbox.getMesh();
+            }
+            else if (isRegularMode()){
+                Regular regular = new Regular(inputMeshFile, outputMeshFile, shapeToUse, altitude);
+                regular.generate();
+                mesh = regular.getMesh();
+            }
+            else{
+                throw new IOException("Invalid mode was entered");
+            }
+        }
+        public Mesh getMesh(){
+            return mesh;
+        }
     }
 }

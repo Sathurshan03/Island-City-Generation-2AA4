@@ -11,23 +11,7 @@ import java.io.IOException;
 public class Main {
     public static void main(String[] args) throws IOException, ParseException {
         IslandCommandLineReader commandReader = new IslandCommandLineReader(args);
-
-        Mesh mesh = null;
-        if (commandReader.isSandBoxMode()){
-            Sandbox sandbox = new Sandbox(commandReader.getInputMesh(), commandReader.getOutputMesh());
-            sandbox.generate();
-            mesh = sandbox.getMesh();
-        }
-        else if (commandReader.isRegularMode()){
-            Regular regular = new Regular(commandReader.getInputMesh(), commandReader.getOutputMesh(), commandReader.getShapeType(), commandReader.getAltitudeType());
-            regular.generate();
-            mesh = regular.getMesh();
-        }
-        else{
-            throw new IOException("Invalid mode was entered");
-        }
-
         MeshFactory factory = new MeshFactory();
-        factory.write(mesh, commandReader.getOutputMesh());
+        factory.write(commandReader.generateFromInputs(), commandReader.getOutputMeshFile());
     }
 }
