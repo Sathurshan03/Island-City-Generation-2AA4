@@ -19,6 +19,7 @@ public class IslandCommandLineReader implements CommandLineReader {
     String mode;
     String shape;
     String seed;
+    String maxLakes;
 
     String elevation;
     ModeType mapMode;
@@ -53,6 +54,7 @@ public class IslandCommandLineReader implements CommandLineReader {
         options.addOption(new Option("sh", "shape", true, "Island Shape"));
         options.addOption(new Option("a", "altitude", true, "Island Elevation"));
         options.addOption(new Option("se", "seed", true, "Map seed"));
+        options.addOption(new Option("l", "lakes", true, "Maximum number of lakes"));
 
     }
 
@@ -68,6 +70,7 @@ public class IslandCommandLineReader implements CommandLineReader {
         shape = cmd.getOptionValue("shape");
         elevation = cmd.getOptionValue("altitude");
         seed = cmd.getOptionValue("seed");
+        maxLakes = cmd.getOptionValue("lakes");
 
         //Help option
         if(cmd.hasOption("help")) {
