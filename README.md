@@ -196,13 +196,13 @@ Pending (P), Started (S), Blocked (B), Done (D)
 | F75   | Display forest tiles     | Nirmal     |  |  | B(F65)    |
 | F76   | Display jungle tiles    | Nirmal     |  |  | B(F65)   |
 | F77   | Display swamp tiles    | Nirmal     |  |  | B(F65)   |
-| F78   | Display grassland tiles     | Sathurshan   | 03/06/202  | 03/06/202 | D   |
+| F78   | Display grassland tiles     | Sathurshan   | 03/06/2023  | 03/06/2023 | D   |
 | F79   | Display sandy desert tiles    | Nirmal     |  |  | B(F65)    |
 | F80   | Display savanna tiles      | Mithun     |  |  | B(F65)   |
 | F81   | Display clay tiles    | Mithun     |  |  | B(F65)      |
 | F82   | Output default seed     | Sathurshan | 03/08/2023 | 03/08/2023 | D   |
 | F83   | Output all the user’s input parameters   | Mithun     |  |  | B(F27),B(F28),B(F32),B(F38),B(F45),B(F46),B(F50),B(F52),B(F59),B(F83) |
-| F84   | User can enter the seed to use via -–seed via the command line    | Sathurshan |  |  | P   |
+| F84   | User can enter the seed to use via -–seed via the command line    | Sathurshan | 03/12/2023 | 03/12/2023 | D   |
 | F85   | Generate same seed map     | Sathurshan |  |  | B(F81), B(F83)   |
 | F86   | Goods for each tile depending on tile conditions  | Mithun     |  |  | B(F57),B(F43)  |
 

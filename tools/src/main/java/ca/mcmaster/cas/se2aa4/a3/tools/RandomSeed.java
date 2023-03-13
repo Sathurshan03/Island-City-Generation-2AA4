@@ -17,11 +17,11 @@ public class RandomSeed {
     }
 
     private void printSeed(){
-        System.out.println("The seed of this map is: " + seed);
+        System.out.println("\nThe seed of this map is: " + seed);
     }
 
     private void remindSeed(){
-        System.out.println("The seed that was used for the map is: " + seed);
+        System.out.println("\nThe seed that was used for the map is: " + seed);
     }
     
 }

@@ -3,6 +3,7 @@ package ca.mcmaster.cas.se2aa4.a3.island;
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Mesh;
 import ca.mcmaster.cas.se2aa4.a3.island.Altitude.AltitudeType;
 import ca.mcmaster.cas.se2aa4.a3.tools.CommandLineReader;
+import ca.mcmaster.cas.se2aa4.a3.tools.RandomSeed;
 import ca.mcmaster.cas.se2aa4.a3.island.Modes.ModeType;
 import ca.mcmaster.cas.se2aa4.a3.island.Modes.Regular;
 import ca.mcmaster.cas.se2aa4.a3.island.Modes.Sandbox;
@@ -17,6 +18,7 @@ public class IslandCommandLineReader implements CommandLineReader {
     String outputMeshFile;
     String mode;
     String shape;
+    String seed;
 
     String elevation;
     ModeType mapMode;
@@ -24,6 +26,8 @@ public class IslandCommandLineReader implements CommandLineReader {
     AltitudeType altitude;
     ShapeType shapeToUse;
     private Options options;
+
+    public static RandomSeed random;
 
     public IslandCommandLineReader(String[] args) throws IOException, ParseException {
         super();
@@ -36,8 +40,9 @@ public class IslandCommandLineReader implements CommandLineReader {
         options.addOption(new Option("i", "inputMesh", true, "Input Mesh"));
         options.addOption(new Option("o", "outputMesh", true, "Output Mesh"));
         options.addOption(new Option("m", "mode", true, "Map Mode"));
-        options.addOption(new Option("s", "shape", true, "Island Shape"));
+        options.addOption(new Option("sh", "shape", true, "Island Shape"));
         options.addOption(new Option("a", "altitude", true, "Island Elevation"));
+        options.addOption(new Option("se", "seed", true, "Map seed"));
 
     }
 
@@ -51,7 +56,8 @@ public class IslandCommandLineReader implements CommandLineReader {
         outputMeshFile = cmd.getOptionValue("outputMesh");
         mode = cmd.getOptionValue("mode");
         shape = cmd.getOptionValue("shape");
-        elevation=cmd.getOptionValue("altitude");
+        elevation = cmd.getOptionValue("altitude");
+        seed = cmd.getOptionValue("seed");
 
         //Help option
         if(cmd.hasOption("help")) {
@@ -71,6 +77,7 @@ public class IslandCommandLineReader implements CommandLineReader {
             }
         }
 
+        //Get the shape type
         for(ShapeType s: ShapeType.values()){
             String shapeString = s.toString();
             if (shapeString.equals(shape))
@@ -80,6 +87,7 @@ public class IslandCommandLineReader implements CommandLineReader {
             }
         }
 
+        //Get the altitude type
         for(AltitudeType a: AltitudeType.values()){
             String altitudeString = a.toString();
             if (altitudeString.equals(elevation))
@@ -87,6 +95,16 @@ public class IslandCommandLineReader implements CommandLineReader {
                 altitude = a;
                 break;
             }
+        }
+
+        //Set the random generator class 
+        if (seed == null){
+            //Create new seed
+            random = new RandomSeed();
+        }
+        else{
+            //use the inputted seed
+            random = new RandomSeed(Long.parseLong(seed));
         }
 
     }
