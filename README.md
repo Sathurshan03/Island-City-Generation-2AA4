@@ -205,5 +205,6 @@ Pending (P), Started (S), Blocked (B), Done (D)
 | F84   | User can enter the seed to use via -–seed via the command line    | Sathurshan | 03/12/2023 | 03/12/2023 | D   |
 | F85   | Generate same seed map     | Sathurshan | 03/12/2023 | 03/12/2023 | D   |
 | F86   | Goods for each tile depending on tile conditions  | Mithun     |  |  | B(F57),B(F43)  |
+| F87   | Islands have random shape option  | Sathurshan     | 03/13/2023 | 03/14/2023 | D  |
 
 

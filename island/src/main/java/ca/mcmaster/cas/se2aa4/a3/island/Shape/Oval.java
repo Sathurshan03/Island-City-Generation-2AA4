@@ -39,16 +39,9 @@ public class Oval extends Shape{
 
     public void markTiles(){
         //Any Tile's centroid that falls within the oval shape is considered as unmarked
-        double xRelativePos;
-        double yRelativePos;
 
-        for (Tile tile: tiles){
-            //xRelativePos = tile.getCentroidX() + shortLength/2;
-            //yRelativePos = tile.getCentroidY() + length/2;
-            xRelativePos = tile.getCentroidX();
-            yRelativePos = tile.getCentroidY();
-            
-            if(ellipse.contains(xRelativePos, yRelativePos)){
+        for (Tile tile: tiles){            
+            if(ellipse.contains(tile.getCentroidX(), tile.getCentroidY())){
                 //in range
                 unMarkedtiles.add(tile);
             }

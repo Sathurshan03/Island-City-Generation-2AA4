@@ -4,7 +4,7 @@ import java.util.List;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.Tile;
 
 public enum ShapeType {
-    CIRCLE, RECTANGLE, OVAL;
+    CIRCLE, RECTANGLE, OVAL, RANDOM;
 
     public String toString(){
         switch(this){
@@ -14,6 +14,8 @@ public enum ShapeType {
             return "rectangle";
         case OVAL :
             return "oval";
+        case RANDOM :
+            return "random";
         }
         return null;
     }
@@ -26,6 +28,8 @@ public enum ShapeType {
                 return new Rectangle(width, height, tiles);
             case OVAL :
                 return new Oval(width, height, tiles);
+            case RANDOM :
+                return new RandomShape(width, height, tiles);
             }
             return null;
     }
