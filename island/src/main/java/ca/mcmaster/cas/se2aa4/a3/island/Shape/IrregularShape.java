@@ -105,11 +105,10 @@ public class IrregularShape extends Shape{
                         isOutOfRange = true;
                     }
                     else{
-                        waterBody.add(tile);
-                        waterTiles.remove(tile);
-
                         //Add tile to queue if it is range is unknown and already not in queue
                         if (!inRangeTiles.contains(tile) && !queue.contains(tile)){
+                            waterBody.add(tile);
+                            waterTiles.remove(tile);
                             queue.add(tile);
                         }
                     }
