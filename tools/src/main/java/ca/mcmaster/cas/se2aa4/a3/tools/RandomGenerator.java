@@ -32,6 +32,10 @@ public class RandomGenerator {
         return mainRandomController.nextDouble(lowerBound, upperBound);
     }
 
+    public int getNextint(int lowerBound, int upperBound){
+        return mainRandomController.nextInt(lowerBound, upperBound);
+    }
+
 
     private void printSeed(){
         System.out.println("\nThe seed of this map is: " + seed);
