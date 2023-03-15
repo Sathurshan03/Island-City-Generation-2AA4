@@ -25,8 +25,8 @@ public class Sandbox extends Mode{
 
         //Outer Circle
         Circle outerCircle = new Circle(width, height, tiles);
-        List<Tile> oceanTiles = outerCircle.getMarkedTiles();
-        List<Tile> undecidedTiles = outerCircle.getUnMarkedTiles();
+        List<Tile> oceanTiles = outerCircle.getOutOfRangeTiles();
+        List<Tile> undecidedTiles = outerCircle.getInRangeTiles();
 
         //set oceanTiles to their color
         for(Tile tile: oceanTiles){
@@ -35,8 +35,8 @@ public class Sandbox extends Mode{
 
         //Inner Circle
         Circle innerCircle = new Circle(outerCircle.getRadius(), outerCircle.getRadius(), outerCircle.getCenterX(), outerCircle.getCenterY(), undecidedTiles);
-        List<Tile> landTiles = innerCircle.getMarkedTiles();
-        List<Tile> lagoonTiles = innerCircle.getUnMarkedTiles();
+        List<Tile> landTiles = innerCircle.getOutOfRangeTiles();
+        List<Tile> lagoonTiles = innerCircle.getInRangeTiles();
 
         //Set lagoon tiles
         for(Tile tile: lagoonTiles){
