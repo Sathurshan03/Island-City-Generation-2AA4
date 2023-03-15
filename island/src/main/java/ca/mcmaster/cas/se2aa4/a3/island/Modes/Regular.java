@@ -4,11 +4,12 @@ import java.io.IOException;
 import java.util.List;
 
 import ca.mcmaster.cas.se2aa4.a3.island.Altitude.*;
+import ca.mcmaster.cas.se2aa4.a3.island.BodiesOfWater.RiverGenerator;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.Tile;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.TileVertex;
 import ca.mcmaster.cas.se2aa4.a3.island.Shape.Shape;
 import ca.mcmaster.cas.se2aa4.a3.island.Shape.ShapeType;
-import ca.mcmaster.cas.se2aa4.a3.island.Tiles.TileTypes;
+import ca.mcmaster.cas.se2aa4.a3.island.TilesTypes.TileTypes;
 
 public class Regular extends Mode {
     
@@ -37,6 +38,16 @@ public class Regular extends Mode {
 
         new Altitude(altitude, undecidedTiles);
         new Altitude(AltitudeType.OCEAN, oceanTiles);
+
+        RiverGenerator riverGenerator = new RiverGenerator(tiles, 20);
+        riverGenerator.createRivers();
+
+
+  
+        
+        
+
+
 
 
         for (TileVertex v: verticesInfoList){

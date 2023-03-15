@@ -58,8 +58,8 @@ public abstract class Mode {
         segments = mesh.getSegmentsList();
         vertices = mesh.getVerticesList();
 
-        extractSegments();
         extractVertex();
+        extractSegments();
         extractPolygon();
         setNeighbouringTiles();
 
@@ -80,11 +80,15 @@ public abstract class Mode {
             type = segmentType.getValue();
             if (type.equals("Regular")){
                 tileSegment = new TileSegment(segment, vertices, polygons.size());
+                tileSegment.setTileVertex1(allVerticesInfoList.get(tileSegment.getVertedIDX1()));
+                tileSegment.setTileVertex2(allVerticesInfoList.get(tileSegment.getVertedIDX2()));
                 segmentInfoList.add(tileSegment);
                 allSegmentInfoList.add(tileSegment);
             }
             else if (type.equals("Neighbouring")){
                 tileSegment = new TileSegment(segment, vertices, 0);
+                tileSegment.setTileVertex1(allVerticesInfoList.get(tileSegment.getVertedIDX1()));
+                tileSegment.setTileVertex2(allVerticesInfoList.get(tileSegment.getVertedIDX2()));
                 neighbouringSegmentInfoList.add(tileSegment);
                 allSegmentInfoList.add(tileSegment);
             }

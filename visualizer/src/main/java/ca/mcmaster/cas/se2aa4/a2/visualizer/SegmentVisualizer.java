@@ -51,6 +51,10 @@ public class SegmentVisualizer extends ExtractSegmentInfo implements colourExtra
         return segmentColor;
     }
 
+    public double getThickness(){
+        return thickness;
+    }
+
     public Line2D getLine(double x1, double y1, double x2, double y2){
         Line2D line = new Line2D.Double(x1, y1, x2, y2);
         return line;

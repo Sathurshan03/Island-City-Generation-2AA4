@@ -2,6 +2,7 @@ package ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks;
 
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Property;
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Vertex;
+import ca.mcmaster.cas.se2aa4.a3.island.TilesTypes.VertexElement;
 import ca.mcmaster.cas.se2aa4.a3.tools.ExtractVertexInfo;
 
 import java.awt.Color;
@@ -12,15 +13,19 @@ public class TileVertex extends ExtractVertexInfo implements TileProperties{
     List<Color> colorList;
     Color averageColor = new Color(0, 0, 0, 0);
     String vertexType;
-
+    VertexElement vertexElement;
     Double elevation;
     Double thicknessDouble;
+    Boolean isRiver;
+
     public TileVertex(Vertex vertex)
     {
         super(vertex);
         this.elevation=1.0;
         this.thicknessDouble = thickness;
         this.colorList = new ArrayList<>();
+        this.vertexElement = VertexElement.LAND;
+        this.isRiver = false;
         this.vertexType = extractVertexType(vertex.getPropertiesList());
     }
 
@@ -32,18 +37,48 @@ public class TileVertex extends ExtractVertexInfo implements TileProperties{
         this.elevation=elevation;
     }
 
-    public Double getElevation(){
-        return this.elevation;
-    }
-
     public void setThickness(Double new_thickness){
         this.thicknessDouble=new_thickness;
     }
 
+    public void setRiver(){
+        isRiver = true;
+    }
 
+    public void setThickness(double thickness){
+        this.thicknessDouble = thickness;
+    }
+
+    public void setVertexWater(){
+        vertexElement = VertexElement.WATER;
+    }
+
+    public Double getElevation(){
+        return this.elevation;
+    }
+
+    public Boolean isVertexWater(){
+        if (vertexElement.equals(VertexElement.WATER)){
+            return true;
+        }
+        return false;
+    }
+
+    public Boolean isVertexLand(){
+        if (vertexElement.equals(VertexElement.LAND)){
+            return true;
+        }
+        return false;
+    }
 
     public Vertex getVertex(){
-        setAverageColor();
+        if (isRiver){
+            averageColor = new Color(0,76,153,254);
+        }
+        else{
+            setAverageColor();
+        }
+        
         String colorCode = averageColor.getRed() + "," + averageColor.getGreen() + "," + averageColor.getBlue() + "," + averageColor.getAlpha();
         Property colorProperty = Property.newBuilder().setKey("rgb_color").setValue(colorCode).build();
         Property thicknessProp = Property.newBuilder().setKey("thickness").setValue(thicknessDouble.toString()).build();
@@ -86,6 +121,5 @@ public class TileVertex extends ExtractVertexInfo implements TileProperties{
             alpha /= colorList.size();
             averageColor = new Color(red, green, blue, alpha);
         }
-    }
-    
+    }    
 }

@@ -21,7 +21,7 @@ public class RandomGeneratorTest {
 
         double randValue;
         for (int i = 0; i < 100; i ++){
-            randValue = random1.getNextdouble(0,100);
+            randValue = random1.getNextDouble(0,100);
             assert(randValue >= 0 && randValue < 100);
         }
     }
