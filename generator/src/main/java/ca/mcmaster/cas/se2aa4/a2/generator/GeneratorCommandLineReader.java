@@ -75,6 +75,10 @@ public class GeneratorCommandLineReader implements CommandLineReader{
         //Extract values for attributes
         if(numPoly != null){
             numberPolygons = Integer.parseInt(numPoly);
+            if (numberPolygons < 10){
+                System.out.println("There must be atleast 10 polygons generated");
+                numberPolygons = 10;
+            }
         }
         if(width != null){
             canvasWidth = Integer.parseInt(width);

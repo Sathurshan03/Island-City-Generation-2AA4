@@ -38,6 +38,12 @@ public class Tile extends ExtractPolygonInfo{
         }
         return false;
     }
+    public Boolean isTileLand(){
+        if (tileType.getElememt().equals(TileElement.LAND)){
+            return true;
+        }
+        return false;
+    }
     
     public TileVertex getCentroid(){
         return centroid;

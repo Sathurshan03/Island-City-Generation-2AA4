@@ -23,6 +23,10 @@ public class RandomGenerator {
         return mainRandomController.nextDouble();
     }
 
+    public long getSeed(){
+        return seed;
+    }
+
 
     public double getNextdouble(double lowerBound, double upperBound){
         return mainRandomController.nextDouble(lowerBound, upperBound);
