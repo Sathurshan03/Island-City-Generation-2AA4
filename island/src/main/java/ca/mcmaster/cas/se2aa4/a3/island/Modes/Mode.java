@@ -9,6 +9,7 @@ import ca.mcmaster.cas.se2aa4.a2.io.Structs.Polygon;
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Property;
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Segment;
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Vertex;
+import ca.mcmaster.cas.se2aa4.a3.island.Altitude.Altitude;
 import ca.mcmaster.cas.se2aa4.a3.island.Altitude.AltitudeType;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.Tile;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.TileSegment;
@@ -19,6 +20,8 @@ public abstract class Mode {
     String inputMesh;
     String outputMesh;
     ShapeType shape;
+
+    Altitude altitude_gen=new Altitude();
 
     AltitudeType altitude;
     Mesh mesh;
@@ -32,8 +35,26 @@ public abstract class Mode {
     List<TileVertex> allVerticesInfoList;
     List<TileVertex> verticesInfoList;
     List<TileVertex> centroidInfoList;
+    String maxLakes;
     static  double width;
     static double height;
+
+    public Mode(String inputMesh, String outputMesh, ShapeType shape, AltitudeType altitude, String maxLakes){
+        this.inputMesh = inputMesh;
+        this.outputMesh = outputMesh;
+        this.shape = shape;
+        this.altitude=altitude;
+        this.maxLakes = maxLakes;
+        this.tiles = new ArrayList<>();
+        this.allSegmentInfoList = new ArrayList<>();
+        this.segmentInfoList = new ArrayList<>();
+        this.neighbouringSegmentInfoList = new ArrayList<>();
+        this.allVerticesInfoList = new ArrayList<>();
+        this.verticesInfoList = new ArrayList<>();
+        this.centroidInfoList = new ArrayList<>();
+        width = Double.MIN_VALUE;
+        height = Double.MIN_VALUE;
+    }
 
     public Mode(String inputMesh, String outputMesh, ShapeType shape, AltitudeType altitude){
         this.inputMesh = inputMesh;

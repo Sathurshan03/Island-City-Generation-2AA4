@@ -24,14 +24,14 @@ public class Water implements WaterAltitude {
 
         for (Tile t:tiles){
             for (TileVertex v:t.getTileVertices()){
-                if (v.getElevation()<minimum & v.getElevation()>1.0){
+                if (v.getElevation()<minimum & v.getElevation()>1.0 & t.isTileWater()){
                     minimum=v.getElevation();
                 }
             }
         }
 
 
-        elevation=minimum;
+        elevation=(minimum)*0.6;
     }
 
 

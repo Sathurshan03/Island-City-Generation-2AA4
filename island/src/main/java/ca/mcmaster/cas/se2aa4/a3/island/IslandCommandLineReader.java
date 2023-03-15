@@ -20,11 +20,13 @@ public class IslandCommandLineReader implements CommandLineReader {
     private String shape;
     private String seed;
     private String river;
+    private String maxLakes;
 
     private String elevation;
     private ModeType mapMode;
     private AltitudeType altitude;
     private ShapeType shapeToUse;
+    private int maxNumLakes;
     private int maxNumRivers;
     private Options options;
 
@@ -55,6 +57,7 @@ public class IslandCommandLineReader implements CommandLineReader {
         options.addOption(new Option("a", "altitude", true, "Island Elevation"));
         options.addOption(new Option("se", "seed", true, "Map seed (Long)"));
         options.addOption(new Option("r", "rivers", true, "Maximum number of rivers to generate (Integer)"));
+        options.addOption(new Option("l", "lakes", true, "Maximum number of lakes"));
     }
 
     public void checkOptions(String[] args) throws ParseException, IOException{
@@ -70,6 +73,7 @@ public class IslandCommandLineReader implements CommandLineReader {
         elevation = cmd.getOptionValue("altitude");
         seed = cmd.getOptionValue("seed");
         river = cmd.getOptionValue("rivers");
+        maxLakes = cmd.getOptionValue("lakes");
 
         //Help option
         if(cmd.hasOption("help")) {
@@ -107,6 +111,14 @@ public class IslandCommandLineReader implements CommandLineReader {
                 altitude = a;
                 break;
             }
+        }
+
+        //Set the maximum number of lakes
+        if(cmd.hasOption("lakes")) {
+            maxNumLakes = Integer.parseInt(maxLakes);
+        }
+        else{
+            maxNumLakes = 0;
         }
 
         //Set the maximum number of rivers
@@ -148,7 +160,7 @@ public class IslandCommandLineReader implements CommandLineReader {
                 mesh = sandbox.getMesh();
             }
             else if (isRegularMode()){
-                Regular regular = new Regular(inputMeshFile, outputMeshFile, shapeToUse, altitude, maxNumRivers);
+                Regular regular = new Regular(inputMeshFile, outputMeshFile, shapeToUse, altitude, maxNumLakes, maxNumRivers);
                 regular.generate();
                 mesh = regular.getMesh();
             }
