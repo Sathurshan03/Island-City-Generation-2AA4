@@ -141,7 +141,7 @@ public class IslandCommandLineReader implements CommandLineReader {
                 mesh = sandbox.getMesh();
             }
             else if (isRegularMode()){
-                Regular regular = new Regular(inputMeshFile, outputMeshFile, shapeToUse, altitude);
+                Regular regular = new Regular(inputMeshFile, outputMeshFile, shapeToUse, altitude, maxLakes);
                 regular.generate();
                 mesh = regular.getMesh();
             }

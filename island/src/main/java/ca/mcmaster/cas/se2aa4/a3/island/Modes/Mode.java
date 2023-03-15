@@ -32,8 +32,26 @@ public abstract class Mode {
     List<TileVertex> allVerticesInfoList;
     List<TileVertex> verticesInfoList;
     List<TileVertex> centroidInfoList;
+    String maxLakes;
     static  double width;
     static double height;
+
+    public Mode(String inputMesh, String outputMesh, ShapeType shape, AltitudeType altitude, String maxLakes){
+        this.inputMesh = inputMesh;
+        this.outputMesh = outputMesh;
+        this.shape = shape;
+        this.altitude=altitude;
+        this.maxLakes = maxLakes;
+        this.tiles = new ArrayList<>();
+        this.allSegmentInfoList = new ArrayList<>();
+        this.segmentInfoList = new ArrayList<>();
+        this.neighbouringSegmentInfoList = new ArrayList<>();
+        this.allVerticesInfoList = new ArrayList<>();
+        this.verticesInfoList = new ArrayList<>();
+        this.centroidInfoList = new ArrayList<>();
+        width = Double.MIN_VALUE;
+        height = Double.MIN_VALUE;
+    }
 
     public Mode(String inputMesh, String outputMesh, ShapeType shape, AltitudeType altitude){
         this.inputMesh = inputMesh;
