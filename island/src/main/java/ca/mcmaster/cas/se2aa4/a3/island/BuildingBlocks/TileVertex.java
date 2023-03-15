@@ -52,6 +52,7 @@ public class TileVertex extends ExtractVertexInfo implements TileProperties{
         return Vertex.newBuilder().setX(X).setY(Y).addProperties(0,colorProperty).addProperties(1,thicknessProp).addProperties(2,vertexTypeProp).addProperties(3,elevationTypeProp).build();
     }
 
+
     public String extractVertexType(List<Property> properties){
         //Get the "thickness" of the vertex (size)
         String val = null;

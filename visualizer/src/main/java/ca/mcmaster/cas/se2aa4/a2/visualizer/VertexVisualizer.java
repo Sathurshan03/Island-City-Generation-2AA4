@@ -27,7 +27,7 @@ public class VertexVisualizer extends ExtractVertexInfo implements colourExtract
 
         if (debugElevation && !isCentroid){
             this.vertexColor = Color.BLACK;
-            this.thickness=Double.valueOf(vertex.getProperties(3).getValue());
+            this.thickness=Double.valueOf(vertex.getProperties(3).getValue())/100.0;
         }else if (debug && !isCentroid){
             this.vertexColor = Color.BLACK;
         }else{

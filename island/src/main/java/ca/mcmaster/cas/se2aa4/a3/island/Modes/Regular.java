@@ -5,6 +5,7 @@ import java.util.List;
 
 import ca.mcmaster.cas.se2aa4.a3.island.Altitude.*;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.Tile;
+import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.TileVertex;
 import ca.mcmaster.cas.se2aa4.a3.island.Shape.Shape;
 import ca.mcmaster.cas.se2aa4.a3.island.Shape.ShapeType;
 import ca.mcmaster.cas.se2aa4.a3.island.Tiles.TileTypes;
@@ -34,8 +35,13 @@ public class Regular extends Mode {
             tile.setTileType(TileTypes.GRASSLAND);
         }
 
-        new Altitude(AltitudeType.OCEAN, oceanTiles);
         new Altitude(altitude, undecidedTiles);
+        new Altitude(AltitudeType.OCEAN, oceanTiles);
+
+
+        for (TileVertex v: verticesInfoList){
+            System.out.println(v.getElevation());
+        }
 
     }
     

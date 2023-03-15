@@ -24,7 +24,7 @@ public enum AltitudeType {
             case VOLCANIC :
                 return new Volcanic().getFunction();
             case OCEAN:
-                return new Ocean().getFunction();
+                return new Water().getFunction(tiles);
             case CLIFF:
                 return new Cliff().getFunction();
         }

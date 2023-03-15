@@ -4,8 +4,8 @@ java -jar generator.jar sample.Mesh -i -np 500 -relation 25
 ls -lh sample.mesh
 cd ..
 cd island
-java -jar island.jar -i ../generator/sample.mesh -o sandbox.mesh --mode sandbox --shape circle
+java -jar island.jar -i ../generator/sample.mesh -o sandbox.mesh --mode sandbox --shape oval --altitude volcanic
 cd ..
 cd visualizer
-java -jar visualizer.jar ../island/sandbox.mesh sample.svg
+java -jar visualizer.jar ../island/sandbox.mesh sample.svg -XE
 ls -lh sample.svg
