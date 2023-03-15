@@ -46,11 +46,12 @@ public class Sandbox extends Mode{
         //Set the unMarked Tiles color
         for(Tile tile: landTiles){
             tile.setTileType(TileTypes.GRASSLAND);
+
         }
 
-        new Altitude(altitude, undecidedTiles);
-        new Altitude(AltitudeType.OCEAN, oceanTiles);
-        new Altitude(AltitudeType.OCEAN, lagoonTiles);
+        altitude_gen.SetElevation(altitude, undecidedTiles);
+        altitude_gen.SetElevation(AltitudeType.OCEAN, oceanTiles);
+        altitude_gen.SetElevation(AltitudeType.OCEAN, lagoonTiles);
 
 
         //Set beach tiles 

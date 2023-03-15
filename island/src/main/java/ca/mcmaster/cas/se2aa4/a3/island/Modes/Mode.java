@@ -9,6 +9,7 @@ import ca.mcmaster.cas.se2aa4.a2.io.Structs.Polygon;
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Property;
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Segment;
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Vertex;
+import ca.mcmaster.cas.se2aa4.a3.island.Altitude.Altitude;
 import ca.mcmaster.cas.se2aa4.a3.island.Altitude.AltitudeType;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.Tile;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.TileSegment;
@@ -19,6 +20,8 @@ public abstract class Mode {
     String inputMesh;
     String outputMesh;
     ShapeType shape;
+
+    Altitude altitude_gen=new Altitude();
 
     AltitudeType altitude;
     Mesh mesh;

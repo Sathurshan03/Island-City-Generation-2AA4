@@ -35,13 +35,8 @@ public class Regular extends Mode {
             tile.setTileType(TileTypes.GRASSLAND);
         }
 
-        new Altitude(altitude, undecidedTiles);
-        new Altitude(AltitudeType.OCEAN, oceanTiles);
-
-
-        for (TileVertex v: verticesInfoList){
-            System.out.println(v.getElevation());
-        }
+        altitude_gen.SetElevation(altitude, undecidedTiles);
+        altitude_gen.SetElevation(AltitudeType.OCEAN, oceanTiles);
 
     }
     
