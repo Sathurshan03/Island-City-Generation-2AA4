@@ -152,7 +152,7 @@ Pending (P), Started (S), Blocked (B), Done (D)
 | F31   | Heat map mode can be activated     | Mithun     |  |  | B(F27)  |
 | F32   | User can enter the shape of the island with -- shape via command line  | Sathurshan     | 03/05/2023 | 03/05/2023 | D   |
 | F33   | Islands have oval shape option   | Sathurshan | 03/13/2023 | 03/13/2023 | D  |
-| F34   | Islands have irregular shape option  | Sathurshan |  |  | B(F32)  |
+| F34   | Islands have irregular shape option  | Sathurshan | 03/14/2023  | 03/14/2023 | D |
 | F35   | Islands have circular shape option      | Sathurshan | 03/05/2023 | 03/05/2023 | D |
 | F36   | Islands have a rectangle shape option   | Sathurshan | 03/06/2023 | 03/06/2023 | D |
 | F37   | Islands have a ring shape option  | Sathurshan |  |  | B(F32) |

@@ -5,16 +5,16 @@ import java.util.List;
 import java.util.ArrayList;
 
 public abstract class Shape {
-    double meshCenterX;
-    double meshCenterY;
-    List<Tile> tiles;
-    List<Tile> unMarkedtiles;
-    List<Tile> markedtiles;
+    protected double meshCenterX;
+    protected double meshCenterY;
+    protected List<Tile> tiles;
+    protected List<Tile> inRangeTiles;
+    protected List<Tile> outOfRangeTiles;
     public Shape(){
-        unMarkedtiles = new ArrayList<>();
-        markedtiles = new ArrayList<>();
+        inRangeTiles = new ArrayList<>();
+        outOfRangeTiles = new ArrayList<>();
     }
-    public abstract List<Tile> getMarkedTiles();
-    public abstract List<Tile> getUnMarkedTiles();
+    public abstract List<Tile> getOutOfRangeTiles();
+    public abstract List<Tile> getInRangeTiles();
     public abstract void markTiles();
 }

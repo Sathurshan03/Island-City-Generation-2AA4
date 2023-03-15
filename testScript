@@ -1,6 +1,6 @@
 mvn install
 cd island
-java -jar island.jar -i ../generator/sample.mesh -o sandbox.mesh --mode regular --shape random --altitude volcanic
+java -jar island.jar -i ../generator/sample.mesh -o sandbox.mesh --mode regular --shape irregular --altitude volcanic 
 cd ..
 cd visualizer
 java -jar visualizer.jar ../island/sandbox.mesh sample.svg

@@ -9,11 +9,9 @@ import ca.mcmaster.cas.se2aa4.a3.island.IslandCommandLineReader;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.Tile;
 
 public class RandomShape extends Shape{
-    int maxPoints;
-    double length;
-    double shortLength;
-    Coordinate coordinates [];
-    java.awt.geom.Path2D.Double irregularShape;
+    private int maxPoints;
+    private Coordinate coordinates [];
+    private java.awt.geom.Path2D.Double irregularShape;
     
     public RandomShape (double width, double height, List<Tile> tiles){
         super();
@@ -62,11 +60,11 @@ public class RandomShape extends Shape{
 
     }
 
-    public List<Tile> getMarkedTiles(){
-        return markedtiles;
+    public List<Tile> getOutOfRangeTiles(){
+        return outOfRangeTiles;
     }
-    public List<Tile> getUnMarkedTiles(){
-        return unMarkedtiles;
+    public List<Tile> getInRangeTiles(){
+        return inRangeTiles;
     }
 
     public void markTiles(){
@@ -75,11 +73,11 @@ public class RandomShape extends Shape{
         for (Tile tile: tiles){            
             if(irregularShape.contains(tile.getCentroidX(), tile.getCentroidY())){
                 //in range
-                unMarkedtiles.add(tile);
+                inRangeTiles.add(tile);
             }
             else{
                 //out of range
-                markedtiles.add(tile);
+                outOfRangeTiles.add(tile);
             }
         }
 
