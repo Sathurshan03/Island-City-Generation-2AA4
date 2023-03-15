@@ -14,17 +14,18 @@ import org.apache.commons.cli.*;
 import java.io.IOException;
 
 public class IslandCommandLineReader implements CommandLineReader {
-    String inputMeshFile;
-    String outputMeshFile;
-    String mode;
-    String shape;
-    String seed;
+    private String inputMeshFile;
+    private String outputMeshFile;
+    private String mode;
+    private String shape;
+    private String seed;
+    private String river;
 
-    String elevation;
-    ModeType mapMode;
-
-    AltitudeType altitude;
-    ShapeType shapeToUse;
+    private String elevation;
+    private ModeType mapMode;
+    private AltitudeType altitude;
+    private ShapeType shapeToUse;
+    private int maxNumRivers;
     private Options options;
 
     public static RandomGenerator randomGenerator;
@@ -52,8 +53,8 @@ public class IslandCommandLineReader implements CommandLineReader {
         options.addOption(new Option("m", "mode", true, "Map Mode"));
         options.addOption(new Option("sh", "shape", true, "Island Shape"));
         options.addOption(new Option("a", "altitude", true, "Island Elevation"));
-        options.addOption(new Option("se", "seed", true, "Map seed"));
-
+        options.addOption(new Option("se", "seed", true, "Map seed (Long)"));
+        options.addOption(new Option("r", "rivers", true, "Maximum number of rivers to generate (Integer)"));
     }
 
     public void checkOptions(String[] args) throws ParseException, IOException{
@@ -68,6 +69,7 @@ public class IslandCommandLineReader implements CommandLineReader {
         shape = cmd.getOptionValue("shape");
         elevation = cmd.getOptionValue("altitude");
         seed = cmd.getOptionValue("seed");
+        river = cmd.getOptionValue("rivers");
 
         //Help option
         if(cmd.hasOption("help")) {
@@ -106,6 +108,14 @@ public class IslandCommandLineReader implements CommandLineReader {
                 break;
             }
         }
+
+        //Set the maximum number of rivers
+        if(cmd.hasOption("rivers")) {
+            maxNumRivers = Integer.parseInt(river);
+        }
+        else{
+            maxNumRivers = 0;
+        }
     }
     
     public String getOutputMeshFile(){
@@ -138,7 +148,7 @@ public class IslandCommandLineReader implements CommandLineReader {
                 mesh = sandbox.getMesh();
             }
             else if (isRegularMode()){
-                Regular regular = new Regular(inputMeshFile, outputMeshFile, shapeToUse, altitude);
+                Regular regular = new Regular(inputMeshFile, outputMeshFile, shapeToUse, altitude, maxNumRivers);
                 regular.generate();
                 mesh = regular.getMesh();
             }

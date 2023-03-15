@@ -165,7 +165,7 @@ Pending (P), Started (S), Blocked (B), Done (D)
 | F44   | Each vertex has an associated temperature  | Nirmal     |  |  | B(F38)        |
 | F45   | Every polygon has an average temperature    | Nirmal     |  |  | B(F43)   |
 | F46   | User can enter the maximum number of lakes on the island using —lakes via the command line.   | Mithun     |  |  | B(F48)  |
-| F47   | User can enter the maximum number of rivers on the island using –rivers via the command line. | Sathurshan |  |  | P   |
+| F47   | User can enter the maximum number of rivers on the island using –rivers via the command line. | Sathurshan | 03/15/2023 | 03/15/2023 | D   |
 | F48   | Generate rivers on the island    | Sathurshan | 03/15/2023 | 03/15/2023 | D  |
 | F49   | Generate endorheic lakes   | Sathurshan |  |  | B(F47)   |
 | F50   | Merge rivers that intersect with each other | Sathurshan |  |  | B(F47)         |

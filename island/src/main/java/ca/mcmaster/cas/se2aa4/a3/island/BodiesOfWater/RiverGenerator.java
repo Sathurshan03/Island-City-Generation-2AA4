@@ -9,13 +9,13 @@ import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.TileSegment;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.TileVertex;
 
 public class RiverGenerator {
-    int maxRivers;
+    int maxNumRivers;
     List<Tile> tiles;
     List<River> rivers;
     
     public RiverGenerator(List<Tile> tiles, int maxRivers){
         this.tiles = tiles;
-        this.maxRivers = maxRivers;
+        this.maxNumRivers = maxRivers;
         this.rivers = new ArrayList<>();
     }
 
@@ -25,7 +25,7 @@ public class RiverGenerator {
         Tile currentTile = null;
         River river;
 
-        for (int i = 0; i < maxRivers; i++){
+        for (int i = 0; i < maxNumRivers; i++){
             riverStartFound = false;
 
             //Find a valid starting point for the river

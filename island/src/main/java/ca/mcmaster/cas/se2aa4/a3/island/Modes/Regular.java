@@ -12,12 +12,12 @@ import ca.mcmaster.cas.se2aa4.a3.island.Shape.ShapeType;
 import ca.mcmaster.cas.se2aa4.a3.island.TilesTypes.TileTypes;
 
 public class Regular extends Mode {
-    
-    public Regular(String inputMesh, String outputMesh, ShapeType shapeType, AltitudeType altitudeType) throws IOException{
+    private int maxNumRivers;
+    public Regular(String inputMesh, String outputMesh, ShapeType shapeType, AltitudeType altitudeType, int maxNumRivers) throws IOException{
         super(inputMesh, outputMesh, shapeType, altitudeType);
-
-        //extract all the info from the input mesh
+        
         extractInformation();
+        this.maxNumRivers = maxNumRivers;
     }
 
     public void generate(){
@@ -39,7 +39,7 @@ public class Regular extends Mode {
         new Altitude(altitude, undecidedTiles);
         new Altitude(AltitudeType.OCEAN, oceanTiles);
 
-        RiverGenerator riverGenerator = new RiverGenerator(tiles, 20);
+        RiverGenerator riverGenerator = new RiverGenerator(tiles, maxNumRivers);
         riverGenerator.createRivers();
 
 
