@@ -159,12 +159,12 @@ public abstract class Mode {
 
                 //add vertices only if it is not in the list 
                 tileVertex = allVerticesInfoList.get(tileSegment.getVertedIDX1());
-                if (tile.isTileVerticesListContains(tileVertex)){
+                if (!tile.isTileVerticesListContains(tileVertex)){
                     tile.addTileVertex(tileVertex);
                 }
 
                 tileVertex = allVerticesInfoList.get(tileSegment.getVertedIDX2());
-                if (tile.isTileVerticesListContains(tileVertex)){
+                if (!tile.isTileVerticesListContains(tileVertex)){
                     tile.addTileVertex(tileVertex);
                 }
             }

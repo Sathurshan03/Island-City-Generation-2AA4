@@ -7,16 +7,19 @@ import ca.mcmaster.cas.se2aa4.a3.island.IslandCommandLineReader;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.Tile;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.TileSegment;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.TileVertex;
+import ca.mcmaster.cas.se2aa4.a3.island.TilesTypes.TileTypes;
 
 public class RiverGenerator {
     int maxNumRivers;
     List<Tile> tiles;
     List<River> rivers;
+    List<Tile> endorheicLake;
     
     public RiverGenerator(List<Tile> tiles, int maxRivers){
         this.tiles = tiles;
         this.maxNumRivers = maxRivers;
         this.rivers = new ArrayList<>();
+        this.endorheicLake = new ArrayList<>();
     }
 
     public void createRivers(){
@@ -32,7 +35,7 @@ public class RiverGenerator {
             while (!riverStartFound)
             {
                 currentTile = tiles.get(IslandCommandLineReader.randomGenerator.getNextInteger(0,tiles.size()));
-                if (currentTile.isTileLand()){
+                if (currentTile.isTileUndetermined() || currentTile.isTileLand()){
                     int pos = IslandCommandLineReader.randomGenerator.getNextInteger(0,currentTile.tileVerticesListSize());
                     TileVertex consideringVertex = currentTile.getTileVertex(pos);
                     if (consideringVertex.isVertexLand()){
@@ -44,8 +47,11 @@ public class RiverGenerator {
 
             river = new River(riverStart);
             extendRiver(riverStart, currentTile, river);
-            river.setRiverAttributes();
-            rivers.add(river);
+            if (river.getRiverSize()>0){
+                river.setRiverAttributes();
+                rivers.add(river);
+            }
+            
         }
     }
 
@@ -89,9 +95,29 @@ public class RiverGenerator {
             }
             else{
                 //if no water flow is found, then the river ends here
+                createEndorheicLake(river, previousRiverVertex);
                 break;
             }
         }
+    }
+
+    private void createEndorheicLake(River river, TileVertex previousRiverVertex){
+        //Find a suitable tile to be a endorheic lake 
+        if (river.getRiverSize()> 0){
+            for (Tile tile: tiles){
+                if (tile.isTileVerticesListContains(previousRiverVertex) && !tile.isTileSegmentListContains(river.getRiverlastSegment())){
+                    tile.setTileType(TileTypes.ENDORHEICLAKE);
+                        endorheicLake.add(tile);
+                        break;
+                }
+            }
+        }
+    }
+
+
+    public List<Tile> getEndorheicLakes()
+    {
+        return endorheicLake;
     }
     
 }

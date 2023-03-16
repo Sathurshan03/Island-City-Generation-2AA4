@@ -6,8 +6,8 @@ import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.TileVertex;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.TileSegment;
 
 public class River {
-    List<TileVertex> riverVertices;
-    List<TileSegment> riverSegments;
+    private List<TileVertex> riverVertices;
+    private List<TileSegment> riverSegments;
 
     public River(TileVertex riverStart){
         riverVertices = new ArrayList<>();
@@ -29,6 +29,18 @@ public class River {
             return false;
         }
         return true;
+    }
+
+    public TileSegment getRiverlastSegment(){
+        return riverSegments.get(getRiverSize() - 1);
+    }
+
+    public int getRiverSize(){
+        return riverSegments.size();
+    }
+
+    public List<TileVertex> getRiverVerticies(){
+        return riverVertices;
     }
 
     public void setRiverAttributes(){

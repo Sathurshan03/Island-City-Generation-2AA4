@@ -21,6 +21,7 @@ public class Tile extends ExtractPolygonInfo{
     Color color;
     public Tile(Polygon polygon, List<Segment> meshSegments, List<Vertex> meshVertices, int numPolygons){
         super(polygon, meshSegments, meshVertices, numPolygons);
+        this.tileType = TileTypes.UNDETERMINEDLAND;
         tileSegmentList = new ArrayList<>();
         neighbouringTileSegmentList = new ArrayList<>();
         tileVerticesList = new ArrayList<>();
@@ -65,7 +66,7 @@ public class Tile extends ExtractPolygonInfo{
     }
 
     public Boolean isTileWater(){
-        if (tileType.getElememt().equals(TileElement.WATER)){
+       if (tileType.getElememt().equals(TileElement.WATER)){
             return true;
         }
         return false;
@@ -73,6 +74,13 @@ public class Tile extends ExtractPolygonInfo{
 
     public Boolean isTileLand(){
         if (tileType.getElememt().equals(TileElement.LAND)){
+            return true;
+        }
+        return false;
+    }
+
+    public Boolean isTileUndetermined(){
+        if (tileType.getElememt().equals(TileElement.UNDETERMINED)){
             return true;
         }
         return false;
@@ -102,11 +110,18 @@ public class Tile extends ExtractPolygonInfo{
         return tileSegmentList;
     }
 
+    public Boolean isTileSegmentListContains(TileSegment tileSegment){
+        if (tileSegmentList.contains(tileSegment)){
+            return true;
+        }
+        return false;
+    }
+
     public Boolean isTileVerticesListContains(TileVertex tileVertex){
         if (tileVerticesList.contains(tileVertex)){
-            return false;
+            return true;
         }
-        return true;
+        return false;
     }
 
     public TileVertex getTileVertex(int pos){

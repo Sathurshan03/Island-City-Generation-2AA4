@@ -36,25 +36,33 @@ public class Regular extends Mode {
             tile.setTileType(TileTypes.Ocean);
         }
 
-        //Set the unMarked Tiles color
-        for(Tile tile: undecidedTiles){
-            tile.setTileType(TileTypes.GRASSLAND);
-        }
-
-        int numLakes = IslandCommandLineReader.randomGenerator.getNextInteger(0,maxNumLakes);
-        List<Tile> potentialLakeTiles = determineLakeTiles(undecidedTiles);
-        int maxLakeSize = (int) Math.floor(Math.sqrt((double) potentialLakeTiles.size()/(double) numLakes));
-        System.out.println(potentialLakeTiles.size());
-        System.out.println(numLakes);
-        System.out.println((double) potentialLakeTiles.size()/(double) numLakes);
-        System.out.println(Math.sqrt((double) potentialLakeTiles.size()/(double) numLakes));
-        System.out.println(maxLakeSize);
+        // int numLakes = IslandCommandLineReader.randomGenerator.getNextInteger(0,maxNumLakes);
+        // List<Tile> potentialLakeTiles = determineLakeTiles(undecidedTiles);
+        // int maxLakeSize = (int) Math.floor(Math.sqrt((double) potentialLakeTiles.size()/(double) numLakes));
+        // System.out.println(potentialLakeTiles.size());
+        // System.out.println(numLakes);
+        // System.out.println((double) potentialLakeTiles.size()/(double) numLakes);
+        // System.out.println(Math.sqrt((double) potentialLakeTiles.size()/(double) numLakes));
+        // System.out.println(maxLakeSize);
 
         altitude_gen.SetElevation(altitude, undecidedTiles);
         altitude_gen.SetElevation(AltitudeType.OCEAN, oceanTiles);
 
         RiverGenerator riverGenerator = new RiverGenerator(tiles, maxNumRivers);
         riverGenerator.createRivers();
+
+        //Remove endorheic lake tiles from undecided tiles
+        for (Tile endorheicLake : riverGenerator.getEndorheicLakes())
+        {
+            if (undecidedTiles.contains(endorheicLake)){
+                undecidedTiles.remove(endorheicLake);
+            }
+        }
+
+        //Set the unMarked Tiles color
+        for(Tile tile: undecidedTiles){
+            tile.setTileType(TileTypes.GRASSLAND);
+        }
 
     }
     private List<Tile> determineLakeTiles(List<Tile> undecidedTiles){
