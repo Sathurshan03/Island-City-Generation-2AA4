@@ -41,15 +41,18 @@ public abstract class Mode {
     List<TileVertex> allVerticesInfoList;
     List<TileVertex> verticesInfoList;
     List<TileVertex> centroidInfoList;
+    String maxLakes;
     static  double width;
     static double height;
 
-    public Mode(String inputMesh, String outputMesh, ShapeType shape, AltitudeType altitude, BiomeTypes biome){
+
+    public Mode(String inputMesh, String outputMesh, ShapeType shape, AltitudeType altitude, BiomeTypes biome, String maxLakes){
         this.inputMesh = inputMesh;
         this.outputMesh = outputMesh;
         this.shape = shape;
         this.altitude=altitude;
         this.biome=biome;
+        this.maxLakes = maxLakes;
         this.tiles = new ArrayList<>();
         this.allSegmentInfoList = new ArrayList<>();
         this.segmentInfoList = new ArrayList<>();
@@ -68,8 +71,8 @@ public abstract class Mode {
         segments = mesh.getSegmentsList();
         vertices = mesh.getVerticesList();
 
-        extractSegments();
         extractVertex();
+        extractSegments();
         extractPolygon();
         setNeighbouringTiles();
 
@@ -90,11 +93,15 @@ public abstract class Mode {
             type = segmentType.getValue();
             if (type.equals("Regular")){
                 tileSegment = new TileSegment(segment, vertices, polygons.size());
+                tileSegment.setTileVertex1(allVerticesInfoList.get(tileSegment.getVertedIDX1()));
+                tileSegment.setTileVertex2(allVerticesInfoList.get(tileSegment.getVertedIDX2()));
                 segmentInfoList.add(tileSegment);
                 allSegmentInfoList.add(tileSegment);
             }
             else if (type.equals("Neighbouring")){
                 tileSegment = new TileSegment(segment, vertices, 0);
+                tileSegment.setTileVertex1(allVerticesInfoList.get(tileSegment.getVertedIDX1()));
+                tileSegment.setTileVertex2(allVerticesInfoList.get(tileSegment.getVertedIDX2()));
                 neighbouringSegmentInfoList.add(tileSegment);
                 allSegmentInfoList.add(tileSegment);
             }
@@ -144,12 +151,12 @@ public abstract class Mode {
 
                 //add vertices only if it is not in the list 
                 tileVertex = allVerticesInfoList.get(tileSegment.getVertedIDX1());
-                if (tile.isTileVerticesListContains(tileVertex)){
+                if (!tile.isTileVerticesListContains(tileVertex)){
                     tile.addTileVertex(tileVertex);
                 }
 
                 tileVertex = allVerticesInfoList.get(tileSegment.getVertedIDX2());
-                if (tile.isTileVerticesListContains(tileVertex)){
+                if (!tile.isTileVerticesListContains(tileVertex)){
                     tile.addTileVertex(tileVertex);
                 }
             }

@@ -8,14 +8,14 @@ import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.Tile;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.TileVertex;
 import ca.mcmaster.cas.se2aa4.a3.island.Shape.Circle;
 import ca.mcmaster.cas.se2aa4.a3.island.Shape.ShapeType;
-import ca.mcmaster.cas.se2aa4.a3.island.Tiles.TileTypes;
+import ca.mcmaster.cas.se2aa4.a3.island.TilesTypes.TileTypes;
 
 import java.util.List;
 
 public class Sandbox extends Mode{
     
     public Sandbox(String inputMesh, String outputMesh) throws IOException{
-        super(inputMesh, outputMesh, ShapeType.CIRCLE, AltitudeType.VOLCANIC, BiomeTypes.ARCTIC);
+        super(inputMesh, outputMesh, ShapeType.CIRCLE, AltitudeType.VOLCANIC, BiomeTypes.ARCTIC, "5");
 
          //extract all the info from the input mesh
          extractInformation();
