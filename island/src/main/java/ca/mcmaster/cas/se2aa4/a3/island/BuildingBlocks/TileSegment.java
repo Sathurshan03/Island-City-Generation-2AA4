@@ -46,7 +46,7 @@ public class TileSegment extends ExtractSegmentInfo implements TileProperties{
         updateThickness();
     }
     private void updateThickness(){
-        thicknessDouble = 0.5;
+        thicknessDouble = 0.75 * numRivers;
     }
 
     public void setSegmentVertexRiver(){

@@ -168,7 +168,7 @@ Pending (P), Started (S), Blocked (B), Done (D)
 | F47   | User can enter the maximum number of rivers on the island using –rivers via the command line. | Sathurshan | 03/15/2023 | 03/15/2023 | D   |
 | F48   | Generate rivers on the island    | Sathurshan | 03/15/2023 | 03/15/2023 | D  |
 | F49   | Generate endorheic lakes   | Sathurshan | 03/15/2023 | 03/15/2023 | D   |
-| F50   | Merge rivers that intersect with each other | Sathurshan |  |  | B(F47)         |
+| F50   | Merge rivers that intersect with each other | Sathurshan | 03/15/2023 | 03/15/2023 | D |
 | F51   | User can enter the number of aquifers on the island using —aquifers via the command line.     | Mithun     |  |  | P  |
 | F52   | Generate aquifers on the island | Mithun     |  |  | B(F50)   |
 | F53   | User can enter soil absorption profile —soil via the command line.   | Nirmal     |  |  | P   |
