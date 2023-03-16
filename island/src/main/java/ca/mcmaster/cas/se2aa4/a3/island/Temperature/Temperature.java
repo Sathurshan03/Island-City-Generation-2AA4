@@ -29,8 +29,6 @@ public class Temperature {
             }
             average/=t.getTileVertices().size();
             t.setAverageTemperature(average);
-            System.out.println("Polygon temp:"+t.getAverageTemperature());
-
         }
 
     }

@@ -19,7 +19,6 @@ public class Tile extends ExtractPolygonInfo{
     List<TileVertex> tileVerticesList;
     List<Tile> neighbouringTileList;
     Color color;
-
     Double averageTemperature;
     public Tile(Polygon polygon, List<Segment> meshSegments, List<Vertex> meshVertices, int numPolygons){
         super(polygon, meshSegments, meshVertices, numPolygons);
