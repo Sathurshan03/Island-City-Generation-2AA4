@@ -16,7 +16,6 @@ public class Heatmaps extends Regular{
         super.generate();
         setProperties();
     }
-
     public void setProperties(){
         for (Tile t: tiles){
             if (t.isTileLand()){
