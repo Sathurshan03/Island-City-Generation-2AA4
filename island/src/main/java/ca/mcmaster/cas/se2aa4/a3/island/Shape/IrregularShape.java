@@ -35,7 +35,7 @@ public class IrregularShape extends Shape{
     private void generateBaseIsland(){
         //generate the base island for the irregular island to step out of
 
-        int shapeVal = (int)IslandCommandLineReader.randomGenerator.getNextdouble(0,2.5);
+        int shapeVal = (int)IslandCommandLineReader.randomGenerator.getNextDouble(0,2.5);
         ShapeType shapeType = ShapeType.values()[shapeVal];
         
         if (shapeType.equals(ShapeType.CIRCLE)){

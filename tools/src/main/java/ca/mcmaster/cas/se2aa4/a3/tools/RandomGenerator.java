@@ -28,14 +28,13 @@ public class RandomGenerator {
     }
 
 
-    public double getNextdouble(double lowerBound, double upperBound){
+    public double getNextDouble(double lowerBound, double upperBound){
         return mainRandomController.nextDouble(lowerBound, upperBound);
     }
 
-    public int getNextint(int lowerBound, int upperBound){
+    public int getNextInteger(int lowerBound, int upperBound){
         return mainRandomController.nextInt(lowerBound, upperBound);
     }
-
 
     private void printSeed(){
         System.out.println("\nThe seed of this map is: " + seed);

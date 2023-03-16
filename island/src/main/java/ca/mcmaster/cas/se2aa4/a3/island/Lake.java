@@ -19,11 +19,11 @@ public class Lake {
 
     private void createLake(List<Tile> potentialLakeTiles, int maxLakeSize){
 
-        lakeSize = IslandCommandLineReader.randomGenerator.getNextint(1,maxLakeSize+1); // lake must be made up of at least 2 tiles
+        lakeSize = IslandCommandLineReader.randomGenerator.getNextInteger(1,maxLakeSize+1); // lake must be made up of at least 2 tiles
         System.out.println("Lake Size: " + lakeSize);
 
         outerLoop: while(true){
-            Tile firstTile = potentialLakeTiles.get(IslandCommandLineReader.randomGenerator.getNextint(0, potentialLakeTiles.size()));
+            Tile firstTile = potentialLakeTiles.get(IslandCommandLineReader.randomGenerator.getNextInteger(0, potentialLakeTiles.size()));
             List<Tile> neighbourTiles = firstTile.getNeighbouringTile();
             for(Tile tile: neighbourTiles){
                 if(tile.isTileWater()){
@@ -46,7 +46,7 @@ public class Lake {
         outerLoop:
         while (tilesAdded < lakeSize) {
             List<Tile> neighbouringTiles = currentTile.getNeighbouringTile();
-            Tile nextTile = neighbouringTiles.get(IslandCommandLineReader.randomGenerator.getNextint(0, neighbouringTiles.size()));
+            Tile nextTile = neighbouringTiles.get(IslandCommandLineReader.randomGenerator.getNextInteger(0, neighbouringTiles.size()));
             List<Tile> neighbourTiles = nextTile.getNeighbouringTile();
             for (Tile tile : neighbourTiles) {
                 if (tile.isTileWater()) {

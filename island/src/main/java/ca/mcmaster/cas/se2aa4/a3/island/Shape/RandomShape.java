@@ -16,7 +16,7 @@ public class RandomShape extends Shape{
     public RandomShape (double width, double height, List<Tile> tiles){
         super();
         
-        this.maxPoints = (int)IslandCommandLineReader.randomGenerator.getNextdouble(6, 25);
+        this.maxPoints = (int)IslandCommandLineReader.randomGenerator.getNextDouble(6, 25);
         this.tiles = tiles;
         this.meshCenterX = width /2;
         this.meshCenterY = height /2;
@@ -33,8 +33,8 @@ public class RandomShape extends Shape{
         double yCoordinate;
 
         for (int i = 0; i < maxPoints; i++){
-            xCoordinate = IslandCommandLineReader.randomGenerator.getNextdouble(0, xUppderBound);
-            yCoordinate = IslandCommandLineReader.randomGenerator.getNextdouble(0, yUppderBound);
+            xCoordinate = IslandCommandLineReader.randomGenerator.getNextDouble(0, xUppderBound);
+            yCoordinate = IslandCommandLineReader.randomGenerator.getNextDouble(0, yUppderBound);
 
             coordinates[i] = new Coordinate(xCoordinate, yCoordinate);
         }
