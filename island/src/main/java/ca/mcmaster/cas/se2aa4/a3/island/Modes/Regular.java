@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import ca.mcmaster.cas.se2aa4.a3.island.Altitude.*;
+import ca.mcmaster.cas.se2aa4.a3.island.Biomes.BiomeTypes;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.Tile;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.TileVertex;
 import ca.mcmaster.cas.se2aa4.a3.island.Shape.Shape;
@@ -12,8 +13,8 @@ import ca.mcmaster.cas.se2aa4.a3.island.Tiles.TileTypes;
 
 public class Regular extends Mode {
     
-    public Regular(String inputMesh, String outputMesh, ShapeType shapeType, AltitudeType altitudeType) throws IOException{
-        super(inputMesh, outputMesh, shapeType, altitudeType);
+    public Regular(String inputMesh, String outputMesh, ShapeType shapeType, AltitudeType altitudeType, BiomeTypes biome) throws IOException{
+        super(inputMesh, outputMesh, shapeType, altitudeType, biome);
 
         //extract all the info from the input mesh
         extractInformation();
@@ -37,6 +38,10 @@ public class Regular extends Mode {
 
         altitude_gen.SetElevation(altitude, undecidedTiles);
         altitude_gen.SetElevation(AltitudeType.OCEAN, oceanTiles);
+
+        temperature_gen.setTemperature(undecidedTiles, biome, altitude_gen.getMinElevation());
+        temperature_gen.setTemperature(oceanTiles, biome, altitude_gen.getMinElevation());
+
 
     }
     

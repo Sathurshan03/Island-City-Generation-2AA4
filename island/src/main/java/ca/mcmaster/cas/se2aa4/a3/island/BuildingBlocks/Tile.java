@@ -19,6 +19,8 @@ public class Tile extends ExtractPolygonInfo{
     List<TileVertex> tileVerticesList;
     List<Tile> neighbouringTileList;
     Color color;
+
+    Double averageTemperature;
     public Tile(Polygon polygon, List<Segment> meshSegments, List<Vertex> meshVertices, int numPolygons){
         super(polygon, meshSegments, meshVertices, numPolygons);
         tileSegmentList = new ArrayList<>();
@@ -31,6 +33,7 @@ public class Tile extends ExtractPolygonInfo{
     }
     public void setTileType(TileTypes tileType){
         this.tileType = tileType;
+        this.color=tileType.getColor();
     }
     public Boolean isTileWater(){
         if (tileType.getElememt().equals(TileElement.WATER)){
@@ -43,6 +46,14 @@ public class Tile extends ExtractPolygonInfo{
             return true;
         }
         return false;
+    }
+
+    public void setAverageTemperature(Double temperature){
+        this.averageTemperature=temperature;
+    }
+
+    public Double getAverageTemperature(){
+        return this.averageTemperature;
     }
     
     public TileVertex getCentroid(){
@@ -70,7 +81,6 @@ public class Tile extends ExtractPolygonInfo{
 
     public Polygon getPolygon(){
         //create the Struct Polygon of Tiles
-        color = tileType.getColor();
         setColor();
         String colorCode = color.getRed() + "," + color.getGreen() + "," + color.getBlue() + "," + color.getAlpha();
         Property colourProperty=Property.newBuilder().setKey("background_color").setValue(colorCode).build();
@@ -99,5 +109,9 @@ public class Tile extends ExtractPolygonInfo{
         for (TileSegment ts: tileSegmentList){
             ts.setColor(color);
         }
+    }
+
+    public void setPolygonColor(Color c){
+        this.color=c;
     }
 }

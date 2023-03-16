@@ -2,6 +2,8 @@ package ca.mcmaster.cas.se2aa4.a3.island;
 
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Mesh;
 import ca.mcmaster.cas.se2aa4.a3.island.Altitude.AltitudeType;
+import ca.mcmaster.cas.se2aa4.a3.island.Biomes.BiomeTypes;
+import ca.mcmaster.cas.se2aa4.a3.island.Modes.Heatmaps;
 import ca.mcmaster.cas.se2aa4.a3.tools.CommandLineReader;
 import ca.mcmaster.cas.se2aa4.a3.tools.RandomGenerator;
 import ca.mcmaster.cas.se2aa4.a3.island.Modes.ModeType;
@@ -20,11 +22,15 @@ public class IslandCommandLineReader implements CommandLineReader {
     String shape;
     String seed;
 
+    String biomestring;
+
     String elevation;
     ModeType mapMode;
 
     AltitudeType altitude;
     ShapeType shapeToUse;
+
+    BiomeTypes biome;
     private Options options;
 
     public static RandomGenerator randomGenerator;
@@ -53,6 +59,8 @@ public class IslandCommandLineReader implements CommandLineReader {
         options.addOption(new Option("sh", "shape", true, "Island Shape"));
         options.addOption(new Option("a", "altitude", true, "Island Elevation"));
         options.addOption(new Option("se", "seed", true, "Map seed"));
+        options.addOption(new Option("b", "biomes", true, "Biome type"));
+
 
     }
 
@@ -68,6 +76,7 @@ public class IslandCommandLineReader implements CommandLineReader {
         shape = cmd.getOptionValue("shape");
         elevation = cmd.getOptionValue("altitude");
         seed = cmd.getOptionValue("seed");
+        biomestring=cmd.getOptionValue("biomes");
 
         //Help option
         if(cmd.hasOption("help")) {
@@ -106,6 +115,15 @@ public class IslandCommandLineReader implements CommandLineReader {
                 break;
             }
         }
+
+        for(BiomeTypes b: BiomeTypes.values()){
+            String input = b.toString();
+            if (input.equals(biomestring))
+            {
+                biome = b;
+                break;
+            }
+        }
     }
     
     public String getOutputMeshFile(){
@@ -124,6 +142,13 @@ public class IslandCommandLineReader implements CommandLineReader {
         }
         return false;
     }
+
+    protected boolean isHeatmapMode(){
+        if (mapMode.equals(ModeType.HEATMAP)) {
+            return true;
+        }
+        return false;
+    }
     public Mesh generateFromInputs() throws IOException{
         RunMode runMode = new RunMode();
         return runMode.getMesh();
@@ -138,9 +163,12 @@ public class IslandCommandLineReader implements CommandLineReader {
                 mesh = sandbox.getMesh();
             }
             else if (isRegularMode()){
-                Regular regular = new Regular(inputMeshFile, outputMeshFile, shapeToUse, altitude);
+                Regular regular = new Regular(inputMeshFile, outputMeshFile, shapeToUse, altitude, biome);
                 regular.generate();
                 mesh = regular.getMesh();
+            }else if (isHeatmapMode()){
+                Heatmaps heatmap=new Heatmaps(inputMeshFile, outputMeshFile, shapeToUse, altitude, biome);
+                mesh=heatmap.getMesh();
             }
             else{
                 throw new IOException("Invalid mode was entered");

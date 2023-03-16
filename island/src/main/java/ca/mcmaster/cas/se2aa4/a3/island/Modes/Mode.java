@@ -11,10 +11,12 @@ import ca.mcmaster.cas.se2aa4.a2.io.Structs.Segment;
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Vertex;
 import ca.mcmaster.cas.se2aa4.a3.island.Altitude.Altitude;
 import ca.mcmaster.cas.se2aa4.a3.island.Altitude.AltitudeType;
+import ca.mcmaster.cas.se2aa4.a3.island.Biomes.BiomeTypes;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.Tile;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.TileSegment;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.TileVertex;
 import ca.mcmaster.cas.se2aa4.a3.island.Shape.ShapeType;
+import ca.mcmaster.cas.se2aa4.a3.island.Temperature.Temperature;
 
 public abstract class Mode {
     String inputMesh;
@@ -23,7 +25,11 @@ public abstract class Mode {
 
     Altitude altitude_gen=new Altitude();
 
+    Temperature temperature_gen=new Temperature();
+
     AltitudeType altitude;
+
+    BiomeTypes biome;
     Mesh mesh;
     List<Polygon> polygons;
     List<Segment> segments;
@@ -38,11 +44,12 @@ public abstract class Mode {
     static  double width;
     static double height;
 
-    public Mode(String inputMesh, String outputMesh, ShapeType shape, AltitudeType altitude){
+    public Mode(String inputMesh, String outputMesh, ShapeType shape, AltitudeType altitude, BiomeTypes biome){
         this.inputMesh = inputMesh;
         this.outputMesh = outputMesh;
         this.shape = shape;
         this.altitude=altitude;
+        this.biome=biome;
         this.tiles = new ArrayList<>();
         this.allSegmentInfoList = new ArrayList<>();
         this.segmentInfoList = new ArrayList<>();

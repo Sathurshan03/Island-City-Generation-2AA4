@@ -13,12 +13,15 @@ public class TileVertex extends ExtractVertexInfo implements TileProperties{
     Color averageColor = new Color(0, 0, 0, 0);
     String vertexType;
 
+    Double temperature;
+
     Double elevation;
     Double thicknessDouble;
     public TileVertex(Vertex vertex)
     {
         super(vertex);
         this.elevation=1.0;
+        this.temperature=1.0;
         this.thicknessDouble = thickness;
         this.colorList = new ArrayList<>();
         this.vertexType = extractVertexType(vertex.getPropertiesList());
@@ -30,6 +33,14 @@ public class TileVertex extends ExtractVertexInfo implements TileProperties{
 
     public void setElevation(Double elevation){
         this.elevation=elevation;
+    }
+
+    public void setTemperature(Double temperature){
+        this.temperature=temperature;
+    }
+
+    public Double getTemperature(){
+        return this.temperature;
     }
 
     public Double getElevation(){
