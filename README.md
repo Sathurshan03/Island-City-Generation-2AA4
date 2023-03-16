@@ -149,7 +149,7 @@ Pending (P), Started (S), Blocked (B), Done (D)
 | F28   | –help mode in the command line gives a description of how to use to command line  | Mithun |  |  | B(F27),B(F32),B(F38),B(F45),B(F46),B(F50),B(F52),B(F59),B(F83)|
 | F29   | Sandbox map mode can be activated  | Sathurshan     | 03/05/2023 | 03/05/2023 | D |
 | F30   | Regular map mode can be activated  | Sathurshan     | 03/06/2023 | 03/06/2023 | D |
-| F31   | Heat map mode can be activated     | Mithun     |  |  | B(F27)  |
+| F31   | Heat map mode can be activated     | Nirmal     | 03/15/2023 | 03/15/2023 | D  |
 | F32   | User can enter the shape of the island with -- shape via command line  | Sathurshan     | 03/05/2023 | 03/05/2023 | D   |
 | F33   | Islands have oval shape option   | Sathurshan | 03/13/2023 | 03/13/2023 | D  |
 | F34   | Islands have irregular shape option  | Sathurshan | 03/14/2023  | 03/14/2023 | D |
@@ -162,8 +162,8 @@ Pending (P), Started (S), Blocked (B), Done (D)
 | F41   | Island altitude has “flat” option  | Nirmal     |  |  | B(F38)  |
 | F42   | Island altitude has “random” option  | Nirmal     |  |  | B(F38)   |
 | F43   | Enter Debug Elevation mode from command line using -XE  | Nirmal     | 03/08/2023 | 03/08/2023 | D   |
-| F44   | Each vertex has an associated temperature  | Nirmal     |  |  | B(F38)        |
-| F45   | Every polygon has an average temperature    | Nirmal     |  |  | B(F43)   |
+| F44   | Each vertex has an associated temperature  | Nirmal     | 03/15/2023 | 03/15/2023 | D        |
+| F45   | Every polygon has an average temperature    | Nirmal     | 03/15/2023 | 03/15/2023 | D   |
 | F46   | User can enter the maximum number of lakes on the island using —lakes via the command line.   | Mithun     |  |  | B(F48)  |
 | F47   | User can enter the maximum number of rivers on the island using –rivers via the command line. | Sathurshan | 03/15/2023 | 03/15/2023 | D   |
 | F48   | Generate rivers on the island    | Sathurshan | 03/15/2023 | 03/15/2023 | D  |
