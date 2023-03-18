@@ -22,7 +22,7 @@ public class WhittakerDiagram {
     }
 
     public TileTypes getBiome(double humidity, double temperature){
-        //Get the biome based on the whittaker diagram
+        //Get the biome(tileTypes) based on the whittaker diagram
 
         for(Shape area: whittakerDiagram.keySet()){
             if (area.contains(temperature/scaleTemperature, humidity/scaleHumidity))

@@ -9,10 +9,13 @@ public enum TileTypes {
     LAGOON(new Color(25,132,226, 254), TileElement.WATER),
     LAKE(new Color(100,149,237, 254), TileElement.WATER),
     GRASSLAND(new Color(0,153,0,254), TileElement.LAND),
-    ENDORHEICLAKE(new Color(0,76,153,254), TileElement.WATER);
+    ENDORHEICLAKE(new Color(0,76,153,254), TileElement.WATER),
+    ICE(new Color(100,149,237,254), TileElement.LAND),
+    SNOW(new Color(255,250,250,254), TileElement.LAND),
+    TAIGA(new Color(0,110,0,254), TileElement.LAND),
+    TUNDRA(new Color(160,82,45,254), TileElement.LAND);
 
-
-
+    
     public final Color tileColor;
     public final TileElement tileElement;
     private TileTypes(Color color, TileElement element){
