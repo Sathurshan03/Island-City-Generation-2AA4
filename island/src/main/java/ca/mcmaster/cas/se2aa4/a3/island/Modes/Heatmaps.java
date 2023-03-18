@@ -1,8 +1,8 @@
 package ca.mcmaster.cas.se2aa4.a3.island.Modes;
 
 import ca.mcmaster.cas.se2aa4.a3.island.Altitude.AltitudeType;
-import ca.mcmaster.cas.se2aa4.a3.island.Biomes.BiomeTypes;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.Tile;
+import ca.mcmaster.cas.se2aa4.a3.island.GeneralBiome.BiomeTypes;
 import ca.mcmaster.cas.se2aa4.a3.island.Shape.ShapeType;
 
 import java.awt.*;

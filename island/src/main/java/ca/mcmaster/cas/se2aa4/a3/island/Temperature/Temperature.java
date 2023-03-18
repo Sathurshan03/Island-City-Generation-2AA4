@@ -1,6 +1,5 @@
 package ca.mcmaster.cas.se2aa4.a3.island.Temperature;
 
-import ca.mcmaster.cas.se2aa4.a3.island.Biomes.BiomeTypes;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.Tile;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.TileVertex;
 
@@ -16,9 +15,9 @@ public class Temperature {
         all_tiles=new ArrayList<>();
     }
 
-    public void setTemperature(List<Tile> tiles, BiomeTypes biome, Double min_elevation){
+    public void setTemperature(List<Tile> tiles, double baseTemperature, Double min_elevation){
         this.all_tiles=tiles;
-        this.base_temperature=biome.getBaseTemperature();
+        this.base_temperature= baseTemperature;
 
 
         for (Tile t: all_tiles){

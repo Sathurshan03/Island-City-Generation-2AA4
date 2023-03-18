@@ -2,7 +2,8 @@ package ca.mcmaster.cas.se2aa4.a3.island;
 
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Mesh;
 import ca.mcmaster.cas.se2aa4.a3.island.Altitude.AltitudeType;
-import ca.mcmaster.cas.se2aa4.a3.island.Biomes.BiomeTypes;
+import ca.mcmaster.cas.se2aa4.a3.island.GeneralBiome.BiomeTypes;
+import ca.mcmaster.cas.se2aa4.a3.island.GeneralBiome.GeneralBiome;
 import ca.mcmaster.cas.se2aa4.a3.island.Modes.Heatmaps;
 import ca.mcmaster.cas.se2aa4.a3.tools.CommandLineReader;
 import ca.mcmaster.cas.se2aa4.a3.tools.RandomGenerator;
@@ -24,11 +25,11 @@ public class IslandCommandLineReader implements CommandLineReader {
     private String river;
     private String maxLakes;
     private String elevation;
-    private String biomestring;
+    private String biome;
     private ModeType mapMode;
     private AltitudeType altitude;
     private ShapeType shapeToUse;
-    private BiomeTypes biome;
+    private BiomeTypes generalBiome;
     private int maxNumLakes;
     private int maxNumRivers;
     private Options options;
@@ -77,7 +78,7 @@ public class IslandCommandLineReader implements CommandLineReader {
         shape = cmd.getOptionValue("shape");
         elevation = cmd.getOptionValue("altitude");
         seed = cmd.getOptionValue("seed");
-        biomestring = cmd.getOptionValue("biomes");
+        biome = cmd.getOptionValue("biomes");
         river = cmd.getOptionValue("rivers");
         maxLakes = cmd.getOptionValue("lakes");
 
@@ -117,25 +118,26 @@ public class IslandCommandLineReader implements CommandLineReader {
         }
 
         for (BiomeTypes b : BiomeTypes.values()) {
-            String input = b.toString();
-            if (input.equals(biomestring)) {
-                biome = b;
+            String biomeString = b.toString();
+            if (biomeString.equals(biome)) {
+                generalBiome = b;
                 break;
             }
-            //Set the maximum number of lakes
-            if (cmd.hasOption("lakes")) {
-                maxNumLakes = Integer.parseInt(maxLakes);
-            } else {
-                maxNumLakes = 0;
-            }
-
-            //Set the maximum number of rivers
-            if (cmd.hasOption("rivers")) {
-                maxNumRivers = Integer.parseInt(river);
-            } else {
-                maxNumRivers = 0;
-            }
         }
+        //Set the maximum number of lakes
+        if (cmd.hasOption("lakes")) {
+            maxNumLakes = Integer.parseInt(maxLakes);
+        } else {
+            maxNumLakes = 0;
+        }
+
+        //Set the maximum number of rivers
+        if (cmd.hasOption("rivers")) {
+            maxNumRivers = Integer.parseInt(river);
+        } else {
+            maxNumRivers = 0;
+        }
+        
     }
     
     public String getOutputMeshFile(){
@@ -175,11 +177,11 @@ public class IslandCommandLineReader implements CommandLineReader {
                 mesh = sandbox.getMesh();
             }
             else if (isRegularMode()){
-                Regular regular = new Regular(inputMeshFile, outputMeshFile, shapeToUse, altitude, biome, maxNumLakes, maxNumRivers);
+                Regular regular = new Regular(inputMeshFile, outputMeshFile, shapeToUse, altitude, generalBiome, maxNumLakes, maxNumRivers);
                 regular.generate();
                 mesh = regular.getMesh();
             }else if (isHeatmapMode()){
-                Heatmaps heatmap=new Heatmaps(inputMeshFile, outputMeshFile, shapeToUse, altitude, biome,maxNumLakes, maxNumRivers);
+                Heatmaps heatmap=new Heatmaps(inputMeshFile, outputMeshFile, shapeToUse, altitude, generalBiome,maxNumLakes, maxNumRivers);
                 mesh=heatmap.getMesh();
             }
             else{

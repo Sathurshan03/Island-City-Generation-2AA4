@@ -5,9 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ca.mcmaster.cas.se2aa4.a3.island.Altitude.*;
-import ca.mcmaster.cas.se2aa4.a3.island.Biomes.BiomeTypes;
 import ca.mcmaster.cas.se2aa4.a3.island.BodiesOfWater.RiverGenerator;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.Tile;
+import ca.mcmaster.cas.se2aa4.a3.island.GeneralBiome.BiomeTypes;
+import ca.mcmaster.cas.se2aa4.a3.island.GeneralBiome.GeneralBiome;
 import ca.mcmaster.cas.se2aa4.a3.island.IslandCommandLineReader;
 import ca.mcmaster.cas.se2aa4.a3.island.Lake;
 import ca.mcmaster.cas.se2aa4.a3.island.Shape.Shape;
@@ -68,8 +69,9 @@ public class Regular extends Mode {
         altitude_gen.SetElevation(altitude, undecidedTiles);
         altitude_gen.SetElevation(AltitudeType.OCEAN, oceanTiles);
 
-        temperature_gen.setTemperature(undecidedTiles, biome, altitude_gen.getMinElevation());
-        temperature_gen.setTemperature(oceanTiles, biome, altitude_gen.getMinElevation());
+        GeneralBiome generalBiome = biome.getGeneralBiome();
+        temperature_gen.setTemperature(undecidedTiles, generalBiome.getBaseTemperature(), altitude_gen.getMinElevation());
+        temperature_gen.setTemperature(oceanTiles, generalBiome.getBaseTemperature(), altitude_gen.getMinElevation());
 
 
     }

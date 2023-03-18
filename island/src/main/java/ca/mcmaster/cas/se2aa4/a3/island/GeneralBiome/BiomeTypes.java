@@ -1,4 +1,4 @@
-package ca.mcmaster.cas.se2aa4.a3.island.Biomes;
+package ca.mcmaster.cas.se2aa4.a3.island.GeneralBiome;
 
 public enum BiomeTypes {
 
@@ -18,19 +18,20 @@ public enum BiomeTypes {
         return null;
     }
 
-    public Double getBaseTemperature(){
+    public GeneralBiome getGeneralBiome(){
         switch (this){
             case ARCTIC:
-                return -6.0;
+                return new ArticGeneralBiome(-6.0);
             case TROPICAL_FORREST:
-                return 21.0;
+                return null;
             case TEMPERATE_FORREST:
-                return 10.0;
+                return null;
             case DESSERT:
-                return 40.0;
+                return null;
 
         }
         return null;
-
     }
+
+
 }
