@@ -11,6 +11,7 @@ import ca.mcmaster.cas.se2aa4.a2.io.Structs.Segment;
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Vertex;
 import ca.mcmaster.cas.se2aa4.a3.island.Altitude.Altitude;
 import ca.mcmaster.cas.se2aa4.a3.island.Altitude.AltitudeType;
+import ca.mcmaster.cas.se2aa4.a3.island.BodiesOfWater.BodiesWater;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.Tile;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.TileSegment;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.TileVertex;
@@ -44,6 +45,8 @@ public abstract class Mode {
     List<TileVertex> allVerticesInfoList;
     List<TileVertex> verticesInfoList;
     List<TileVertex> centroidInfoList;
+
+    List<BodiesWater> allWater;
     String maxLakes;
     static  double width;
     static double height;
@@ -65,6 +68,7 @@ public abstract class Mode {
         this.allVerticesInfoList = new ArrayList<>();
         this.verticesInfoList = new ArrayList<>();
         this.centroidInfoList = new ArrayList<>();
+        this.allWater=new ArrayList<>();
         width = Double.MIN_VALUE;
         height = Double.MIN_VALUE;
     }

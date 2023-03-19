@@ -101,6 +101,10 @@ public class RiverGenerator {
         }
     }
 
+    public List<River> getRivers(){
+        return this.rivers;
+    }
+
     private void createEndorheicLake(River river, TileVertex previousRiverVertex){
         //Find a suitable tile to be a endorheic lake 
         if (river.getRiverSize()> 0){

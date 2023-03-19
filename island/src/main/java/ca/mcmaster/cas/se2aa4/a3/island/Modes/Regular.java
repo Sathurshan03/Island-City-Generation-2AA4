@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ca.mcmaster.cas.se2aa4.a3.island.Altitude.*;
+import ca.mcmaster.cas.se2aa4.a3.island.BodiesOfWater.Ocean;
 import ca.mcmaster.cas.se2aa4.a3.island.BodiesOfWater.RiverGenerator;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.Tile;
 import ca.mcmaster.cas.se2aa4.a3.island.GeneralBiome.BiomeTypes;
@@ -38,6 +39,8 @@ public class Regular extends Mode {
         //set oceanTiles to their color
         for(Tile tile: oceanTiles){
             tile.setTileType(TileTypes.Ocean);
+            Ocean ocean_tile=new Ocean(tile);
+            allWater.add(ocean_tile);
         }
 
         // int numLakes = IslandCommandLineReader.randomGenerator.getNextInteger(0,maxNumLakes);
@@ -54,6 +57,8 @@ public class Regular extends Mode {
 
         RiverGenerator riverGenerator = new RiverGenerator(tiles, maxNumRivers);
         riverGenerator.createRivers();
+
+        allWater.addAll(riverGenerator.getRivers());
 
         //Remove endorheic lake tiles from undecided tiles
         for (Tile endorheicLake : riverGenerator.getEndorheicLakes())

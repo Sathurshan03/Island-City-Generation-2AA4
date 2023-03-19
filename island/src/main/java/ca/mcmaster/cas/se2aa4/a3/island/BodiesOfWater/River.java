@@ -5,7 +5,7 @@ import java.util.List;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.TileVertex;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.TileSegment;
 
-public class River {
+public class River extends BodiesWater {
     private List<TileVertex> riverVertices;
     private List<TileSegment> riverSegments;
 
@@ -13,6 +13,7 @@ public class River {
         riverVertices = new ArrayList<>();
         riverSegments = new ArrayList<>();
         riverVertices.add(riverStart);
+        this.humidity_level=1.0;
     }
 
     public void addRiverVertex(TileVertex riverVertex){
@@ -49,5 +50,13 @@ public class River {
             segment.setRiver();
             segment.setSegmentVertexRiver();
         }
+    }
+    public List<TileVertex> getMidPoints(){
+        return riverVertices;
+    }
+
+
+    public Double getHumidityLevel() {
+        return this.humidity_level;
     }
 }
