@@ -14,4 +14,16 @@ public enum SoilTypes {
         }
         return null;
     }
+
+    public Double getSoilCoefficient(){
+        switch(this){
+            case WET:
+                return 8.0;
+            case HUMID:
+                return 4.0;
+            case DRY:
+                return 1.0;
+        }
+        return null;
+    }
 }
