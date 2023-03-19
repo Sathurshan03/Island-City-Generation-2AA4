@@ -20,20 +20,28 @@ public class Humidity {
         Double x1=v1.getX();
         Double x2=v2.getX();
 
-        return x1;
+        Double y1=v1.getY();
+        Double y2=v2.getY();
+
+        Double distance=Math.sqrt(Math.pow((x2-x1),2)+Math.pow((y2-y1),2));
+
+        return distance;
 
     }
 
     public void SetHumidity(List<Tile> landTiles, List<BodiesWater> allWater){
         for (Tile tile:landTiles){
+            Double averageHumidity=0.0;
             for (BodiesWater water:allWater){
-                Double humidity=0.0;
                 for (TileVertex v: water.getMidPoints()){
                     Double distance=calculateDistance(tile.getCentroid(),v);
-
+                    Double humidity=(water.getHumidityLevel()*coefficient)/distance;
+                    v.setHumidity(humidity);
+                    averageHumidity+=humidity;
                 }
-
             }
+            averageHumidity/=allWater.size();
+            tile.setAverageHumidity(averageHumidity);
         }
 
     }
