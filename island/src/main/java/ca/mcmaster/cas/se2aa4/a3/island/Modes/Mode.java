@@ -17,6 +17,7 @@ import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.TileSegment;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.TileVertex;
 import ca.mcmaster.cas.se2aa4.a3.island.GeneralBiome.BiomeTypes;
 import ca.mcmaster.cas.se2aa4.a3.island.Shape.ShapeType;
+import ca.mcmaster.cas.se2aa4.a3.island.SoilProfile.Humidity;
 import ca.mcmaster.cas.se2aa4.a3.island.SoilProfile.SoilTypes;
 import ca.mcmaster.cas.se2aa4.a3.island.Temperature.Temperature;
 
@@ -30,6 +31,8 @@ public abstract class Mode {
     Temperature temperature_gen=new Temperature();
 
     AltitudeType altitude;
+
+    Humidity humidity;
 
     BiomeTypes biome;
 
@@ -61,6 +64,7 @@ public abstract class Mode {
         this.maxLakes = maxLakes;
         System.out.println(soil);
         this.soil=soil;
+        this.humidity=new Humidity(soil);
         this.tiles = new ArrayList<>();
         this.allSegmentInfoList = new ArrayList<>();
         this.segmentInfoList = new ArrayList<>();

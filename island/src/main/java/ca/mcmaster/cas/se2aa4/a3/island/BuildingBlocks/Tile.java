@@ -20,6 +20,8 @@ public class Tile extends ExtractPolygonInfo{
     List<Tile> neighbouringTileList;
     Color color;
     Double averageTemperature;
+
+    Double humidity;
     public Tile(Polygon polygon, List<Segment> meshSegments, List<Vertex> meshVertices, int numPolygons){
         super(polygon, meshSegments, meshVertices, numPolygons);
         this.tileType = TileTypes.UNDETERMINEDLAND;
@@ -28,6 +30,7 @@ public class Tile extends ExtractPolygonInfo{
         tileVerticesList = new ArrayList<>();
         neighbouringTileList = new ArrayList<>();
     }
+
     public void setCentroid(TileVertex vertex){
         centroid = vertex;
     }
@@ -50,6 +53,14 @@ public class Tile extends ExtractPolygonInfo{
         for (TileSegment ts: tileSegmentList){
             ts.setColor(color);
         }
+    }
+
+    public void setHumidity(Double humidity){
+        this.humidity=humidity;
+    }
+
+    public Double getHumidity(){
+        return this.humidity;
     }
 
     public void setTileType(TileTypes tileType){
