@@ -16,6 +16,7 @@ import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.TileSegment;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.TileVertex;
 import ca.mcmaster.cas.se2aa4.a3.island.GeneralBiome.BiomeTypes;
 import ca.mcmaster.cas.se2aa4.a3.island.Shape.ShapeType;
+import ca.mcmaster.cas.se2aa4.a3.island.SoilProfile.SoilTypes;
 import ca.mcmaster.cas.se2aa4.a3.island.Temperature.Temperature;
 
 public abstract class Mode {
@@ -30,6 +31,8 @@ public abstract class Mode {
     AltitudeType altitude;
 
     BiomeTypes biome;
+
+    SoilTypes soil;
     Mesh mesh;
     List<Polygon> polygons;
     List<Segment> segments;
@@ -46,13 +49,15 @@ public abstract class Mode {
     static double height;
 
 
-    public Mode(String inputMesh, String outputMesh, ShapeType shape, AltitudeType altitude, BiomeTypes biome, String maxLakes){
+    public Mode(String inputMesh, String outputMesh, ShapeType shape, AltitudeType altitude, BiomeTypes biome, String maxLakes, SoilTypes soil){
         this.inputMesh = inputMesh;
         this.outputMesh = outputMesh;
         this.shape = shape;
         this.altitude=altitude;
         this.biome=biome;
         this.maxLakes = maxLakes;
+        System.out.println(soil);
+        this.soil=soil;
         this.tiles = new ArrayList<>();
         this.allSegmentInfoList = new ArrayList<>();
         this.segmentInfoList = new ArrayList<>();

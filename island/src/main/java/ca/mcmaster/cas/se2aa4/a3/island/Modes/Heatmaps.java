@@ -4,6 +4,7 @@ import ca.mcmaster.cas.se2aa4.a3.island.Altitude.AltitudeType;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.Tile;
 import ca.mcmaster.cas.se2aa4.a3.island.GeneralBiome.BiomeTypes;
 import ca.mcmaster.cas.se2aa4.a3.island.Shape.ShapeType;
+import ca.mcmaster.cas.se2aa4.a3.island.SoilProfile.SoilTypes;
 
 import java.awt.*;
 import java.io.IOException;
@@ -11,8 +12,8 @@ import java.io.IOException;
 public class Heatmaps extends Regular{
 
 
-    public Heatmaps(String inputMesh, String outputMesh, ShapeType shapeType, AltitudeType altitudeType, BiomeTypes biome, int maxLakes, int maxRivers) throws IOException {
-        super(inputMesh, outputMesh, shapeType, altitudeType, biome, maxLakes, maxRivers);
+    public Heatmaps(String inputMesh, String outputMesh, ShapeType shapeType, AltitudeType altitudeType, BiomeTypes biome, int maxLakes, int maxRivers, SoilTypes soil) throws IOException {
+        super(inputMesh, outputMesh, shapeType, altitudeType, biome, maxLakes, maxRivers, soil);
         super.generate();
         setProperties();
     }

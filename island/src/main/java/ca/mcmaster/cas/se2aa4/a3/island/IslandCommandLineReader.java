@@ -5,6 +5,7 @@ import ca.mcmaster.cas.se2aa4.a3.island.Altitude.AltitudeType;
 import ca.mcmaster.cas.se2aa4.a3.island.GeneralBiome.BiomeTypes;
 import ca.mcmaster.cas.se2aa4.a3.island.GeneralBiome.GeneralBiome;
 import ca.mcmaster.cas.se2aa4.a3.island.Modes.Heatmaps;
+import ca.mcmaster.cas.se2aa4.a3.island.SoilProfile.SoilTypes;
 import ca.mcmaster.cas.se2aa4.a3.tools.CommandLineReader;
 import ca.mcmaster.cas.se2aa4.a3.tools.RandomGenerator;
 import ca.mcmaster.cas.se2aa4.a3.island.Modes.ModeType;
@@ -26,10 +27,14 @@ public class IslandCommandLineReader implements CommandLineReader {
     private String maxLakes;
     private String elevation;
     private String biome;
+
+    private String soil;
     private ModeType mapMode;
     private AltitudeType altitude;
     private ShapeType shapeToUse;
     private BiomeTypes generalBiome;
+
+    private SoilTypes generalSoil;
     private int maxNumLakes;
     private int maxNumRivers;
     private Options options;
@@ -64,6 +69,8 @@ public class IslandCommandLineReader implements CommandLineReader {
         options.addOption(new Option("se", "seed", true, "Map seed (Long)"));
         options.addOption(new Option("r", "rivers", true, "Maximum number of rivers to generate (Integer)"));
         options.addOption(new Option("l", "lakes", true, "Maximum number of lakes"));
+        options.addOption(new Option("s", "soil", true, "Enter the soil profile"));
+
     }
 
     public void checkOptions(String[] args) throws ParseException, IOException {
@@ -81,6 +88,7 @@ public class IslandCommandLineReader implements CommandLineReader {
         biome = cmd.getOptionValue("biomes");
         river = cmd.getOptionValue("rivers");
         maxLakes = cmd.getOptionValue("lakes");
+        soil=cmd.getOptionValue("soil");
 
         //Help option
         if (cmd.hasOption("help")) {
@@ -121,6 +129,14 @@ public class IslandCommandLineReader implements CommandLineReader {
             String biomeString = b.toString();
             if (biomeString.equals(biome)) {
                 generalBiome = b;
+                break;
+            }
+        }
+
+        for (SoilTypes s : SoilTypes.values()) {
+            String soilString = s.toString();
+            if (soilString.equals(soil)) {
+                generalSoil = s;
                 break;
             }
         }
@@ -177,11 +193,11 @@ public class IslandCommandLineReader implements CommandLineReader {
                 mesh = sandbox.getMesh();
             }
             else if (isRegularMode()){
-                Regular regular = new Regular(inputMeshFile, outputMeshFile, shapeToUse, altitude, generalBiome, maxNumLakes, maxNumRivers);
+                Regular regular = new Regular(inputMeshFile, outputMeshFile, shapeToUse, altitude, generalBiome, maxNumLakes, maxNumRivers, generalSoil);
                 regular.generate();
                 mesh = regular.getMesh();
             }else if (isHeatmapMode()){
-                Heatmaps heatmap=new Heatmaps(inputMeshFile, outputMeshFile, shapeToUse, altitude, generalBiome,maxNumLakes, maxNumRivers);
+                Heatmaps heatmap=new Heatmaps(inputMeshFile, outputMeshFile, shapeToUse, altitude, generalBiome,maxNumLakes, maxNumRivers,generalSoil);
                 mesh=heatmap.getMesh();
             }
             else{

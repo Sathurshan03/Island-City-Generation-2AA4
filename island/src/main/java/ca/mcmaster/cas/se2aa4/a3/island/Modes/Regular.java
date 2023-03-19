@@ -13,6 +13,7 @@ import ca.mcmaster.cas.se2aa4.a3.island.IslandCommandLineReader;
 import ca.mcmaster.cas.se2aa4.a3.island.Lake;
 import ca.mcmaster.cas.se2aa4.a3.island.Shape.Shape;
 import ca.mcmaster.cas.se2aa4.a3.island.Shape.ShapeType;
+import ca.mcmaster.cas.se2aa4.a3.island.SoilProfile.SoilTypes;
 import ca.mcmaster.cas.se2aa4.a3.island.TilesTypes.TileTypes;
 
 public class Regular extends Mode {
@@ -20,8 +21,8 @@ public class Regular extends Mode {
     private int maxNumRivers;
     
 
-    public Regular(String inputMesh, String outputMesh, ShapeType shapeType, AltitudeType altitudeType, BiomeTypes biome, int maxLakes, int maxNumRivers) throws IOException{
-        super(inputMesh, outputMesh, shapeType, altitudeType, biome, Integer.toString(maxLakes));
+    public Regular(String inputMesh, String outputMesh, ShapeType shapeType, AltitudeType altitudeType, BiomeTypes biome, int maxLakes, int maxNumRivers, SoilTypes soil) throws IOException{
+        super(inputMesh, outputMesh, shapeType, altitudeType, biome, Integer.toString(maxLakes),soil);
         
         extractInformation();
         this.maxNumLakes = maxLakes;
