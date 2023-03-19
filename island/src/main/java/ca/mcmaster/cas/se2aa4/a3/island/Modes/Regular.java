@@ -79,6 +79,12 @@ public class Regular extends Mode {
         temperature_gen.setTemperature(undecidedTiles, generalBiome.getBaseTemperature(), altitude_gen.getMinElevation());
         temperature_gen.setTemperature(oceanTiles, generalBiome.getBaseTemperature(), altitude_gen.getMinElevation());
 
+        humidity.SetHumidity(undecidedTiles,allWater);
+
+        for (Tile t:tiles){
+            System.out.println(t.getAverageHumidity());
+        }
+
 
     }
     private List<Tile> determineLakeTiles(List<Tile> undecidedTiles){

@@ -4,6 +4,7 @@ import ca.mcmaster.cas.se2aa4.a3.island.BodiesOfWater.BodiesWater;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.Tile;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.TileVertex;
 
+import java.awt.*;
 import java.util.List;
 
 public class Humidity {
@@ -35,14 +36,36 @@ public class Humidity {
             for (BodiesWater water:allWater){
                 for (TileVertex v: water.getMidPoints()){
                     Double distance=calculateDistance(tile.getCentroid(),v);
-                    Double humidity=(water.getHumidityLevel()*coefficient)/distance;
-                    v.setHumidity(humidity);
+                    Double humidity=(2*water.getHumidityLevel()*coefficient)/(distance+1);
                     averageHumidity+=humidity;
                 }
             }
-            averageHumidity/=allWater.size();
             tile.setAverageHumidity(averageHumidity);
+
+            Color c_new=newColor(tile.getColor(), averageHumidity/2);
+
+            tile.setPolygonColor(c_new);
         }
+
+    }
+
+    private Color newColor(Color c, Double averageHumidity){
+        int new_red=(int)Math.round(c.getRed()-averageHumidity);
+
+        if (new_red<0){
+            new_red=0;
+        }
+
+        int new_blue=(int)Math.round(c.getBlue()-averageHumidity);
+        if (new_blue<0){
+            new_blue=0;
+        }
+
+        int new_green=(int)Math.round(c.getGreen()-averageHumidity);
+        if (new_green<0){
+            new_green=0;
+        }
+        return new Color(new_red,new_green,new_blue);
 
     }
 

@@ -22,7 +22,6 @@ public class TileVertex extends ExtractVertexInfo implements TileProperties{
     Double thicknessDouble;
     Boolean isRiver;
 
-    Double humidity;
 
     public TileVertex(Vertex vertex)
     {
@@ -40,13 +39,6 @@ public class TileVertex extends ExtractVertexInfo implements TileProperties{
         this.averageColor = color;
     }
 
-    public void setHumidity(Double humidity){
-        this.humidity=humidity;
-    }
-
-    public Double getHumidity(){
-        return this.humidity;
-    }
 
     public void setElevation(Double elevation){
         this.elevation=elevation;

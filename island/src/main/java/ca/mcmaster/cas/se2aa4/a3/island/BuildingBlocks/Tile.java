@@ -151,7 +151,7 @@ public class Tile extends ExtractPolygonInfo{
 
     public Polygon getPolygon(){
         //create the Struct Polygon of Tiles
-        setColor();
+        System.out.println("old"+this.color);
         String colorCode = color.getRed() + "," + color.getGreen() + "," + color.getBlue() + "," + color.getAlpha();
         Property colourProperty=Property.newBuilder().setKey("background_color").setValue(colorCode).build();
         return Polygon.newBuilder().addAllSegmentIdxs(this.segmentIDs).addAllNeighborIdxs(this.neighbouringSegmentsID).addProperties(0,colourProperty).build();
@@ -166,5 +166,9 @@ public class Tile extends ExtractPolygonInfo{
 
     public void setPolygonColor(Color c){
         this.color=c;
+    }
+
+    public Color getColor(){
+        return this.color;
     }
 }
