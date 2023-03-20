@@ -20,14 +20,21 @@ public class Heatmaps extends Regular{
     public void setProperties(){
         for (Tile t: tiles){
             if (t.isTileLand()){
-                Double col=t.getAverageTemperature();
                 Color new_color;
-                if (col>=0){
-                    new_color=new Color(255, 0,0,(int)Math.abs(col)*3);
-                }else{
-                    new_color=new Color(0, 0,255,(int)Math.abs(col));
+                Double col=t.getAverageTemperature();
 
+                if (col<=0){
+                    if (col<-254){
+                        col=-254.0;
+                    }
+                    new_color=new Color(0, 0,255,(int)Math.abs(col));
+                }else{
+                    if (col>254){
+                        col=254.0;
+                    }
+                    new_color=new Color(255, 0,0,(int)Math.abs(col));
                 }
+
                 t.setPolygonColor(new_color);
             }else{
                 t.setPolygonColor(new Color(0,0,0));
