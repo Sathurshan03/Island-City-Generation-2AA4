@@ -1,10 +1,10 @@
 mvn install
 cd generator
-java -jar generator.jar sample.Mesh -i -np 200 -relation 25 -wth 500 -hth 500
+java -jar generator.jar sample.Mesh -i -np 500 -relation 25 -wth 500 -hth 500
 ls -lh sample.mesh
 cd ..
 cd island
-java -jar island.jar -i ../generator/sample.mesh -o sandbox.mesh --mode regular --shape rectangle --altitude cliff --biomes arctic --lakes 3 --rivers 15 -soil wet
+java -jar island.jar -i ../generator/sample.mesh -o sandbox.mesh --mode regular --shape rectangle --altitude cliff --biomes arctic --lakes 3 --rivers 15 -soil humid
 cd ..
 cd visualizer
 java -jar visualizer.jar ../island/sandbox.mesh sample.svg

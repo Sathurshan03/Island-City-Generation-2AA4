@@ -52,7 +52,6 @@ public class Regular extends Mode {
         // System.out.println(maxLakeSize);
 
         altitude_gen.SetElevation(altitude, undecidedTiles);
-        altitude_gen.SetElevation(AltitudeType.OCEAN, oceanTiles);
 
         RiverGenerator riverGenerator = new RiverGenerator(tiles, maxNumRivers);
         riverGenerator.createRivers();
@@ -75,7 +74,6 @@ public class Regular extends Mode {
         }
 
         altitude_gen.SetElevation(altitude, undecidedTiles);
-        altitude_gen.SetElevation(AltitudeType.OCEAN, oceanTiles);
 
         GeneralBiome generalBiome = biome.getGeneralBiome();
         temperature_gen.setTemperature(tiles, generalBiome.getBaseTemperature(), altitude_gen.getMinElevation());
