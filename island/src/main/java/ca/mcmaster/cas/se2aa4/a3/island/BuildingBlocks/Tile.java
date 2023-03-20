@@ -21,7 +21,6 @@ public class Tile extends ExtractPolygonInfo{
     Color color;
     Double averageTemperature;
 
-    Double averageHumidity;
     public Tile(Polygon polygon, List<Segment> meshSegments, List<Vertex> meshVertices, int numPolygons){
         super(polygon, meshSegments, meshVertices, numPolygons);
         this.tileType = TileTypes.UNDETERMINEDLAND;
@@ -55,13 +54,7 @@ public class Tile extends ExtractPolygonInfo{
         }
     }
 
-    public void setAverageHumidity(Double averageHumidity){
-        this.averageHumidity = averageHumidity;
-    }
 
-    public Double getAverageHumidity(){
-        return this.averageHumidity;
-    }
 
     public void setTileType(TileTypes tileType){
         this.tileType = tileType;

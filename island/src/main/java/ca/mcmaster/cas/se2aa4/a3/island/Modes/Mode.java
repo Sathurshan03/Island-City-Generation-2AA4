@@ -65,7 +65,7 @@ public abstract class Mode {
         this.biome=biome;
         this.maxLakes = maxLakes;
         this.soil=soil;
-        this.humidity=new Humidity(soil);
+        this.humidity=new Humidity();
         this.tiles = new ArrayList<>();
         this.allSegmentInfoList = new ArrayList<>();
         this.segmentInfoList = new ArrayList<>();

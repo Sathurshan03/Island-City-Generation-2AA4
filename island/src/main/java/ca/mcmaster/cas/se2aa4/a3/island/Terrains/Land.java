@@ -28,6 +28,11 @@ public class Land {
         return this.humidity;
     }
 
+    public Double getCoefficient(){
+        return this.soilCoefficient;
+    }
+
+
 
     public Tile getTile(){
         return this.landtile;

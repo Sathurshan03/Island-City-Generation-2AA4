@@ -10,13 +10,6 @@ import java.util.List;
 
 public class Humidity {
 
-    private Double coefficient;
-    private SoilTypes soil;
-
-    public Humidity(SoilTypes soil){
-        this.soil=soil;
-        this.coefficient=soil.getSoilCoefficient();
-    }
 
     public Double calculateDistance(TileVertex v1, TileVertex v2){
         Double x1=v1.getX();
@@ -38,11 +31,11 @@ public class Humidity {
             for (BodiesWater water:allWater){
                 for (TileVertex v: water.getMidPoints()){
                     Double distance=calculateDistance(tile.getCentroid(),v);
-                    Double humidity=(water.getHumidityLevel()*coefficient)/(distance+1);
+                    Double humidity=(water.getHumidityLevel()*land.getCoefficient())/(distance+1);
                     averageHumidity+=humidity;
                 }
             }
-            tile.setAverageHumidity(averageHumidity);
+            land.setHumidity(averageHumidity);
 
             Color c_new=newColor(tile.getColor(), averageHumidity/2);
 
