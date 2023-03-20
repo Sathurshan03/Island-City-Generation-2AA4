@@ -76,8 +76,7 @@ public class Regular extends Mode {
         altitude_gen.SetElevation(AltitudeType.OCEAN, oceanTiles);
 
         GeneralBiome generalBiome = biome.getGeneralBiome();
-        temperature_gen.setTemperature(undecidedTiles, generalBiome.getBaseTemperature(), altitude_gen.getMinElevation());
-        temperature_gen.setTemperature(oceanTiles, generalBiome.getBaseTemperature(), altitude_gen.getMinElevation());
+        temperature_gen.setTemperature(tiles, generalBiome.getBaseTemperature(), altitude_gen.getMinElevation());
 
         humidity.SetHumidity(undecidedTiles,allWater);
 
