@@ -1,6 +1,6 @@
 mvn install
 cd generator
-java -jar generator.jar sample.Mesh -i -np 500 -relation 25 -wth 500 -hth 500
+java -jar generator.jar sample.Mesh -i -np 200 -relation 25 -wth 500 -hth 500
 ls -lh sample.mesh
 cd ..
 cd island

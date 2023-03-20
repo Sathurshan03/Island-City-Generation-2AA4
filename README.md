@@ -171,13 +171,13 @@ Pending (P), Started (S), Blocked (B), Done (D)
 | F50   | Merge rivers that intersect with each other | Sathurshan | 03/15/2023 | 03/15/2023 | D |
 | F51   | User can enter the number of aquifers on the island using —aquifers via the command line.     | Mithun     |  |  | P  |
 | F52   | Generate aquifers on the island | Mithun     |  |  | B(F50)   |
-| F53   | User can enter soil absorption profile —soil via the command line.   | Nirmal     |  |  | P   |
-| F54   | Wet soil profile applied to map  | Nirmal     |  |  | B(F52)     |
+| F53   | User can enter soil absorption profile —soil via the command line.   | Nirmal     | 03/18/2023 | 03/18/2023 | D   |
+| F54   | Wet soil profile applied to map  | Nirmal     | 03/18/2023 | 03/18/2023 | D     |
 | F55   | Humid soil profile applied to map  | Nirmal     |  |  | B(F52)    |
 | F56   | Dry soil profile applied to map     | Nirmal     |  |  | B(F52)         |
-| F57   | Each land segment has a particular soil absorption.     | Nirmal     |  |  | B(F52)      |
-| F58   | Each land segment has particular humidity.   | Nirmal     |  |  | B(F56)     |
-| F59   | Humidity affects color brightness or darkness   | Nirmal     |  |  | B(F57),B(F64)   |
+| F57   | Each land segment has a particular soil absorption.     | Nirmal     | 03/18/2023 | 03/18/2023 | D      |
+| F58   | Each land segment has particular humidity.   | Nirmal     | 03/20/2023 | 03/20/2023 | D     |
+| F59   | Humidity affects color brightness or darkness   | Nirmal     | 03/20/2023 | 03/20/2023 | D   |
 | F60   | User can enter the biome type of the island using -–biomes via the command line.   | Mithun     |  |  | P |
 | F61   | Arctic type map generatable  | Mithun     |  |  | B(F59)  |
 | F62   | Tropical Rain Forest type map generatable    | Mithun     |  |  | B(F59)   |
