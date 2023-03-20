@@ -173,8 +173,8 @@ Pending (P), Started (S), Blocked (B), Done (D)
 | F52   | Generate aquifers on the island | Mithun     |  |  | B(F50)   |
 | F53   | User can enter soil absorption profile —soil via the command line.   | Nirmal     | 03/18/2023 | 03/18/2023 | D   |
 | F54   | Wet soil profile applied to map  | Nirmal     | 03/18/2023 | 03/18/2023 | D     |
-| F55   | Humid soil profile applied to map  | Nirmal     |  |  | B(F52)    |
-| F56   | Dry soil profile applied to map     | Nirmal     |  |  | B(F52)         |
+| F55   | Humid soil profile applied to map  | Nirmal     | 03/20/2023 | 03/20/2023 | D    |
+| F56   | Dry soil profile applied to map     | Nirmal     | 03/20/2023 | 03/20/2023 | D         |
 | F57   | Each land segment has a particular soil absorption.     | Nirmal     | 03/18/2023 | 03/18/2023 | D      |
 | F58   | Each land segment has particular humidity.   | Nirmal     | 03/20/2023 | 03/20/2023 | D     |
 | F59   | Humidity affects color brightness or darkness   | Nirmal     | 03/20/2023 | 03/20/2023 | D   |
