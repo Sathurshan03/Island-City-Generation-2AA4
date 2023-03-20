@@ -9,8 +9,8 @@ public class Land {
     Tile landtile;
     SoilTypes soilType;
     Double humidity;
-
     Double soilCoefficient;
+    Double averageTemperature;
 
 
     public Land(Tile landtile){
@@ -18,6 +18,7 @@ public class Land {
         this.soilType= Mode.getSoil();
         this.humidity=0.0;
         this.soilCoefficient=soilType.getSoilCoefficient();
+        this.averageTemperature=landtile.getAverageTemperature();
     }
 
     public void setHumidity(Double humidity){
@@ -31,7 +32,6 @@ public class Land {
     public Double getCoefficient(){
         return this.soilCoefficient;
     }
-
 
 
     public Tile getTile(){
