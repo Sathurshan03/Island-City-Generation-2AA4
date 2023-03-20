@@ -13,7 +13,7 @@ public class River extends BodiesWater {
         riverVertices = new ArrayList<>();
         riverSegments = new ArrayList<>();
         riverVertices.add(riverStart);
-        this.humidity_level=1.0;
+        this.humidity_level=2.0;
     }
 
     public void addRiverVertex(TileVertex riverVertex){

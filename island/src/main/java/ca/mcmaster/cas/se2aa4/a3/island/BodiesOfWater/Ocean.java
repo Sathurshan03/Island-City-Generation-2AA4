@@ -11,7 +11,7 @@ public class Ocean extends BodiesWater {
 
     public Ocean(Tile tile){
         this.oceanTile=tile;
-        this.humidity_level=5.0;
+        this.humidity_level=15.0;
     }
 
 

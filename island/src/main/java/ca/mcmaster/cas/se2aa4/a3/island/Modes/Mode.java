@@ -62,7 +62,6 @@ public abstract class Mode {
         this.altitude=altitude;
         this.biome=biome;
         this.maxLakes = maxLakes;
-        System.out.println(soil);
         this.soil=soil;
         this.humidity=new Humidity(soil);
         this.tiles = new ArrayList<>();

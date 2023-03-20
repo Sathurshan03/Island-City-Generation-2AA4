@@ -36,7 +36,7 @@ public class Humidity {
             for (BodiesWater water:allWater){
                 for (TileVertex v: water.getMidPoints()){
                     Double distance=calculateDistance(tile.getCentroid(),v);
-                    Double humidity=(2*water.getHumidityLevel()*coefficient)/(distance+1);
+                    Double humidity=(water.getHumidityLevel()*coefficient)/(distance+1);
                     averageHumidity+=humidity;
                 }
             }
@@ -62,8 +62,8 @@ public class Humidity {
         }
 
         int new_green=(int)Math.round(c.getGreen()-averageHumidity);
-        if (new_green<0){
-            new_green=0;
+        if (new_green<50){
+            new_green=50;
         }
         return new Color(new_red,new_green,new_blue);
 

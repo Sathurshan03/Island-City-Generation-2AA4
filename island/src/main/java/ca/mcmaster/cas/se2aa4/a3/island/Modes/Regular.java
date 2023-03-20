@@ -81,9 +81,9 @@ public class Regular extends Mode {
 
         humidity.SetHumidity(undecidedTiles,allWater);
 
-        for (Tile t:tiles){
-            System.out.println(t.getAverageHumidity());
-        }
+//        for (Tile t:tiles){
+//            System.out.println(t.getAverageHumidity());
+//        }
 
 
     }
