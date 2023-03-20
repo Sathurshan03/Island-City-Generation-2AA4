@@ -11,7 +11,7 @@ import ca.mcmaster.cas.se2aa4.a2.io.Structs.Segment;
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Vertex;
 import ca.mcmaster.cas.se2aa4.a3.island.Altitude.Altitude;
 import ca.mcmaster.cas.se2aa4.a3.island.Altitude.AltitudeType;
-import ca.mcmaster.cas.se2aa4.a3.island.BodiesOfWater.BodiesWater;
+import ca.mcmaster.cas.se2aa4.a3.island.Terrains.BodiesWater;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.Tile;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.TileSegment;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.TileVertex;
@@ -20,6 +20,7 @@ import ca.mcmaster.cas.se2aa4.a3.island.Shape.ShapeType;
 import ca.mcmaster.cas.se2aa4.a3.island.SoilProfile.Humidity;
 import ca.mcmaster.cas.se2aa4.a3.island.SoilProfile.SoilTypes;
 import ca.mcmaster.cas.se2aa4.a3.island.Temperature.Temperature;
+import ca.mcmaster.cas.se2aa4.a3.island.Terrains.Land;
 
 public abstract class Mode {
     String inputMesh;
@@ -36,7 +37,7 @@ public abstract class Mode {
 
     BiomeTypes biome;
 
-    SoilTypes soil;
+    static SoilTypes soil;
     Mesh mesh;
     List<Polygon> polygons;
     List<Segment> segments;
@@ -50,6 +51,7 @@ public abstract class Mode {
     List<TileVertex> centroidInfoList;
 
     List<BodiesWater> allWater;
+    List<Land> allLand;
     String maxLakes;
     static  double width;
     static double height;
@@ -72,6 +74,7 @@ public abstract class Mode {
         this.verticesInfoList = new ArrayList<>();
         this.centroidInfoList = new ArrayList<>();
         this.allWater=new ArrayList<>();
+        this.allLand=new ArrayList<>();
         width = Double.MIN_VALUE;
         height = Double.MIN_VALUE;
     }
@@ -201,6 +204,10 @@ public abstract class Mode {
 
     public static Double getHeight(){
         return height;
+    }
+
+    public static SoilTypes getSoil(){
+        return soil;
     }
 
 

@@ -5,13 +5,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ca.mcmaster.cas.se2aa4.a3.island.Altitude.*;
-import ca.mcmaster.cas.se2aa4.a3.island.BodiesOfWater.Ocean;
-import ca.mcmaster.cas.se2aa4.a3.island.BodiesOfWater.RiverGenerator;
+import ca.mcmaster.cas.se2aa4.a3.island.Terrains.Land;
+import ca.mcmaster.cas.se2aa4.a3.island.Terrains.Ocean;
+import ca.mcmaster.cas.se2aa4.a3.island.Terrains.RiverGenerator;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.Tile;
 import ca.mcmaster.cas.se2aa4.a3.island.GeneralBiome.BiomeTypes;
 import ca.mcmaster.cas.se2aa4.a3.island.GeneralBiome.GeneralBiome;
-import ca.mcmaster.cas.se2aa4.a3.island.IslandCommandLineReader;
-import ca.mcmaster.cas.se2aa4.a3.island.Lake;
 import ca.mcmaster.cas.se2aa4.a3.island.Shape.Shape;
 import ca.mcmaster.cas.se2aa4.a3.island.Shape.ShapeType;
 import ca.mcmaster.cas.se2aa4.a3.island.SoilProfile.SoilTypes;
@@ -71,14 +70,17 @@ public class Regular extends Mode {
         //Set the unMarked Tiles color
         for(Tile tile: undecidedTiles){
             tile.setTileType(TileTypes.GRASSLAND);
+            Land landtile=new Land(tile);
+            allLand.add(landtile);
         }
+
         altitude_gen.SetElevation(altitude, undecidedTiles);
         altitude_gen.SetElevation(AltitudeType.OCEAN, oceanTiles);
 
         GeneralBiome generalBiome = biome.getGeneralBiome();
         temperature_gen.setTemperature(tiles, generalBiome.getBaseTemperature(), altitude_gen.getMinElevation());
 
-        humidity.SetHumidity(undecidedTiles,allWater);
+        humidity.SetHumidity(allLand,allWater);
 
 //        for (Tile t:tiles){
 //            System.out.println(t.getAverageHumidity());

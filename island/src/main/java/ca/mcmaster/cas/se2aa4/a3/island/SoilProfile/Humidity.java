@@ -1,8 +1,9 @@
 package ca.mcmaster.cas.se2aa4.a3.island.SoilProfile;
 
-import ca.mcmaster.cas.se2aa4.a3.island.BodiesOfWater.BodiesWater;
+import ca.mcmaster.cas.se2aa4.a3.island.Terrains.BodiesWater;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.Tile;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.TileVertex;
+import ca.mcmaster.cas.se2aa4.a3.island.Terrains.Land;
 
 import java.awt.*;
 import java.util.List;
@@ -30,9 +31,10 @@ public class Humidity {
 
     }
 
-    public void SetHumidity(List<Tile> landTiles, List<BodiesWater> allWater){
-        for (Tile tile:landTiles){
+    public void SetHumidity(List<Land> landTiles, List<BodiesWater> allWater){
+        for (Land land:landTiles){
             Double averageHumidity=0.0;
+            Tile tile=land.getTile();
             for (BodiesWater water:allWater){
                 for (TileVertex v: water.getMidPoints()){
                     Double distance=calculateDistance(tile.getCentroid(),v);
