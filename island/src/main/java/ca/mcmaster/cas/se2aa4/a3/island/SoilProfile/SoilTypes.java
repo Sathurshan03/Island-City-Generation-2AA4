@@ -22,7 +22,7 @@ public enum SoilTypes {
             case HUMID:
                 return 5.0;
             case DRY:
-                return 2.0;
+                return 3.0;
         }
         return null;
     }
