@@ -24,7 +24,6 @@ public class Altitude {
     }
 
     public void setAll(AltitudeType altitude, List<Tile> landtiles, List<Tile> oceanTiles){
-        SetElevation(AltitudeType.OCEAN, oceanTiles);
         SetElevation(altitude, landtiles);
         LevelLand(landtiles);
     }
@@ -43,7 +42,7 @@ public class Altitude {
     }
 
     public void SetElevation(AltitudeType altitude, List<Tile> tiles){
-
+        this.min_elevation=Double.MAX_VALUE;
         this.tiles=tiles;
         this.function=altitude.getAltitude(tiles);
         for(Tile tile: tiles){
@@ -54,6 +53,7 @@ public class Altitude {
                 }
             }
         }
+        System.out.println("MinEle"+min_elevation);
 
     }
 
