@@ -1,6 +1,7 @@
 package ca.mcmaster.cas.se2aa4.a3.island.Modes;
 import java.io.IOException;
 
+import ca.mcmaster.cas.se2aa4.a3.island.Altitude.Altitude;
 import ca.mcmaster.cas.se2aa4.a3.island.Altitude.AltitudeType;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.Tile;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.TileVertex;
@@ -24,8 +25,8 @@ public class Sandbox extends Mode{
 
         //Outer Circle
         Circle outerCircle = new Circle(width, height, tiles);
-        List<Tile> oceanTiles = outerCircle.getMarkedTiles();
-        List<Tile> undecidedTiles = outerCircle.getUnMarkedTiles();
+        List<Tile> oceanTiles = outerCircle.getOutOfRangeTiles();
+        List<Tile> undecidedTiles = outerCircle.getInRangeTiles();
 
         //set oceanTiles to their color
         for(Tile tile: oceanTiles){
@@ -34,8 +35,8 @@ public class Sandbox extends Mode{
 
         //Inner Circle
         Circle innerCircle = new Circle(outerCircle.getRadius(), outerCircle.getRadius(), outerCircle.getCenterX(), outerCircle.getCenterY(), undecidedTiles);
-        List<Tile> landTiles = innerCircle.getMarkedTiles();
-        List<Tile> lagoonTiles = innerCircle.getUnMarkedTiles();
+        List<Tile> landTiles = innerCircle.getOutOfRangeTiles();
+        List<Tile> lagoonTiles = innerCircle.getInRangeTiles();
 
         //Set lagoon tiles
         for(Tile tile: lagoonTiles){
@@ -45,25 +46,13 @@ public class Sandbox extends Mode{
         //Set the unMarked Tiles color
         for(Tile tile: landTiles){
             tile.setTileType(TileTypes.GRASSLAND);
-        }
-
-        altitude.getAltitude(undecidedTiles);
-        AltitudeType.OCEAN.getAltitude(lagoonTiles);
-
-
-        for (Tile t:landTiles){
-            for (TileVertex v: t.getTileVertices()){
-                v.setThickness(v.getElevation());
-            }
 
         }
 
-        for (Tile t:lagoonTiles){
-            for (TileVertex v: t.getTileVertices()){
-                v.setThickness(v.getElevation());
-            }
+        altitude_gen.SetElevation(altitude, undecidedTiles);
+        altitude_gen.SetElevation(AltitudeType.OCEAN, oceanTiles);
+        altitude_gen.SetElevation(AltitudeType.OCEAN, lagoonTiles);
 
-        }
 
         //Set beach tiles 
         determineBeachLand(landTiles);

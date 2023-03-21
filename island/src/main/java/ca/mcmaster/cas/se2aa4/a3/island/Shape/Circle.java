@@ -5,8 +5,9 @@ import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.Tile;
 import java.util.List;
 
 public class Circle extends Shape{
-    double maxRadius;
-    double radius;
+    private double maxRadius;
+    private double radius;
+    
     public Circle (double width, double height, List<Tile> tiles){
         super();
 
@@ -30,12 +31,17 @@ public class Circle extends Shape{
     }
 
 
-    public List<Tile> getMarkedTiles(){
-        return markedtiles;
+    public List<Tile> getOutOfRangeTiles(){
+        return outOfRangeTiles;
     }
-    public List<Tile> getUnMarkedTiles(){
-        return unMarkedtiles;
+    public List<Tile> getInRangeTiles(){
+        return inRangeTiles;
     }
+
+    public int getInRangeTilesSize(){
+        return inRangeTiles.size();
+    }
+    
     public double getRadius(){
         return radius;
     }
@@ -60,11 +66,11 @@ public class Circle extends Shape{
 
             if(distance < radius){
                 //in range
-                unMarkedtiles.add(tile);
+                inRangeTiles.add(tile);
             }
             else{
                 //out of range
-                markedtiles.add(tile);
+                outOfRangeTiles.add(tile);
             }
         }
 

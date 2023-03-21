@@ -25,8 +25,8 @@ public class Regular extends Mode {
     public void generate(){
         //generate the map based on the user inputs
         Shape islandShape = shape.getShape(width, height, tiles);
-        List<Tile> oceanTiles = islandShape.getMarkedTiles();
-        List<Tile> undecidedTiles = islandShape.getUnMarkedTiles();
+        List<Tile> oceanTiles = islandShape.getOutOfRangeTiles();
+        List<Tile> undecidedTiles = islandShape.getInRangeTiles();
 
         //set oceanTiles to their color
         for(Tile tile: oceanTiles){
@@ -55,8 +55,8 @@ public class Regular extends Mode {
             }
         }
 
-        new Altitude(AltitudeType.OCEAN, oceanTiles);
-        new Altitude(altitude, undecidedTiles);
+        altitude_gen.SetElevation(altitude, undecidedTiles);
+        altitude_gen.SetElevation(AltitudeType.OCEAN, oceanTiles);
 
     }
     private List<Tile> determineLakeTiles(List<Tile> undecidedTiles){

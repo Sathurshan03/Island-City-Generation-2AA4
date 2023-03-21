@@ -3,6 +3,7 @@ package ca.mcmaster.cas.se2aa4.a3.island.Altitude;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.Tile;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.TileVertex;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Altitude {
@@ -11,15 +12,13 @@ public class Altitude {
 
     AltitudeFunction function;
 
-
-    public Altitude(AltitudeType altitude, List<Tile> tiles){
-        this.tiles=tiles;
-        this.function=altitude.getAltitude(tiles);
-        SetElevation(this.function);
-
+    public Altitude(){
+        tiles=new ArrayList<>();
     }
 
-    public void SetElevation(AltitudeFunction function){
+    public void SetElevation(AltitudeType altitude, List<Tile> tiles){
+        this.tiles=tiles;
+        this.function=altitude.getAltitude(tiles);
         for(Tile tile: tiles){
             for (TileVertex vertex:tile.getTileVertices()){
                 vertex.setElevation(function.valueAt(vertex.getX(), vertex.getY()));
