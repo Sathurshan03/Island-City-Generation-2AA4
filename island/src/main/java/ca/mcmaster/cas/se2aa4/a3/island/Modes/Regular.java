@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ca.mcmaster.cas.se2aa4.a3.island.Altitude.*;
+import ca.mcmaster.cas.se2aa4.a3.island.Terrains.AquiferGenerator;
 import ca.mcmaster.cas.se2aa4.a3.island.Terrains.Land;
 import ca.mcmaster.cas.se2aa4.a3.island.Terrains.Ocean;
 import ca.mcmaster.cas.se2aa4.a3.island.Terrains.RiverGenerator;
@@ -59,6 +60,11 @@ public class Regular extends Mode {
         riverGenerator.createRivers();
 
         allWater.addAll(riverGenerator.getRivers());
+
+        AquiferGenerator aquiferGenerator = new AquiferGenerator(tiles, numAquifers);
+        aquiferGenerator.createAquifers();
+
+        allWater.addAll(aquiferGenerator.getAquifers());
 
         //Remove endorheic lake tiles from undecided tiles
         for (Tile endorheicLake : riverGenerator.getEndorheicLakes())

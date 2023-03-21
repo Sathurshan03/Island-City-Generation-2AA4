@@ -208,7 +208,7 @@ public class IslandCommandLineReader implements CommandLineReader {
                 regular.generate();
                 mesh = regular.getMesh();
             }else if (isHeatmapMode()){
-                Heatmaps heatmap=new Heatmaps(inputMeshFile, outputMeshFile, shapeToUse, altitude, generalBiome,maxNumLakes, maxNumRivers,generalSoil, numAquifers);
+                Heatmaps heatmap=new Heatmaps(inputMeshFile, outputMeshFile, shapeToUse, altitude, generalBiome,maxNumLakes, maxNumRivers,generalSoil);
                 mesh=heatmap.getMesh();
             }
             else{
