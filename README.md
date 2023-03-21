@@ -169,8 +169,8 @@ Pending (P), Started (S), Blocked (B), Done (D)
 | F48   | Generate rivers on the island    | Sathurshan | 03/15/2023 | 03/15/2023 | D  |
 | F49   | Generate endorheic lakes   | Sathurshan | 03/15/2023 | 03/15/2023 | D   |
 | F50   | Merge rivers that intersect with each other | Sathurshan | 03/15/2023 | 03/15/2023 | D |
-| F51   | User can enter the number of aquifers on the island using —aquifers via the command line.     | Mithun     |  |  | P  |
-| F52   | Generate aquifers on the island | Mithun     |  |  | B(F50)   |
+| F51   | User can enter the number of aquifers on the island using —aquifers via the command line.     | Mithun     | 03/21/2023 | 03/21/2023 | D  |
+| F52   | Generate aquifers on the island | Mithun     | 03/21/2023 | 03/21/2023 | S   |
 | F53   | User can enter soil absorption profile —soil via the command line.   | Nirmal     | 03/18/2023 | 03/18/2023 | D   |
 | F54   | Wet soil profile applied to map  | Nirmal     | 03/18/2023 | 03/18/2023 | D     |
 | F55   | Humid soil profile applied to map  | Nirmal     | 03/20/2023 | 03/20/2023 | D    |
@@ -187,7 +187,7 @@ Pending (P), Started (S), Blocked (B), Done (D)
 | F66   | All land tiles have assigned biomes in relation to island biomes type  | Sathurshan |  |  | B(F60-F63),  B(F43), B(F57)   |
 | F67   | Display ocean tiles   | Sathurshan | 03/06/2023 | 03/06/2023 | D  |
 | F68   | Display beach tiles   | Sathurshan | 03/06/2023 | 03/06/2023 | D  |
-| F69   | Display lake tiles  | Mithun     |  |  | B(F45)   |
+| F69   | Display lake tiles  | Mithun     | 03/21/2023 | 03/21/2023 | D   |
 | F70   | Display lagoon tiles  | Sathurshan     | 03/06/2023 | 03/06/2023 | D    |
 | F71   | Display ice tiles   | Sathurshan | 03/21/2023 | 03/21/2023 | D   |
 | F72   | Display snow tiles    | Sathurshan | 03/21/2023 | 03/21/2023 | D    |
