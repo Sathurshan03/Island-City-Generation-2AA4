@@ -32,7 +32,7 @@ public class Heatmaps extends Regular{
                     if (col>254){
                         col=254.0;
                     }
-                    new_color=new Color(255, 0,0,(int)Math.abs(col));
+                    new_color=new Color(255, 0,0,(int)Math.abs(3*col));
                 }
 
                 t.setPolygonColor(new_color);

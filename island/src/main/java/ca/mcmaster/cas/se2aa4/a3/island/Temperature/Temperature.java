@@ -23,7 +23,7 @@ public class Temperature {
         for (Tile t: all_tiles){
             Double average=0.0;
             for (TileVertex v:t.getTileVertices()){
-                v.setTemperature(base_temperature-0.065*(v.getElevation()));
+                v.setTemperature(base_temperature-0.03*(v.getElevation()));
                 average+=v.getTemperature();
             }
             average/=t.getTileVertices().size();
