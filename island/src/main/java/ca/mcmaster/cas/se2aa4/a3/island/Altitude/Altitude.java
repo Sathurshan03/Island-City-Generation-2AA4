@@ -23,7 +23,27 @@ public class Altitude {
         return this.min_elevation;
     }
 
+    public void setAll(AltitudeType altitude, List<Tile> landtiles, List<Tile> oceanTiles){
+        SetElevation(AltitudeType.OCEAN, oceanTiles);
+        SetElevation(altitude, landtiles);
+        LevelLand(landtiles);
+    }
+
+    public void LevelLand( List<Tile> tiles){
+        List<TileVertex> vertices=new ArrayList<>();
+        for (Tile tile:tiles){
+            for (TileVertex vertex: tile.getTileVertices()){
+                if (!vertices.contains(vertex)) {
+                    vertex.setElevation(vertex.getElevation()-min_elevation);
+                    vertices.add(vertex);
+                    System.out.println(vertex.getElevation());
+                }
+            }
+        }
+    }
+
     public void SetElevation(AltitudeType altitude, List<Tile> tiles){
+
         this.tiles=tiles;
         this.function=altitude.getAltitude(tiles);
         for(Tile tile: tiles){

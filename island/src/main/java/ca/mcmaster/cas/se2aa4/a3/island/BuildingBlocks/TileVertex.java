@@ -26,7 +26,7 @@ public class TileVertex extends ExtractVertexInfo implements TileProperties{
     public TileVertex(Vertex vertex)
     {
         super(vertex);
-        this.elevation=1.0;
+        this.elevation=0.0;
         this.temperature=1.0;
         this.thicknessDouble = thickness;
         this.colorList = new ArrayList<>();
