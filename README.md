@@ -164,7 +164,7 @@ Pending (P), Started (S), Blocked (B), Done (D)
 | F43   | Enter Debug Elevation mode from command line using -XE  | Nirmal     | 03/08/2023 | 03/08/2023 | D   |
 | F44   | Each vertex has an associated temperature  | Nirmal     |  |  | B(F38)        |
 | F45   | Every polygon has an average temperature    | Nirmal     |  |  | B(F43)   |
-| F46   | User can enter the maximum number of lakes on the island using —lakes via the command line.   | Mithun     |  |  | B(F48)  |
+| F46   | User can enter the maximum number of lakes on the island using —lakes via the command line.   | Mithun     | 03/21/2023 | 03/21/2023 | D  |
 | F47   | User can enter the maximum number of rivers on the island using –rivers via the command line. | Sathurshan |  |  | P   |
 | F48   | Generate rivers on the island    | Sathurshan |  |  | B(F46)   |
 | F49   | Generate endorheic lakes   | Sathurshan |  |  | B(F47)   |

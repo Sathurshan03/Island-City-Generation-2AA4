@@ -60,6 +60,9 @@ public class Tile extends ExtractPolygonInfo{
     public List<Tile> getNeighbouringTile(){
         return neighbouringTileList;
     }
+    public int numNeighbouringTiles(){
+        return neighbouringTileList.size();
+    }
 
     public Boolean isTileVerticesListContains(TileVertex tileVertex){
         if (tileVerticesList.contains(tileVertex)){
