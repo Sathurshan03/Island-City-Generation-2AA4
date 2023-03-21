@@ -1,12 +1,10 @@
 package ca.mcmaster.cas.se2aa4.a3.island.Modes;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
-import ca.mcmaster.cas.se2aa4.a3.island.IslandCommandLineReader;
-import ca.mcmaster.cas.se2aa4.a3.island.Lake;
 import ca.mcmaster.cas.se2aa4.a3.island.Altitude.*;
+import ca.mcmaster.cas.se2aa4.a3.island.Terrains.LakeGenerator;
 import ca.mcmaster.cas.se2aa4.a3.island.Terrains.Land;
 import ca.mcmaster.cas.se2aa4.a3.island.Terrains.Ocean;
 import ca.mcmaster.cas.se2aa4.a3.island.Terrains.RiverGenerator;
@@ -33,6 +31,8 @@ public class Regular extends Mode {
 
     public void generate(){
         //generate the map based on the user inputs
+
+        //Segment the island into ocean and undecided tiles
         Shape islandShape = shape.getShape(width, height, tiles);
         List<Tile> oceanTiles = islandShape.getOutOfRangeTiles();
         List<Tile> undecidedTiles = islandShape.getInRangeTiles();
@@ -44,31 +44,20 @@ public class Regular extends Mode {
             allWater.add(ocean_tile);
         }
 
-        //Generate the Lake Tiles
-        int numLakes = IslandCommandLineReader.randomGenerator.getNextInteger(0,Integer.parseInt(maxLakes)+1);
-        List<Tile> potentialLakeTiles = determineLakeTiles(undecidedTiles);
-        int maxLakeSize = (int) Math.floor(Math.sqrt((double) potentialLakeTiles.size()/(double) numLakes));
-        for(int i = 0; i < numLakes; i++){
-            Lake lake = new Lake(potentialLakeTiles, maxLakeSize);
-            for(Tile tile: lake.getLakeTiles()){
-                tile.setTileType(TileTypes.LAKE);
-            }
-        }
+        //Generate the lakes
+        LakeGenerator lakeGenerator = new LakeGenerator(maxNumLakes, undecidedTiles);
+        lakeGenerator.generate();
+        undecidedTiles = lakeGenerator.getRemainingTiles();
 
+        //Set the altitude
         altitude_gen.setAll(altitude, undecidedTiles, oceanTiles);
 
+        //Generate the rivers
         RiverGenerator riverGenerator = new RiverGenerator(tiles, maxNumRivers);
-        riverGenerator.createRivers();
-
+        riverGenerator.generate();
         allWater.addAll(riverGenerator.getRivers());
-
         //Remove endorheic lake tiles from undecided tiles
-        for (Tile endorheicLake : riverGenerator.getEndorheicLakes())
-        {
-            if (undecidedTiles.contains(endorheicLake)){
-                undecidedTiles.remove(endorheicLake);
-            }
-        }
+        undecidedTiles.removeAll(riverGenerator.getEndorheicLakes());
 
         //Generate the general biome of the map
         GeneralBiome generalBiome = biome.getGeneralBiome();
@@ -82,11 +71,8 @@ public class Regular extends Mode {
             allLand.add(landtile);
         }
 
-
         //Set humidity to all land tiles
         humidity.SetHumidity(allLand,allWater);
-
-
 
         //Set biomes to all land tiles based on their average temperature and humidity level
         TileTypes landBiome;
@@ -98,22 +84,6 @@ public class Regular extends Mode {
 
         //Set humidity contrast colours to all land tiles
         humidity.setHumidityColors(allLand);
-
     }
-    private List<Tile> determineLakeTiles(List<Tile> undecidedTiles){
-        List<Tile> potentialLakeTiles = undecidedTiles;
-        List<Tile> beachTiles = new ArrayList<>();
 
-        for(Tile tile: undecidedTiles){
-            for(Tile neighbouringTile: tile.getNeighbouringTile()){
-                if (neighbouringTile.isTileWater()){
-                    beachTiles.add(tile);
-                    break;
-                }
-            }
-        }
-
-        potentialLakeTiles.removeAll(beachTiles);
-        return potentialLakeTiles;
-    }
 }
