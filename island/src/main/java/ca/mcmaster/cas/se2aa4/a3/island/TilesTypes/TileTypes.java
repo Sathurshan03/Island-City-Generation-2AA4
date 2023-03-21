@@ -13,7 +13,7 @@ public enum TileTypes {
     ICE(new Color(204,230,255,254), TileElement.LAND),
     SNOW(new Color(255,250,251,254), TileElement.LAND),
     TAIGA(new Color(153,110,0,254), TileElement.LAND),
-    TUNDRA(new Color(160,82,45,254), TileElement.LAND);
+    TUNDRA(new Color(160,83,45,254), TileElement.LAND);
 
     
     public final Color tileColor;

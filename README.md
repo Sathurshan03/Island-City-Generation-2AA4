@@ -192,7 +192,7 @@ Pending (P), Started (S), Blocked (B), Done (D)
 | F71   | Display ice tiles   | Sathurshan | 03/21/2023 | 03/21/2023 | D   |
 | F72   | Display snow tiles    | Sathurshan | 03/21/2023 | 03/21/2023 | D    |
 | F73   | Display tundra tiles      | Sathurshan | 03/21/2023  | 03/21/2023 | D     |
-| F74   | Display taiga tiles     | Sathurshan |  |  | B(F65)  |
+| F74   | Display taiga tiles     | Sathurshan | 03/21/2023  | 03/21/2023  | D  |
 | F75   | Display forest tiles     | Nirmal     |  |  | B(F65)    |
 | F76   | Display jungle tiles    | Nirmal     |  |  | B(F65)   |
 | F77   | Display swamp tiles    | Nirmal     |  |  | B(F65)   |
