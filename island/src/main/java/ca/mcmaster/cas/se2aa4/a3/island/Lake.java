@@ -22,43 +22,53 @@ public class Lake {
         lakeSize = IslandCommandLineReader.randomGenerator.getNextint(1,maxLakeSize+1); // lake must be made up of at least 2 tiles
         System.out.println("Lake Size: " + lakeSize);
 
-        outerLoop: while(true){
-            Tile firstTile = potentialLakeTiles.get(IslandCommandLineReader.randomGenerator.getNextint(0, potentialLakeTiles.size()));
+        Tile firstTile;
+
+        while(true) {
+            firstTile = potentialLakeTiles.get(IslandCommandLineReader.randomGenerator.getNextint(0, potentialLakeTiles.size() - 1));
             List<Tile> neighbourTiles = firstTile.getNeighbouringTile();
-            for(Tile tile: neighbourTiles){
-                if(tile.isTileWater()){
-                    continue outerLoop;
+            boolean neighbourTileIsWater = false;
+            for (Tile tile : neighbourTiles) {
+                if (tile.isTileWater()) {
+                    neighbourTileIsWater = true;
+                    break;
                 }
             }
 
-            if(!firstTile.isTileWater()){
-                lakeTiles.add(firstTile);
-                int tilesAdded = 1;
-                addRemainingTiles(firstTile, tilesAdded);
-                break;
+            if(neighbourTileIsWater || firstTile.isTileWater()) {
+                continue;
             }
+            break;
         }
+
+        lakeTiles.add(firstTile);
+        int tilesAdded = 1;
+        addRemainingTiles(firstTile, tilesAdded);
     }
 
     private void addRemainingTiles (Tile startTile, int tilesAdded) {
         Tile currentTile = startTile;
 
-        outerLoop:
         while (tilesAdded < lakeSize) {
             List<Tile> neighbouringTiles = currentTile.getNeighbouringTile();
-            Tile nextTile = neighbouringTiles.get(IslandCommandLineReader.randomGenerator.getNextint(0, neighbouringTiles.size()));
+            Tile nextTile = neighbouringTiles.get(IslandCommandLineReader.randomGenerator.getNextint(0, neighbouringTiles.size()-1));
             List<Tile> neighbourTiles = nextTile.getNeighbouringTile();
+
+            boolean nextTileNeighbourIsWater = false;
             for (Tile tile : neighbourTiles) {
                 if (tile.isTileWater()) {
-                    continue outerLoop;
-                }
-
-                if (!nextTile.isTileWater() && !lakeTiles.contains(nextTile)) {
-                    lakeTiles.add(nextTile);
-                    currentTile = nextTile;
-                    tilesAdded++;
+                    nextTileNeighbourIsWater = true;
+                    break;
                 }
             }
+
+            if(nextTileNeighbourIsWater || nextTile.isTileWater() || lakeTiles.contains(nextTile)) {
+                continue;
+            }
+
+            lakeTiles.add(nextTile);
+            currentTile = nextTile;
+            tilesAdded++;
         }
     }
 
