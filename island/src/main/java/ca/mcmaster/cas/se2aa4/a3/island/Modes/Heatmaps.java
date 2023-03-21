@@ -12,8 +12,8 @@ import java.io.IOException;
 public class Heatmaps extends Regular{
 
 
-    public Heatmaps(String inputMesh, String outputMesh, ShapeType shapeType, AltitudeType altitudeType, BiomeTypes biome, int maxLakes, int maxRivers, SoilTypes soil) throws IOException {
-        super(inputMesh, outputMesh, shapeType, altitudeType, biome, maxLakes, maxRivers, soil);
+    public Heatmaps(String inputMesh, String outputMesh, ShapeType shapeType, AltitudeType altitudeType, BiomeTypes biome, int maxLakes, int maxRivers, SoilTypes soil, int numAquifers) throws IOException {
+        super(inputMesh, outputMesh, shapeType, altitudeType, biome, maxLakes, maxRivers, soil, numAquifers);
         super.generate();
         setProperties();
     }
