@@ -24,6 +24,7 @@ public class Altitude {
     }
 
     public void setAll(AltitudeType altitude, List<Tile> landtiles, List<Tile> oceanTiles){
+        SetElevation(AltitudeType.OCEAN, landtiles);
         SetElevation(altitude, landtiles);
         LevelLand(landtiles);
     }
@@ -35,7 +36,6 @@ public class Altitude {
                 if (!vertices.contains(vertex)) {
                     vertex.setElevation(vertex.getElevation()-min_elevation);
                     vertices.add(vertex);
-                    System.out.println(vertex.getElevation());
                 }
             }
         }
@@ -53,8 +53,6 @@ public class Altitude {
                 }
             }
         }
-        System.out.println("MinEle"+min_elevation);
-
     }
 
 }
