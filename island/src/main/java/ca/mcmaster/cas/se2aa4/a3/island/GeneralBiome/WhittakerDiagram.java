@@ -8,12 +8,12 @@ import java.awt.Shape;
 
 public class WhittakerDiagram {
     protected final double scaleHumidity;
-    protected final double scaleTemperature;
     protected HashMap<Shape, TileTypes> whittakerDiagram;
+    protected final double minHumidity;
 
-    public WhittakerDiagram(double maxHumidy, double maxTemperature){
-        this.scaleHumidity = maxHumidy / 100;
-        this.scaleTemperature = maxTemperature / 100;
+    public WhittakerDiagram(double maxHumidy, double minHumidity){
+        this.scaleHumidity = 100 / maxHumidy; 
+        this.minHumidity = minHumidity;
         this.whittakerDiagram = new HashMap<Shape, TileTypes>();
     }
 
@@ -23,14 +23,15 @@ public class WhittakerDiagram {
 
     public TileTypes getBiome(double humidity, double temperature){
         //Get the biome(tileTypes) based on the whittaker diagram
-
         for(Shape area: whittakerDiagram.keySet()){
-            if (area.contains(temperature/scaleTemperature, humidity/scaleHumidity))
+            if (area.contains((humidity - minHumidity)*scaleHumidity , temperature))
             {
+                //Returns the TileTypes for that area
                 return whittakerDiagram.get(area);
             }
         }
-        return TileTypes.UNDETERMINEDLAND;
+
+        return TileTypes.GRASSLAND;
     }
 
 

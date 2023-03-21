@@ -10,6 +10,9 @@ import java.util.List;
 
 public class Humidity {
 
+    private double maxHumidity = -Double.MAX_VALUE;
+    private double minHumidity = Double.MAX_VALUE;
+    private double humidityRange = 1;
 
     public Double calculateDistance(TileVertex v1, TileVertex v2){
         Double x1=v1.getX();
@@ -21,7 +24,6 @@ public class Humidity {
         Double distance=Math.sqrt(Math.pow((x2-x1),2)+Math.pow((y2-y1),2));
 
         return distance;
-
     }
 
     public void SetHumidity(List<Land> landTiles, List<BodiesWater> allWater){
@@ -37,11 +39,23 @@ public class Humidity {
             }
             land.setHumidity(averageHumidity);
 
-            Color c_new=newColor(tile.getColor(), averageHumidity/2);
-
-            tile.setPolygonColor(c_new);
+            if (averageHumidity > maxHumidity){
+                maxHumidity = averageHumidity;
+            }
+            if (averageHumidity < minHumidity){
+                minHumidity = averageHumidity;
+            }
         }
+        humidityRange = maxHumidity - minHumidity;
+    }
 
+    public void setHumidityColors(List<Land> landTiles){
+        Tile editTile;
+        for (Land land: landTiles){
+            editTile = land.getTile();
+            Color c_new=newColor(editTile.getColor(), land.getHumidity()/2);
+            editTile.setPolygonColor(c_new);
+        }
     }
 
     private Color newColor(Color c, Double averageHumidity){
@@ -64,5 +78,11 @@ public class Humidity {
 
     }
 
+    public double getHumidityRange(){
+        return humidityRange;
+    }
 
+    public double getMinHumidity(){
+        return minHumidity;
+    }
 }

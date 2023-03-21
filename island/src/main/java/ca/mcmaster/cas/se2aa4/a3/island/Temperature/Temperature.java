@@ -47,9 +47,7 @@ public class Temperature {
 
             t.setAverageTemperature(average);
         }
-
     }
-
     public Double getLowestTemp(){
         return this.lowest_temperature;
     }
@@ -60,3 +58,4 @@ public class Temperature {
 
 
 }
+

@@ -66,20 +66,33 @@ public class Regular extends Mode {
             }
         }
 
-        //Set the unMarked Tiles color
+        //Generate the general biome of the map
+        GeneralBiome generalBiome = biome.getGeneralBiome();
+
+        //Set temperature to all land and water tiles
+        temperature_gen.setTemperature(tiles, generalBiome.getBaseTemperature(), altitude_gen.getMinElevation());
+        
+        //Create Land tiles
         for(Tile tile: undecidedTiles){
-            tile.setTileType(TileTypes.GRASSLAND);
             Land landtile=new Land(tile);
             allLand.add(landtile);
         }
 
-
-        GeneralBiome generalBiome = biome.getGeneralBiome();
-        temperature_gen.setTemperature(tiles, generalBiome.getBaseTemperature(), altitude_gen.getMinElevation());
-
+        //Set humidity to all land tiles
         humidity.SetHumidity(allLand,allWater);
 
 
+
+        //Set biomes to all land tiles based on their average temperature and humidity level
+        TileTypes landBiome;
+        generalBiome.createWhittakerDiagram(humidity.getHumidityRange(), humidity.getMinHumidity());
+        for (Land landTile : allLand){
+            landBiome = generalBiome.getTileBiome(landTile.getHumidity(), landTile.getAverageTemperature());
+            landTile.setTileType(landBiome);
+        }
+
+        //Set humidity contrast colours to all land tiles
+        humidity.setHumidityColors(allLand);
 
     }
     private List<Tile> determineLakeTiles(List<Tile> undecidedTiles){

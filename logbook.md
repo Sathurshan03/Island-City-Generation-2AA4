@@ -81,4 +81,5 @@
 |  Mar 13, 2023  |  Sathurshan       |   rectangular islands can be generated at an angle now |
 |  Mar 14, 2023  |  Sathurshan       |   Irregular shaped islands can be generated |
 |  Mar 13, 2023  |  Sathurshan       |   All features of the rivers were generated |
+|  Mar 21, 2023  |  Sathurshan       |   Created the Artic Biome |
 

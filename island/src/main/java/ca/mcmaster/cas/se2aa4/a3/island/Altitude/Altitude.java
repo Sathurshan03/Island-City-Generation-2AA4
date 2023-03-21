@@ -24,8 +24,8 @@ public class Altitude {
     }
 
     public void setAll(AltitudeType altitude, List<Tile> landtiles, List<Tile> oceanTiles){
-        SetElevation(AltitudeType.OCEAN, landtiles);
         SetElevation(altitude, landtiles);
+        SetElevation(AltitudeType.OCEAN, oceanTiles);
         LevelLand(landtiles);
     }
 

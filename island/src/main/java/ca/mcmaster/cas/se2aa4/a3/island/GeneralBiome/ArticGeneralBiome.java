@@ -11,14 +11,18 @@ public class ArticGeneralBiome extends GeneralBiome{
         super(getBaseTemperature);
     }
 
-    public void createWhittakerDiagram(double maxHumidy, double maxTemperature){
-        articWhittakerDiagram = new WhittakerDiagram(maxHumidy, maxTemperature);
+    public void createWhittakerDiagram(double humidityRange, double minTemperature){
+        articWhittakerDiagram = new WhittakerDiagram(humidityRange, minTemperature);
         
         //Shapes altogether cover 0 - 100 on both axis
-        articWhittakerDiagram.addToWhittakerDiagram(new Rectangle(0,0,30,100), TileTypes.ICE);
-        articWhittakerDiagram.addToWhittakerDiagram(new Rectangle(30,0,30,100), TileTypes.SNOW);
-        articWhittakerDiagram.addToWhittakerDiagram(new Rectangle(60,0,40,30), TileTypes.TUNDRA);
-        articWhittakerDiagram.addToWhittakerDiagram(new Rectangle(60,30,40,70), TileTypes.TAIGA);
+        articWhittakerDiagram.addToWhittakerDiagram(new Rectangle(0,-276,101,226), TileTypes.ICE);
+        articWhittakerDiagram.addToWhittakerDiagram(new Rectangle(0,-50,101,25), TileTypes.SNOW);
+        articWhittakerDiagram.addToWhittakerDiagram(new Rectangle(0,-25,40,40), TileTypes.TUNDRA);
+        articWhittakerDiagram.addToWhittakerDiagram(new Rectangle(40,-25,61,40), TileTypes.TAIGA);
+    }
+
+    public TileTypes getTileBiome(double humidity, double temperature){
+        return articWhittakerDiagram.getBiome(humidity, temperature);
     }
     
 }

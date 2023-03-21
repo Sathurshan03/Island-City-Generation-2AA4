@@ -3,6 +3,7 @@ package ca.mcmaster.cas.se2aa4.a3.island.Terrains;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.Tile;
 import ca.mcmaster.cas.se2aa4.a3.island.Modes.Mode;
 import ca.mcmaster.cas.se2aa4.a3.island.SoilProfile.SoilTypes;
+import ca.mcmaster.cas.se2aa4.a3.island.TilesTypes.TileTypes;
 
 public class Land {
 
@@ -10,7 +11,7 @@ public class Land {
     SoilTypes soilType;
     Double humidity;
     Double soilCoefficient;
-    Double averageTemperature;
+    double averageTemperature;
 
 
     public Land(Tile landtile){
@@ -33,8 +34,15 @@ public class Land {
         return this.soilCoefficient;
     }
 
+    public double getAverageTemperature(){
+        return this.averageTemperature;
+    }
 
     public Tile getTile(){
         return this.landtile;
+    }
+
+    public void setTileType(TileTypes tileType){
+        this.landtile.setTileType(tileType);
     }
 }
