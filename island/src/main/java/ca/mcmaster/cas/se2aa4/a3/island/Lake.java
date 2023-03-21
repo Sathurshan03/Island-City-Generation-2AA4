@@ -18,9 +18,9 @@ public class Lake {
 
     private void createLake(List<Tile> potentialLakeTiles, int maxLakeSize){
 
-        lakeSize = IslandCommandLineReader.randomGenerator.getNextint(1,maxLakeSize+1); // lake must be made up of at least 2 tiles
+        lakeSize = IslandCommandLineReader.randomGenerator.getNextInteger(1,maxLakeSize+1); // lake must be made up of at least 2 tiles
 
-        Tile currentTile = potentialLakeTiles.remove(IslandCommandLineReader.randomGenerator.getNextint(0,potentialLakeTiles.size()));
+        Tile currentTile = potentialLakeTiles.remove(IslandCommandLineReader.randomGenerator.getNextInteger(0,potentialLakeTiles.size()));
         lakeTiles.add(currentTile);
         int tilesAdded = 1;
         List<Tile> neighbouringTiles;
@@ -36,7 +36,7 @@ public class Lake {
                 }
             }
 
-            currentTile = neighbouringTiles.get(IslandCommandLineReader.randomGenerator.getNextint(0,currentTile.numNeighbouringTiles()));
+            currentTile = neighbouringTiles.get(IslandCommandLineReader.randomGenerator.getNextInteger(0,currentTile.numNeighbouringTiles()));
         }
 
     }

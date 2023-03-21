@@ -18,9 +18,9 @@ public class Oval extends Shape{
 
         this.maxlength = Double.compare(width, height) < 0? width: height;
         this.tiles = tiles;
-        this.length = IslandCommandLineReader.randomGenerator.getNextdouble(maxlength*0.7, maxlength);
-        this.shortLength = IslandCommandLineReader.randomGenerator.getNextdouble(length*0.25,length*0.7);
-        this.angleRad = IslandCommandLineReader.randomGenerator.getNextdouble(-Math.PI/2, Math.PI/2);
+        this.length = IslandCommandLineReader.randomGenerator.getNextDouble(maxlength*0.7, maxlength);
+        this.shortLength = IslandCommandLineReader.randomGenerator.getNextDouble(length*0.25,length*0.7);
+        this.angleRad = IslandCommandLineReader.randomGenerator.getNextDouble(-Math.PI/2, Math.PI/2);
         this.meshCenterX = width /2;
         this.meshCenterY = height /2;
         double xStartingPoint = meshCenterX - shortLength/2;
@@ -36,8 +36,8 @@ public class Oval extends Shape{
 
         this.maxlength = Double.compare(width, height) < 0? width: height;
         this.tiles = tiles;
-        this.length = IslandCommandLineReader.randomGenerator.getNextdouble(maxlength*0.45, maxlength*0.7);
-        this.shortLength = IslandCommandLineReader.randomGenerator.getNextdouble(length*0.45,length*0.7);
+        this.length = IslandCommandLineReader.randomGenerator.getNextDouble(maxlength*0.45, maxlength*0.7);
+        this.shortLength = IslandCommandLineReader.randomGenerator.getNextDouble(length*0.45,length*0.7);
         this.angleRad = angleRad;
         this.meshCenterX = width /2;
         this.meshCenterY = height /2;

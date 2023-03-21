@@ -5,16 +5,18 @@ import ca.mcmaster.cas.se2aa4.a3.island.Altitude.Altitude;
 import ca.mcmaster.cas.se2aa4.a3.island.Altitude.AltitudeType;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.Tile;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.TileVertex;
+import ca.mcmaster.cas.se2aa4.a3.island.GeneralBiome.BiomeTypes;
 import ca.mcmaster.cas.se2aa4.a3.island.Shape.Circle;
 import ca.mcmaster.cas.se2aa4.a3.island.Shape.ShapeType;
-import ca.mcmaster.cas.se2aa4.a3.island.Tiles.TileTypes;
+import ca.mcmaster.cas.se2aa4.a3.island.SoilProfile.SoilTypes;
+import ca.mcmaster.cas.se2aa4.a3.island.TilesTypes.TileTypes;
 
 import java.util.List;
 
 public class Sandbox extends Mode{
     
     public Sandbox(String inputMesh, String outputMesh) throws IOException{
-        super(inputMesh, outputMesh, ShapeType.CIRCLE, AltitudeType.VOLCANIC);
+        super(inputMesh, outputMesh, ShapeType.CIRCLE, AltitudeType.VOLCANIC, BiomeTypes.ARCTIC, "5", SoilTypes.DRY);
 
          //extract all the info from the input mesh
          extractInformation();

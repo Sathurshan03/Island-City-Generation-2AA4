@@ -10,14 +10,21 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class TileSegment extends ExtractSegmentInfo implements TileProperties{
-    List<Color> colorList;
-    Color averageColor = new Color(0, 0, 0, 0);
-    String segmentType;
-    Double thicknessDouble;
+    private List<Color> colorList;
+    private Color averageColor = new Color(0, 0, 0, 0);
+    private String segmentType;
+    private Double thicknessDouble;
+    private TileVertex tileVertex1;
+    private TileVertex tileVertex2;
+    private Boolean isRiver;
+    private int numRivers;
+
     public TileSegment(Segment segment, List<Vertex> vertices, int offset){
         super(segment, vertices, offset);
-        this.thicknessDouble = thickness;
+        this.thicknessDouble = super.thickness;
         this.colorList = new ArrayList<>();
+        this.isRiver = false;
+        this.numRivers = 0;
         segmentType = extractSegmentType(segment.getPropertiesList());
     }
 
@@ -25,8 +32,62 @@ public class TileSegment extends ExtractSegmentInfo implements TileProperties{
         this.averageColor = color;
     }
 
+    public void setTileVertex1(TileVertex vertex){
+        this.tileVertex1 = vertex;
+    }
+
+    public void setTileVertex2(TileVertex vertex){
+        this.tileVertex2 = vertex;
+    }
+
+    public void setRiver(){
+        isRiver = true;
+        numRivers++;
+        updateThickness();
+    }
+    private void updateThickness(){
+        thicknessDouble = 0.75 * numRivers;
+    }
+
+    public void setSegmentVertexRiver(){
+        tileVertex1.setThickness(thicknessDouble*Math.sqrt(2));
+        tileVertex2.setThickness(thicknessDouble*Math.sqrt(2));
+        tileVertex1.setRiver();
+        tileVertex2.setRiver();
+    }
+
+    public double getThickness(){
+        return thicknessDouble; 
+    }
+
+    public Boolean containsTileVertex(TileVertex vertex){
+        //returns true if the segment connects to the inputted vertex
+        if (tileVertex1.equals(vertex) || tileVertex2.equals(vertex)){
+            return true;
+        }
+        return false;
+    }
+
+    public TileVertex getAdjacentVertex(TileVertex vertex){
+        //returns the adjacent vertex of the segment for the inputted vertex
+        if (tileVertex1.equals(vertex))
+        {
+            return tileVertex2;
+        }
+        else if (tileVertex2.equals(vertex)){
+            return tileVertex1;
+        }
+        return null;
+    }
+
     public Segment getSegment(){
-        setAverageColor();
+        if (isRiver){
+            averageColor = new Color(0,76,153,254);
+        }
+        else{
+            setAverageColor();
+        }
+        
         String colourCode = averageColor.getRed() + "," + averageColor.getGreen() + "," + averageColor.getBlue() + "," + averageColor.getAlpha();
         Property colorProp = Property.newBuilder().setKey("rgb_color").setValue(colourCode).build();
         Property thicknessProp = Property.newBuilder().setKey("thickness").setValue(thicknessDouble.toString()).build();
@@ -60,8 +121,7 @@ public class TileSegment extends ExtractSegmentInfo implements TileProperties{
                 blue += color.getBlue();
                 alpha += color.getAlpha();
             }
-            
-            red /= colorList.size();
+                        red /= colorList.size();
             green /= colorList.size();
             blue /= colorList.size();
             alpha /= colorList.size();

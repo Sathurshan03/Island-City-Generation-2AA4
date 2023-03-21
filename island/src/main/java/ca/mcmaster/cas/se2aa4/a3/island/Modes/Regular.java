@@ -4,21 +4,31 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import ca.mcmaster.cas.se2aa4.a3.island.Altitude.*;
-import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.Tile;
 import ca.mcmaster.cas.se2aa4.a3.island.IslandCommandLineReader;
 import ca.mcmaster.cas.se2aa4.a3.island.Lake;
+import ca.mcmaster.cas.se2aa4.a3.island.Altitude.*;
+import ca.mcmaster.cas.se2aa4.a3.island.Terrains.Land;
+import ca.mcmaster.cas.se2aa4.a3.island.Terrains.Ocean;
+import ca.mcmaster.cas.se2aa4.a3.island.Terrains.RiverGenerator;
+import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.Tile;
+import ca.mcmaster.cas.se2aa4.a3.island.GeneralBiome.BiomeTypes;
+import ca.mcmaster.cas.se2aa4.a3.island.GeneralBiome.GeneralBiome;
 import ca.mcmaster.cas.se2aa4.a3.island.Shape.Shape;
 import ca.mcmaster.cas.se2aa4.a3.island.Shape.ShapeType;
-import ca.mcmaster.cas.se2aa4.a3.island.Tiles.TileTypes;
+import ca.mcmaster.cas.se2aa4.a3.island.SoilProfile.SoilTypes;
+import ca.mcmaster.cas.se2aa4.a3.island.TilesTypes.TileTypes;
 
 public class Regular extends Mode {
+    private int maxNumLakes;
+    private int maxNumRivers;
     
-    public Regular(String inputMesh, String outputMesh, ShapeType shapeType, AltitudeType altitudeType, String maxNumLakes) throws IOException{
-        super(inputMesh, outputMesh, shapeType, altitudeType, maxNumLakes);
 
-        //extract all the info from the input mesh
+    public Regular(String inputMesh, String outputMesh, ShapeType shapeType, AltitudeType altitudeType, BiomeTypes biome, int maxLakes, int maxNumRivers, SoilTypes soil) throws IOException{
+        super(inputMesh, outputMesh, shapeType, altitudeType, biome, Integer.toString(maxLakes),soil);
+        
         extractInformation();
+        this.maxNumLakes = maxLakes;
+        this.maxNumRivers = maxNumRivers;
     }
 
     public void generate(){
@@ -30,18 +40,14 @@ public class Regular extends Mode {
         //set oceanTiles to their color
         for(Tile tile: oceanTiles){
             tile.setTileType(TileTypes.Ocean);
+            Ocean ocean_tile=new Ocean(tile);
+            allWater.add(ocean_tile);
         }
 
-        //Set the unMarked Tiles color
-        for(Tile tile: undecidedTiles){
-            tile.setTileType(TileTypes.GRASSLAND);
-        }
-
-        int numLakes = IslandCommandLineReader.randomGenerator.getNextint(0,Integer.parseInt(maxLakes)+1);
+        //Generate the Lake Tiles
+        int numLakes = IslandCommandLineReader.randomGenerator.getNextInteger(0,Integer.parseInt(maxLakes)+1);
         List<Tile> potentialLakeTiles = determineLakeTiles(undecidedTiles);
         int maxLakeSize = (int) Math.floor(Math.sqrt((double) potentialLakeTiles.size()/(double) numLakes));
-
-
         for(int i = 0; i < numLakes; i++){
             Lake lake = new Lake(potentialLakeTiles, maxLakeSize);
             for(Tile tile: lake.getLakeTiles()){
@@ -49,8 +55,49 @@ public class Regular extends Mode {
             }
         }
 
-        altitude_gen.SetElevation(altitude, undecidedTiles);
-        altitude_gen.SetElevation(AltitudeType.OCEAN, oceanTiles);
+        altitude_gen.setAll(altitude, undecidedTiles, oceanTiles);
+
+        RiverGenerator riverGenerator = new RiverGenerator(tiles, maxNumRivers);
+        riverGenerator.createRivers();
+
+        allWater.addAll(riverGenerator.getRivers());
+
+        //Remove endorheic lake tiles from undecided tiles
+        for (Tile endorheicLake : riverGenerator.getEndorheicLakes())
+        {
+            if (undecidedTiles.contains(endorheicLake)){
+                undecidedTiles.remove(endorheicLake);
+            }
+        }
+
+        //Generate the general biome of the map
+        GeneralBiome generalBiome = biome.getGeneralBiome();
+
+        //Set temperature to all land and water tiles
+        temperature_gen.setTemperature(tiles, generalBiome.getBaseTemperature(), altitude_gen.getMinElevation());
+        
+        //Create Land tiles
+        for(Tile tile: undecidedTiles){
+            Land landtile=new Land(tile);
+            allLand.add(landtile);
+        }
+
+
+        //Set humidity to all land tiles
+        humidity.SetHumidity(allLand,allWater);
+
+
+
+        //Set biomes to all land tiles based on their average temperature and humidity level
+        TileTypes landBiome;
+        generalBiome.createWhittakerDiagram(humidity.getHumidityRange(), humidity.getMinHumidity());
+        for (Land landTile : allLand){
+            landBiome = generalBiome.getTileBiome(landTile.getHumidity(), landTile.getAverageTemperature());
+            landTile.setTileType(landBiome);
+        }
+
+        //Set humidity contrast colours to all land tiles
+        humidity.setHumidityColors(allLand);
 
     }
     private List<Tile> determineLakeTiles(List<Tile> undecidedTiles){

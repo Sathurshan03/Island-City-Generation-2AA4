@@ -11,10 +11,16 @@ import ca.mcmaster.cas.se2aa4.a2.io.Structs.Segment;
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Vertex;
 import ca.mcmaster.cas.se2aa4.a3.island.Altitude.Altitude;
 import ca.mcmaster.cas.se2aa4.a3.island.Altitude.AltitudeType;
+import ca.mcmaster.cas.se2aa4.a3.island.Terrains.BodiesWater;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.Tile;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.TileSegment;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.TileVertex;
+import ca.mcmaster.cas.se2aa4.a3.island.GeneralBiome.BiomeTypes;
 import ca.mcmaster.cas.se2aa4.a3.island.Shape.ShapeType;
+import ca.mcmaster.cas.se2aa4.a3.island.SoilProfile.Humidity;
+import ca.mcmaster.cas.se2aa4.a3.island.SoilProfile.SoilTypes;
+import ca.mcmaster.cas.se2aa4.a3.island.Temperature.Temperature;
+import ca.mcmaster.cas.se2aa4.a3.island.Terrains.Land;
 
 public abstract class Mode {
     String inputMesh;
@@ -23,7 +29,15 @@ public abstract class Mode {
 
     Altitude altitude_gen=new Altitude();
 
+    Temperature temperature_gen=new Temperature();
+
     AltitudeType altitude;
+
+    Humidity humidity;
+
+    BiomeTypes biome;
+
+    static SoilTypes soil;
     Mesh mesh;
     List<Polygon> polygons;
     List<Segment> segments;
@@ -35,32 +49,23 @@ public abstract class Mode {
     List<TileVertex> allVerticesInfoList;
     List<TileVertex> verticesInfoList;
     List<TileVertex> centroidInfoList;
+
+    List<BodiesWater> allWater;
+    List<Land> allLand;
     String maxLakes;
     static  double width;
     static double height;
 
-    public Mode(String inputMesh, String outputMesh, ShapeType shape, AltitudeType altitude, String maxLakes){
-        this.inputMesh = inputMesh;
-        this.outputMesh = outputMesh;
-        this.shape = shape;
-        this.altitude=altitude;
-        this.maxLakes = maxLakes;
-        this.tiles = new ArrayList<>();
-        this.allSegmentInfoList = new ArrayList<>();
-        this.segmentInfoList = new ArrayList<>();
-        this.neighbouringSegmentInfoList = new ArrayList<>();
-        this.allVerticesInfoList = new ArrayList<>();
-        this.verticesInfoList = new ArrayList<>();
-        this.centroidInfoList = new ArrayList<>();
-        width = Double.MIN_VALUE;
-        height = Double.MIN_VALUE;
-    }
 
-    public Mode(String inputMesh, String outputMesh, ShapeType shape, AltitudeType altitude){
+    public Mode(String inputMesh, String outputMesh, ShapeType shape, AltitudeType altitude, BiomeTypes biome, String maxLakes, SoilTypes soil){
         this.inputMesh = inputMesh;
         this.outputMesh = outputMesh;
         this.shape = shape;
         this.altitude=altitude;
+        this.biome=biome;
+        this.maxLakes = maxLakes;
+        this.soil=soil;
+        this.humidity=new Humidity();
         this.tiles = new ArrayList<>();
         this.allSegmentInfoList = new ArrayList<>();
         this.segmentInfoList = new ArrayList<>();
@@ -68,6 +73,8 @@ public abstract class Mode {
         this.allVerticesInfoList = new ArrayList<>();
         this.verticesInfoList = new ArrayList<>();
         this.centroidInfoList = new ArrayList<>();
+        this.allWater=new ArrayList<>();
+        this.allLand=new ArrayList<>();
         width = Double.MIN_VALUE;
         height = Double.MIN_VALUE;
     }
@@ -79,8 +86,8 @@ public abstract class Mode {
         segments = mesh.getSegmentsList();
         vertices = mesh.getVerticesList();
 
-        extractSegments();
         extractVertex();
+        extractSegments();
         extractPolygon();
         setNeighbouringTiles();
 
@@ -101,11 +108,15 @@ public abstract class Mode {
             type = segmentType.getValue();
             if (type.equals("Regular")){
                 tileSegment = new TileSegment(segment, vertices, polygons.size());
+                tileSegment.setTileVertex1(allVerticesInfoList.get(tileSegment.getVertedIDX1()));
+                tileSegment.setTileVertex2(allVerticesInfoList.get(tileSegment.getVertedIDX2()));
                 segmentInfoList.add(tileSegment);
                 allSegmentInfoList.add(tileSegment);
             }
             else if (type.equals("Neighbouring")){
                 tileSegment = new TileSegment(segment, vertices, 0);
+                tileSegment.setTileVertex1(allVerticesInfoList.get(tileSegment.getVertedIDX1()));
+                tileSegment.setTileVertex2(allVerticesInfoList.get(tileSegment.getVertedIDX2()));
                 neighbouringSegmentInfoList.add(tileSegment);
                 allSegmentInfoList.add(tileSegment);
             }
@@ -155,12 +166,12 @@ public abstract class Mode {
 
                 //add vertices only if it is not in the list 
                 tileVertex = allVerticesInfoList.get(tileSegment.getVertedIDX1());
-                if (tile.isTileVerticesListContains(tileVertex)){
+                if (!tile.isTileVerticesListContains(tileVertex)){
                     tile.addTileVertex(tileVertex);
                 }
 
                 tileVertex = allVerticesInfoList.get(tileSegment.getVertedIDX2());
-                if (tile.isTileVerticesListContains(tileVertex)){
+                if (!tile.isTileVerticesListContains(tileVertex)){
                     tile.addTileVertex(tileVertex);
                 }
             }
@@ -193,6 +204,10 @@ public abstract class Mode {
 
     public static Double getHeight(){
         return height;
+    }
+
+    public static SoilTypes getSoil(){
+        return soil;
     }
 
 

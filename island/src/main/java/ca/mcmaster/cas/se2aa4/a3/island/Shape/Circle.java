@@ -13,7 +13,7 @@ public class Circle extends Shape{
 
         this.maxRadius = Double.compare(width, height) < 0? width/2: height/2;
         this.tiles = tiles;
-        this.radius = IslandCommandLineReader.randomGenerator.getNextdouble(maxRadius*0.65,maxRadius);
+        this.radius = IslandCommandLineReader.randomGenerator.getNextDouble(maxRadius*0.65,maxRadius);
         this.meshCenterX = width /2;
         this.meshCenterY = height /2;
         markTiles();
@@ -24,7 +24,7 @@ public class Circle extends Shape{
         this.maxRadius = Double.compare(width, height) < 0? width/2: height/2;
         this.tiles = tiles;
 
-        this.radius = IslandCommandLineReader.randomGenerator.getNextdouble(maxRadius*0.5,maxRadius);
+        this.radius = IslandCommandLineReader.randomGenerator.getNextDouble(maxRadius*0.5,maxRadius);
         this.meshCenterX = centerX;
         this.meshCenterY = centerY;
         markTiles();

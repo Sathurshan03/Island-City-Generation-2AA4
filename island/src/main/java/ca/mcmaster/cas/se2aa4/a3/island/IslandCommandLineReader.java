@@ -2,6 +2,10 @@ package ca.mcmaster.cas.se2aa4.a3.island;
 
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Mesh;
 import ca.mcmaster.cas.se2aa4.a3.island.Altitude.AltitudeType;
+import ca.mcmaster.cas.se2aa4.a3.island.GeneralBiome.BiomeTypes;
+import ca.mcmaster.cas.se2aa4.a3.island.GeneralBiome.GeneralBiome;
+import ca.mcmaster.cas.se2aa4.a3.island.Modes.Heatmaps;
+import ca.mcmaster.cas.se2aa4.a3.island.SoilProfile.SoilTypes;
 import ca.mcmaster.cas.se2aa4.a3.tools.CommandLineReader;
 import ca.mcmaster.cas.se2aa4.a3.tools.RandomGenerator;
 import ca.mcmaster.cas.se2aa4.a3.island.Modes.ModeType;
@@ -14,18 +18,25 @@ import org.apache.commons.cli.*;
 import java.io.IOException;
 
 public class IslandCommandLineReader implements CommandLineReader {
-    String inputMeshFile;
-    String outputMeshFile;
-    String mode;
-    String shape;
-    String seed;
-    String maxLakes;
+    private String inputMeshFile;
+    private String outputMeshFile;
+    private String mode;
+    private String shape;
+    private String seed;
+    private String river;
+    private String maxLakes;
+    private String elevation;
+    private String biome;
 
-    String elevation;
-    ModeType mapMode;
+    private String soil;
+    private ModeType mapMode;
+    private AltitudeType altitude;
+    private ShapeType shapeToUse;
+    private BiomeTypes generalBiome;
 
-    AltitudeType altitude;
-    ShapeType shapeToUse;
+    private SoilTypes generalSoil;
+    private int maxNumLakes;
+    private int maxNumRivers;
     private Options options;
 
     public static RandomGenerator randomGenerator;
@@ -54,11 +65,15 @@ public class IslandCommandLineReader implements CommandLineReader {
         options.addOption(new Option("sh", "shape", true, "Island Shape"));
         options.addOption(new Option("a", "altitude", true, "Island Elevation"));
         options.addOption(new Option("se", "seed", true, "Map seed"));
+        options.addOption(new Option("b", "biomes", true, "Biome type"));
+        options.addOption(new Option("se", "seed", true, "Map seed (Long)"));
+        options.addOption(new Option("r", "rivers", true, "Maximum number of rivers to generate (Integer)"));
         options.addOption(new Option("l", "lakes", true, "Maximum number of lakes"));
+        options.addOption(new Option("s", "soil", true, "Enter the soil profile"));
 
     }
 
-    public void checkOptions(String[] args) throws ParseException, IOException{
+    public void checkOptions(String[] args) throws ParseException, IOException {
         //check all the options from the command line to figure what information to extra or display
         CommandLineParser parser = new DefaultParser();
         CommandLine cmd = parser.parse(options, args);
@@ -70,10 +85,13 @@ public class IslandCommandLineReader implements CommandLineReader {
         shape = cmd.getOptionValue("shape");
         elevation = cmd.getOptionValue("altitude");
         seed = cmd.getOptionValue("seed");
+        biome = cmd.getOptionValue("biomes");
+        river = cmd.getOptionValue("rivers");
         maxLakes = cmd.getOptionValue("lakes");
+        soil=cmd.getOptionValue("soil");
 
         //Help option
-        if(cmd.hasOption("help")) {
+        if (cmd.hasOption("help")) {
             System.out.println("Create Island Mesh: java -jar island.jar -inputMesh -outputMesh -mode");
             HelpFormatter formatter = new HelpFormatter();
             formatter.printHelp("help", options);
@@ -81,34 +99,61 @@ public class IslandCommandLineReader implements CommandLineReader {
         }
 
         //Set the mode to run
-        for(ModeType m: ModeType.values()){
+        for (ModeType m : ModeType.values()) {
             String modeString = m.toString();
-            if (modeString.equals(mode))
-            {
+            if (modeString.equals(mode)) {
                 mapMode = m;
                 break;
             }
         }
 
         //Get the shape type
-        for(ShapeType s: ShapeType.values()){
+        for (ShapeType s : ShapeType.values()) {
             String shapeString = s.toString();
-            if (shapeString.equals(shape))
-            {
+            if (shapeString.equals(shape)) {
                 shapeToUse = s;
                 break;
             }
         }
 
         //Get the altitude type
-        for(AltitudeType a: AltitudeType.values()){
+        for (AltitudeType a : AltitudeType.values()) {
             String altitudeString = a.toString();
-            if (altitudeString.equals(elevation))
-            {
+            if (altitudeString.equals(elevation)) {
                 altitude = a;
                 break;
             }
         }
+
+        for (BiomeTypes b : BiomeTypes.values()) {
+            String biomeString = b.toString();
+            if (biomeString.equals(biome)) {
+                generalBiome = b;
+                break;
+            }
+        }
+
+        for (SoilTypes s : SoilTypes.values()) {
+            String soilString = s.toString();
+            if (soilString.equals(soil)) {
+                generalSoil = s;
+                break;
+            }
+        }
+        //Set the maximum number of lakes
+        if (cmd.hasOption("lakes")) {
+            maxNumLakes = Integer.parseInt(maxLakes);
+        } else {
+            maxNumLakes = 0;
+        }
+
+        //Set the maximum number of rivers
+        if (cmd.hasOption("rivers")) {
+            maxNumRivers = Integer.parseInt(river);
+        } else {
+            maxNumRivers = 0;
+        }
+        
     }
     
     public String getOutputMeshFile(){
@@ -127,6 +172,13 @@ public class IslandCommandLineReader implements CommandLineReader {
         }
         return false;
     }
+
+    protected boolean isHeatmapMode(){
+        if (mapMode.equals(ModeType.HEATMAP)) {
+            return true;
+        }
+        return false;
+    }
     public Mesh generateFromInputs() throws IOException{
         RunMode runMode = new RunMode();
         return runMode.getMesh();
@@ -141,9 +193,12 @@ public class IslandCommandLineReader implements CommandLineReader {
                 mesh = sandbox.getMesh();
             }
             else if (isRegularMode()){
-                Regular regular = new Regular(inputMeshFile, outputMeshFile, shapeToUse, altitude, maxLakes);
+                Regular regular = new Regular(inputMeshFile, outputMeshFile, shapeToUse, altitude, generalBiome, maxNumLakes, maxNumRivers, generalSoil);
                 regular.generate();
                 mesh = regular.getMesh();
+            }else if (isHeatmapMode()){
+                Heatmaps heatmap=new Heatmaps(inputMeshFile, outputMeshFile, shapeToUse, altitude, generalBiome,maxNumLakes, maxNumRivers,generalSoil);
+                mesh=heatmap.getMesh();
             }
             else{
                 throw new IOException("Invalid mode was entered");

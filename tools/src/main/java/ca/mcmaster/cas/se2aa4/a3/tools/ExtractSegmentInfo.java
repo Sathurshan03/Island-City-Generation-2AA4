@@ -29,10 +29,6 @@ public class ExtractSegmentInfo {
         return vertex2ID;
     }
 
-    public double getThickness(){
-        return thickness;
-    }
-
     public Vertex getVertex1(){
         return v1;
     }

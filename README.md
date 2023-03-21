@@ -149,7 +149,7 @@ Pending (P), Started (S), Blocked (B), Done (D)
 | F28   | –help mode in the command line gives a description of how to use to command line  | Mithun |  |  | B(F27),B(F32),B(F38),B(F45),B(F46),B(F50),B(F52),B(F59),B(F83)|
 | F29   | Sandbox map mode can be activated  | Sathurshan     | 03/05/2023 | 03/05/2023 | D |
 | F30   | Regular map mode can be activated  | Sathurshan     | 03/06/2023 | 03/06/2023 | D |
-| F31   | Heat map mode can be activated     | Mithun     |  |  | B(F27)  |
+| F31   | Heat map mode can be activated     | Nirmal     | 03/15/2023 | 03/15/2023 | D  |
 | F32   | User can enter the shape of the island with -- shape via command line  | Sathurshan     | 03/05/2023 | 03/05/2023 | D   |
 | F33   | Islands have oval shape option   | Sathurshan | 03/13/2023 | 03/13/2023 | D  |
 | F34   | Islands have irregular shape option  | Sathurshan | 03/14/2023  | 03/14/2023 | D |
@@ -164,22 +164,28 @@ Pending (P), Started (S), Blocked (B), Done (D)
 | F43   | Enter Debug Elevation mode from command line using -XE  | Nirmal     | 03/08/2023 | 03/08/2023 | D   |
 | F44   | Each vertex has an associated temperature  | Nirmal     |  |  | B(F38)        |
 | F45   | Every polygon has an average temperature    | Nirmal     |  |  | B(F43)   |
-| F46   | User can enter the maximum number of lakes on the island using —lakes via the command line.   | Mithun     | 03/21/2023 | 03/21/2023 | D  |
 | F47   | User can enter the maximum number of rivers on the island using –rivers via the command line. | Sathurshan |  |  | P   |
 | F48   | Generate rivers on the island    | Sathurshan |  |  | B(F46)   |
 | F49   | Generate endorheic lakes   | Sathurshan |  |  | B(F47)   |
 | F50   | Merge rivers that intersect with each other | Sathurshan |  |  | B(F47)         |
+| F44   | Each vertex has an associated temperature  | Nirmal     | 03/15/2023 | 03/15/2023 | D        |
+| F45   | Every polygon has an average temperature    | Nirmal     | 03/15/2023 | 03/15/2023 | D   |
+| F46   | User can enter the maximum number of lakes on the island using —lakes via the command line.   | Mithun     | 03/21/2023 | 03/21/2023 | D  |
+| F47   | User can enter the maximum number of rivers on the island using –rivers via the command line. | Sathurshan | 03/15/2023 | 03/15/2023 | D   |
+| F48   | Generate rivers on the island    | Sathurshan | 03/15/2023 | 03/15/2023 | D  |
+| F49   | Generate endorheic lakes   | Sathurshan | 03/15/2023 | 03/15/2023 | D   |
+| F50   | Merge rivers that intersect with each other | Sathurshan | 03/15/2023 | 03/15/2023 | D |
 | F51   | User can enter the number of aquifers on the island using —aquifers via the command line.     | Mithun     |  |  | P  |
 | F52   | Generate aquifers on the island | Mithun     |  |  | B(F50)   |
-| F53   | User can enter soil absorption profile —soil via the command line.   | Nirmal     |  |  | P   |
-| F54   | Wet soil profile applied to map  | Nirmal     |  |  | B(F52)     |
-| F55   | Humid soil profile applied to map  | Nirmal     |  |  | B(F52)    |
-| F56   | Dry soil profile applied to map     | Nirmal     |  |  | B(F52)         |
-| F57   | Each land segment has a particular soil absorption.     | Nirmal     |  |  | B(F52)      |
-| F58   | Each land segment has particular humidity.   | Nirmal     |  |  | B(F56)     |
-| F59   | Humidity affects color brightness or darkness   | Nirmal     |  |  | B(F57),B(F64)   |
+| F53   | User can enter soil absorption profile —soil via the command line.   | Nirmal     | 03/18/2023 | 03/18/2023 | D   |
+| F54   | Wet soil profile applied to map  | Nirmal     | 03/18/2023 | 03/18/2023 | D     |
+| F55   | Humid soil profile applied to map  | Nirmal     | 03/20/2023 | 03/20/2023 | D    |
+| F56   | Dry soil profile applied to map     | Nirmal     | 03/20/2023 | 03/20/2023 | D         |
+| F57   | Each land segment has a particular soil absorption.     | Nirmal     | 03/18/2023 | 03/18/2023 | D      |
+| F58   | Each land segment has particular humidity.   | Nirmal     | 03/20/2023 | 03/20/2023 | D     |
+| F59   | Humidity affects color brightness or darkness   | Nirmal     | 03/20/2023 | 03/20/2023 | D   |
 | F60   | User can enter the biome type of the island using -–biomes via the command line.   | Mithun     |  |  | P |
-| F61   | Arctic type map generatable  | Mithun     |  |  | B(F59)  |
+| F61   | Arctic type map generatable  | Sathurshan     | 03/21/2023 | 03/21/2023 | D  |
 | F62   | Tropical Rain Forest type map generatable    | Mithun     |  |  | B(F59)   |
 | F63   | Temperate deciduous forest type map generatable  | Mithun     |  |  | B(F59)  |
 | F64   | Desert type map generable   | Mithun     |  |  | B(F59)     |
@@ -189,10 +195,10 @@ Pending (P), Started (S), Blocked (B), Done (D)
 | F68   | Display beach tiles   | Sathurshan | 03/06/2023 | 03/06/2023 | D  |
 | F69   | Display lake tiles  | Mithun     |  |  | B(F45)   |
 | F70   | Display lagoon tiles  | Sathurshan     | 03/06/2023 | 03/06/2023 | D    |
-| F71   | Display ice tiles   | Sathurshan |  |  | B(F65)   |
-| F72   | Display snow tiles    | Sathurshan |  |  | B(F65)    |
-| F73   | Display tundra tiles      | Sathurshan |  |  | B(F65)     |
-| F74   | Display taiga tiles     | Sathurshan |  |  | B(F65)  |
+| F71   | Display ice tiles   | Sathurshan | 03/21/2023 | 03/21/2023 | D   |
+| F72   | Display snow tiles    | Sathurshan | 03/21/2023 | 03/21/2023 | D    |
+| F73   | Display tundra tiles      | Sathurshan | 03/21/2023  | 03/21/2023 | D     |
+| F74   | Display taiga tiles     | Sathurshan | 03/21/2023  | 03/21/2023  | D  |
 | F75   | Display forest tiles     | Nirmal     |  |  | B(F65)    |
 | F76   | Display jungle tiles    | Nirmal     |  |  | B(F65)   |
 | F77   | Display swamp tiles    | Nirmal     |  |  | B(F65)   |
