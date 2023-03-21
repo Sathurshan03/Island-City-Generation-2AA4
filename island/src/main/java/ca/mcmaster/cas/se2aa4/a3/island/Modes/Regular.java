@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import ca.mcmaster.cas.se2aa4.a3.island.IslandCommandLineReader;
+import ca.mcmaster.cas.se2aa4.a3.island.Lake;
 import ca.mcmaster.cas.se2aa4.a3.island.Altitude.*;
 import ca.mcmaster.cas.se2aa4.a3.island.Terrains.Land;
 import ca.mcmaster.cas.se2aa4.a3.island.Terrains.Ocean;
@@ -42,14 +44,16 @@ public class Regular extends Mode {
             allWater.add(ocean_tile);
         }
 
-        // int numLakes = IslandCommandLineReader.randomGenerator.getNextInteger(0,maxNumLakes);
-        // List<Tile> potentialLakeTiles = determineLakeTiles(undecidedTiles);
-        // int maxLakeSize = (int) Math.floor(Math.sqrt((double) potentialLakeTiles.size()/(double) numLakes));
-        // System.out.println(potentialLakeTiles.size());
-        // System.out.println(numLakes);
-        // System.out.println((double) potentialLakeTiles.size()/(double) numLakes);
-        // System.out.println(Math.sqrt((double) potentialLakeTiles.size()/(double) numLakes));
-        // System.out.println(maxLakeSize);
+        //Generate the Lake Tiles
+        int numLakes = IslandCommandLineReader.randomGenerator.getNextInteger(0,Integer.parseInt(maxLakes)+1);
+        List<Tile> potentialLakeTiles = determineLakeTiles(undecidedTiles);
+        int maxLakeSize = (int) Math.floor(Math.sqrt((double) potentialLakeTiles.size()/(double) numLakes));
+        for(int i = 0; i < numLakes; i++){
+            Lake lake = new Lake(potentialLakeTiles, maxLakeSize);
+            for(Tile tile: lake.getLakeTiles()){
+                tile.setTileType(TileTypes.LAKE);
+            }
+        }
 
         altitude_gen.setAll(altitude, undecidedTiles, oceanTiles);
 
@@ -78,6 +82,7 @@ public class Regular extends Mode {
             allLand.add(landtile);
         }
 
+
         //Set humidity to all land tiles
         humidity.SetHumidity(allLand,allWater);
 
@@ -96,18 +101,18 @@ public class Regular extends Mode {
 
     }
     private List<Tile> determineLakeTiles(List<Tile> undecidedTiles){
-        List<Tile> potentialLakeTiles = new ArrayList<>(undecidedTiles); // Create deep copy of undecided tiles, so we can remove beach tiles.
-                                                                         // Lakes can only be formed on tiles which are not beach or ocean tiles.
+        List<Tile> potentialLakeTiles = undecidedTiles;
         List<Tile> beachTiles = new ArrayList<>();
 
         for(Tile tile: undecidedTiles){
             for(Tile neighbouringTile: tile.getNeighbouringTile()){
                 if (neighbouringTile.isTileWater()){
-                    beachTiles.add(neighbouringTile);
+                    beachTiles.add(tile);
                     break;
                 }
             }
         }
+
         potentialLakeTiles.removeAll(beachTiles);
         return potentialLakeTiles;
     }

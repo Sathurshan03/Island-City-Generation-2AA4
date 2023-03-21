@@ -1,7 +1,6 @@
 package ca.mcmaster.cas.se2aa4.a3.island;
 
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.Tile;
-import ca.mcmaster.cas.se2aa4.a3.tools.RandomGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,47 +19,28 @@ public class Lake {
     private void createLake(List<Tile> potentialLakeTiles, int maxLakeSize){
 
         lakeSize = IslandCommandLineReader.randomGenerator.getNextInteger(1,maxLakeSize+1); // lake must be made up of at least 2 tiles
-        System.out.println("Lake Size: " + lakeSize);
 
-        outerLoop: while(true){
-            Tile firstTile = potentialLakeTiles.get(IslandCommandLineReader.randomGenerator.getNextInteger(0, potentialLakeTiles.size()));
-            List<Tile> neighbourTiles = firstTile.getNeighbouringTile();
-            for(Tile tile: neighbourTiles){
-                if(tile.isTileWater()){
-                    continue outerLoop;
-                }
-            }
+        Tile currentTile = potentialLakeTiles.remove(IslandCommandLineReader.randomGenerator.getNextInteger(0,potentialLakeTiles.size()));
+        lakeTiles.add(currentTile);
+        int tilesAdded = 1;
+        List<Tile> neighbouringTiles;
 
-            if(!firstTile.isTileWater()){
-                lakeTiles.add(firstTile);
-                int tilesAdded = 1;
-                addRemainingTiles(firstTile, tilesAdded);
-                break;
-            }
-        }
-    }
-
-    private void addRemainingTiles (Tile startTile, int tilesAdded) {
-        Tile currentTile = startTile;
-
-        outerLoop:
         while (tilesAdded < lakeSize) {
-            List<Tile> neighbouringTiles = currentTile.getNeighbouringTile();
-            Tile nextTile = neighbouringTiles.get(IslandCommandLineReader.randomGenerator.getNextInteger(0, neighbouringTiles.size()));
-            List<Tile> neighbourTiles = nextTile.getNeighbouringTile();
-            for (Tile tile : neighbourTiles) {
-                if (tile.isTileWater()) {
-                    continue outerLoop;
-                }
+            neighbouringTiles = currentTile.getNeighbouringTile();
 
-                if (!nextTile.isTileWater() && !lakeTiles.contains(nextTile)) {
-                    lakeTiles.add(nextTile);
-                    currentTile = nextTile;
+            for (Tile tile : neighbouringTiles) {
+                if (tilesAdded < lakeSize && potentialLakeTiles.contains(tile)) {
                     tilesAdded++;
+                    lakeTiles.add(tile);
+                    potentialLakeTiles.remove(tile);
                 }
             }
+
+            currentTile = neighbouringTiles.get(IslandCommandLineReader.randomGenerator.getNextInteger(0,currentTile.numNeighbouringTiles()));
         }
+
     }
+
 
     public List<Tile> getLakeTiles() {
         return lakeTiles;
