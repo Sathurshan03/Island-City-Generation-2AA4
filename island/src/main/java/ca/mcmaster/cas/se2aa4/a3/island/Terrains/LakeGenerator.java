@@ -52,6 +52,10 @@ public class LakeGenerator implements Generator{
         potentialLakeTiles.removeAll(beachTiles);
     }
 
+    public List<Lake> getLakes(){
+        return this.lakes;
+    }
+
     public List<Tile> getRemainingTiles(){
         return undecidedTiles;
     }

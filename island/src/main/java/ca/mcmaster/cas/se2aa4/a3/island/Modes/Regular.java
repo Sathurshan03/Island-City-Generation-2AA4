@@ -50,7 +50,7 @@ public class Regular extends Mode {
         undecidedTiles = lakeGenerator.getRemainingTiles();
 
         //Set the altitude
-        altitude_gen.setAll(altitude, undecidedTiles, oceanTiles);
+        altitude_gen.setAll(altitude, undecidedTiles, oceanTiles, lakeGenerator.getLakes());
 
         //Generate the rivers
         RiverGenerator riverGenerator = new RiverGenerator(tiles, maxNumRivers);
