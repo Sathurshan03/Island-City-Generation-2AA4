@@ -25,6 +25,7 @@ public class IslandCommandLineReader implements CommandLineReader {
     private String seed;
     private String river;
     private String maxLakes;
+    private String aquifer;
     private String elevation;
     private String biome;
 
@@ -37,6 +38,7 @@ public class IslandCommandLineReader implements CommandLineReader {
     private SoilTypes generalSoil;
     private int maxNumLakes;
     private int maxNumRivers;
+    private int numAquifers;
     private Options options;
 
     public static RandomGenerator randomGenerator;
@@ -70,6 +72,7 @@ public class IslandCommandLineReader implements CommandLineReader {
         options.addOption(new Option("r", "rivers", true, "Maximum number of rivers to generate (Integer)"));
         options.addOption(new Option("l", "lakes", true, "Maximum number of lakes"));
         options.addOption(new Option("s", "soil", true, "Enter the soil profile"));
+        options.addOption(new Option("aq", "aquifers", true, "Number of aquifers"));
 
     }
 
@@ -89,6 +92,7 @@ public class IslandCommandLineReader implements CommandLineReader {
         river = cmd.getOptionValue("rivers");
         maxLakes = cmd.getOptionValue("lakes");
         soil=cmd.getOptionValue("soil");
+        aquifer = cmd.getOptionValue("aquifers");
 
         //Help option
         if (cmd.hasOption("help")) {
@@ -153,6 +157,13 @@ public class IslandCommandLineReader implements CommandLineReader {
         } else {
             maxNumRivers = 0;
         }
+
+        //Set the number of aquifers
+        if (cmd.hasOption("aquifers")) {
+            numAquifers = Integer.parseInt(aquifer);
+        } else {
+            numAquifers = 0;
+        }
         
     }
     
@@ -193,11 +204,11 @@ public class IslandCommandLineReader implements CommandLineReader {
                 mesh = sandbox.getMesh();
             }
             else if (isRegularMode()){
-                Regular regular = new Regular(inputMeshFile, outputMeshFile, shapeToUse, altitude, generalBiome, maxNumLakes, maxNumRivers, generalSoil);
+                Regular regular = new Regular(inputMeshFile, outputMeshFile, shapeToUse, altitude, generalBiome, maxNumLakes, maxNumRivers, generalSoil, numAquifers);
                 regular.generate();
                 mesh = regular.getMesh();
             }else if (isHeatmapMode()){
-                Heatmaps heatmap=new Heatmaps(inputMeshFile, outputMeshFile, shapeToUse, altitude, generalBiome,maxNumLakes, maxNumRivers,generalSoil);
+                Heatmaps heatmap=new Heatmaps(inputMeshFile, outputMeshFile, shapeToUse, altitude, generalBiome,maxNumLakes, maxNumRivers,generalSoil, numAquifers);
                 mesh=heatmap.getMesh();
             }
             else{
