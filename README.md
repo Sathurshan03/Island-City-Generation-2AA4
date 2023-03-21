@@ -162,15 +162,9 @@ Pending (P), Started (S), Blocked (B), Done (D)
 | F41   | Island altitude has “flat” option  | Nirmal     |  |  | B(F38)  |
 | F42   | Island altitude has “random” option  | Nirmal     |  |  | B(F38)   |
 | F43   | Enter Debug Elevation mode from command line using -XE  | Nirmal     | 03/08/2023 | 03/08/2023 | D   |
-| F44   | Each vertex has an associated temperature  | Nirmal     |  |  | B(F38)        |
-| F45   | Every polygon has an average temperature    | Nirmal     |  |  | B(F43)   |
-| F47   | User can enter the maximum number of rivers on the island using –rivers via the command line. | Sathurshan |  |  | P   |
-| F48   | Generate rivers on the island    | Sathurshan |  |  | B(F46)   |
-| F49   | Generate endorheic lakes   | Sathurshan |  |  | B(F47)   |
-| F50   | Merge rivers that intersect with each other | Sathurshan |  |  | B(F47)         |
 | F44   | Each vertex has an associated temperature  | Nirmal     | 03/15/2023 | 03/15/2023 | D        |
 | F45   | Every polygon has an average temperature    | Nirmal     | 03/15/2023 | 03/15/2023 | D   |
-| F46   | User can enter the maximum number of lakes on the island using —lakes via the command line.   | Mithun     | 03/21/2023 | 03/21/2023 | D  |
+| F46   | User can enter the maximum number of lakes on the island using —lakes via the command line.   | Mithun     | 03/21/2023  | 03/21/2023  | D  |
 | F47   | User can enter the maximum number of rivers on the island using –rivers via the command line. | Sathurshan | 03/15/2023 | 03/15/2023 | D   |
 | F48   | Generate rivers on the island    | Sathurshan | 03/15/2023 | 03/15/2023 | D  |
 | F49   | Generate endorheic lakes   | Sathurshan | 03/15/2023 | 03/15/2023 | D   |
@@ -212,5 +206,3 @@ Pending (P), Started (S), Blocked (B), Done (D)
 | F85   | Generate same seed map     | Sathurshan | 03/12/2023 | 03/12/2023 | D   |
 | F86   | Goods for each tile depending on tile conditions  | Mithun     |  |  | B(F57),B(F43)  |
 | F87   | Islands have random shape option  | Sathurshan     | 03/13/2023 | 03/14/2023 | D  |
-
-
