@@ -12,8 +12,8 @@ public enum TileTypes {
     ENDORHEICLAKE(new Color(0,76,153,254), TileElement.WATER),
     ICE(new Color(204,230,255,254), TileElement.LAND),
     SNOW(new Color(255,250,251,254), TileElement.LAND),
-    TAIGA(new Color(153,110,0,254), TileElement.LAND),
-    TUNDRA(new Color(160,83,45,254), TileElement.LAND);
+    TAIGA(new Color(0,110,0,254), TileElement.LAND),
+    TUNDRA(new Color(153,90,0,254), TileElement.LAND);
 
     
     public final Color tileColor;
