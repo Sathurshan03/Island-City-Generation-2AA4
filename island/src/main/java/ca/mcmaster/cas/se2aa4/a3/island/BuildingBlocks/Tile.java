@@ -81,11 +81,11 @@ public class Tile extends ExtractPolygonInfo{
         }
         return false;
     }
-    public void setAverageTemperature(Double temperature){
+    public void setAverageTemperature(double temperature){
         this.averageTemperature=temperature;
     }
 
-    public Double getAverageTemperature() {
+    public double getAverageTemperature() {
         return this.averageTemperature;
     }
 

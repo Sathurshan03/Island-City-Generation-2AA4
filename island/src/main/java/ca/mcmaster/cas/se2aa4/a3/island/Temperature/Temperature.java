@@ -29,7 +29,5 @@ public class Temperature {
             average/=t.getTileVertices().size();
             t.setAverageTemperature(average);
         }
-
     }
-
 }

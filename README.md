@@ -179,7 +179,7 @@ Pending (P), Started (S), Blocked (B), Done (D)
 | F58   | Each land segment has particular humidity.   | Nirmal     | 03/20/2023 | 03/20/2023 | D     |
 | F59   | Humidity affects color brightness or darkness   | Nirmal     | 03/20/2023 | 03/20/2023 | D   |
 | F60   | User can enter the biome type of the island using -–biomes via the command line.   | Mithun     |  |  | P |
-| F61   | Arctic type map generatable  | Mithun     |  |  | B(F59)  |
+| F61   | Arctic type map generatable  | Sathurshan     | 03/21/2023 | 03/21/2023 | D  |
 | F62   | Tropical Rain Forest type map generatable    | Mithun     |  |  | B(F59)   |
 | F63   | Temperate deciduous forest type map generatable  | Mithun     |  |  | B(F59)  |
 | F64   | Desert type map generable   | Mithun     |  |  | B(F59)     |
