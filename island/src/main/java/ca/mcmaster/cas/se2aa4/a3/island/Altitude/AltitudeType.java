@@ -5,7 +5,7 @@ import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.Tile;
 import java.util.List;
 
 public enum AltitudeType {
-    VOLCANIC, OCEAN, CLIFF;
+    VOLCANIC, OCEAN, CLIFF,HILLS;
 
 
     public String toString(){
@@ -16,6 +16,8 @@ public enum AltitudeType {
                 return "water";
             case CLIFF:
                 return "cliff";
+            case HILLS:
+                return "hills";
         }
         return null;
     }
@@ -27,6 +29,8 @@ public enum AltitudeType {
                 return new Water().getFunction(tiles);
             case CLIFF:
                 return new Cliff().getFunction();
+            case HILLS:
+                return new Hills().getFunction();
         }
         return null;
     }

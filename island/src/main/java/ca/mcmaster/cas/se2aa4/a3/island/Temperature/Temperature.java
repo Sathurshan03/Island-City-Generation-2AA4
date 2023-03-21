@@ -11,8 +11,14 @@ public class Temperature {
     List<Tile> all_tiles;
     Double base_temperature;
 
+    Double lowest_temperature;
+
+    Double highest_temperature;
+
     public Temperature(){
         all_tiles=new ArrayList<>();
+        this.lowest_temperature=Double.MAX_VALUE;
+        this.highest_temperature=-1*Double.MAX_VALUE;
     }
 
     public void setTemperature(List<Tile> tiles, double baseTemperature, Double min_elevation){
@@ -27,9 +33,30 @@ public class Temperature {
                 average+=v.getTemperature();
             }
             average/=t.getTileVertices().size();
+
+            if (average<0){
+                average=0.0;
+            }
+
+            if (average<lowest_temperature){
+                lowest_temperature =average;
+            }
+            if (average>highest_temperature){
+                highest_temperature=average;
+            }
+
             t.setAverageTemperature(average);
         }
 
     }
+
+    public Double getLowestTemp(){
+        return this.lowest_temperature;
+    }
+    public Double getHighestTemp(){
+        return this.highest_temperature;
+    }
+
+
 
 }
