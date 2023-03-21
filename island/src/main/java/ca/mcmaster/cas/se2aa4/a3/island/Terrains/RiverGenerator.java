@@ -9,7 +9,7 @@ import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.TileSegment;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.TileVertex;
 import ca.mcmaster.cas.se2aa4.a3.island.TilesTypes.TileTypes;
 
-public class RiverGenerator {
+public class RiverGenerator implements Generator{
     int maxNumRivers;
     List<Tile> tiles;
     List<River> rivers;
@@ -22,7 +22,7 @@ public class RiverGenerator {
         this.endorheicLake = new ArrayList<>();
     }
 
-    public void createRivers(){
+    public void generate(){
         Boolean riverStartFound;
         TileVertex riverStart = null;
         Tile currentTile = null;

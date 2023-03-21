@@ -18,7 +18,7 @@ public class Tile extends ExtractPolygonInfo{
     List<TileSegment> neighbouringTileSegmentList;
     List<TileVertex> tileVerticesList;
     List<Tile> neighbouringTileList;
-    Color color;
+    Color color = TileTypes.UNDETERMINEDLAND.getColor();
     Double averageTemperature;
 
     public Tile(Polygon polygon, List<Segment> meshSegments, List<Vertex> meshVertices, int numPolygons){
@@ -45,16 +45,6 @@ public class Tile extends ExtractPolygonInfo{
     public void addTileVertex(TileVertex tileVertex){
         tileVerticesList.add(tileVertex);
     }
-
-
-    private void setColor(){
-        //set the color of segments and vertices 
-        for (TileSegment ts: tileSegmentList){
-            ts.setColor(color);
-        }
-    }
-
-
 
     public void setTileType(TileTypes tileType){
         this.tileType = tileType;
@@ -114,6 +104,9 @@ public class Tile extends ExtractPolygonInfo{
     
     public List<Tile> getNeighbouringTile(){
         return neighbouringTileList;
+    }
+    public int numNeighbouringTiles(){
+        return neighbouringTileList.size();
     }
 
     public List<TileSegment> getTileSegments(){

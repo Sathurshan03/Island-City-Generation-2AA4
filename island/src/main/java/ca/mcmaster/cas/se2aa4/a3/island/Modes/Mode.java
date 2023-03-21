@@ -210,9 +210,6 @@ public abstract class Mode {
         return soil;
     }
 
-
-
-
     public Mesh getMesh(){
         //Convert from custom shapes to Struct shapes
         this.polygons = new ArrayList<>();
