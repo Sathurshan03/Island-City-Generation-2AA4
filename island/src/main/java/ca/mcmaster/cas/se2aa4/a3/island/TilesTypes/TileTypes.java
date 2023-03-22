@@ -8,7 +8,7 @@ public enum TileTypes {
     UNDETERMINEDLAND(new Color(153,76,0,254), TileElement.UNDETERMINED,LandComposition.NOTSOIL),
     AQUIFERS(new Color(255,0,0,254), TileElement.WATER,LandComposition.NOTSOIL),
     BEACH(new Color(255,250,201,254),TileElement.LAND,LandComposition.SOIL),
-    Ocean(new Color(0,76,153,254), TileElement.WATER,LandComposition.NOTSOIL),
+    Ocean(new Color(0,65,114,254), TileElement.WATER,LandComposition.NOTSOIL),
     LAGOON(new Color(25,132,226, 254), TileElement.WATER,LandComposition.NOTSOIL),
     LAKE(new Color(15,94,196, 254), TileElement.WATER, LandComposition.NOTSOIL),
     GRASSLAND(new Color(0,153,0,254), TileElement.LAND,LandComposition.SOIL),
