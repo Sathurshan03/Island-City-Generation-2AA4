@@ -1,5 +1,6 @@
 package ca.mcmaster.cas.se2aa4.a3.island.Terrains;
 
+import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.TileVertex;
 import ca.mcmaster.cas.se2aa4.a3.island.IslandCommandLineReader;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.Tile;
 import ca.mcmaster.cas.se2aa4.a3.island.TilesTypes.TileTypes;
@@ -7,13 +8,15 @@ import ca.mcmaster.cas.se2aa4.a3.island.TilesTypes.TileTypes;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Lake {
+public class Lake extends BodiesWater {
 
     private List<Tile> lakeTiles;
     private int lakeSize;
     private List<Tile> undecidedTiles;
 
+
     public Lake(List<Tile> potentialLakeTiles, int maximumSize){
+        this.humidity_level=12.0;
         this.lakeSize = 0;
         this.lakeTiles = new ArrayList<>();
         this.undecidedTiles = potentialLakeTiles;
@@ -57,5 +60,19 @@ public class Lake {
 
     public List<Tile> getLakeTiles() {
         return lakeTiles;
+    }
+
+    public Double getHumidityLevel() {
+        return this.humidity_level;
+    }
+
+    public List<TileVertex> getMidPoints() {
+        List<TileVertex> all_centroid=new ArrayList<>();
+
+        for (Tile t:lakeTiles){
+            all_centroid.add(t.getCentroid());
+
+        }
+        return all_centroid;
     }
 }

@@ -49,6 +49,8 @@ public class Regular extends Mode {
         lakeGenerator.generate();
         undecidedTiles = lakeGenerator.getRemainingTiles();
 
+        allWater.addAll(lakeGenerator.getLakes());
+
         //Set the altitude
         altitude_gen.setAll(altitude, undecidedTiles, oceanTiles, lakeGenerator.getLakes());
 
