@@ -180,7 +180,7 @@ Pending (P), Started (S), Blocked (B), Done (D)
 | F59   | Humidity affects color brightness or darkness   | Nirmal     | 03/20/2023 | 03/20/2023 | D   |
 | F60   | User can enter the biome type of the island using -–biomes via the command line.   | Mithun     |  |  | P |
 | F61   | Arctic type map generatable  | Sathurshan     | 03/21/2023 | 03/21/2023 | D  |
-| F62   | Tropical Rain Forest type map generatable    | Mithun     |  |  | B(F59)   |
+| F62   | Tropical Rain Forest type map generatable    | Mithun     | 03/22/2023 | 03/22/2023 | D  |
 | F63   | Temperate deciduous forest type map generatable  | Mithun     |  |  | B(F59)  |
 | F64   | Desert type map generable   | Mithun     |  |  | B(F59)     |
 | F65   | All tiles have assigned types for Sandbox     | Sathurshan | 03/06/2023 | 03/06/2023 | D  |
