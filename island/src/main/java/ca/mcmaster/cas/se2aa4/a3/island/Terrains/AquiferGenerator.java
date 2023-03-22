@@ -25,14 +25,9 @@ public class AquiferGenerator {
         for (int i = 0; i < numAquifers; i++){
             currentTile = tiles.get(IslandCommandLineReader.randomGenerator.getNextInteger(0,tiles.size()));
             aquifer = new Aquifer(currentTile);
-            tiles.remove(currentTile);
             aquifers.add(aquifer);
         }
 
-        for(Aquifer aquiferTemp: aquifers){
-            Tile tile = aquiferTemp.getAquiferTile();
-            tile.setTileType(TileTypes.AQUIFERS);
-        }
     }
 
     public List<Aquifer> getAquifers(){return this.aquifers;}
