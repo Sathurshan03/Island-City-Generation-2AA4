@@ -64,6 +64,10 @@ public class Regular extends Mode {
         //Remove endorheic lake tiles from undecided tiles
         undecidedTiles=riverGenerator.getRemainingTiles();
 
+        //Create beaches
+        BeachGenerator beachGenerator = new BeachGenerator(biome.doesContaiBeaches(), undecidedTiles);
+        beachGenerator.generate();
+        undecidedTiles = beachGenerator.getRemainingTiles();
 
         //Generate the general biome of the map
         GeneralBiome generalBiome = biome.getGeneralBiome();
