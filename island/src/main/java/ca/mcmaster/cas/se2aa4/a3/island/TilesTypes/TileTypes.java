@@ -6,7 +6,6 @@ import java.awt.Color;
 
 public enum TileTypes {
     UNDETERMINEDLAND(new Color(153,76,0,254), TileElement.UNDETERMINED,LandComposition.NOTSOIL),
-    AQUIFERS(new Color(255,0,0,254), TileElement.WATER,LandComposition.NOTSOIL),
     BEACH(new Color(255,250,201,254),TileElement.LAND,LandComposition.SOIL),
     Ocean(new Color(0,76,153,254), TileElement.WATER,LandComposition.NOTSOIL),
     LAGOON(new Color(25,132,226, 254), TileElement.WATER,LandComposition.NOTSOIL),
@@ -16,7 +15,11 @@ public enum TileTypes {
     ICE(new Color(192,200,255,254), TileElement.LAND, LandComposition.NOTSOIL),
     SNOW(new Color(255,250,251,254), TileElement.LAND,LandComposition.NOTSOIL),
     TAIGA(new Color(0,110,0,254), TileElement.LAND,LandComposition.SOIL),
-    TUNDRA(new Color(140,151,133,254), TileElement.LAND,LandComposition.SOIL);
+    TUNDRA(new Color(140,151,133,254), TileElement.LAND,LandComposition.SOIL),
+    RAINFOREST(new Color(0,117,94,254), TileElement.LAND,LandComposition.SOIL),
+    SWAMP(new Color(92,82,20,254), TileElement.LAND,LandComposition.NOTSOIL),
+    MUD(new Color(112,84,62,254), TileElement.LAND,LandComposition.SOIL);
+
 
 
 
