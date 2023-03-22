@@ -61,8 +61,6 @@ public class Altitude {
                 if (vertex.getElevation()<min_elevation){
                     min_elevation=vertex.getElevation();
                 }
-                System.out.println(vertex.getElevation());
-
             }
         }
     }

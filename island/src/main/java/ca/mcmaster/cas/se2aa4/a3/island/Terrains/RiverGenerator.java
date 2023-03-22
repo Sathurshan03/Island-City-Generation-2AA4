@@ -10,10 +10,11 @@ import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.TileVertex;
 import ca.mcmaster.cas.se2aa4.a3.island.TilesTypes.TileTypes;
 
 public class RiverGenerator implements Generator{
-    int maxNumRivers;
-    List<Tile> tiles;
-    List<River> rivers;
-    List<Lake> endorheicLake_list;
+    private int maxNumRivers;
+    private List<Tile> tiles;
+    private List<River> rivers;
+    private List<Lake> endorheicLake_list;
+    private Boolean validRiver;
 
 
     public RiverGenerator(List<Tile> tiles, int maxRivers){
@@ -47,8 +48,10 @@ public class RiverGenerator implements Generator{
             }
 
             river = new River(riverStart);
+            validRiver = true;
             extendRiver(riverStart, currentTile, river);
-            if (river.getRiverSize()>0){
+
+            if (validRiver){
                 river.setRiverAttributes();
                 rivers.add(river);
             }
@@ -96,7 +99,12 @@ public class RiverGenerator implements Generator{
             }
             else{
                 //if no water flow is found, then the river ends here
-                createEndorheicLake(river, previousRiverVertex);
+                if (river.getRiverSize() > 0){
+                    createEndorheicLake(river, previousRiverVertex);
+                }
+                else{
+                    validRiver = false;
+                }
                 break;
             }
         }
@@ -110,29 +118,31 @@ public class RiverGenerator implements Generator{
         //Find a suitable tile to be a endorheic lake 
 
         Boolean besideOcean; 
-        if (river.getRiverSize()> 0){
-            for (Tile tile: tiles){
-                if (tile.isTileVerticesListContains(previousRiverVertex) && !tile.isTileSegmentListContains(river.getRiverlastSegment())){
-                    //ensure no neighbouring tiles are type oceans
-                    besideOcean = false;
-                    for (Tile neighbouringTile: tile.getNeighbouringTile()){
-                        if (neighbouringTile.isTileOcean()){
-                            besideOcean = true;
-                            break;
-                        }
-                    }
-
-                    if (!besideOcean){
-                        tile.setTileType(TileTypes.ENDORHEICLAKE);
-
-                        List<Tile> endorheic_list=new ArrayList<>();
-                        endorheic_list.add(tile);
-
-                        Lake endorheicLake=new Lake(endorheic_list);
-                        endorheicLake_list.add(endorheicLake);
-                        tiles.removeAll(endorheic_list);
+        Boolean endorhericLakeCreated = false;
+        validRiver = false;
+        for (Tile tile: tiles){
+            if (tile.isTileVerticesListContains(previousRiverVertex) && !tile.isTileSegmentListContains(river.getRiverlastSegment())){
+                //ensure no neighbouring tiles are type oceans
+                besideOcean = false;
+                for (Tile neighbouringTile: tile.getNeighbouringTile()){
+                    if (neighbouringTile.isTileOcean()){
+                        besideOcean = true;
                         break;
                     }
+                }
+
+                if (!besideOcean){
+                    tile.setTileType(TileTypes.ENDORHEICLAKE);
+
+                    List<Tile> endorheic_list=new ArrayList<>();
+                    endorheic_list.add(tile);
+
+                    Lake endorheicLake=new Lake(endorheic_list);
+                    endorheicLake_list.add(endorheicLake);
+                    endorhericLakeCreated = true;
+                    tiles.removeAll(endorheic_list);
+                    validRiver = true;
+                    break;
                 }
             }
         }
