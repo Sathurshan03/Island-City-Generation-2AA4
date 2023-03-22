@@ -29,12 +29,41 @@ public class LakeGenerator implements Generator{
         Lake lake;
 
         for(int i = 0; i < numLakes; i++){
-            lake = new Lake(potentialLakeTiles, maxLakeSize);
-            lake.setLakeTiles();
+            lake=createLake(potentialLakeTiles, maxLakeSize);
             lakes.add(lake);
+            potentialLakeTiles.removeAll(lake.getLakeTiles());
             undecidedTiles.removeAll(lake.getLakeTiles());
-            potentialLakeTiles = lake.getRemainingTiles();
         }
+    }
+
+
+    private Lake createLake(List<Tile> undecidedTiles, int maxLakeSize){
+
+        int lakeSize = IslandCommandLineReader.randomGenerator.getNextInteger(1,maxLakeSize+1); // lake must be made up of at least 2 tiles
+        List<Tile> lakeTiles=new ArrayList<>();
+
+        Tile currentTile = undecidedTiles.remove(IslandCommandLineReader.randomGenerator.getNextInteger(0,undecidedTiles.size()));
+        currentTile.setTileType(TileTypes.LAKE);
+        lakeTiles.add(currentTile);
+        int tilesAdded = 1;
+        List<Tile> neighbouringTiles;
+
+        while (tilesAdded < lakeSize) {
+            neighbouringTiles = currentTile.getNeighbouringTile();
+
+            for (Tile tile : neighbouringTiles) {
+                if (tilesAdded < lakeSize && undecidedTiles.contains(tile)) {
+                    tilesAdded++;
+                    tile.setTileType(TileTypes.LAKE);
+                    lakeTiles.add(tile);
+                    undecidedTiles.remove(tile);
+                }
+            }
+
+            currentTile = neighbouringTiles.get(IslandCommandLineReader.randomGenerator.getNextInteger(0,currentTile.numNeighbouringTiles()));
+        }
+
+        return new Lake(lakeTiles);
     }
 
     private void determineLakeTiles(){
