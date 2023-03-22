@@ -16,6 +16,8 @@ public class DesertGeneralBiome extends GeneralBiome{
 
         //Shapes altogether cover 0 - 100 on both axis
         desertWhittakerDiagram.addToWhittakerDiagram(new Rectangle(-1, 30,71,71), TileTypes.SAND);
+        desertWhittakerDiagram.addToWhittakerDiagram(new Rectangle(-1, -1,71,32), TileTypes.DIRT);
+        desertWhittakerDiagram.addToWhittakerDiagram(new Rectangle(70, 60,32,41), TileTypes.SAVANNA);
     }
 
     public TileTypes getTileBiome(double humidity, double temperature){
