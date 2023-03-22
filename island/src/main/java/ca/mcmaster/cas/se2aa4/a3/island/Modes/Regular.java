@@ -79,7 +79,6 @@ public class Regular extends Mode {
 
         AquiferGenerator aquiferGenerator = new AquiferGenerator(tiles, numAquifers);
         aquiferGenerator.createAquifers();
-
         allWater.addAll(aquiferGenerator.getAquifers());
 
         //Set humidity to all land tiles
@@ -87,7 +86,7 @@ public class Regular extends Mode {
 
         //Set biomes to all land tiles based on their average temperature and humidity level
         TileTypes landBiome;
-        generalBiome.createWhittakerDiagram(humidity.getHumidityRange(), humidity.getMinHumidity());
+        generalBiome.createWhittakerDiagram(humidity.getHumidityRange(), humidity.getMinHumidity(), temperature_gen.getTemperatureRange(), temperature_gen.getLowestTemp());
         for (Land landTile : allLand){
             landBiome = generalBiome.getTileBiome(landTile.getHumidity(), landTile.getAverageTemperature());
             landTile.setTileType(landBiome);

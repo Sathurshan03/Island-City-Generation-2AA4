@@ -14,7 +14,7 @@ public class Hills implements LandAltitude{
 
     public AltitudeFunction function= (x,y)-> {
         Double noise = perlin.evaluateNoise(x, y);
-        return Math.max(0,1000*noise);
+        return Math.max(0, Math.abs(1000*noise));
     };
     public AltitudeFunction getFunction(){
         perlin = JNoise.newBuilder().perlin(IslandCommandLineReader.randomGenerator.getSeed(), Interpolation.COSINE, FadeFunction.SMOOTHSTEP).build();

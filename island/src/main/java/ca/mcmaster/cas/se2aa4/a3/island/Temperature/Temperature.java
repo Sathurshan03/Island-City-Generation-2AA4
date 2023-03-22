@@ -34,8 +34,8 @@ public class Temperature {
             }
             average/=t.getTileVertices().size();
 
-            if (average<0){
-                average=0.0;
+            if (average<=0){
+                average=0.1;
             }
 
             if (average<lowest_temperature){
@@ -53,6 +53,9 @@ public class Temperature {
     }
     public Double getHighestTemp(){
         return this.highest_temperature;
+    }
+    public double getTemperatureRange(){
+        return this.highest_temperature - this.lowest_temperature;
     }
 
 
