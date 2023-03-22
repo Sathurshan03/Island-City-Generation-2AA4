@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import ca.mcmaster.cas.se2aa4.a3.island.Altitude.*;
+import ca.mcmaster.cas.se2aa4.a3.island.Terrains.AquiferGenerator;
 import ca.mcmaster.cas.se2aa4.a3.island.Terrains.*;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.Tile;
 import ca.mcmaster.cas.se2aa4.a3.island.GeneralBiome.BiomeTypes;
@@ -16,14 +17,16 @@ import ca.mcmaster.cas.se2aa4.a3.island.TilesTypes.TileTypes;
 public class Regular extends Mode {
     private int maxNumLakes;
     private int maxNumRivers;
+    private int numAquifers;
     
 
-    public Regular(String inputMesh, String outputMesh, ShapeType shapeType, AltitudeType altitudeType, BiomeTypes biome, int maxLakes, int maxNumRivers, SoilTypes soil) throws IOException{
+    public Regular(String inputMesh, String outputMesh, ShapeType shapeType, AltitudeType altitudeType, BiomeTypes biome, int maxLakes, int maxNumRivers, SoilTypes soil, int numAquifers) throws IOException{
         super(inputMesh, outputMesh, shapeType, altitudeType, biome, Integer.toString(maxLakes),soil);
         
         extractInformation();
         this.maxNumLakes = maxLakes;
         this.maxNumRivers = maxNumRivers;
+        this.numAquifers = numAquifers;
     }
 
     public void generate(){
@@ -73,6 +76,11 @@ public class Regular extends Mode {
             Land landtile=new Land(tile);
             allLand.add(landtile);
         }
+
+        AquiferGenerator aquiferGenerator = new AquiferGenerator(tiles, numAquifers);
+        aquiferGenerator.createAquifers();
+
+        allWater.addAll(aquiferGenerator.getAquifers());
 
         //Set humidity to all land tiles
         humidity.SetHumidity(allLand,allWater);
