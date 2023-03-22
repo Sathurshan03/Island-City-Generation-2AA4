@@ -108,23 +108,35 @@ public class RiverGenerator implements Generator{
 
     private void createEndorheicLake(River river, TileVertex previousRiverVertex){
         //Find a suitable tile to be a endorheic lake 
+
+        Boolean besideOcean; 
         if (river.getRiverSize()> 0){
             for (Tile tile: tiles){
                 if (tile.isTileVerticesListContains(previousRiverVertex) && !tile.isTileSegmentListContains(river.getRiverlastSegment())){
-                    tile.setTileType(TileTypes.ENDORHEICLAKE);
+                    //ensure no neighbouring tiles are type oceans
+                    besideOcean = false;
+                    for (Tile neighbouringTile: tile.getNeighbouringTile()){
+                        if (neighbouringTile.isTileOcean()){
+                            besideOcean = true;
+                            break;
+                        }
+                    }
 
-                    List<Tile> endorheic_list=new ArrayList<>();
-                    endorheic_list.add(tile);
+                    if (!besideOcean){
+                        tile.setTileType(TileTypes.ENDORHEICLAKE);
 
-                    Lake endorheicLake=new Lake(endorheic_list);
-                    endorheicLake_list.add(endorheicLake);
-                    tiles.removeAll(endorheic_list);
+                        List<Tile> endorheic_list=new ArrayList<>();
+                        endorheic_list.add(tile);
+
+                        Lake endorheicLake=new Lake(endorheic_list);
+                        endorheicLake_list.add(endorheicLake);
+                        tiles.removeAll(endorheic_list);
                         break;
+                    }
                 }
             }
         }
     }
-
 
     public List<Lake> getEndorheicLakes()
     {

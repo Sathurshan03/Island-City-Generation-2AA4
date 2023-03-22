@@ -82,7 +82,7 @@ public class TileSegment extends ExtractSegmentInfo implements TileProperties{
 
     public Segment getSegment(){
         if (isRiver){
-            averageColor = new Color(0,76,153,254);
+            averageColor = new Color(15,94,196, 254);
         }
         else{
             setAverageColor();

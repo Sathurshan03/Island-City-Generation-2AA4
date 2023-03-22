@@ -71,6 +71,13 @@ public class Tile extends ExtractPolygonInfo{
         }
         return false;
     }
+    public Boolean isTileOcean(){
+        if (tileType.equals(TileTypes.Ocean)){
+            return true;
+        }
+        return false;
+    }
+
     public void setAverageTemperature(double temperature){
         this.averageTemperature=temperature;
     }
