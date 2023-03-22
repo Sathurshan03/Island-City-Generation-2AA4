@@ -11,6 +11,8 @@ public class Land {
     SoilTypes soilType;
     Double humidity;
     Double soilCoefficient;
+
+    LandComposition composition;
     double averageTemperature;
 
 

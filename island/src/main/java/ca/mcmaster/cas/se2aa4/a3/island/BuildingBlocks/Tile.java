@@ -1,5 +1,6 @@
 package ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks;
 
+import ca.mcmaster.cas.se2aa4.a3.island.Terrains.LandComposition;
 import ca.mcmaster.cas.se2aa4.a3.island.TilesTypes.TileElement;
 import ca.mcmaster.cas.se2aa4.a3.island.TilesTypes.TileTypes;
 import ca.mcmaster.cas.se2aa4.a3.tools.ExtractPolygonInfo;
@@ -60,6 +61,13 @@ public class Tile extends ExtractPolygonInfo{
 
     public Boolean isTileWater(){
        if (tileType.getElememt().equals(TileElement.WATER)){
+            return true;
+        }
+        return false;
+    }
+
+    public Boolean isTileSoil(){
+        if (tileType.composition== LandComposition.SOIL){
             return true;
         }
         return false;
