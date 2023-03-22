@@ -88,7 +88,7 @@ public class TileVertex extends ExtractVertexInfo implements TileProperties{
 
     public Vertex getVertex(){
         if (isRiver){
-            averageColor = new Color(0,76,153,254);
+            averageColor = new Color(15,94,196, 254);
         }
         else{
             setAverageColor();
