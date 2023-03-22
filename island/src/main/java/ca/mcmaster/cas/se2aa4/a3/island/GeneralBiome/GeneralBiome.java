@@ -13,7 +13,7 @@ public abstract class GeneralBiome {
         return protectedTemperature;
     }
 
-    public abstract void createWhittakerDiagram(double humidityRange, double minTemperature);
+    public abstract void createWhittakerDiagram(double humidityRange, double minHumidity, double temperatureRange, double minTemperature);
 
     public abstract TileTypes getTileBiome(double humidity, double temperature);
 }

@@ -53,8 +53,10 @@ public class Humidity {
         Tile editTile;
         for (Land land: landTiles){
             editTile = land.getTile();
-            Color c_new=newColor(editTile.getColor(), land.getHumidity()/2);
-            editTile.setPolygonColor(c_new);
+            if (editTile.isTileSoil()){
+                Color c_new=newColor(editTile.getColor(), land.getHumidity()/2);
+                editTile.setPolygonColor(c_new);
+            }
         }
     }
 
