@@ -164,13 +164,13 @@ Pending (P), Started (S), Blocked (B), Done (D)
 | F43   | Enter Debug Elevation mode from command line using -XE  | Nirmal     | 03/08/2023 | 03/08/2023 | D   |
 | F44   | Each vertex has an associated temperature  | Nirmal     | 03/15/2023 | 03/15/2023 | D        |
 | F45   | Every polygon has an average temperature    | Nirmal     | 03/15/2023 | 03/15/2023 | D   |
-| F46   | User can enter the maximum number of lakes on the island using —lakes via the command line.   | Mithun     |  |  | B(F48)  |
+| F46   | User can enter the maximum number of lakes on the island using —lakes via the command line.   | Mithun     | 03/21/2023  | 03/21/2023  | D  |
 | F47   | User can enter the maximum number of rivers on the island using –rivers via the command line. | Sathurshan | 03/15/2023 | 03/15/2023 | D   |
 | F48   | Generate rivers on the island    | Sathurshan | 03/15/2023 | 03/15/2023 | D  |
 | F49   | Generate endorheic lakes   | Sathurshan | 03/15/2023 | 03/15/2023 | D   |
 | F50   | Merge rivers that intersect with each other | Sathurshan | 03/15/2023 | 03/15/2023 | D |
-| F51   | User can enter the number of aquifers on the island using —aquifers via the command line.     | Mithun     |  |  | P  |
-| F52   | Generate aquifers on the island | Mithun     |  |  | B(F50)   |
+| F51   | User can enter the number of aquifers on the island using —aquifers via the command line.     | Mithun     | 03/21/2023 | 03/21/2023 | D  |
+| F52   | Generate aquifers on the island | Mithun     | 03/21/2023 | 03/21/2023 | S   |
 | F53   | User can enter soil absorption profile —soil via the command line.   | Nirmal     | 03/18/2023 | 03/18/2023 | D   |
 | F54   | Wet soil profile applied to map  | Nirmal     | 03/18/2023 | 03/18/2023 | D     |
 | F55   | Humid soil profile applied to map  | Nirmal     | 03/20/2023 | 03/20/2023 | D    |
@@ -187,7 +187,7 @@ Pending (P), Started (S), Blocked (B), Done (D)
 | F66   | All land tiles have assigned biomes in relation to island biomes type  | Sathurshan |  |  | B(F60-F63),  B(F43), B(F57)   |
 | F67   | Display ocean tiles   | Sathurshan | 03/06/2023 | 03/06/2023 | D  |
 | F68   | Display beach tiles   | Sathurshan | 03/06/2023 | 03/06/2023 | D  |
-| F69   | Display lake tiles  | Mithun     |  |  | B(F45)   |
+| F69   | Display lake tiles  | Mithun     | 03/21/2023 | 03/21/2023 | D   |
 | F70   | Display lagoon tiles  | Sathurshan     | 03/06/2023 | 03/06/2023 | D    |
 | F71   | Display ice tiles   | Sathurshan | 03/21/2023 | 03/21/2023 | D   |
 | F72   | Display snow tiles    | Sathurshan | 03/21/2023 | 03/21/2023 | D    |
@@ -206,5 +206,3 @@ Pending (P), Started (S), Blocked (B), Done (D)
 | F85   | Generate same seed map     | Sathurshan | 03/12/2023 | 03/12/2023 | D   |
 | F86   | Goods for each tile depending on tile conditions  | Mithun     |  |  | B(F57),B(F43)  |
 | F87   | Islands have random shape option  | Sathurshan     | 03/13/2023 | 03/14/2023 | D  |
-
-

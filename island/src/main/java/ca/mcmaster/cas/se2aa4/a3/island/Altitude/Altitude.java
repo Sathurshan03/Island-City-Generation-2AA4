@@ -2,6 +2,7 @@ package ca.mcmaster.cas.se2aa4.a3.island.Altitude;
 
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.Tile;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.TileVertex;
+import ca.mcmaster.cas.se2aa4.a3.island.Terrains.Lake;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,10 +24,19 @@ public class Altitude {
         return this.min_elevation;
     }
 
-    public void setAll(AltitudeType altitude, List<Tile> landtiles, List<Tile> oceanTiles){
+    public void setAll(AltitudeType altitude, List<Tile> landtiles, List<Tile> oceanTiles, List<Lake> lakes){
         SetElevation(altitude, landtiles);
-        SetElevation(AltitudeType.OCEAN, oceanTiles);
+        SetElevation(AltitudeType.WATER, oceanTiles);
         LevelLand(landtiles);
+
+        setLakes(lakes);
+    }
+
+
+    public void setLakes(List<Lake> lake_objects){
+        for (Lake lake:lake_objects){
+            SetElevation(AltitudeType.WATER, lake.getLakeTiles());
+        }
     }
 
     public void LevelLand( List<Tile> tiles){
@@ -42,7 +52,7 @@ public class Altitude {
     }
 
     public void SetElevation(AltitudeType altitude, List<Tile> tiles){
-
+        this.min_elevation=Double.MAX_VALUE;
         this.tiles=tiles;
         this.function=altitude.getAltitude(tiles);
         for(Tile tile: tiles){
