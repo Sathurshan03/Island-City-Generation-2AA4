@@ -16,7 +16,8 @@ public enum TileTypes {
     ICE(new Color(192,200,255,254), TileElement.LAND, LandComposition.NOTSOIL),
     SNOW(new Color(255,250,251,254), TileElement.LAND,LandComposition.NOTSOIL),
     TAIGA(new Color(0,110,0,254), TileElement.LAND,LandComposition.SOIL),
-    TUNDRA(new Color(140,151,133,254), TileElement.LAND,LandComposition.SOIL);
+    TUNDRA(new Color(140,151,133,254), TileElement.LAND,LandComposition.SOIL),
+    SAND(new Color(255,250,201,254), TileElement.LAND,LandComposition.NOTSOIL);
 
 
 

@@ -1,5 +1,7 @@
 package ca.mcmaster.cas.se2aa4.a3.island.GeneralBiome;
 
+import com.google.protobuf.DescriptorProtos;
+
 public enum BiomeTypes {
 
     ARCTIC("arctic", false), 
@@ -32,7 +34,7 @@ public enum BiomeTypes {
             case TEMPERATE_FORREST:
                 return null;
             case DESSERT:
-                return null;
+                return new DesertGeneralBiome(311.0);
 
         }
         return null;
