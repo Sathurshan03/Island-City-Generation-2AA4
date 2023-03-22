@@ -13,13 +13,14 @@ public class RiverGenerator implements Generator{
     int maxNumRivers;
     List<Tile> tiles;
     List<River> rivers;
-    List<Tile> endorheicLake;
-    
+    List<Lake> endorheicLake_list;
+
+
     public RiverGenerator(List<Tile> tiles, int maxRivers){
-        this.tiles = tiles;
+        this.tiles = new ArrayList<>(tiles);
         this.maxNumRivers = maxRivers;
         this.rivers = new ArrayList<>();
-        this.endorheicLake = new ArrayList<>();
+        this.endorheicLake_list = new ArrayList<>();
     }
 
     public void generate(){
@@ -111,7 +112,13 @@ public class RiverGenerator implements Generator{
             for (Tile tile: tiles){
                 if (tile.isTileVerticesListContains(previousRiverVertex) && !tile.isTileSegmentListContains(river.getRiverlastSegment())){
                     tile.setTileType(TileTypes.ENDORHEICLAKE);
-                        endorheicLake.add(tile);
+
+                    List<Tile> endorheic_list=new ArrayList<>();
+                    endorheic_list.add(tile);
+
+                    Lake endorheicLake=new Lake(endorheic_list);
+                    endorheicLake_list.add(endorheicLake);
+                    tiles.removeAll(endorheic_list);
                         break;
                 }
             }
@@ -119,9 +126,15 @@ public class RiverGenerator implements Generator{
     }
 
 
-    public List<Tile> getEndorheicLakes()
+    public List<Lake> getEndorheicLakes()
     {
-        return endorheicLake;
+        return endorheicLake_list;
     }
+
+    public List<Tile> getRemainingTiles(){
+        return tiles;
+    }
+
+
     
 }

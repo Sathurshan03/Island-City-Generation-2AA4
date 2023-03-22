@@ -1,10 +1,8 @@
 package ca.mcmaster.cas.se2aa4.a3.island.Modes;
 import java.io.IOException;
 
-import ca.mcmaster.cas.se2aa4.a3.island.Altitude.Altitude;
 import ca.mcmaster.cas.se2aa4.a3.island.Altitude.AltitudeType;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.Tile;
-import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.TileVertex;
 import ca.mcmaster.cas.se2aa4.a3.island.GeneralBiome.BiomeTypes;
 import ca.mcmaster.cas.se2aa4.a3.island.Shape.Circle;
 import ca.mcmaster.cas.se2aa4.a3.island.Shape.ShapeType;
@@ -52,8 +50,8 @@ public class Sandbox extends Mode{
         }
 
         altitude_gen.SetElevation(altitude, undecidedTiles);
-        altitude_gen.SetElevation(AltitudeType.OCEAN, oceanTiles);
-        altitude_gen.SetElevation(AltitudeType.OCEAN, lagoonTiles);
+        altitude_gen.SetElevation(AltitudeType.WATER, oceanTiles);
+        altitude_gen.SetElevation(AltitudeType.WATER, lagoonTiles);
 
 
         //Set beach tiles 

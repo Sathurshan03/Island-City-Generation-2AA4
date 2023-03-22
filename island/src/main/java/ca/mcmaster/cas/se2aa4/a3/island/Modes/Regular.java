@@ -4,10 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import ca.mcmaster.cas.se2aa4.a3.island.Altitude.*;
-import ca.mcmaster.cas.se2aa4.a3.island.Terrains.LakeGenerator;
-import ca.mcmaster.cas.se2aa4.a3.island.Terrains.Land;
-import ca.mcmaster.cas.se2aa4.a3.island.Terrains.Ocean;
-import ca.mcmaster.cas.se2aa4.a3.island.Terrains.RiverGenerator;
+import ca.mcmaster.cas.se2aa4.a3.island.Terrains.*;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.Tile;
 import ca.mcmaster.cas.se2aa4.a3.island.GeneralBiome.BiomeTypes;
 import ca.mcmaster.cas.se2aa4.a3.island.GeneralBiome.GeneralBiome;
@@ -55,11 +52,15 @@ public class Regular extends Mode {
         altitude_gen.setAll(altitude, undecidedTiles, oceanTiles, lakeGenerator.getLakes());
 
         //Generate the rivers
-        RiverGenerator riverGenerator = new RiverGenerator(tiles, maxNumRivers);
+        RiverGenerator riverGenerator = new RiverGenerator(undecidedTiles, maxNumRivers);
         riverGenerator.generate();
         allWater.addAll(riverGenerator.getRivers());
+        allWater.addAll(riverGenerator.getEndorheicLakes());
+
+        altitude_gen.setLakes(riverGenerator.getEndorheicLakes());
         //Remove endorheic lake tiles from undecided tiles
-        undecidedTiles.removeAll(riverGenerator.getEndorheicLakes());
+        undecidedTiles=riverGenerator.getRemainingTiles();
+
 
         //Generate the general biome of the map
         GeneralBiome generalBiome = biome.getGeneralBiome();

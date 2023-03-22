@@ -26,11 +26,16 @@ public class Altitude {
 
     public void setAll(AltitudeType altitude, List<Tile> landtiles, List<Tile> oceanTiles, List<Lake> lakes){
         SetElevation(altitude, landtiles);
-        SetElevation(AltitudeType.OCEAN, oceanTiles);
+        SetElevation(AltitudeType.WATER, oceanTiles);
         LevelLand(landtiles);
 
-        for (Lake lake:lakes){
-            SetElevation(AltitudeType.OCEAN, lake.getLakeTiles());
+        setLakes(lakes);
+    }
+
+
+    public void setLakes(List<Lake> lake_objects){
+        for (Lake lake:lake_objects){
+            SetElevation(AltitudeType.WATER, lake.getLakeTiles());
         }
     }
 
