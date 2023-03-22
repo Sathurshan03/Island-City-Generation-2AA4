@@ -23,7 +23,7 @@ public enum BiomeTypes {
             case ARCTIC:
                 return new ArticGeneralBiome(260.0);
             case TROPICAL_FORREST:
-                return new TropicalRainforestGeneralBiome(500.0);
+                return new TropicalRainforestGeneralBiome(293.15);
             case TEMPERATE_FORREST:
                 return null;
             case DESSERT:
