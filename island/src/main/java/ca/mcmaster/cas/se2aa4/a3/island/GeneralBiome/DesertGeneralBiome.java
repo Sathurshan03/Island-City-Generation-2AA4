@@ -18,6 +18,7 @@ public class DesertGeneralBiome extends GeneralBiome{
         desertWhittakerDiagram.addToWhittakerDiagram(new Rectangle(-1, 30,71,71), TileTypes.SAND);
         desertWhittakerDiagram.addToWhittakerDiagram(new Rectangle(-1, -1,71,32), TileTypes.DIRT);
         desertWhittakerDiagram.addToWhittakerDiagram(new Rectangle(70, 60,32,41), TileTypes.SAVANNA);
+        desertWhittakerDiagram.addToWhittakerDiagram(new Rectangle(70, -1,32,62), TileTypes.CLAY);
     }
 
     public TileTypes getTileBiome(double humidity, double temperature){

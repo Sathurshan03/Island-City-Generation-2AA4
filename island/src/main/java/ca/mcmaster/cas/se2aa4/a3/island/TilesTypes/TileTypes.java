@@ -17,9 +17,12 @@ public enum TileTypes {
     SNOW(new Color(255,250,251,254), TileElement.LAND,LandComposition.NOTSOIL),
     TAIGA(new Color(0,110,0,254), TileElement.LAND,LandComposition.SOIL),
     TUNDRA(new Color(140,151,133,254), TileElement.LAND,LandComposition.SOIL),
-    SAND(new Color(255,250,201,254), TileElement.LAND,LandComposition.NOTSOIL),
+    SAND(new Color(255,250,201,254), TileElement.LAND,LandComposition.SOIL),
     DIRT(new Color(155,118,83,254), TileElement.LAND,LandComposition.SOIL),
-    SAVANNA(new Color(155,118,83,254), TileElement.LAND,LandComposition.SOIL);
+    SAVANNA(new Color(209,189,146,254), TileElement.LAND,LandComposition.NOTSOIL),
+    CLAY(new Color(182,106,80,254), TileElement.LAND,LandComposition.NOTSOIL);
+
+
 
 
 
