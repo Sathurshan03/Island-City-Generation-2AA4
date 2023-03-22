@@ -10,6 +10,7 @@ public class Aquifer extends BodiesWater{
     private Tile aquiferTile;
     public Aquifer(Tile aquiferTile){
         this.aquiferTile = aquiferTile;
+        this.humidity_level = 5.0;
         // add humidity level
     }
     public Double getHumidityLevel() {
@@ -20,4 +21,7 @@ public class Aquifer extends BodiesWater{
         mid.add(aquiferTile.getCentroid());
         return mid;
     }
+
+    public Tile getAquiferTile(){return this.aquiferTile;}
+
 }

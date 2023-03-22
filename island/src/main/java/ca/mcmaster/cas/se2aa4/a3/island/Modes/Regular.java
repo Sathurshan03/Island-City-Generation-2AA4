@@ -61,10 +61,6 @@ public class Regular extends Mode {
 
         allWater.addAll(riverGenerator.getRivers());
 
-        AquiferGenerator aquiferGenerator = new AquiferGenerator(tiles, numAquifers);
-        aquiferGenerator.createAquifers();
-
-        allWater.addAll(aquiferGenerator.getAquifers());
 
         //Remove endorheic lake tiles from undecided tiles
         for (Tile endorheicLake : riverGenerator.getEndorheicLakes())
@@ -85,6 +81,11 @@ public class Regular extends Mode {
             Land landtile=new Land(tile);
             allLand.add(landtile);
         }
+
+        AquiferGenerator aquiferGenerator = new AquiferGenerator(tiles, numAquifers);
+        aquiferGenerator.createAquifers();
+
+        allWater.addAll(aquiferGenerator.getAquifers());
 
         //Set humidity to all land tiles
         humidity.SetHumidity(allLand,allWater);

@@ -4,6 +4,7 @@ import java.awt.Color;
 
 public enum TileTypes {
     UNDETERMINEDLAND(new Color(153,76,0,254), TileElement.UNDETERMINED),
+    AQUIFERS(new Color(255,0,0,254), TileElement.WATER),
     BEACH(new Color(255,250,201,254),TileElement.LAND),
     Ocean(new Color(0,76,153,254), TileElement.WATER),
     LAGOON(new Color(25,132,226, 254), TileElement.WATER),
@@ -15,7 +16,8 @@ public enum TileTypes {
     TAIGA(new Color(0,110,0,254), TileElement.LAND),
     TUNDRA(new Color(153,90,0,254), TileElement.LAND);
 
-    
+
+
     public final Color tileColor;
     public final TileElement tileElement;
     private TileTypes(Color color, TileElement element){

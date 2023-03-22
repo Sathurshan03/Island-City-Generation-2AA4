@@ -73,6 +73,7 @@ public class IslandCommandLineReader implements CommandLineReader {
         options.addOption(new Option("l", "lakes", true, "Maximum number of lakes"));
         options.addOption(new Option("s", "soil", true, "Enter the soil profile"));
         options.addOption(new Option("aq", "aquifers", true, "Number of aquifers"));
+        options.addOption(new Option("h", "help", false, ""));
 
     }
 
@@ -97,6 +98,9 @@ public class IslandCommandLineReader implements CommandLineReader {
         //Help option
         if (cmd.hasOption("help")) {
             System.out.println("Create Island Mesh: java -jar island.jar -inputMesh -outputMesh -mode");
+            System.out.println("Create Sandbox Island: java -jar island.jar -inputMesh -outputMesh -sandbox [-shape] [-altitude]");
+            System.out.println("Create Regular Island: java -jar island.jar -inputMesh -outputMesh -regular [-shape] [-altitude] [-biomes] [-lakes] [-rivers] [-soil] [-aquifers]");
+            System.out.println("Create Heatmap: java -jar island.jar -inputMesh -outputMesh -heatmap [-shape] [-altitude] [-biomes] [-lakes] [-rivers] [-soil] [-aquifers]");
             HelpFormatter formatter = new HelpFormatter();
             formatter.printHelp("help", options);
             System.exit(0);

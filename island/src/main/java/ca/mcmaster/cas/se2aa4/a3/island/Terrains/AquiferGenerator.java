@@ -2,6 +2,7 @@ package ca.mcmaster.cas.se2aa4.a3.island.Terrains;
 
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.Tile;
 import ca.mcmaster.cas.se2aa4.a3.island.IslandCommandLineReader;
+import ca.mcmaster.cas.se2aa4.a3.island.TilesTypes.TileTypes;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +27,11 @@ public class AquiferGenerator {
             aquifer = new Aquifer(currentTile);
             tiles.remove(currentTile);
             aquifers.add(aquifer);
+        }
+
+        for(Aquifer aquiferTemp: aquifers){
+            Tile tile = aquiferTemp.getAquiferTile();
+            tile.setTileType(TileTypes.AQUIFERS);
         }
     }
 
