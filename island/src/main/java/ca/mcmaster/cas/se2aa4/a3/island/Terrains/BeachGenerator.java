@@ -1,5 +1,6 @@
 package ca.mcmaster.cas.se2aa4.a3.island.Terrains;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.Tile;
@@ -15,16 +16,24 @@ public class BeachGenerator implements Generator{
 
     public void generate(){
         //Any Tile that are neighbours to a water tile is a beach tile 
+        List<Tile> beachTiles = new ArrayList<>();
+
         if (createBeaches){  
             for(Tile tile: underterminedTiles){
                 for(Tile neighbouringTile: tile.getNeighbouringTile()){
                     if (neighbouringTile.isTileWater()){
                         tile.setTileType(TileTypes.BEACH);
+                        beachTiles.add(tile);
                         break;
                     }
                 }
             }
+            underterminedTiles.removeAll(beachTiles);
         }
+    }
+
+    public List<Tile> getRemainingTiles(){
+        return underterminedTiles;
     }
     
 }
