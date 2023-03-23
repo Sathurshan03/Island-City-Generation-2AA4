@@ -2,7 +2,7 @@ package ca.mcmaster.cas.se2aa4.a3.island.Altitude;
 
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.Tile;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.TileVertex;
-import ca.mcmaster.cas.se2aa4.a3.island.Terrains.Lake;
+import ca.mcmaster.cas.se2aa4.a3.island.Terrains.WaterTerrains.Lake;
 
 import java.util.ArrayList;
 import java.util.List;

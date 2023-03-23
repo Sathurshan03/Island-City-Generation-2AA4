@@ -11,7 +11,6 @@ import ca.mcmaster.cas.se2aa4.a2.io.Structs.Segment;
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Vertex;
 import ca.mcmaster.cas.se2aa4.a3.island.Altitude.Altitude;
 import ca.mcmaster.cas.se2aa4.a3.island.Altitude.AltitudeType;
-import ca.mcmaster.cas.se2aa4.a3.island.Terrains.BodiesWater;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.Tile;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.TileSegment;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.TileVertex;
@@ -20,7 +19,8 @@ import ca.mcmaster.cas.se2aa4.a3.island.Shape.ShapeType;
 import ca.mcmaster.cas.se2aa4.a3.island.SoilProfile.Humidity;
 import ca.mcmaster.cas.se2aa4.a3.island.SoilProfile.SoilTypes;
 import ca.mcmaster.cas.se2aa4.a3.island.Temperature.Temperature;
-import ca.mcmaster.cas.se2aa4.a3.island.Terrains.Land;
+import ca.mcmaster.cas.se2aa4.a3.island.Terrains.LandTerrains.Land;
+import ca.mcmaster.cas.se2aa4.a3.island.Terrains.WaterTerrains.BodiesWater;
 
 public abstract class Mode {
     String inputMesh;

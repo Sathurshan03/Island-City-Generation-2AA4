@@ -3,7 +3,6 @@ package ca.mcmaster.cas.se2aa4.a3.island;
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Mesh;
 import ca.mcmaster.cas.se2aa4.a3.island.Altitude.AltitudeType;
 import ca.mcmaster.cas.se2aa4.a3.island.GeneralBiome.BiomeTypes;
-import ca.mcmaster.cas.se2aa4.a3.island.GeneralBiome.GeneralBiome;
 import ca.mcmaster.cas.se2aa4.a3.island.Modes.Heatmaps;
 import ca.mcmaster.cas.se2aa4.a3.island.SoilProfile.SoilTypes;
 import ca.mcmaster.cas.se2aa4.a3.tools.CommandLineReader;
@@ -30,10 +29,10 @@ public class IslandCommandLineReader implements CommandLineReader {
     private String biome;
 
     private String soil;
-    private ModeType mapMode;
-    private AltitudeType altitude;
-    private ShapeType shapeToUse;
-    private BiomeTypes generalBiome;
+    private ModeType mapMode = null;
+    private AltitudeType altitude = null;
+    private ShapeType shapeToUse = null;
+    private BiomeTypes generalBiome = null;
 
     private SoilTypes generalSoil;
     private int maxNumLakes;
@@ -99,8 +98,8 @@ public class IslandCommandLineReader implements CommandLineReader {
         if (cmd.hasOption("help")) {
             System.out.println("Create Island Mesh: java -jar island.jar -inputMesh -outputMesh -mode");
             System.out.println("Create Sandbox Island: java -jar island.jar -inputMesh -outputMesh -sandbox [-shape] [-altitude]");
-            System.out.println("Create Regular Island: java -jar island.jar -inputMesh -outputMesh -regular [-shape] [-altitude] [-biomes] [-lakes] [-rivers] [-soil] [-aquifers]");
-            System.out.println("Create Heatmap: java -jar island.jar -inputMesh -outputMesh -heatmap [-shape] [-altitude] [-biomes] [-lakes] [-rivers] [-soil] [-aquifers]");
+            System.out.println("Create Regular Island: java -jar island.jar -inputMesh -outputMesh -regular [-shape] [-altitude] [-biomes] [-lakes] [-rivers] [-soil] [-aquifers] [-seed]");
+            System.out.println("Create Heatmap: java -jar island.jar -inputMesh -outputMesh -heatmap [-shape] [-altitude] [-biomes] [-lakes] [-rivers] [-soil] [-aquifers] [-seed]");
             HelpFormatter formatter = new HelpFormatter();
             formatter.printHelp("help", options);
             System.exit(0);

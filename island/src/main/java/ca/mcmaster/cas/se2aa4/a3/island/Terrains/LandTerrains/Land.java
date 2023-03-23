@@ -1,4 +1,4 @@
-package ca.mcmaster.cas.se2aa4.a3.island.Terrains;
+package ca.mcmaster.cas.se2aa4.a3.island.Terrains.LandTerrains;
 
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.Tile;
 import ca.mcmaster.cas.se2aa4.a3.island.Modes.Mode;
