@@ -159,8 +159,8 @@ Pending (P), Started (S), Blocked (B), Done (D)
 | F38   | User can enter general elevation trend using  --altitude through the command prompt | Nirmal     | 03/06/2023 | 03/06/2023 | D |
 | F39   | Island altitude has “volcanic” option   | Nirmal     | 03/06/2023 | 03/06/2023 | D   |
 | F40   | Island altitude has “hill” option  | Nirmal     | 03/22/2023 | 03/22/2023 | D  |
-| F41   | Island altitude has “flat” option  | Nirmal     |  |  | B(F38)  |
-| F42   | Island altitude has “random” option  | Nirmal     |  |  | B(F38)   |
+| F41   | Island altitude has “flat” option  | Nirmal     | 03/22/2023 | 03/22/2023 | D  |
+| F42   | Island altitude has “random” option  | Nirmal     | 03/22/2023 | 03/22/2023 | D   |
 | F43   | Enter Debug Elevation mode from command line using -XE  | Nirmal     | 03/08/2023 | 03/08/2023 | D   |
 | F44   | Each vertex has an associated temperature  | Nirmal     | 03/15/2023 | 03/15/2023 | D        |
 | F45   | Every polygon has an average temperature    | Nirmal     | 03/15/2023 | 03/15/2023 | D   |
