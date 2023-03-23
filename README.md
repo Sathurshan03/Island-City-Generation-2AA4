@@ -58,6 +58,21 @@ The output.mesh will be stored in the directory `island` by default.
 
 Example: `java -jar island.jar -i ../generator/sample.mesh -o sandbox.mesh --mode sandbox`
 
+#### Whittaker Diagrams
+The following graphs are the Whittaker diagrams used in this project. Note: These Whittaker diagrams are not accurate to real the world and are just created by our team for this project. 
+
+![My Image](images/arcticWhittaker.png)
+
+![My Image](images/tropicalWhittaker.png)
+
+![My Image](images/temperateWhittaker.png)
+
+![My Image](images/desertWhittaker.png)
+
+#### Other Map Color
+
+![My Image](images/otherMapColor.png)
+
 ### Visualizer
 
 To visualize an existing mesh, go the the `visualizer` directory, and use `java -jar` to run the product. The product takes in the file containing the mesh, and the name of the file to store the visualization (as an SVG image).
