@@ -159,8 +159,8 @@ Pending (P), Started (S), Blocked (B), Done (D)
 | F38   | User can enter general elevation trend using  --altitude through the command prompt | Nirmal     | 03/06/2023 | 03/06/2023 | D |
 | F39   | Island altitude has “volcanic” option   | Nirmal     | 03/06/2023 | 03/06/2023 | D   |
 | F40   | Island altitude has “hill” option  | Nirmal     | 03/22/2023 | 03/22/2023 | D  |
-| F41   | Island altitude has “flat” option  | Nirmal     |  |  | B(F38)  |
-| F42   | Island altitude has “random” option  | Nirmal     |  |  | B(F38)   |
+| F41   | Island altitude has “flat” option  | Nirmal     | 03/22/2023 | 03/22/2023 | D  |
+| F42   | Island altitude has “random” option  | Nirmal     | 03/22/2023 | 03/22/2023 | D   |
 | F43   | Enter Debug Elevation mode from command line using -XE  | Nirmal     | 03/08/2023 | 03/08/2023 | D   |
 | F44   | Each vertex has an associated temperature  | Nirmal     | 03/15/2023 | 03/15/2023 | D        |
 | F45   | Every polygon has an average temperature    | Nirmal     | 03/15/2023 | 03/15/2023 | D   |
@@ -180,7 +180,7 @@ Pending (P), Started (S), Blocked (B), Done (D)
 | F59   | Humidity affects color brightness or darkness   | Nirmal     | 03/20/2023 | 03/20/2023 | D   |
 | F60   | User can enter the biome type of the island using -–biomes via the command line.   | Mithun     |  |  | P |
 | F61   | Arctic type map generatable  | Sathurshan     | 03/21/2023 | 03/21/2023 | D  |
-| F62   | Tropical Rain Forest type map generatable    | Mithun     |  |  | B(F59)   |
+| F62   | Tropical Rain Forest type map generatable    | Mithun     | 03/22/2023 | 03/22/2023 | D  |
 | F63   | Temperate deciduous forest type map generatable  | Mithun     |  |  | B(F59)  |
 | F64   | Desert type map generable   | Mithun     |  |  | B(F59)     |
 | F65   | All tiles have assigned types for Sandbox     | Sathurshan | 03/06/2023 | 03/06/2023 | D  |

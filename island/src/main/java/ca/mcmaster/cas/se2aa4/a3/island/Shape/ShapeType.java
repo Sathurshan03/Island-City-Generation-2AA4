@@ -4,22 +4,20 @@ import java.util.List;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.Tile;
 
 public enum ShapeType {
-    CIRCLE, RECTANGLE, OVAL, RANDOM, IRREGULAR;
+    CIRCLE("circle"),
+    RECTANGLE("rectangle"), 
+    OVAL("oval"), 
+    RANDOM("random"), 
+    IRREGULAR("irregular");
+
+    private String name;
+
+    private ShapeType(String name){
+        this.name = name;
+    }
 
     public String toString(){
-        switch(this){
-        case CIRCLE :
-            return "circle";
-        case RECTANGLE :
-            return "rectangle";
-        case OVAL :
-            return "oval";
-        case RANDOM :
-            return "random";
-        case IRREGULAR :
-            return "irregular";
-        }
-        return null;
+        return name;
     }
 
     public Shape getShape(double width, double height,  List<Tile> tiles){

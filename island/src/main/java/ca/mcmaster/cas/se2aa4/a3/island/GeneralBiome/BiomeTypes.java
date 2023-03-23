@@ -2,20 +2,25 @@ package ca.mcmaster.cas.se2aa4.a3.island.GeneralBiome;
 
 public enum BiomeTypes {
 
-    ARCTIC, TROPICAL_FORREST, TEMPERATE_FORREST,DESSERT;
+    ARCTIC("arctic", false), 
+    TROPICAL_FORREST("tropical", true), 
+    TEMPERATE_FORREST("temperate", false),
+    DESERT("desert", false);
 
+    private String name;
+    private Boolean containsBeaches;
+
+    private BiomeTypes(String name, Boolean containsBeaches){
+        this.name = name;
+        this.containsBeaches = containsBeaches;
+
+    }
     public String toString(){
-        switch(this){
-            case ARCTIC :
-                return "arctic";
-            case TROPICAL_FORREST:
-                return "tropicalforrest";
-            case TEMPERATE_FORREST:
-                return "temperateforrest";
-            case DESSERT:
-                return "dessert";
-        }
-        return null;
+        return name;
+    }
+
+    public Boolean doesContaiBeaches(){
+        return containsBeaches;
     }
 
     public GeneralBiome getGeneralBiome(){
@@ -25,10 +30,9 @@ public enum BiomeTypes {
             case TROPICAL_FORREST:
                 return new TropicalRainforestGeneralBiome(293.15);
             case TEMPERATE_FORREST:
-                return null;
-            case DESSERT:
-                return null;
-
+                return new TemperateForestGeneralBiome(283.0);
+            case DESERT:
+                return new DesertGeneralBiome(311.0);
         }
         return null;
     }
