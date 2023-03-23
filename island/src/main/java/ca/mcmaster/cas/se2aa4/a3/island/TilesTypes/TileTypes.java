@@ -20,7 +20,10 @@ public enum TileTypes {
     SAND(new Color(255,250,201,254), TileElement.LAND,LandComposition.SOIL),
     DIRT(new Color(155,118,83,254), TileElement.LAND,LandComposition.SOIL),
     SAVANNA(new Color(209,189,146,254), TileElement.LAND,LandComposition.NOTSOIL),
-    CLAY(new Color(182,106,80,254), TileElement.LAND,LandComposition.NOTSOIL);
+    CLAY(new Color(182,106,80,254), TileElement.LAND,LandComposition.NOTSOIL),
+    ROCK(new Color(227,229,226,254), TileElement.LAND,LandComposition.NOTSOIL),
+    FOREST(new Color(1,68,33,254), TileElement.LAND,LandComposition.SOIL);
+
 
 
 

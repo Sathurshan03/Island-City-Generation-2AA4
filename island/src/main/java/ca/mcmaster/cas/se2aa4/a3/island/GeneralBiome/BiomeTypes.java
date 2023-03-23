@@ -32,7 +32,7 @@ public enum BiomeTypes {
             case TROPICAL_FORREST:
                 return null;
             case TEMPERATE_FORREST:
-                return null;
+                return new TemperateForestGeneralBiome(283.0);
             case DESSERT:
                 return new DesertGeneralBiome(311.0);
 
