@@ -28,7 +28,7 @@ public enum BiomeTypes {
             case ARCTIC:
                 return new ArticGeneralBiome(260.0);
             case TROPICAL_FORREST:
-                return null;
+                return new TropicalRainforestGeneralBiome(293.15);
             case TEMPERATE_FORREST:
                 return new TemperateForestGeneralBiome(283.0);
             case DESERT:

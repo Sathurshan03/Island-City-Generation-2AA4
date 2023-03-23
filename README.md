@@ -184,20 +184,20 @@ Pending (P), Started (S), Blocked (B), Done (D)
 | F63   | Temperate deciduous forest type map generatable  | Mithun     |  |  | B(F59)  |
 | F64   | Desert type map generable   | Mithun     |  |  | B(F59)     |
 | F65   | All tiles have assigned types for Sandbox     | Sathurshan | 03/06/2023 | 03/06/2023 | D  |
-| F66   | All land tiles have assigned biomes in relation to island biomes type  | Sathurshan |  |  | B(F60-F63),  B(F43), B(F57)   |
+| F66   | All land tiles have assigned biomes in relation to island biomes type  | Sathurshan | 03/23/2023 | 03/23/2023 | D   |
 | F67   | Display ocean tiles   | Sathurshan | 03/06/2023 | 03/06/2023 | D  |
 | F68   | Display beach tiles   | Sathurshan | 03/06/2023 | 03/06/2023 | D  |
 | F69   | Display lake tiles  | Mithun     | 03/21/2023 | 03/21/2023 | D   |
 | F70   | Display lagoon tiles  | Sathurshan     | 03/06/2023 | 03/06/2023 | D    |
-| F71   | Display ice tiles   | Sathurshan | 03/21/2023 | 03/21/2023 | D   |
-| F72   | Display snow tiles    | Sathurshan | 03/21/2023 | 03/21/2023 | D    |
-| F73   | Display tundra tiles      | Sathurshan | 03/21/2023  | 03/21/2023 | D     |
-| F74   | Display taiga tiles     | Sathurshan | 03/21/2023  | 03/21/2023  | D  |
-| F75   | Display forest tiles     | Nirmal     |  |  | B(F65)    |
-| F76   | Display jungle tiles    | Nirmal     |  |  | B(F65)   |
-| F77   | Display swamp tiles    | Nirmal     |  |  | B(F65)   |
-| F78   | Display grassland tiles     | Sathurshan   | 03/06/2023  | 03/06/2023 | D   |
-| F79   | Display sandy desert tiles    | Nirmal     |  |  | B(F65)    |
+| F71   | Display ice tiles   | Mithun | 03/21/2023 | 03/21/2023 | D   |
+| F72   | Display snow tiles    | Mithun | 03/21/2023 | 03/21/2023 | D    |
+| F73   | Display tundra tiles      | Mithun | 03/21/2023  | 03/21/2023 | D     |
+| F74   | Display taiga tiles     | Mithun | 03/21/2023  | 03/21/2023  | D  |
+| F75   | Display forest tiles     | Mithun     |  |  | B(F65)    |
+| F76   | Display jungle tiles    | Mithun     |  |  | B(F65)   |
+| F77   | Display swamp tiles    | Mithun     |  |  | B(F65)   |
+| F78   | Display grassland tiles     | Mithun   | 03/06/2023  | 03/06/2023 | D   |
+| F79   | Display sandy desert tiles    | Mithun     |  |  | B(F65)    |
 | F80   | Display savanna tiles      | Mithun     |  |  | B(F65)   |
 | F81   | Display clay tiles    | Mithun     |  |  | B(F65)      |
 | F82   | Output default seed     | Sathurshan | 03/08/2023 | 03/08/2023 | D   |

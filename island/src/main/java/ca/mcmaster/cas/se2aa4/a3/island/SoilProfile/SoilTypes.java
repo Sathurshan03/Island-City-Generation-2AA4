@@ -18,11 +18,11 @@ public enum SoilTypes {
     public Double getSoilCoefficient(){
         switch(this){
             case WET:
-                return 7.0;
+                return 2.4;
             case HUMID:
-                return 5.0;
+                return 2.0;
             case DRY:
-                return 3.0;
+                return 1.0;
         }
         return null;
     }
