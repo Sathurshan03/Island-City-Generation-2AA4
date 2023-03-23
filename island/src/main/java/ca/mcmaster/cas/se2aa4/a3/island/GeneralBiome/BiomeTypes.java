@@ -5,7 +5,7 @@ public enum BiomeTypes {
     ARCTIC("arctic", false), 
     TROPICAL_FORREST("tropical", true), 
     TEMPERATE_FORREST("temperate", false),
-    DESSERT("dessert", false);
+    DESERT("desert", false);
 
     private String name;
     private Boolean containsBeaches;
@@ -30,10 +30,9 @@ public enum BiomeTypes {
             case TROPICAL_FORREST:
                 return null;
             case TEMPERATE_FORREST:
-                return null;
-            case DESSERT:
-                return null;
-
+                return new TemperateForestGeneralBiome(283.0);
+            case DESERT:
+                return new DesertGeneralBiome(311.0);
         }
         return null;
     }
