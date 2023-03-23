@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.List;
 
 import ca.mcmaster.cas.se2aa4.a3.island.Altitude.*;
-import ca.mcmaster.cas.se2aa4.a3.island.Terrains.*;
 import ca.mcmaster.cas.se2aa4.a3.island.Terrains.LandTerrains.BeachGenerator;
 import ca.mcmaster.cas.se2aa4.a3.island.Terrains.LandTerrains.Land;
 import ca.mcmaster.cas.se2aa4.a3.island.Terrains.WaterTerrains.AquiferGenerator;
