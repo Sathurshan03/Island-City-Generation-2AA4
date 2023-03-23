@@ -41,7 +41,7 @@ public class IslandCommandLineReader implements CommandLineReader {
     private int numAquifers;
     private Options options;
 
-    public static RandomGenerator randomGenerator;
+    public static RandomGenerator randomGenerator=new RandomGenerator();
 
     public IslandCommandLineReader(String[] args) throws IOException, ParseException {
         super();
