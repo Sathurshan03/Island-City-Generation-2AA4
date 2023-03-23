@@ -61,18 +61,18 @@ public class IslandCommandLineReader implements CommandLineReader {
     }
     public void createOptions(){
         //Creates all the options for the command line
-        options.addOption(new Option("i", "inputMesh", true, "Input Mesh"));
-        options.addOption(new Option("o", "outputMesh", true, "Output Mesh"));
-        options.addOption(new Option("m", "mode", true, "Map Mode"));
-        options.addOption(new Option("sh", "shape", true, "Island Shape"));
-        options.addOption(new Option("a", "altitude", true, "Island Elevation"));
-        options.addOption(new Option("se", "seed", true, "Map seed"));
-        options.addOption(new Option("b", "biomes", true, "Biome type"));
+        options.addOption(new Option("i", "inputMesh", true, "Input Mesh (string)"));
+        options.addOption(new Option("o", "outputMesh", true, "Output Mesh (string)"));
+        options.addOption(new Option("m", "mode", true, "Map Mode (sandbox, regular, heatmap)"));
+        options.addOption(new Option("sh", "shape", true, "Island Shape (circle, rectangle, oval, random, irregular)"));
+        options.addOption(new Option("a", "altitude", true, "Island Elevation (volcanic, water, cliff, hills, flat)"));
+        options.addOption(new Option("se", "seed", true, "Map seed (int)"));
+        options.addOption(new Option("b", "biomes", true, "Biome type (arctic, temperate, tropical, dessert)"));
         options.addOption(new Option("se", "seed", true, "Map seed (Long)"));
         options.addOption(new Option("r", "rivers", true, "Maximum number of rivers to generate (Integer)"));
-        options.addOption(new Option("l", "lakes", true, "Maximum number of lakes"));
-        options.addOption(new Option("s", "soil", true, "Enter the soil profile"));
-        options.addOption(new Option("aq", "aquifers", true, "Number of aquifers"));
+        options.addOption(new Option("l", "lakes", true, "Maximum number of lakes (Integer)"));
+        options.addOption(new Option("s", "soil", true, "Enter the soil profile (wet, humid, dry)"));
+        options.addOption(new Option("aq", "aquifers", true, "Number of aquifers (Integer)"));
         options.addOption(new Option("h", "help", false, ""));
 
     }
