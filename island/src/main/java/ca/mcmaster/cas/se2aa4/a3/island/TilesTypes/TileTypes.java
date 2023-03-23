@@ -17,7 +17,7 @@ public enum TileTypes {
     TAIGA(new Color(1,60,25,254), TileElement.LAND,LandComposition.SOIL),
     TUNDRA(new Color(140,151,133,254), TileElement.LAND,LandComposition.SOIL),
     RAINFOREST(new Color(0,117,94,254), TileElement.LAND,LandComposition.SOIL),
-    SWAMP(new Color(92,82,20,254), TileElement.LAND,LandComposition.NOTSOIL),
+    SWAMP(new Color(55,170,160,254), TileElement.LAND,LandComposition.NOTSOIL),
     MUD(new Color(112,84,62,254), TileElement.LAND,LandComposition.SOIL),
     SAND(new Color(255,250,201,254), TileElement.LAND,LandComposition.SOIL),
     DIRT(new Color(155,118,83,254), TileElement.LAND,LandComposition.SOIL),
