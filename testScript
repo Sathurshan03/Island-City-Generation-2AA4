@@ -1,6 +1,6 @@
 mvn install
 cd island
-java -jar island.jar -i ../generator/sample.mesh -o sandbox.mesh --mode regular --shape irregular --altitude hills --biomes arctic --lakes 15 --rivers 25 -soil wet --aquifers 5
+java -jar island.jar -i ../generator/sample.mesh -o sandbox.mesh --mode regular --shape irregular --altitude volcanic --biomes temperate --lakes 10 --rivers 25 -soil dry --aquifers 5 --seed  -4397473909452659940
 cd ..
 cd visualizer
 java -jar visualizer.jar ../island/sandbox.mesh sample.svg
