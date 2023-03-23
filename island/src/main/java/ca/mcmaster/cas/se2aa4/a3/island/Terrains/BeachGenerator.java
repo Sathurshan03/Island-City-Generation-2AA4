@@ -21,7 +21,7 @@ public class BeachGenerator implements Generator{
         if (createBeaches){  
             for(Tile tile: underterminedTiles){
                 for(Tile neighbouringTile: tile.getNeighbouringTile()){
-                    if (neighbouringTile.isTileWater()){
+                    if (neighbouringTile.isTileOcean()){
                         tile.setTileType(TileTypes.BEACH);
                         beachTiles.add(tile);
                         break;

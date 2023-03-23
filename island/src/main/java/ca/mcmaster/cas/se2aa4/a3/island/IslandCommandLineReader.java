@@ -30,10 +30,10 @@ public class IslandCommandLineReader implements CommandLineReader {
     private String biome;
 
     private String soil;
-    private ModeType mapMode;
-    private AltitudeType altitude;
-    private ShapeType shapeToUse;
-    private BiomeTypes generalBiome;
+    private ModeType mapMode = null;
+    private AltitudeType altitude = null;
+    private ShapeType shapeToUse = null;
+    private BiomeTypes generalBiome = null;
 
     private SoilTypes generalSoil;
     private int maxNumLakes;
