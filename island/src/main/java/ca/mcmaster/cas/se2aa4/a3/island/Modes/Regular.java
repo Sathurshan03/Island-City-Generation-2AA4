@@ -4,8 +4,13 @@ import java.io.IOException;
 import java.util.List;
 
 import ca.mcmaster.cas.se2aa4.a3.island.Altitude.*;
-import ca.mcmaster.cas.se2aa4.a3.island.Terrains.AquiferGenerator;
 import ca.mcmaster.cas.se2aa4.a3.island.Terrains.*;
+import ca.mcmaster.cas.se2aa4.a3.island.Terrains.LandTerrains.BeachGenerator;
+import ca.mcmaster.cas.se2aa4.a3.island.Terrains.LandTerrains.Land;
+import ca.mcmaster.cas.se2aa4.a3.island.Terrains.WaterTerrains.AquiferGenerator;
+import ca.mcmaster.cas.se2aa4.a3.island.Terrains.WaterTerrains.LakeGenerator;
+import ca.mcmaster.cas.se2aa4.a3.island.Terrains.WaterTerrains.Ocean;
+import ca.mcmaster.cas.se2aa4.a3.island.Terrains.WaterTerrains.RiverGenerator;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.Tile;
 import ca.mcmaster.cas.se2aa4.a3.island.GeneralBiome.BiomeTypes;
 import ca.mcmaster.cas.se2aa4.a3.island.GeneralBiome.GeneralBiome;

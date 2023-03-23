@@ -1,7 +1,7 @@
 package ca.mcmaster.cas.se2aa4.a3.island.TilesTypes;
-import ca.mcmaster.cas.se2aa4.a3.island.Terrains.LandComposition;
-
 import java.awt.Color;
+
+import ca.mcmaster.cas.se2aa4.a3.island.Terrains.LandTerrains.LandComposition;
 
 
 public enum TileTypes {

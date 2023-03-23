@@ -1,9 +1,10 @@
-package ca.mcmaster.cas.se2aa4.a3.island.Terrains;
+package ca.mcmaster.cas.se2aa4.a3.island.Terrains.LandTerrains;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.Tile;
+import ca.mcmaster.cas.se2aa4.a3.island.Terrains.Generator;
 import ca.mcmaster.cas.se2aa4.a3.island.TilesTypes.TileTypes;
 
 public class BeachGenerator implements Generator{
