@@ -4,7 +4,7 @@ java -jar generator.jar sample.Mesh -i -np 1500 -relation 25 -wth 500 -hth 500
 ls -lh sample.mesh
 cd ..
 cd island
-java -jar island.jar -i ../generator/sample.mesh -o sandbox.mesh --mode regular --shape circle --altitude hills --biomes tropical --lakes 3 --rivers 15 -soil wet --aquifers 5 -se -6141758803403002661
+java -jar island.jar -i ../generator/sample.mesh -o sandbox.mesh --mode regular --shape irregular --altitude cliff --biomes temperate --lakes 3 --rivers 15 -soil wet --aquifers 5
 cd ..
 cd visualizer
 java -jar visualizer.jar ../island/sandbox.mesh sample.svg

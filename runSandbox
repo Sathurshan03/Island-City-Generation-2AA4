@@ -1,10 +1,6 @@
 mvn install
-cd generator
-java -jar generator.jar sample.Mesh -i -np 500 -relation 25
-ls -lh sample.mesh
-cd ..
 cd island
-java -jar island.jar -i ../generator/sample.mesh -o sandbox.mesh --mode sandbox --shape oval --altitude volcanic
+java -jar island.jar -i ../generator/sample.mesh -o sandbox.mesh --mode sandbox
 cd ..
 cd visualizer
 java -jar visualizer.jar ../island/sandbox.mesh sample.svg -XE

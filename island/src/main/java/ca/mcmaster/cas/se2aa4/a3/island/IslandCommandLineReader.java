@@ -16,6 +16,7 @@ import org.apache.commons.cli.*;
 
 import java.io.IOException;
 
+
 public class IslandCommandLineReader implements CommandLineReader {
     private String inputMeshFile;
     private String outputMeshFile;
@@ -60,19 +61,18 @@ public class IslandCommandLineReader implements CommandLineReader {
     }
     public void createOptions(){
         //Creates all the options for the command line
-        options.addOption(new Option("i", "inputMesh", true, "Input Mesh"));
-        options.addOption(new Option("o", "outputMesh", true, "Output Mesh"));
-        options.addOption(new Option("m", "mode", true, "Map Mode"));
-        options.addOption(new Option("sh", "shape", true, "Island Shape"));
-        options.addOption(new Option("a", "altitude", true, "Island Elevation"));
-        options.addOption(new Option("se", "seed", true, "Map seed"));
-        options.addOption(new Option("b", "biomes", true, "Biome type"));
+        options.addOption(new Option("i", "inputMesh", true, "Input Mesh (String)"));
+        options.addOption(new Option("o", "outputMesh", true, "Output Mesh (String)"));
+        options.addOption(new Option("m", "mode", true, "Map Mode {sandbox, regular, heatmap}"));
+        options.addOption(new Option("sh", "shape", true, "Island Shape {circle, rectangle, oval, random, irregular}"));
+        options.addOption(new Option("a", "altitude", true, "Island Elevation {volcanic, water, cliff, hills, flat}"));
         options.addOption(new Option("se", "seed", true, "Map seed (Long)"));
-        options.addOption(new Option("r", "rivers", true, "Maximum number of rivers to generate (Integer)"));
-        options.addOption(new Option("l", "lakes", true, "Maximum number of lakes"));
-        options.addOption(new Option("s", "soil", true, "Enter the soil profile"));
-        options.addOption(new Option("aq", "aquifers", true, "Number of aquifers"));
-        options.addOption(new Option("h", "help", false, ""));
+        options.addOption(new Option("b", "biomes", true, "Biome type {arctic, temperate, tropical, dessert}"));
+        options.addOption(new Option("r", "rivers", true, "Maximum number of rivers to generate (Positive Integer)"));
+        options.addOption(new Option("l", "lakes", true, "Maximum number of lakes (Positive Integer)"));
+        options.addOption(new Option("s", "soil", true, "Enter the soil profile {wet, humid, dry}"));
+        options.addOption(new Option("aq", "aquifers", true, "Number of aquifers (Positive Integer)"));
+        options.addOption(new Option("h", "help", false, "Help"));
 
     }
 
@@ -96,10 +96,11 @@ public class IslandCommandLineReader implements CommandLineReader {
 
         //Help option
         if (cmd.hasOption("help")) {
-            System.out.println("Create Island Mesh: java -jar island.jar -inputMesh -outputMesh -mode");
-            System.out.println("Create Sandbox Island: java -jar island.jar -inputMesh -outputMesh -sandbox [-shape] [-altitude]");
-            System.out.println("Create Regular Island: java -jar island.jar -inputMesh -outputMesh -regular [-shape] [-altitude] [-biomes] [-lakes] [-rivers] [-soil] [-aquifers] [-seed]");
-            System.out.println("Create Heatmap: java -jar island.jar -inputMesh -outputMesh -heatmap [-shape] [-altitude] [-biomes] [-lakes] [-rivers] [-soil] [-aquifers] [-seed]");
+            System.out.println("Create Sandbox Island: java -jar island.jar -inputMesh -outputMesh --mode sandbox");
+            System.out.println("Create Regular Island: java -jar island.jar -inputMesh -outputMesh --mode regular -shape -altitude -biomes [-lakes] [-rivers] -soil [-aquifers] [-seed]");
+            System.out.println("Create Heatmap: java -jar island.jar -inputMesh -outputMesh --mode heatmap -shape -altitude -biomes [-lakes] [-rivers] -soil [-aquifers] [-seed]");
+            System.out.println("Options in square brackets are optional and the rest of the parameters are required to be defines");
+            System.out.println("");
             HelpFormatter formatter = new HelpFormatter();
             formatter.printHelp("help", options);
             System.exit(0);
@@ -167,7 +168,15 @@ public class IslandCommandLineReader implements CommandLineReader {
         } else {
             numAquifers = 0;
         }
-        
+
+        //Output the user input
+
+        if (mapMode.equals(ModeType.SANDBOX)){
+            System.out.println("Mode: " + mode);
+        }
+        else{
+            System.out.println("Input Mesh Path: " + inputMeshFile + "Output Mesh Path: " + outputMeshFile + "Mode: " + mode + "\nShape: " + shape + "\nAltitude: " + elevation + "\nBiomes: " + biome + "\nLakes: " + maxNumLakes + "\nRivers: " + maxNumRivers + "\nSoil Profile: " + soil + "\nAquifiers: " + numAquifers);
+        }
     }
     
     public String getOutputMeshFile(){
