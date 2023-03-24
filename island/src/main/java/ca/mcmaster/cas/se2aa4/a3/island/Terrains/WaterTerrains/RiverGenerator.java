@@ -119,7 +119,6 @@ public class RiverGenerator implements Generator{
         //Find a suitable tile to be a endorheic lake 
 
         Boolean besideOcean; 
-        Boolean endorhericLakeCreated = false;
         validRiver = false;
         for (Tile tile: tiles){
             if (tile.isTileVerticesListContains(previousRiverVertex) && !tile.isTileSegmentListContains(river.getRiverlastSegment())){
@@ -140,7 +139,6 @@ public class RiverGenerator implements Generator{
 
                     Lake endorheicLake=new Lake(endorheic_list);
                     endorheicLake_list.add(endorheicLake);
-                    endorhericLakeCreated = true;
                     tiles.removeAll(endorheic_list);
                     validRiver = true;
                     break;

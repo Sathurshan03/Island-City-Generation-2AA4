@@ -16,19 +16,18 @@ import java.util.List;
 
 public class SetUpTest {
 
-    static double width;
-    static double height;
+    public static double width;
+    public static double height;
 
-    static List<Tile> tiles;
+    public static List<Tile> tiles;
 
     @BeforeAll
     public static void setUp(){
         try{
-            width= Mode.getWidth();
-            height=Mode.getHeight();
-
             Regular reg=new Regular("../generator/sample.mesh", "sandbox.mesh", ShapeType.CIRCLE, AltitudeType.VOLCANIC, BiomeTypes.ARCTIC, 5, 10, SoilTypes.WET, 3);
             reg.generate();
+            width=  reg.getWidth();
+            height= reg.getHeight();
             try {
                 Field t=Mode.class.getDeclaredField("tiles");
                 t.setAccessible(true);

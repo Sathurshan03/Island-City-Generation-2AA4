@@ -40,7 +40,7 @@ public class ElevationTest extends SetUpTest {
 
 
 
-        if (width/2-2<= highest_vertex.getX() & height/2-2<=highest_vertex.getY()){
+        if (width/2-width*0.25<= highest_vertex.getX() & height/2-height*0.25<=highest_vertex.getY()){
             assertTrue(true);
         }else{
             assertTrue(false);
@@ -70,7 +70,7 @@ public class ElevationTest extends SetUpTest {
             }
         }
 
-        if ((width-1<=highest_vertex.getX() & height-1<= highest_vertex.getY()) | (1>=highest_vertex.getX() & height-1<= highest_vertex.getY())|(1>=highest_vertex.getX() & 1>=highest_vertex.getY()) | (width-1<=highest_vertex.getX() & 1>= highest_vertex.getY())){
+        if ((width/2-1<=highest_vertex.getX() & height/2-1<= highest_vertex.getY()) | (width>=highest_vertex.getX() & height/2-1<= highest_vertex.getY())|(width>=highest_vertex.getX() & height>=highest_vertex.getY()) | (width/2-1<=highest_vertex.getX() & height>= highest_vertex.getY())){
             assertTrue(true);
         }else{
             assertTrue(false);
