@@ -3,11 +3,8 @@
   - Nirmal Chaudhari [chaudn12@mcmaster.ca]
   - Sathurshan Arulmohan [arulmohs@mcmaster.ca]
 
-
 ## How to run the product
-
 ### Installation instructions
-
 This product is handled by Maven, as a multi-module project. 
 
 To install the different tooling on your computer, simply run:
@@ -16,7 +13,7 @@ To install the different tooling on your computer, simply run:
 mvn install
 ```
 
-After installation, you'll find an application named `generator.jar` in the `generator` directory, and a file named `visualizer.jar` in the `visualizer` one. 
+After installation, you'll find an application named `generator.jar` in the `generator` directory, another file name `island.jar` in the `island` directory and a file named `visualizer.jar` in the `visualizer` one. 
 
 ### Generator
 
@@ -26,7 +23,6 @@ To run the generator, go to the `generator` directory, and use `java -jar` to ru
 ```
 cd generator 
 java -jar generator.jar sample.mesh -grid [-width] [-height] [-spacing]
-ls -lh sample.mesh
 ```
 `width` and `height` default is 500px while `spacing` default is 20 and are optional to change in the command line. Note that the minimum spacing is 10. 
 
@@ -36,7 +32,6 @@ Example: `java -jar generator.jar sample.mesh -grid -width 400 -height 400`
 ```
 cd generator 
 java -jar generator.jar sample.mesh -irregular -numPoly [-width] [-height] [-relation]
-ls -lh sample.mesh
 ```
 `numPoly` is the number of polygons to generate on the mesh.\
 `width` and `height` default is 500px and are optional to change in the command line. \
@@ -54,12 +49,30 @@ To run sandbox mode of the island generator, go to the `island` directory, and u
 cd island
 java -jar island.jar -input (input.mesh) -output (output.mesh) --mode sandbox
 ```
-The output.mesh will be stored in the directory `island` by default.
 
 Example: `java -jar island.jar -i ../generator/sample.mesh -o sandbox.mesh --mode sandbox`
 
-#### Whittaker Diagrams
-The following graphs are the Whittaker diagrams used in this project. Note: These Whittaker diagrams are not accurate to real the world and are just created by our team for this project. 
+#### Regular
+To run the regular mode of the island generator, go to the `island` directory, and use `java -jar` to run the product. Use the mesh created by the generator as input mesh and enter .mesh file name to save the island generated map.  
+
+```
+cd island
+java -jar island.jar -input (input.mesh) -output (output.mesh) --mode regular -shape {circle, rectangle, oval, irregular, random} -altitude {volcanic, cliff, hills, flat} -biomes {arctic, tropical, temperate, desert} [-lakes] [-rivers] -soil {dry, humid, wet} [-aquifers] [-seed]
+```
+
+`shape`: General shape of the island: {circle, rectangle, oval, irregular, random}.\
+`altitude` : The altitude behaviour of the island: {volcanic, cliff, hills, flat}.\
+`biomes`: General biome to use for the whole map: {arctic, tropical, temperate, desert}.\
+`lakes`: Maximum number of lakes in the island: (positive integer).\
+`rivers`: Maximum number of rivers in the island: (positive integer).\
+`soil`: The soil profile to apply to the whole island: {dry, humid, wet}.\
+`aquifers`: Number of aquifers to generate on the island: (positive integer).\
+`seed`: Seed to use for all random variables: (long type).\
+
+Example: `java -jar island.jar -i ../generator/regular.mesh -o desert.mesh --mode regular --shape irregular --altitude hills --biomes desert --lakes 2 --rivers 2 -soil dry --aquifers 2 -seed -2116125981790618405`
+
+##### Whittaker Diagrams
+The following graphs are the Whittaker diagrams used in this project. Note: These Whittaker diagrams are not accurate to real the world and are just created by our team for this project. The colors on the diagram also correspond to the colors to the generated map. Note: darker looking tiles are area where humidity levels are higher. 
 
 ![My Image](images/arcticWhittaker.png)
 
@@ -69,7 +82,7 @@ The following graphs are the Whittaker diagrams used in this project. Note: Thes
 
 ![My Image](images/desertWhittaker.png)
 
-#### Other Map Colors
+##### Other Map Colors
 
 ![My Image](images/otherMapColor.png)
 
@@ -96,25 +109,41 @@ In debug mode, it will visualize the polygon's segments and vertices as black, c
 ### Example runs
 To see a examples of the mesh, run any one of the scripts below in the main directory. The mesh will be saved as ../generator/sample.mesh.
 
-```./runAll```
+```sh Scripts/runAll```
 
 ![My Image](images/grid.png)
 
-```./runAllDebug```
+```sh Scripts/runAllDebug```
 
 ![My Image](images/gridDebug.png)
 
-```./runAllIrregular```
+```sh Scripts/runAllIrregular```
 
 ![My Image](images/irregular.png)
 
-```./runAllDebugIrregular```
+```sh Scripts//runAllDebugIrregular```
 
 ![My Image](images/irregularDebug.png)
 
-```./runSandbox```
+```sh Scripts/runSandbox```
 
 ![My Image](images/sandbox.png)
+
+```sh Scripts/runArcticExample```
+
+![My Image](images/arctic.png)
+
+```sh Scripts/runTropicalExample```
+
+![My Image](images/tropical.png)
+
+```sh Scripts/runTemperateExample```
+
+![My Image](images/temperate.png)
+
+```sh Scripts/runDesertExample```
+
+![My Image](images/desert.png)
 
 
 ## How to contribute to the project

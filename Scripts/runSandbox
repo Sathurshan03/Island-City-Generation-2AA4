@@ -1,4 +1,3 @@
-mvn install
 cd generator
 java -jar generator.jar sandbox.Mesh -i -np 1500 -relation 25 -wth 500 -hth 500
 cd ..

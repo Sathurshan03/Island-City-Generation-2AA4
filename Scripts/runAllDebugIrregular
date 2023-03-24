@@ -1,4 +1,3 @@
-mvn install
 cd generator
 java -jar generator.jar sample.Mesh -i -np 500 -relation 25
 ls -lh sample.mesh
