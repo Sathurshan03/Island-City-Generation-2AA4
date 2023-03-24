@@ -37,8 +37,8 @@ Pending (P), Started (S), Blocked (B), Done (D)
 | F24   |  Choose width and height from command line | Sathurshan   |   02/15/2023    |  02/15/2023   |    D    |
 | F25   |  Command line have -h (help) option |  Sathurshan  |   02/15/2023    |  02/15/2023   |    D    |
 | F26   |  Choose grid box size for gird base mesh from command line |  Sathurshan  |   02/21/2023    |  02/21/2023   |    D    |
-| F27   | User can enter map mode with -- mode via command line      | Mithun     |  |  | P  |
-| F28   | –help mode in the command line gives a description of how to use to command line  | Mithun |  |  | B(F27),B(F32),B(F38),B(F45),B(F46),B(F50),B(F52),B(F59),B(F83)|
+| F27   | User can enter map mode with -- mode via command line      | Mithun     | 03/04/2023 | 03/04/2023 | D  |
+| F28   | –help mode in the command line gives a description of how to use to command line  | Mithun | 03/04/2023 | 03/04/2023 | D  |
 | F29   | Sandbox map mode can be activated  | Sathurshan     | 03/05/2023 | 03/05/2023 | D |
 | F30   | Regular map mode can be activated  | Sathurshan     | 03/06/2023 | 03/06/2023 | D |
 | F31   | Heat map mode can be activated     | Nirmal     | 03/15/2023 | 03/15/2023 | D  |
@@ -62,7 +62,7 @@ Pending (P), Started (S), Blocked (B), Done (D)
 | F49   | Generate endorheic lakes   | Sathurshan | 03/15/2023 | 03/15/2023 | D   |
 | F50   | Merge rivers that intersect with each other | Sathurshan | 03/15/2023 | 03/15/2023 | D |
 | F51   | User can enter the number of aquifers on the island using —aquifers via the command line.     | Mithun     | 03/21/2023 | 03/21/2023 | D  |
-| F52   | Generate aquifers on the island | Mithun     | 03/21/2023 | 03/21/2023 | S   |
+| F52   | Generate aquifers on the island | Mithun     | 03/21/2023 | 03/21/2023 | D   |
 | F53   | User can enter soil absorption profile —soil via the command line.   | Nirmal     | 03/18/2023 | 03/18/2023 | D   |
 | F54   | Wet soil profile applied to map  | Nirmal     | 03/18/2023 | 03/18/2023 | D     |
 | F55   | Humid soil profile applied to map  | Nirmal     | 03/20/2023 | 03/20/2023 | D    |
@@ -73,8 +73,8 @@ Pending (P), Started (S), Blocked (B), Done (D)
 | F60   | User can enter the biome type of the island using -–biomes via the command line.   | Mithun     |  |  | P |
 | F61   | Arctic type map generatable  | Sathurshan     | 03/21/2023 | 03/21/2023 | D  |
 | F62   | Tropical Rain Forest type map generatable    | Mithun     | 03/22/2023 | 03/22/2023 | D  |
-| F63   | Temperate deciduous forest type map generatable  | Mithun     |  |  | B(F59)  |
-| F64   | Desert type map generable   | Mithun     |  |  | B(F59)     |
+| F63   | Temperate deciduous forest type map generatable  | Mithun     | 03/22/2023 | 03/22/2023 | D  |
+| F64   | Desert type map generable   | Mithun     | 03/22/2023 | 03/22/2023 | D  |
 | F65   | All tiles have assigned types for Sandbox     | Sathurshan | 03/06/2023 | 03/06/2023 | D  |
 | F66   | All land tiles have assigned biomes in relation to island biomes type  | Sathurshan | 03/23/2023 | 03/23/2023 | D   |
 | F67   | Display ocean tiles   | Sathurshan | 03/06/2023 | 03/06/2023 | D  |
@@ -85,15 +85,15 @@ Pending (P), Started (S), Blocked (B), Done (D)
 | F72   | Display snow tiles    | Mithun | 03/21/2023 | 03/21/2023 | D    |
 | F73   | Display tundra tiles      | Mithun | 03/21/2023  | 03/21/2023 | D     |
 | F74   | Display taiga tiles     | Mithun | 03/21/2023  | 03/21/2023  | D  |
-| F75   | Display forest tiles     | Mithun     |  |  | B(F65)    |
-| F76   | Display jungle tiles    | Mithun     |  |  | B(F65)   |
-| F77   | Display swamp tiles    | Mithun     |  |  | B(F65)   |
+| F75   | Display forest tiles     | Mithun     | 03/22/2023 | 03/22/2023 | D  |
+| F76   | Display jungle tiles    | Mithun     | 03/22/2023 | 03/22/2023 | D  |
+| F77   | Display swamp tiles    | Mithun     | 03/22/2023 | 03/22/2023 | D  |
 | F78   | Display grassland tiles     | Mithun   | 03/06/2023  | 03/06/2023 | D   |
-| F79   | Display sandy desert tiles    | Mithun     |  |  | B(F65)    |
-| F80   | Display savanna tiles      | Mithun     |  |  | B(F65)   |
-| F81   | Display clay tiles    | Mithun     |  |  | B(F65)      |
+| F79   | Display sandy desert tiles    | Mithun     | 03/22/2023 | 03/22/2023 | D   |
+| F80   | Display savanna tiles      | Mithun     | 03/22/2023 | 03/22/2023 | D  |
+| F81   | Display clay tiles    | Mithun     | 03/22/2023 | 03/22/2023 | D    |
 | F82   | Output default seed     | Sathurshan | 03/08/2023 | 03/08/2023 | D   |
-| F83   | Output all the user’s input parameters   | Mithun     |  |  | B(F27),B(F28),B(F32),B(F38),B(F45),B(F46),B(F50),B(F52),B(F59),B(F83) |
+| F83   | Output all the user’s input parameters   | Mithun     | 03/22/2023 | 03/22/2023 | D  |
 | F84   | User can enter the seed to use via -–seed via the command line    | Sathurshan | 03/12/2023 | 03/12/2023 | D   |
 | F85   | Generate same seed map     | Sathurshan | 03/12/2023 | 03/12/2023 | D   |
 | F86   | Goods for each tile depending on tile conditions  | Mithun     |  |  | B(F57),B(F43)  |
