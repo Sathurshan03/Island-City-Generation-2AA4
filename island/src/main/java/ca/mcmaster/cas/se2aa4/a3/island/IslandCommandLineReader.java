@@ -16,6 +16,8 @@ import org.apache.commons.cli.*;
 
 import java.io.IOException;
 
+import javax.naming.ldap.ManageReferralControl;
+
 public class IslandCommandLineReader implements CommandLineReader {
     private String inputMeshFile;
     private String outputMeshFile;
@@ -167,7 +169,15 @@ public class IslandCommandLineReader implements CommandLineReader {
         } else {
             numAquifers = 0;
         }
-        
+
+        //Output the user input
+
+        if (mapMode.equals(ModeType.SANDBOX)){
+            System.out.println("Mode: " + mode);
+        }
+        else{
+            System.out.println("Input Mesh Path: " + inputMeshFile + "Output Mesh Path: " + outputMeshFile + "Mode: " + mode + "\nShape: " + shape + "\nAltitude: " + elevation + "\nBiomes: " + biome + "\nLakes: " + maxNumLakes + "\nRivers: " + maxNumRivers + "\nSoil Profile: " + soil + "\nAquifiers: " + numAquifers);
+        }
     }
     
     public String getOutputMeshFile(){
