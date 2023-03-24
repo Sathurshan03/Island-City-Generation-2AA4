@@ -1,11 +1,8 @@
 package ca.mcmaster.cas.se2aa4.a3.island.RiverTesting;
 
 import static org.junit.jupiter.api.Assertions.*;
-
 import java.util.List;
-
 import org.junit.jupiter.api.Test;
-
 import ca.mcmaster.cas.se2aa4.a3.island.SetUpTest;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.TileSegment;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.TileVertex;
