@@ -72,6 +72,8 @@
 |  Mar 2, 2023  |  Nirmal       |   Encapsulated GeneratePolygon more and organized everything into packages.   |
 |  Mar 3, 2023  |  Sathurshan       |   Generalized commandLineReader as Interface to be used in other subprojects |
 |  Mar 3, 2023  |  Sathurshan       |   Updated Backlog with new features |
+|  Mar 4, 2023  |  Mithun       |   Set up the island subproject to begin island generation |
+|  Mar 4, 2023  |  Mithun       |   Created island command line reader with starting inputs |
 |  Mar 5, 2023  |  Sathurshan       |   Creating Shapes for the island |
 |  Mar 5, 2023  |  Sathurshan       |   Creating Sandbox mode |
 |  Mar 5, 2023  |  Sathurshan       |   Extracting infromation and creating Tile classes for island sub project |
@@ -82,6 +84,7 @@
 |  Mar 8, 2023  |  Nirmal       |   Created new elevation debug mode from command line.   |
 |  Mar 11, 2023  |  Nirmal       |   Reorganized the altitude code, and refined elevation mode made previously.   |
 |  Mar 12, 2023  |  Sathurshan       |   Same map can be created using a seed |
+|  Mar 13, 2023  |  Mithun       |   User can enter maximum number of lakes from the command line. |
 |  Mar 13, 2023  |  Sathurshan       |   Test cases for creating the same map using a seed |
 |  Mar 13, 2023  |  Sathurshan       |   Islands have oval shape |
 |  Mar 13, 2023  |  Sathurshan       |   rectangular islands can be generated at an angle now |
@@ -89,6 +92,7 @@
 |  Mar 14, 2023  |  Sathurshan       |   Irregular shaped islands can be generated |
 |  Mar 14, 2023  |  Sathurshan       |   All features of the rivers were generated |
 |  Mar 14, 2023  |  Nirmal       |   Restructured altitude code to be more object oriented. Difference between land and water altitude generation.   |
+|  Mar 15, 2023  |  Mithun       |  Randomized number of lakes can be generated on the island.  |
 |  Mar 16, 2023  |  Nirmal       |   Created a function that calculates the temperature of polygons based on vertex elevation.   |
 |  Mar 16, 2023  |  Nirmal       |   Set each tile to have an average temperature. Getters and Setters for temperature where appropriate.   |
 |  Mar 16, 2023  |  Nirmal       |   Implemented new heatmap mode for map.   |
@@ -102,12 +106,21 @@
 |  Mar 20, 2023  |  Nirmal       |   Island now has Humid and Dry possible profiles in addition to wet profile. |
 |  Mar 20, 2023  |  Nirmal       |   Setting ocean level to 0. Making lowest land segment always 0 as well. |
 |  Mar 20, 2023  |  Nirmal       |   Updated volcanic elevation to have more variations. Random height and spread rates. |
+|  Mar 21, 2023  |  Mithun       |   Cleaned up lakes code to avoid merging of generated lakes. |
+|  Mar 21, 2023  |  Mithun       |   User can enter number of aquifers from command line. Aquifers can be generated around the island. |
+|  Mar 21, 2023  |  Mithun       |  Adjusted certain tile colours to make biomes distinct.  |
 |  Mar 21, 2023  |  Sathurshan       |   Created the Artic Biome |
 |  Mar 21, 2023  |  Nirmal       |   Island can now have hills elevation. |
 |  Mar 21, 2023  |  Nirmal       |   Made temperature Kelvin based. Always stays above 0. Easier calculations. |
 |  Mar 21, 2023  |  Nirmal       |   Lake now has levelled elevation. All vertices connecting lakes have same elevation.|
 |  Mar 21, 2023  |  Nirmal       |   Considering lake in humidity calculation.|
 |  Mar 21, 2023  |  Nirmal       |   Changed lake to only be a wrapper for tile. No more calculations done in Lake, and made Endorheic lakes use this class.|
+|  Mar 22, 2023  |  Mithun       |   Added help command information for user regarding island inputs. |
+|  Mar 22, 2023  |  Mithun       |   Cleaned up aquifers code to properly generate around island. |
+|  Mar 22, 2023  |  Mithun       |  Implemented tropical rain forest map type.  |
+|  Mar 22, 2023  |  Mithun       |   Implemented desert map type.  |
+|  Mar 22, 2023  |  Mithun       |   Implemented temperate deciduous forest map type. |
+|  Mar 22, 2023  |  Mithun       |   Created new tiles such as sand, clay and savanna tiles to visualize the biomes in the different map types. |
 |  Mar 22, 2023  |  Nirmal       |   Island now has a flat and random option.|
 |  Mar 22, 2023  |  Nirmal       |   Changed the wet,humid and dry coefficient for better biome assignment.|
 |  Mar 22, 2023  |  Sathurshan       |   Fixing bugs in the river generator |
@@ -115,3 +128,4 @@
 |  Mar 23, 2023  |  Sathurshan       |   Editing readMe to instruct how to run the code and posted some example generations |
 |  Mar 23, 2023  |  Nirmal       |   Implemented a way to get all tiles in the test package for island using Fields and Reflection API|
 |  Mar 23, 2023  |  Nirmal       |   Implemented test cases for hills, volcanic and cliff elevation.|
+|  Mar 23, 2023  |  Mithun       |   Added the valid option inputs to command descriptions for user reference. |
