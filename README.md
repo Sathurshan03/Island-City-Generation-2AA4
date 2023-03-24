@@ -60,6 +60,20 @@ cd island
 java -jar island.jar -input (input.mesh) -output (output.mesh) --mode regular -shape {circle, rectangle, oval, irregular, random} -altitude {volcanic, cliff, hills, flat} -biomes {arctic, tropical, temperate, desert} [-lakes] [-rivers] -soil {dry, humid, wet} [-aquifers] [-seed]
 ```
 
+Example: `java -jar island.jar -i ../generator/regular.mesh -o desert.mesh --mode regular --shape irregular --altitude hills --biomes desert --lakes 2 --rivers 2 -soil dry --aquifers 2 -seed -2116125981790618405`
+
+
+#### HeatMaps
+
+```
+cd island
+java -jar island.jar -input (input.mesh) -output (output.mesh) --mode heatmap -shape {circle, rectangle, oval, irregular, random} -altitude {volcanic, cliff, hills, flat} -biomes {arctic, tropical, temperate, desert} [-lakes] [-rivers] -soil {dry, humid, wet} [-aquifers] [-seed]
+```
+
+Example: `java -jar island.jar -i ../generator/regular.mesh -o desert.mesh --mode heatmap --shape irregular --altitude hills --biomes desert --lakes 2 --rivers 2 -soil dry --aquifers 2 -seed -2116125981790618405`
+
+
+
 `shape`: General shape of the island: {circle, rectangle, oval, irregular, random}.\
 `altitude` : The altitude behaviour of the island: {volcanic, cliff, hills, flat}.\
 `biomes`: General biome to use for the whole map: {arctic, tropical, temperate, desert}.\
@@ -69,7 +83,6 @@ java -jar island.jar -input (input.mesh) -output (output.mesh) --mode regular -s
 `aquifers`: Number of aquifers to generate on the island: (positive integer).\
 `seed`: Seed to use for all random variables: (long type).\
 
-Example: `java -jar island.jar -i ../generator/regular.mesh -o desert.mesh --mode regular --shape irregular --altitude hills --biomes desert --lakes 2 --rivers 2 -soil dry --aquifers 2 -seed -2116125981790618405`
 
 ##### Whittaker Diagrams
 The following graphs are the Whittaker diagrams used in this project. Note: These Whittaker diagrams are not accurate to real the world and are just created by our team for this project. The colors on the diagram also correspond to the colors to the generated map. Note: darker looking tiles are area where humidity levels are higher. 
