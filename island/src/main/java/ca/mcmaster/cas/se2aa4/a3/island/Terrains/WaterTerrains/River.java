@@ -59,4 +59,8 @@ public class River extends BodiesWater {
     public Double getHumidityLevel() {
         return this.humidity_level;
     }
+
+    public List<TileSegment> getRiverSegments(){
+        return riverSegments;
+    }
 }
