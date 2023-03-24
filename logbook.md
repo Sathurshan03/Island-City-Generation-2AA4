@@ -68,21 +68,50 @@
 |  Mar 1, 2023  |  Sathurshan       |   Applied Convex Hall since segments were actually not saved in order |
 |  Mar 1, 2023  |  Sathurshan       |   Added properties to visualizer subproject to output a colour fill for polygons |
 |  Mar 2, 2023  |  Sathurshan       |   Created classes to extract data from .mesh files |
+|  Mar 2, 2023  |  Nirmal       |   Delegated responsibility to generate polygon component instead of polygon object itself.  |
+|  Mar 2, 2023  |  Nirmal       |   Encapsulated GeneratePolygon more and organized everything into packages.   |
 |  Mar 3, 2023  |  Sathurshan       |   Generalized commandLineReader as Interface to be used in other subprojects |
 |  Mar 3, 2023  |  Sathurshan       |   Updated Backlog with new features |
 |  Mar 5, 2023  |  Sathurshan       |   Creating Shapes for the island |
 |  Mar 5, 2023  |  Sathurshan       |   Creating Sandbox mode |
 |  Mar 5, 2023  |  Sathurshan       |   Extracting infromation and creating Tile classes for island sub project |
+|  Mar 6, 2023  |  Nirmal       |   Created Altitude command line reader, and base altitude class.   |
+|  Mar 6, 2023  |  Nirmal       |   Developed a function for volcanic elevation. Implemented through lamda expressions.   |
 |  Mar 6, 2023  |  Sathurshan       |   Neighbouring tiles are accessible |
 |  Mar 6, 2023  |  Sathurshan       |   Sandbox mode release created |
+|  Mar 8, 2023  |  Nirmal       |   Created new elevation debug mode from command line.   |
+|  Mar 11, 2023  |  Nirmal       |   Reorganized the altitude code, and refined elevation mode made previously.   |
 |  Mar 12, 2023  |  Sathurshan       |   Same map can be created using a seed |
 |  Mar 13, 2023  |  Sathurshan       |   Test cases for creating the same map using a seed |
 |  Mar 13, 2023  |  Sathurshan       |   Islands have oval shape |
 |  Mar 13, 2023  |  Sathurshan       |   rectangular islands can be generated at an angle now |
+|  Mar 14, 2023  |  Nirmal       |   Implemented feature that sets the water elevation for oceans.   |
 |  Mar 14, 2023  |  Sathurshan       |   Irregular shaped islands can be generated |
-|  Mar 13, 2023  |  Sathurshan       |   All features of the rivers were generated |
+|  Mar 14, 2023  |  Sathurshan       |   All features of the rivers were generated |
+|  Mar 14, 2023  |  Nirmal       |   Restructured altitude code to be more object oriented. Difference between land and water altitude generation.   |
+|  Mar 16, 2023  |  Nirmal       |   Created a function that calculates the temperature of polygons based on vertex elevation.   |
+|  Mar 16, 2023  |  Nirmal       |   Set each tile to have an average temperature. Getters and Setters for temperature where appropriate.   |
+|  Mar 16, 2023  |  Nirmal       |   Implemented new heatmap mode for map.   |
+|  Mar 18, 2023  |  Nirmal       |   User can enter the soil profile from command line. Sets soil coefficient to whole map.   |
+|  Mar 18, 2023  |  Nirmal       |   Assigned soil coefficients to each soil profile. Will be used in humidity calculation.   |
+|  Mar 18, 2023  |  Nirmal       |   Implemented a BodiesWater type to facilitate process of calculating humidity from every water source.   |
+|  Mar 18, 2023  |  Nirmal       |   Added humidity attribute to the tiles. Land segment humidity is calculated as average between all water sources.  |
+|  Mar 19, 2023  |  Nirmal       |   Adjusting the color based on humidity of tiles. Done to visualize the humidity of various tiles.  |
+|  Mar 20, 2023  |  Nirmal       |   Set more relative ranges for heatmap calculation.  |
+|  Mar 20, 2023  |  Nirmal       |   Added new land wrapper class which is used to differentiate water tiles from land ones. Both now have different attributes. |
+|  Mar 20, 2023  |  Nirmal       |   Island now has Humid and Dry possible profiles in addition to wet profile. |
+|  Mar 20, 2023  |  Nirmal       |   Setting ocean level to 0. Making lowest land segment always 0 as well. |
+|  Mar 20, 2023  |  Nirmal       |   Updated volcanic elevation to have more variations. Random height and spread rates. |
 |  Mar 21, 2023  |  Sathurshan       |   Created the Artic Biome |
+|  Mar 21, 2023  |  Nirmal       |   Island can now have hills elevation. |
+|  Mar 21, 2023  |  Nirmal       |   Made temperature Kelvin based. Always stays above 0. Easier calculations. |
+|  Mar 21, 2023  |  Nirmal       |   Lake now has levelled elevation. All vertices connecting lakes have same elevation.|
+|  Mar 21, 2023  |  Nirmal       |   Considering lake in humidity calculation.|
+|  Mar 21, 2023  |  Nirmal       |   Changed lake to only be a wrapper for tile. No more calculations done in Lake, and made Endorheic lakes use this class.|
+|  Mar 22, 2023  |  Nirmal       |   Island now has a flat and random option.|
+|  Mar 22, 2023  |  Nirmal       |   Changed the wet,humid and dry coefficient for better biome assignment.|
 |  Mar 22, 2023  |  Sathurshan       |   Fixing bugs in the river generator |
 |  Mar 22, 2023  |  Sathurshan       |   Created a beach generator to create beaches for specific biomes |
 |  Mar 23, 2023  |  Sathurshan       |   Editing readMe to instruct how to run the code and posted some example generations |
-
+|  Mar 23, 2023  |  Nirmal       |   Implemented a way to get all tiles in the test package for island using Fields and Reflection API|
+|  Mar 23, 2023  |  Nirmal       |   Implemented test cases for hills, volcanic and cliff elevation.|
