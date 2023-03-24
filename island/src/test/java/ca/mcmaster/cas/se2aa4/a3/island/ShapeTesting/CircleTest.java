@@ -14,7 +14,6 @@ public class CircleTest extends SetUpTest {
     public void CircleInsideRadiusTest(){
         //Checks if all the in range tiles are within the circle radius
         List<Tile> tilesData = new ArrayList<>(tiles);
-        System.out.println(width);
         Circle circle = new Circle (width, height, tilesData);
 
         double radius = circle.getRadius();
@@ -35,7 +34,6 @@ public class CircleTest extends SetUpTest {
     public void CircleOutsideRadiusTest(){
         //Checks if all the out of range tiles are outside the circle radius
         List<Tile> tilesData = new ArrayList<>(tiles);
-        System.out.println(width);
         Circle circle = new Circle (width, height, tilesData);
 
         double radius = circle.getRadius();
@@ -56,7 +54,6 @@ public class CircleTest extends SetUpTest {
     public void CircleInsideRadiusOffsetTest(){
         //Checks if all the in range tiles are within the circle radius with different center
         List<Tile> tilesData = new ArrayList<>(tiles);
-        System.out.println(width);
         Circle circle = new Circle (width*0.25, height*0.25, width *0.4, height *0.4, tilesData);
 
         double radius = circle.getRadius();
@@ -77,7 +74,6 @@ public class CircleTest extends SetUpTest {
     public void CircleOutsideRadiusOffsetTest(){
         //Checks if all the out of range tiles are outside the circle radius with different center
         List<Tile> tilesData = new ArrayList<>(tiles);
-        System.out.println(width);
         Circle circle = new Circle (width*0.25, height*0.25, width *0.4, height *0.4, tilesData);
 
         double radius = circle.getRadius();
