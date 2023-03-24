@@ -5,7 +5,7 @@ import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.Tile;
 import java.util.List;
 
 public enum AltitudeType {
-    VOLCANIC, WATER, CLIFF,HILLS, FLAT;
+    VOLCANIC, WATER, CLIFF,HILLS, FLAT, RANDOM;
 
 
     public String toString(){
@@ -20,6 +20,8 @@ public enum AltitudeType {
                 return "hills";
             case FLAT:
                 return "flat";
+            case RANDOM:
+                return "random";
         }
         return null;
     }
@@ -35,6 +37,8 @@ public enum AltitudeType {
                 return new Hills().getFunction();
             case FLAT:
                 return new Flat().getFunction();
+            case RANDOM:
+                return new Random().getFunction();
         }
         return null;
     }

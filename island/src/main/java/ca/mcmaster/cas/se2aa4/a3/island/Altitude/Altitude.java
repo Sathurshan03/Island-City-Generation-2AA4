@@ -2,7 +2,7 @@ package ca.mcmaster.cas.se2aa4.a3.island.Altitude;
 
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.Tile;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.TileVertex;
-import ca.mcmaster.cas.se2aa4.a3.island.Terrains.Lake;
+import ca.mcmaster.cas.se2aa4.a3.island.Terrains.WaterTerrains.Lake;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,10 +26,9 @@ public class Altitude {
 
     public void setAll(AltitudeType altitude, List<Tile> landtiles, List<Tile> oceanTiles, List<Lake> lakes){
         SetElevation(altitude, landtiles);
-//        SetElevation(AltitudeType.WATER, oceanTiles);
-//        LevelLand(landtiles);
-//
-//        setLakes(lakes);
+        LevelLand(landtiles);
+
+        setLakes(lakes);
     }
 
 
