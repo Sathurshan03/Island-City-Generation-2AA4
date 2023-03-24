@@ -158,6 +158,10 @@ To see a examples of the mesh, run any one of the scripts below in the main dire
 
 ![My Image](images/desert.png)
 
+```sh Scripts/runTemperateHeatmap```
+
+![My Image](images/heatmap.png)
+
 
 ## How to contribute to the project
 
