@@ -4,6 +4,7 @@ import ca.mcmaster.cas.se2aa4.a3.island.TilesTypes.TileTypes;
 
 public abstract class GeneralBiome {
     protected final double protectedTemperature;
+    public WhittakerDiagram whittakerDiagram;
     public GeneralBiome(double protectedTemperature){
         this.protectedTemperature = protectedTemperature;
     }

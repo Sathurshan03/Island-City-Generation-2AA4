@@ -38,6 +38,8 @@ public class WhittakerDiagram {
         return TileTypes.GRASSLAND;
     }
 
-
+    public HashMap<Shape, TileTypes> getWhittakerDiagram(){
+        return whittakerDiagram;
+    }
     
 }

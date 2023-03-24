@@ -26,7 +26,7 @@ public enum BiomeTypes {
     public GeneralBiome getGeneralBiome(){
         switch (this){
             case ARCTIC:
-                return new ArticGeneralBiome(260.0);
+                return new ArcticGeneralBiome(260.0);
             case TROPICAL_FORREST:
                 return new TropicalRainforestGeneralBiome(293.15);
             case TEMPERATE_FORREST:
