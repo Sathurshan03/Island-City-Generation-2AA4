@@ -47,7 +47,7 @@ Pending (P), Started (S), Blocked (B), Done (D)
 | F34   | Islands have irregular shape option  | Sathurshan | 03/14/2023  | 03/14/2023 | D |
 | F35   | Islands have circular shape option      | Sathurshan | 03/05/2023 | 03/05/2023 | D |
 | F36   | Islands have a rectangle shape option   | Sathurshan | 03/06/2023 | 03/06/2023 | D |
-| F37   | Islands have a ring shape option  | Sathurshan |  |  | B(F32) |
+| F37   | Islands have a ring shape option  | Sathurshan |  |  | P |
 | F38   | User can enter general elevation trend using  --altitude through the command prompt | Nirmal     | 03/06/2023 | 03/06/2023 | D |
 | F39   | Island altitude has “volcanic” option   | Nirmal     | 03/06/2023 | 03/06/2023 | D   |
 | F40   | Island altitude has “hill” option  | Nirmal     | 03/22/2023 | 03/22/2023 | D  |
@@ -70,7 +70,7 @@ Pending (P), Started (S), Blocked (B), Done (D)
 | F57   | Each land segment has a particular soil absorption.     | Nirmal     | 03/18/2023 | 03/18/2023 | D      |
 | F58   | Each land segment has particular humidity.   | Nirmal     | 03/20/2023 | 03/20/2023 | D     |
 | F59   | Humidity affects color brightness or darkness   | Nirmal     | 03/20/2023 | 03/20/2023 | D   |
-| F60   | User can enter the biome type of the island using -–biomes via the command line.   | Mithun     |  |  | P |
+| F60   | User can enter the biome type of the island using -–biomes via the command line.   | Mithun     | 03/21/2023 | 03/21/2023 | D |
 | F61   | Arctic type map generatable  | Sathurshan     | 03/21/2023 | 03/21/2023 | D  |
 | F62   | Tropical Rain Forest type map generatable    | Mithun     | 03/22/2023 | 03/22/2023 | D  |
 | F63   | Temperate deciduous forest type map generatable  | Mithun     | 03/22/2023 | 03/22/2023 | D  |
@@ -96,5 +96,5 @@ Pending (P), Started (S), Blocked (B), Done (D)
 | F83   | Output all the user’s input parameters   | Mithun     | 03/22/2023 | 03/22/2023 | D  |
 | F84   | User can enter the seed to use via -–seed via the command line    | Sathurshan | 03/12/2023 | 03/12/2023 | D   |
 | F85   | Generate same seed map     | Sathurshan | 03/12/2023 | 03/12/2023 | D   |
-| F86   | Goods for each tile depending on tile conditions  | Mithun     |  |  | B(F57),B(F43)  |
+| F86   | Goods for each tile depending on tile conditions  | Mithun     |  |  | P  |
 | F87   | Islands have random shape option  | Sathurshan     | 03/13/2023 | 03/14/2023 | D  |

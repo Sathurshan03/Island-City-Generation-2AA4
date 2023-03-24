@@ -82,4 +82,7 @@
 |  Mar 14, 2023  |  Sathurshan       |   Irregular shaped islands can be generated |
 |  Mar 13, 2023  |  Sathurshan       |   All features of the rivers were generated |
 |  Mar 21, 2023  |  Sathurshan       |   Created the Artic Biome |
+|  Mar 22, 2023  |  Sathurshan       |   Fixing bugs in the river generator |
+|  Mar 22, 2023  |  Sathurshan       |   Created a beach generator to create beaches for specific biomes |
+|  Mar 23, 2023  |  Sathurshan       |   Editing readMe to instruct how to run the code and posted some example generations |
 
