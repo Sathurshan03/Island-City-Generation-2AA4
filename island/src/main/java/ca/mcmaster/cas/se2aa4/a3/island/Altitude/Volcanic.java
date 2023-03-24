@@ -4,9 +4,6 @@ import ca.mcmaster.cas.se2aa4.a3.island.Modes.Mode;
 import ca.mcmaster.cas.se2aa4.a3.island.IslandCommandLineReader;
 
 
-import java.util.Random;
-
-
 public class Volcanic implements LandAltitude{
 
 

@@ -16,7 +16,6 @@ import org.apache.commons.cli.*;
 
 import java.io.IOException;
 
-import javax.naming.ldap.ManageReferralControl;
 
 public class IslandCommandLineReader implements CommandLineReader {
     private String inputMeshFile;
@@ -98,8 +97,8 @@ public class IslandCommandLineReader implements CommandLineReader {
         //Help option
         if (cmd.hasOption("help")) {
             System.out.println("Create Sandbox Island: java -jar island.jar -inputMesh -outputMesh --mode sandbox");
-            System.out.println("Create Regular Island: java -jar island.jar -inputMesh -outputMesh --mode regular -shape -altitude -biomes [-lakes] [-rivers] -soil [-aquifers]");
-            System.out.println("Create Heatmap: java -jar island.jar -inputMesh -outputMesh --mode heatmap -shape -altitude -biomes [-lakes] [-rivers] -soil [-aquifers]");
+            System.out.println("Create Regular Island: java -jar island.jar -inputMesh -outputMesh --mode regular -shape -altitude -biomes [-lakes] [-rivers] -soil [-aquifers] [-seed]");
+            System.out.println("Create Heatmap: java -jar island.jar -inputMesh -outputMesh --mode heatmap -shape -altitude -biomes [-lakes] [-rivers] -soil [-aquifers] [-seed]");
             System.out.println("Options in square brackets are optional and the rest of the parameters are required to be defines");
             System.out.println("");
             HelpFormatter formatter = new HelpFormatter();

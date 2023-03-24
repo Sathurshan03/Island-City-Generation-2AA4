@@ -1,9 +1,10 @@
-package ca.mcmaster.cas.se2aa4.a3.island.Terrains;
+package ca.mcmaster.cas.se2aa4.a3.island.Terrains.LandTerrains;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.Tile;
+import ca.mcmaster.cas.se2aa4.a3.island.Terrains.Generator;
 import ca.mcmaster.cas.se2aa4.a3.island.TilesTypes.TileTypes;
 
 public class BeachGenerator implements Generator{
@@ -21,7 +22,7 @@ public class BeachGenerator implements Generator{
         if (createBeaches){  
             for(Tile tile: underterminedTiles){
                 for(Tile neighbouringTile: tile.getNeighbouringTile()){
-                    if (neighbouringTile.isTileWater()){
+                    if (neighbouringTile.isTileOcean()){
                         tile.setTileType(TileTypes.BEACH);
                         beachTiles.add(tile);
                         break;

@@ -1,9 +1,9 @@
 package ca.mcmaster.cas.se2aa4.a3.island.SoilProfile;
 
-import ca.mcmaster.cas.se2aa4.a3.island.Terrains.BodiesWater;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.Tile;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.TileVertex;
-import ca.mcmaster.cas.se2aa4.a3.island.Terrains.Land;
+import ca.mcmaster.cas.se2aa4.a3.island.Terrains.LandTerrains.Land;
+import ca.mcmaster.cas.se2aa4.a3.island.Terrains.WaterTerrains.BodiesWater;
 
 import java.awt.*;
 import java.util.List;
