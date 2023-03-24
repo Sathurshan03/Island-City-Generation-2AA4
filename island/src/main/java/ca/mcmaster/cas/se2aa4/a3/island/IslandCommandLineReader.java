@@ -3,7 +3,6 @@ package ca.mcmaster.cas.se2aa4.a3.island;
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Mesh;
 import ca.mcmaster.cas.se2aa4.a3.island.Altitude.AltitudeType;
 import ca.mcmaster.cas.se2aa4.a3.island.GeneralBiome.BiomeTypes;
-import ca.mcmaster.cas.se2aa4.a3.island.GeneralBiome.GeneralBiome;
 import ca.mcmaster.cas.se2aa4.a3.island.Modes.Heatmaps;
 import ca.mcmaster.cas.se2aa4.a3.island.SoilProfile.SoilTypes;
 import ca.mcmaster.cas.se2aa4.a3.tools.CommandLineReader;
@@ -61,19 +60,18 @@ public class IslandCommandLineReader implements CommandLineReader {
     }
     public void createOptions(){
         //Creates all the options for the command line
-        options.addOption(new Option("i", "inputMesh", true, "Input Mesh"));
-        options.addOption(new Option("o", "outputMesh", true, "Output Mesh"));
-        options.addOption(new Option("m", "mode", true, "Map Mode"));
-        options.addOption(new Option("sh", "shape", true, "Island Shape"));
-        options.addOption(new Option("a", "altitude", true, "Island Elevation"));
-        options.addOption(new Option("se", "seed", true, "Map seed"));
-        options.addOption(new Option("b", "biomes", true, "Biome type"));
-        options.addOption(new Option("se", "seed", true, "Map seed (Long)"));
-        options.addOption(new Option("r", "rivers", true, "Maximum number of rivers to generate (Integer)"));
-        options.addOption(new Option("l", "lakes", true, "Maximum number of lakes"));
-        options.addOption(new Option("s", "soil", true, "Enter the soil profile"));
-        options.addOption(new Option("aq", "aquifers", true, "Number of aquifers"));
-        options.addOption(new Option("h", "help", false, ""));
+        options.addOption(new Option("i", "inputMesh", true, "Path to input mesh (string)"));
+        options.addOption(new Option("o", "outputMesh", true, "Path to output mesh (string)"));
+        options.addOption(new Option("m", "mode", true, "Map Mode {sandbox, regular, heatmap}"));
+        options.addOption(new Option("sh", "shape", true, "Island Shape {circle, rectangle, oval, irregular, random}"));
+        options.addOption(new Option("a", "altitude", true, "Island Elevation {volcanic, cliff, hills, flat}"));
+        options.addOption(new Option("se", "seed", true, "Map seed (long)"));
+        options.addOption(new Option("b", "biomes", true, "Biome type {arctic, tropical, temperate, desert}"));
+        options.addOption(new Option("r", "rivers", true, "Maximum number of rivers to generate (positive integer)"));
+        options.addOption(new Option("l", "lakes", true, "Maximum number of lakes (positive integer)"));
+        options.addOption(new Option("s", "soil", true, "Enter the soil profile {wet, humid, dry}"));
+        options.addOption(new Option("aq", "aquifers", true, "Number of aquifers (positive integer)"));
+        options.addOption(new Option("h", "help", false, "Help"));
 
     }
 
@@ -97,10 +95,11 @@ public class IslandCommandLineReader implements CommandLineReader {
 
         //Help option
         if (cmd.hasOption("help")) {
-            System.out.println("Create Island Mesh: java -jar island.jar -inputMesh -outputMesh -mode");
-            System.out.println("Create Sandbox Island: java -jar island.jar -inputMesh -outputMesh -sandbox [-shape] [-altitude]");
-            System.out.println("Create Regular Island: java -jar island.jar -inputMesh -outputMesh -regular [-shape] [-altitude] [-biomes] [-lakes] [-rivers] [-soil] [-aquifers]");
-            System.out.println("Create Heatmap: java -jar island.jar -inputMesh -outputMesh -heatmap [-shape] [-altitude] [-biomes] [-lakes] [-rivers] [-soil] [-aquifers]");
+            System.out.println("Create Sandbox Island: java -jar island.jar -inputMesh -outputMesh --mode sandbox");
+            System.out.println("Create Regular Island: java -jar island.jar -inputMesh -outputMesh --mode regular -shape -altitude -biomes [-lakes] [-rivers] -soil [-aquifers]");
+            System.out.println("Create Heatmap: java -jar island.jar -inputMesh -outputMesh --mode heatmap -shape -altitude -biomes [-lakes] [-rivers] -soil [-aquifers]");
+            System.out.println("Options in square brackets are optional and the rest of the parameters are required to be defines");
+            System.out.println("");
             HelpFormatter formatter = new HelpFormatter();
             formatter.printHelp("help", options);
             System.exit(0);
