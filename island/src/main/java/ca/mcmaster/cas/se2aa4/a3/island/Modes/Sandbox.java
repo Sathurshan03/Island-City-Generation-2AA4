@@ -14,7 +14,7 @@ import java.util.List;
 public class Sandbox extends Mode{
     
     public Sandbox(String inputMesh, String outputMesh) throws IOException{
-        super(inputMesh, outputMesh, ShapeType.CIRCLE, AltitudeType.VOLCANIC, BiomeTypes.ARCTIC, "5", SoilTypes.DRY);
+        super(inputMesh, outputMesh, ShapeType.CIRCLE, null, null, null, null);
 
          //extract all the info from the input mesh
          extractInformation();
@@ -48,10 +48,6 @@ public class Sandbox extends Mode{
             tile.setTileType(TileTypes.GRASSLAND);
 
         }
-
-        altitude_gen.SetElevation(altitude, undecidedTiles);
-        altitude_gen.SetElevation(AltitudeType.WATER, oceanTiles);
-        altitude_gen.SetElevation(AltitudeType.WATER, lagoonTiles);
 
 
         //Set beach tiles 
