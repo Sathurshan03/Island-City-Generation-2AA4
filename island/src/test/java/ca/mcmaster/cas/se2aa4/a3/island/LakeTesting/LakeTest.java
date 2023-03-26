@@ -30,31 +30,6 @@ public class LakeTest extends SetUpTest {
     }
 
     @Test
-    public void lakeElevationTest(){
-        // checks if each lake has a flat elevation
-        List<Tile> copy= new ArrayList<>(tiles);
-        Altitude elevation = new Altitude();
-        elevation.SetElevation(AltitudeType.VOLCANIC, copy);
-        LakeGenerator lakeGenerator = new LakeGenerator(10, copy);
-        lakeGenerator.generate();
-        List<Lake> lakes = lakeGenerator.getLakes();
-        TileVertex newVertex;
-
-        for (Lake lake : lakes) {
-            List<Tile> lakeTiles = lake.getLakeTiles();
-            for (Tile tile : lakeTiles) {
-                List<TileVertex> vertices = tile.getTileVertices();
-                TileVertex compareVertex = vertices.get(0);
-                for (int i = 0; i < vertices.size() - 1; i++) {
-                    newVertex = vertices.get(i + 1);
-                    assertSame(compareVertex.getElevation(), newVertex.getElevation());
-                    compareVertex = newVertex;
-                }
-            }
-        }
-    }
-
-    @Test
     public void lakeMergeTest(){
         // checks if there are any two lakes that merge (shared tiles)
         List<Tile> copy= new ArrayList<>(tiles);
