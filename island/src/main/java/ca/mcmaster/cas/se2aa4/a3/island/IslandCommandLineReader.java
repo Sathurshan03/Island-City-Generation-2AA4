@@ -65,7 +65,7 @@ public class IslandCommandLineReader implements CommandLineReader {
         options.addOption(new Option("o", "outputMesh", true, "Output Mesh (String)"));
         options.addOption(new Option("m", "mode", true, "Map Mode {sandbox, regular, heatmap}"));
         options.addOption(new Option("sh", "shape", true, "Island Shape {circle, rectangle, oval, random, irregular}"));
-        options.addOption(new Option("a", "altitude", true, "Island Elevation {volcanic, water, cliff, hills, flat}"));
+        options.addOption(new Option("a", "altitude", true, "Island Elevation {volcanic, water, cliff, hills, flat, random}"));
         options.addOption(new Option("se", "seed", true, "Map seed (Long)"));
         options.addOption(new Option("b", "biomes", true, "Biome type {arctic, temperate, tropical, dessert}"));
         options.addOption(new Option("r", "rivers", true, "Maximum number of rivers to generate (Positive Integer)"));

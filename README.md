@@ -57,17 +57,26 @@ To run the regular mode of the island generator, go to the `island` directory, a
 
 ```
 cd island
-java -jar island.jar -input (input.mesh) -output (output.mesh) --mode regular -shape {circle, rectangle, oval, irregular, random} -altitude {volcanic, cliff, hills, flat} -biomes {arctic, tropical, temperate, desert} [-lakes] [-rivers] -soil {dry, humid, wet} [-aquifers] [-seed]
+java -jar island.jar -input (input.mesh) -output (output.mesh) --mode regular -shape {circle, rectangle, oval, irregular, random} -altitude {volcanic, cliff, hills, flat, random} -biomes {arctic, tropical, temperate, desert} [-lakes] [-rivers] -soil {dry, humid, wet} [-aquifers] [-seed]
 ```
 
 Example: `java -jar island.jar -i ../generator/regular.mesh -o desert.mesh --mode regular --shape irregular --altitude hills --biomes desert --lakes 2 --rivers 2 -soil dry --aquifers 2 -seed -2116125981790618405`
+
+`shape`: General shape of the island: {circle, rectangle, oval, irregular, random}.\
+`altitude` : The altitude behaviour of the island: {volcanic, cliff, hills, flat, random}.\
+`biomes`: General biome to use for the whole map: {arctic, tropical, temperate, desert}.\
+`lakes`: Maximum number of lakes in the island: (positive integer).\
+`rivers`: Maximum number of rivers in the island: (positive integer).\
+`soil`: The soil profile to apply to the whole island: {dry, humid, wet}.\
+`aquifers`: Number of aquifers to generate on the island: (positive integer).\
+`seed`: Seed to use for all random variables: (long type)
 
 
 #### HeatMaps
 
 ```
 cd island
-java -jar island.jar -input (input.mesh) -output (output.mesh) --mode heatmap -shape {circle, rectangle, oval, irregular, random} -altitude {volcanic, cliff, hills, flat} -biomes {arctic, tropical, temperate, desert} [-lakes] [-rivers] -soil {dry, humid, wet} [-aquifers] [-seed]
+java -jar island.jar -input (input.mesh) -output (output.mesh) --mode heatmap -shape {circle, rectangle, oval, irregular, random} -altitude {volcanic, cliff, hills, flat, random} -biomes {arctic, tropical, temperate, desert} [-lakes] [-rivers] -soil {dry, humid, wet} [-aquifers] [-seed]
 ```
 
 Example: `java -jar island.jar -i ../generator/regular.mesh -o desert.mesh --mode heatmap --shape irregular --altitude hills --biomes desert --lakes 2 --rivers 2 -soil dry --aquifers 2 -seed -2116125981790618405`
@@ -75,13 +84,13 @@ Example: `java -jar island.jar -i ../generator/regular.mesh -o desert.mesh --mod
 
 
 `shape`: General shape of the island: {circle, rectangle, oval, irregular, random}.\
-`altitude` : The altitude behaviour of the island: {volcanic, cliff, hills, flat}.\
+`altitude` : The altitude behaviour of the island: {volcanic, cliff, hills, flat, random}.\
 `biomes`: General biome to use for the whole map: {arctic, tropical, temperate, desert}.\
 `lakes`: Maximum number of lakes in the island: (positive integer).\
 `rivers`: Maximum number of rivers in the island: (positive integer).\
 `soil`: The soil profile to apply to the whole island: {dry, humid, wet}.\
 `aquifers`: Number of aquifers to generate on the island: (positive integer).\
-`seed`: Seed to use for all random variables: (long type).\
+`seed`: Seed to use for all random variables: (long type)
 
 
 ##### Whittaker Diagrams
