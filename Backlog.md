@@ -98,3 +98,9 @@ Pending (P), Started (S), Blocked (B), Done (D)
 | F85   | Generate same seed map     | Sathurshan | 03/12/2023 | 03/12/2023 | D   |
 | F86   | Goods for each tile depending on tile conditions  | Mithun     |  |  | P  |
 | F87   | Islands have random shape option  | Sathurshan     | 03/13/2023 | 03/14/2023 | D  |
+| F88   | Cities are generatable on island  | Sathurshan     |  |  | P  |
+| F89   | Cities can have different size attributes - corresponds to type of city  | Sathurshan     |  |  | B(F88)  |
+| F90   | Cities are connected via roads  | Sathurshan     |  |  | B(F88)  |
+| F91   | Central city is determined and visualized  | Sathurshan     |  |  | B(F88)  |
+| F92   | City road connection forms a star network  | Sathurshan     |  |  | B(F91)  |
+| F93   | Number of generatable cities can be entered via command line  | Sathurshan     |  |  | B(F88)  |
