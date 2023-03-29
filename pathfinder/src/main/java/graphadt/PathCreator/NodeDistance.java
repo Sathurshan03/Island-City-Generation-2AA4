@@ -1,9 +1,9 @@
 package graphadt.PathCreator;
 
-import java.util.Stack;
+import java.util.Queue;
 import graphadt.GraphComponents.Edge;
 import graphadt.GraphComponents.Node;
 
 public interface NodeDistance {
-    public Stack<Edge> findPath(Node start, Node target);
+    public Queue<Edge> findPath(Node start, Node target) throws Exception;
 }
