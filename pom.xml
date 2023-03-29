@@ -17,6 +17,7 @@
         <module>visualizer</module>
         <module>island</module>
 		<module>tools</module>
+		<module>pathfinder</module>
     </modules>
 
     <properties>
