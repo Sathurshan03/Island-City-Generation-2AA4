@@ -327,4 +327,47 @@ public class DifferentGraphTypesTest {
         }
     }
 
+    @Test 
+    public void emptyGraphTest(){
+        //Test on a graph that is empty 
+        
+        Set<Node> nodes = new HashSet<>();
+        Set<Edge> edges = new HashSet<>();
+
+        Graph graph = new Graph(nodes, edges);
+        ShortestPathFinder path = new ShortestPathFinder(graph);
+
+        Node n1 = new Node("1");
+        Node n6 = new Node("6");
+
+        try{
+            Queue<Edge> shortestPath = path.findPath(n1, n6); 
+            assertTrue(false);
+        }
+        catch(Exception e){
+            assertTrue(true);
+        }
+    }
+
+        @Test 
+    public void oneNodeGraphTest(){
+        //Test on a graph that only has one node
+        Node n1 = new Node("1");
+        Set<Node> nodes = new HashSet<>();
+        nodes.add(n1);
+
+        Set<Edge> edges = new HashSet<>();
+
+        Graph graph = new Graph(nodes, edges);
+        ShortestPathFinder path = new ShortestPathFinder(graph);
+
+        try{
+            Queue<Edge> shortestPath = path.findPath(n1, n1); 
+            assertEquals(shortestPath.size(), 0);;
+        }
+        catch(Exception e){
+            assertTrue(false);
+        }
+    }
+
 }
