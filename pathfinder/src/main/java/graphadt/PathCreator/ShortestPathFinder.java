@@ -87,6 +87,7 @@ public class ShortestPathFinder implements NodeDistance{
                 currentNode = val.get();
             }
             else{
+                System.out.println("tes");
                 throw new Exception("Shortest Path is not a complete path");
             }
             shortestPathNodes.add(currentNode);
@@ -99,7 +100,8 @@ public class ShortestPathFinder implements NodeDistance{
         Node node1;
         Node node2;
 
-        for (int i = 0; i < shortestPathNodes.size() - 1; i ++){
+        int upperBound = shortestPathNodes.size() - 1;
+        for (int i = 0; i < upperBound; i ++){
             node1 = shortestPathNodes.pop();
             node2 = shortestPathNodes.peek();
 
