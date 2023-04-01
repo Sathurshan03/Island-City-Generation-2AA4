@@ -8,7 +8,13 @@ public class Edge {
     public Edge(Node node1, Node node2, double weight){
         this.node1 = node1;
         this.node2 = node2;
-        this.weight = weight;
+        
+        if (weight >= 0.0){
+            this.weight = weight;
+        }
+        else{
+            this.weight = 0.0;
+        }
     }
 
     public double getWeight(){
