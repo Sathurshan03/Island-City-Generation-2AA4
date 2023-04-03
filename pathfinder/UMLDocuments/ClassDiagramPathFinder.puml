@@ -1,0 +1,35 @@
+@startuml PathFinder
+skinparam linetype polyline
+class Edge{
+    - Node node1
+    - Node node2
+    - double weight
+    + Edge(Node: node1, Node: node2, double: weight)
+}
+class Node{
+    - String id 
+    + Node(String: id)
+}
+class Graph{
+    - Set<Node> nodes
+    - Set<Edge> edges
+    + Graph(Set<Nodes> nodes, Set<Edge> edges)
+}
+class ShortestPathFinder{
+    - Stack<Node> shortestPathNodes
+    - Queue<Edge> shortestPath
+    + ShortestPathFinder(Graph: graph)
+    + Queue<Edge>: findPath(Node: start, Node: target)
+    
+}
+Interface NodeDistance{
+    + Queue<Edge>: findPath(Node: start, Node: target)
+}
+
+NodeDistance <|.. ShortestPathFinder
+ShortestPathFinder "0...1" ..>  "1" Graph
+Graph "0...1" ..>  "*" Edge
+Graph "0...1" ..> "*" Node
+ShortestPathFinder "0...1"  ..>  "*" Edge
+ShortestPathFinder "0...1" ..> "*" Node
+@enduml
