@@ -178,7 +178,7 @@ public class IslandCommandLineReader implements CommandLineReader {
             System.out.println("Mode: " + mode);
         }
         else{
-            System.out.println("Input Mesh Path: " + inputMeshFile + "Output Mesh Path: " + outputMeshFile + "Mode: " + mode + "\nShape: " + shape + "\nAltitude: " + elevation + "\nBiomes: " + biome + "\nLakes: " + maxNumLakes + "\nRivers: " + maxNumRivers + "\nSoil Profile: " + soil + "\nAquifiers: " + numAquifers);
+            System.out.println("Input Mesh Path: " + inputMeshFile + "\nOutput Mesh Path: " + outputMeshFile + "Mode: " + mode + "\nShape: " + shape + "\nAltitude: " + elevation + "\nBiomes: " + biome + "\nLakes: " + maxNumLakes + "\nRivers: " + maxNumRivers + "\nSoil Profile: " + soil + "\nAquifiers: " + numAquifers);
         }
     }
     

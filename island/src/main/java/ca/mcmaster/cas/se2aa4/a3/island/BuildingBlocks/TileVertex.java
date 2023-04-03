@@ -2,6 +2,7 @@ package ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks;
 
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Property;
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Vertex;
+import ca.mcmaster.cas.se2aa4.a3.island.IslandCommandLineReader;
 import ca.mcmaster.cas.se2aa4.a3.island.TilesTypes.VertexElement;
 import ca.mcmaster.cas.se2aa4.a3.tools.ExtractVertexInfo;
 
@@ -97,6 +98,7 @@ public class TileVertex extends ExtractVertexInfo implements TileProperties{
     public Vertex getVertex(){
         if (isCity){
             averageColor = new Color(212, 199, 88, 254); 
+            thicknessDouble = thicknessDouble * IslandCommandLineReader.randomGenerator.getNextDouble(1,3.0);
         }
         else if (isRiver){
             averageColor = new Color(15,94,196, 254);
