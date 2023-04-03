@@ -30,13 +30,14 @@ public class IslandCommandLineReader implements CommandLineReader {
     private String aquifer;
     private String elevation;
     private String biome;
+    private String cities;
 
     private String soil;
     private ModeType mapMode = null;
     private AltitudeType altitude = null;
     private ShapeType shapeToUse = null;
     private BiomeTypes generalBiome = null;
-
+    private int numCities;
     private SoilTypes generalSoil;
     private int maxNumLakes;
     private int maxNumRivers;
@@ -75,6 +76,7 @@ public class IslandCommandLineReader implements CommandLineReader {
         options.addOption(new Option("l", "lakes", true, "Maximum number of lakes (Positive Integer)"));
         options.addOption(new Option("s", "soil", true, "Enter the soil profile {wet, humid, dry}"));
         options.addOption(new Option("aq", "aquifers", true, "Number of aquifers (Positive Integer)"));
+        options.addOption(new Option("c", "cities", true, "Number of cities (Positive Integer)"));
         options.addOption(new Option("h", "help", false, "Help"));
 
     }
@@ -96,6 +98,7 @@ public class IslandCommandLineReader implements CommandLineReader {
         maxLakes = cmd.getOptionValue("lakes");
         soil=cmd.getOptionValue("soil");
         aquifer = cmd.getOptionValue("aquifers");
+        cities = cmd.getOptionValue("cities");
 
         //Help option
         if (cmd.hasOption("help")) {
@@ -172,6 +175,13 @@ public class IslandCommandLineReader implements CommandLineReader {
             numAquifers = 0;
         }
 
+        //Set the number of aquifers
+        if (cmd.hasOption("cities")) {
+            numCities = Integer.parseInt(cities);
+        } else {
+            numCities = 0;
+        }
+
         //Output the user input
 
         if (mapMode.equals(ModeType.SANDBOX)){
@@ -235,7 +245,7 @@ public class IslandCommandLineReader implements CommandLineReader {
                 mesh=heatmap.getMesh();
             }
             else if (isUrbanmapMode()){
-                Urban urban = new Urban(inputMeshFile, outputMeshFile, shapeToUse, altitude, generalBiome,maxNumLakes, maxNumRivers,generalSoil, numAquifers);
+                Urban urban = new Urban(inputMeshFile, outputMeshFile, shapeToUse, altitude, generalBiome,maxNumLakes, maxNumRivers,generalSoil, numAquifers, numCities);
                 urban.generate();
                 mesh = urban.getMesh();
             }

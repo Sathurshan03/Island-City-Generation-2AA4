@@ -14,11 +14,11 @@ import ca.mcmaster.cas.se2aa4.a3.island.Terrains.LandTerrains.CityGenerator;
 public class Urban extends Regular{
     private int numCities;
     private List<TileVertex> landVerticies; 
-    public Urban (String inputMesh, String outputMesh, ShapeType shapeType, AltitudeType altitudeType, BiomeTypes biome, int maxLakes, int maxRivers, SoilTypes soil, int numAquifers) throws IOException{
+    public Urban (String inputMesh, String outputMesh, ShapeType shapeType, AltitudeType altitudeType, BiomeTypes biome, int maxLakes, int maxRivers, SoilTypes soil, int numAquifers, int numCities) throws IOException{
         super(inputMesh, outputMesh, shapeType, altitudeType, biome, maxLakes, maxRivers, soil, numAquifers);
         super.generate();
 
-        this.numCities = 10;
+        this.numCities = numCities;
 
         //Get all the landtiles
         landVerticies = new ArrayList<>();
