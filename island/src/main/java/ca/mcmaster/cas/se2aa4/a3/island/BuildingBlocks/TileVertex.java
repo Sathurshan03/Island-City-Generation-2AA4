@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class TileVertex extends ExtractVertexInfo implements TileProperties{
     List<Color> colorList;
-    Color averageColor = new Color(0, 0, 0, 0);
+    Color averageColor = new Color(255, 255, 255, 0);
     String vertexType;
 
     Double temperature;
@@ -21,6 +21,7 @@ public class TileVertex extends ExtractVertexInfo implements TileProperties{
     Double elevation;
     Double thicknessDouble;
     Boolean isRiver;
+    Boolean isCity; 
 
 
     public TileVertex(Vertex vertex)
@@ -32,6 +33,7 @@ public class TileVertex extends ExtractVertexInfo implements TileProperties{
         this.colorList = new ArrayList<>();
         this.vertexElement = VertexElement.LAND;
         this.isRiver = false;
+        this.isCity = false;
         this.vertexType = extractVertexType(vertex.getPropertiesList());
     }
 
@@ -62,6 +64,7 @@ public class TileVertex extends ExtractVertexInfo implements TileProperties{
 
     public void setRiver(){
         isRiver = true;
+        vertexElement = vertexElement.WATER;
     }
 
     public void setThickness(double thickness){
@@ -70,6 +73,11 @@ public class TileVertex extends ExtractVertexInfo implements TileProperties{
 
     public void setVertexWater(){
         vertexElement = VertexElement.WATER;
+    }
+
+    public void setVertexCity(){
+        vertexElement = VertexElement.CITY;
+        isCity = true;
     }
 
     public Boolean isVertexWater(){
@@ -87,7 +95,10 @@ public class TileVertex extends ExtractVertexInfo implements TileProperties{
     }
 
     public Vertex getVertex(){
-        if (isRiver){
+        if (isCity){
+            averageColor = new Color(212, 199, 88, 254); 
+        }
+        else if (isRiver){
             averageColor = new Color(15,94,196, 254);
         }
         else{

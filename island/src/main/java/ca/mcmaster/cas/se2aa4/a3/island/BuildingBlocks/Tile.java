@@ -56,6 +56,7 @@ public class Tile extends ExtractPolygonInfo{
             for (TileVertex vertex: tileVerticesList){
                 vertex.setVertexWater();
             }
+            centroid.setVertexWater();
         }
     }
 

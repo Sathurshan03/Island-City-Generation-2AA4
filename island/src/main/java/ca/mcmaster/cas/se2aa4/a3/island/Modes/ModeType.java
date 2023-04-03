@@ -1,7 +1,7 @@
 package ca.mcmaster.cas.se2aa4.a3.island.Modes;
 
 public enum ModeType {
-    SANDBOX, REGULAR, HEATMAP;
+    SANDBOX, REGULAR, HEATMAP, URBAN;
 
     public String toString(){
         switch(this){
@@ -11,6 +11,8 @@ public enum ModeType {
             return "regular";
         case HEATMAP:
             return "heatmap";
+        case URBAN:
+            return "urban";
         }
         return null;
     }

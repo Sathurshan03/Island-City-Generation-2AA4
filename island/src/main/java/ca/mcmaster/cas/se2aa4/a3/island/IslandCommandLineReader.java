@@ -10,7 +10,9 @@ import ca.mcmaster.cas.se2aa4.a3.tools.RandomGenerator;
 import ca.mcmaster.cas.se2aa4.a3.island.Modes.ModeType;
 import ca.mcmaster.cas.se2aa4.a3.island.Modes.Regular;
 import ca.mcmaster.cas.se2aa4.a3.island.Modes.Sandbox;
+import ca.mcmaster.cas.se2aa4.a3.island.Modes.Urban;
 import ca.mcmaster.cas.se2aa4.a3.island.Shape.ShapeType;
+import ca.mcmaster.cas.se2aa4.a3.island.IslandCommandLineReader;
 
 import org.apache.commons.cli.*;
 
@@ -58,6 +60,7 @@ public class IslandCommandLineReader implements CommandLineReader {
             //use the inputted seed
             randomGenerator = new RandomGenerator(Long.parseLong(seed));
         }
+        randomGenerator.printSeed();
     }
     public void createOptions(){
         //Creates all the options for the command line
@@ -202,6 +205,14 @@ public class IslandCommandLineReader implements CommandLineReader {
         }
         return false;
     }
+
+    protected boolean isUrbanmapMode(){
+        if (mapMode.equals(ModeType.URBAN)) {
+            return true;
+        }
+        return false;
+    }
+
     public Mesh generateFromInputs() throws IOException{
         RunMode runMode = new RunMode();
         return runMode.getMesh();
@@ -222,6 +233,11 @@ public class IslandCommandLineReader implements CommandLineReader {
             }else if (isHeatmapMode()){
                 Heatmaps heatmap=new Heatmaps(inputMeshFile, outputMeshFile, shapeToUse, altitude, generalBiome,maxNumLakes, maxNumRivers,generalSoil, numAquifers);
                 mesh=heatmap.getMesh();
+            }
+            else if (isUrbanmapMode()){
+                Urban urban = new Urban(inputMeshFile, outputMeshFile, shapeToUse, altitude, generalBiome,maxNumLakes, maxNumRivers,generalSoil, numAquifers);
+                urban.generate();
+                mesh = urban.getMesh();
             }
             else{
                 throw new IOException("Invalid mode was entered");

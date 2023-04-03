@@ -11,12 +11,10 @@ public class RandomGenerator {
         rand = new Random();
         seed = rand.nextLong();
         mainRandomController = new Random(seed);
-        printSeed();
     }
     public RandomGenerator(long seed){
         this.seed = seed;
         mainRandomController = new Random(seed);
-        remindSeed();
     }
 
     public double getNextdouble(){
@@ -36,12 +34,8 @@ public class RandomGenerator {
         return mainRandomController.nextInt(lowerBound, upperBound);
     }
 
-    private void printSeed(){
-        System.out.println("\nThe seed of this map is: " + seed);
-    }
-
-    private void remindSeed(){
-        System.out.println("\nThe seed that was used for the map is: " + seed);
+    public void printSeed(){
+        System.out.println("The seed of this map is: " + seed);
     }
     
 }

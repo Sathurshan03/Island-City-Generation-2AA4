@@ -1,0 +1,6 @@
+cd island
+java -jar island.jar -i ../generator/regular.mesh -o sample.mesh --mode urban --shape irregular --altitude volcanic --biomes tropical --lakes 2 --rivers 15 -soil humid --aquifers 10 
+cd ..
+cd visualizer
+java -jar visualizer.jar ../island/sample.mesh urban.svg 
+cd ..
