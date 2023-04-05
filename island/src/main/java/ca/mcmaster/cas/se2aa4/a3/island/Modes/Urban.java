@@ -7,7 +7,6 @@ import java.io.IOException;
 import ca.mcmaster.cas.se2aa4.a3.island.Altitude.AltitudeType;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.TileVertex;
 import ca.mcmaster.cas.se2aa4.a3.island.CityGraphs.GraphGenerator;
-import ca.mcmaster.cas.se2aa4.a3.island.CityGraphs.IslandEdge;
 import ca.mcmaster.cas.se2aa4.a3.island.GeneralBiome.BiomeTypes;
 import ca.mcmaster.cas.se2aa4.a3.island.Shape.ShapeType;
 import ca.mcmaster.cas.se2aa4.a3.island.SoilProfile.SoilTypes;

@@ -56,7 +56,7 @@ public class TileVertex extends ExtractVertexInfo implements TileProperties{
     }
 
     public void setRiver(){
-        vertexElement = vertexElement.RIVER;
+        vertexElement = VertexElement.RIVER;
     }
 
     public void setThickness(double thickness){
@@ -73,7 +73,9 @@ public class TileVertex extends ExtractVertexInfo implements TileProperties{
     }
 
     public void setVertexRoad(){
-        vertexElement = VertexElement.ROAD;
+        if (!vertexElement.equals(VertexElement.CITY)){
+            vertexElement = VertexElement.ROAD;
+        }
     }
 
     public Boolean isVertexWater(){
