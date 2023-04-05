@@ -69,7 +69,7 @@ public class TileVertex extends ExtractVertexInfo implements TileProperties{
 
     public void setVertexCity(){
         vertexElement = VertexElement.CITY;
-        thicknessDouble = thicknessDouble * IslandCommandLineReader.randomGenerator.getNextDouble(1,3.0);
+        thicknessDouble = thicknessDouble * IslandCommandLineReader.randomGenerator.getNextDouble(1.5,3.5);
     }
 
     public void setVertexRoad(){

@@ -56,6 +56,7 @@ public class TileSegment extends ExtractSegmentInfo implements TileProperties{
     public void setSegmentRoad(){
         segmentElement = SegmentElement.ROAD;
         thicknessDouble = thicknessDouble * 1.5;
+        setVertexThicknessSimilar();
     }
 
     private void updateThickness(){
@@ -63,10 +64,15 @@ public class TileSegment extends ExtractSegmentInfo implements TileProperties{
     }
 
     public void setSegmentVertexRiver(){
-        tileVertex1.setThickness(thicknessDouble*Math.sqrt(2));
-        tileVertex2.setThickness(thicknessDouble*Math.sqrt(2));
+        setVertexThicknessSimilar();
         tileVertex1.setRiver();
         tileVertex2.setRiver();
+    }
+
+    public void setVertexThicknessSimilar(){
+        //sets the vertex size to be same as the segment thickeness
+        tileVertex1.setThickness(thicknessDouble*Math.sqrt(2));
+        tileVertex2.setThickness(thicknessDouble*Math.sqrt(2));
     }
 
     public double getThickness(){
