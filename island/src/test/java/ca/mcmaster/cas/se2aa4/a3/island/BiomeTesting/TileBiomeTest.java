@@ -3,9 +3,9 @@ package ca.mcmaster.cas.se2aa4.a3.island.BiomeTesting;
 import org.junit.jupiter.api.Test;
 import ca.mcmaster.cas.se2aa4.a3.island.SetUpTest;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.Tile;
+import ca.mcmaster.cas.se2aa4.a3.island.Elements.TileTypes;
 import ca.mcmaster.cas.se2aa4.a3.island.GeneralBiome.ArcticGeneralBiome;
 import ca.mcmaster.cas.se2aa4.a3.island.GeneralBiome.GeneralBiome;
-import ca.mcmaster.cas.se2aa4.a3.island.TilesTypes.TileTypes;
 
 import static org.junit.jupiter.api.Assertions.*;
 

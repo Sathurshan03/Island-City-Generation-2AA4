@@ -1,8 +1,8 @@
 package ca.mcmaster.cas.se2aa4.a3.island.GeneralBiome;
 
-import ca.mcmaster.cas.se2aa4.a3.island.TilesTypes.TileTypes;
-
 import java.awt.*;
+
+import ca.mcmaster.cas.se2aa4.a3.island.Elements.TileTypes;
 
 public class TemperateForestGeneralBiome extends GeneralBiome{
     public TemperateForestGeneralBiome(double getBaseTemperature){

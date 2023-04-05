@@ -5,7 +5,9 @@ import java.util.List;
 
 import ca.mcmaster.cas.se2aa4.a3.island.IslandCommandLineReader;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.TileVertex;
+import ca.mcmaster.cas.se2aa4.a3.island.CityGraphs.GraphGenerator;
 import ca.mcmaster.cas.se2aa4.a3.island.Terrains.Generator;
+import graphadt.GraphComponents.Node;
 
 public class CityGenerator implements Generator {
     private int numCities;
@@ -38,6 +40,14 @@ public class CityGenerator implements Generator {
         }
 
         System.out.println(cityVerticies.size() +  " cities were created.");
+    }
+
+    public Node getCityNode(GraphGenerator graphGenerator, TileVertex vertex){
+        return graphGenerator.returnNode(vertex);
+    }
+
+    public List<TileVertex> getCityVerticies(){
+        return cityVerticies;
     }
 
 }

@@ -11,12 +11,12 @@ import ca.mcmaster.cas.se2aa4.a3.island.Terrains.WaterTerrains.LakeGenerator;
 import ca.mcmaster.cas.se2aa4.a3.island.Terrains.WaterTerrains.Ocean;
 import ca.mcmaster.cas.se2aa4.a3.island.Terrains.WaterTerrains.RiverGenerator;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.Tile;
+import ca.mcmaster.cas.se2aa4.a3.island.Elements.TileTypes;
 import ca.mcmaster.cas.se2aa4.a3.island.GeneralBiome.BiomeTypes;
 import ca.mcmaster.cas.se2aa4.a3.island.GeneralBiome.GeneralBiome;
 import ca.mcmaster.cas.se2aa4.a3.island.Shape.Shape;
 import ca.mcmaster.cas.se2aa4.a3.island.Shape.ShapeType;
 import ca.mcmaster.cas.se2aa4.a3.island.SoilProfile.SoilTypes;
-import ca.mcmaster.cas.se2aa4.a3.island.TilesTypes.TileTypes;
 
 public class Regular extends Mode {
     private int maxNumLakes;

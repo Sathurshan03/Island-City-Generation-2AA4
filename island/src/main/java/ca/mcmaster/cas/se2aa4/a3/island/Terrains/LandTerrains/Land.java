@@ -1,9 +1,9 @@
 package ca.mcmaster.cas.se2aa4.a3.island.Terrains.LandTerrains;
 
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.Tile;
+import ca.mcmaster.cas.se2aa4.a3.island.Elements.TileTypes;
 import ca.mcmaster.cas.se2aa4.a3.island.Modes.Mode;
 import ca.mcmaster.cas.se2aa4.a3.island.SoilProfile.SoilTypes;
-import ca.mcmaster.cas.se2aa4.a3.island.TilesTypes.TileTypes;
 
 public class Land {
 

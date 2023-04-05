@@ -3,7 +3,7 @@ package ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks;
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Property;
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Vertex;
 import ca.mcmaster.cas.se2aa4.a3.island.IslandCommandLineReader;
-import ca.mcmaster.cas.se2aa4.a3.island.TilesTypes.VertexElement;
+import ca.mcmaster.cas.se2aa4.a3.island.Elements.VertexElement;
 import ca.mcmaster.cas.se2aa4.a3.tools.ExtractVertexInfo;
 
 import java.awt.Color;
@@ -14,15 +14,10 @@ public class TileVertex extends ExtractVertexInfo implements TileProperties{
     List<Color> colorList;
     Color averageColor = new Color(255, 255, 255, 0);
     String vertexType;
-
     Double temperature;
-
-
     VertexElement vertexElement;
     Double elevation;
     Double thicknessDouble;
-    Boolean isRiver;
-    Boolean isCity; 
 
 
     public TileVertex(Vertex vertex)
@@ -33,15 +28,12 @@ public class TileVertex extends ExtractVertexInfo implements TileProperties{
         this.thicknessDouble = thickness;
         this.colorList = new ArrayList<>();
         this.vertexElement = VertexElement.LAND;
-        this.isRiver = false;
-        this.isCity = false;
         this.vertexType = extractVertexType(vertex.getPropertiesList());
     }
 
     public void setColor(Color color){
         this.averageColor = color;
     }
-
 
     public void setElevation(Double elevation){
         this.elevation=elevation;
@@ -64,8 +56,7 @@ public class TileVertex extends ExtractVertexInfo implements TileProperties{
     }
 
     public void setRiver(){
-        isRiver = true;
-        vertexElement = vertexElement.WATER;
+        vertexElement = vertexElement.RIVER;
     }
 
     public void setThickness(double thickness){
@@ -78,7 +69,11 @@ public class TileVertex extends ExtractVertexInfo implements TileProperties{
 
     public void setVertexCity(){
         vertexElement = VertexElement.CITY;
-        isCity = true;
+        thicknessDouble = thicknessDouble * IslandCommandLineReader.randomGenerator.getNextDouble(1,3.0);
+    }
+
+    public void setVertexRoad(){
+        vertexElement = VertexElement.ROAD;
     }
 
     public Boolean isVertexWater(){
@@ -96,12 +91,8 @@ public class TileVertex extends ExtractVertexInfo implements TileProperties{
     }
 
     public Vertex getVertex(){
-        if (isCity){
-            averageColor = new Color(212, 199, 88, 254); 
-            thicknessDouble = thicknessDouble * IslandCommandLineReader.randomGenerator.getNextDouble(1,3.0);
-        }
-        else if (isRiver){
-            averageColor = new Color(15,94,196, 254);
+        if (!vertexElement.equals(VertexElement.LAND)){
+            averageColor = vertexElement.getColor();
         }
         else{
             setAverageColor();

@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.Tile;
+import ca.mcmaster.cas.se2aa4.a3.island.Elements.TileTypes;
 import ca.mcmaster.cas.se2aa4.a3.island.Terrains.Generator;
-import ca.mcmaster.cas.se2aa4.a3.island.TilesTypes.TileTypes;
 
 public class BeachGenerator implements Generator{
     private Boolean createBeaches;

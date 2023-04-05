@@ -4,10 +4,24 @@ public class Edge {
     private double weight;
     private Node node1;
     private Node node2;
+    private int id;
 
     public Edge(Node node1, Node node2, double weight){
         this.node1 = node1;
         this.node2 = node2;
+        this.id = this.hashCode();
+        if (weight >= 0.0){
+            this.weight = weight;
+        }
+        else{
+            this.weight = 0.0;
+        }
+    }
+
+    public Edge(Node node1, Node node2, double weight, int id){
+        this.node1 = node1;
+        this.node2 = node2;
+        this.id = id;
         
         if (weight >= 0.0){
             this.weight = weight;
@@ -15,6 +29,10 @@ public class Edge {
         else{
             this.weight = 0.0;
         }
+    }
+
+    public int getID(){
+        return this.id;
     }
 
     public double getWeight(){

@@ -1,8 +1,8 @@
 package ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks;
 
+import ca.mcmaster.cas.se2aa4.a3.island.Elements.TileElement;
+import ca.mcmaster.cas.se2aa4.a3.island.Elements.TileTypes;
 import ca.mcmaster.cas.se2aa4.a3.island.Terrains.LandTerrains.LandComposition;
-import ca.mcmaster.cas.se2aa4.a3.island.TilesTypes.TileElement;
-import ca.mcmaster.cas.se2aa4.a3.island.TilesTypes.TileTypes;
 import ca.mcmaster.cas.se2aa4.a3.tools.ExtractPolygonInfo;
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Polygon;
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Property;

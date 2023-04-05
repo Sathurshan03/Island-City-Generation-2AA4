@@ -2,7 +2,7 @@ package ca.mcmaster.cas.se2aa4.a3.island.GeneralBiome;
 
 import java.awt.Rectangle;
 
-import ca.mcmaster.cas.se2aa4.a3.island.TilesTypes.TileTypes;
+import ca.mcmaster.cas.se2aa4.a3.island.Elements.TileTypes;
 
 public class ArcticGeneralBiome extends GeneralBiome{
     public ArcticGeneralBiome(double getBaseTemperature){

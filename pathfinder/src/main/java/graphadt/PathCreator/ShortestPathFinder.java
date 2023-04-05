@@ -9,16 +9,17 @@ import java.util.Queue;
 import java.util.Set;
 import java.util.Stack;
 import java.lang.Exception;
+
 import graphadt.GraphComponents.Edge;
 import graphadt.GraphComponents.Graph;
 import graphadt.GraphComponents.Node;
 
 public class ShortestPathFinder implements NodeDistance{
-    private Set<Node> nodes;
-    private Set<Edge> edges;
-    private HashMap<Node,Optional<Node>> path;
-    private HashMap<Node,Double> cost;
-    private Stack<Node> shortestPathNodes;
+    protected Set<Node> nodes;
+    protected Set<Edge> edges;
+    protected HashMap<Node,Optional<Node>> path;
+    protected HashMap<Node,Double> cost;
+    protected Stack<Node> shortestPathNodes;
     private Queue<Edge> shortestPath;
 
     public ShortestPathFinder(Graph graph){
@@ -72,7 +73,7 @@ public class ShortestPathFinder implements NodeDistance{
         return shortestPath;
     }
 
-    private void getNodeStack(Node start, Node target) throws Exception{
+    protected void getNodeStack(Node start, Node target) throws Exception{
         //Get the node representation of the shortest path
         shortestPathNodes = new Stack<>();
         shortestPathNodes.push(target);
@@ -94,7 +95,7 @@ public class ShortestPathFinder implements NodeDistance{
         }
     }
 
-    private void getEdgeStack(){
+    protected void getEdgeStack(){
         //get the edge representation of the stack
         shortestPath = new LinkedList<>();
         Node node1;
@@ -114,7 +115,7 @@ public class ShortestPathFinder implements NodeDistance{
         }
     }
 
-    private class nodeCostComparator implements Comparator<Node>{
+    public class nodeCostComparator implements Comparator<Node>{
         @Override
         public int compare(Node node1, Node node2) {
             return Double.compare(cost.get(node1), cost.get(node2));

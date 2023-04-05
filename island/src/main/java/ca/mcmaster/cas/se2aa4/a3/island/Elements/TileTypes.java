@@ -1,4 +1,4 @@
-package ca.mcmaster.cas.se2aa4.a3.island.TilesTypes;
+package ca.mcmaster.cas.se2aa4.a3.island.Elements;
 import java.awt.Color;
 
 import ca.mcmaster.cas.se2aa4.a3.island.Terrains.LandTerrains.LandComposition;

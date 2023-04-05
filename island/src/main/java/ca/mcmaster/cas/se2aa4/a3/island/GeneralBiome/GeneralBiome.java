@@ -1,6 +1,6 @@
 package ca.mcmaster.cas.se2aa4.a3.island.GeneralBiome;
 
-import ca.mcmaster.cas.se2aa4.a3.island.TilesTypes.TileTypes;
+import ca.mcmaster.cas.se2aa4.a3.island.Elements.TileTypes;
 
 public abstract class GeneralBiome {
     protected final double protectedTemperature;

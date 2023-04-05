@@ -3,6 +3,7 @@ package ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks;
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Property;
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Segment;
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Vertex;
+import ca.mcmaster.cas.se2aa4.a3.island.Elements.SegmentElement;
 import ca.mcmaster.cas.se2aa4.a3.tools.ExtractSegmentInfo;
 
 import java.awt.Color;
@@ -11,26 +12,32 @@ import java.util.ArrayList;
 
 public class TileSegment extends ExtractSegmentInfo implements TileProperties{
     private List<Color> colorList;
-    private Color averageColor = new Color(0, 0, 0, 0);
     private String segmentType;
     private Double thicknessDouble;
     private TileVertex tileVertex1;
     private TileVertex tileVertex2;
-    private Boolean isRiver;
     private int numRivers;
+    private SegmentElement segmentElement;
+    private Color averageColor;
 
     public TileSegment(Segment segment, List<Vertex> vertices, int offset){
         super(segment, vertices, offset);
         this.thicknessDouble = super.thickness;
         this.colorList = new ArrayList<>();
-        this.isRiver = false;
         this.numRivers = 0;
+        this.segmentElement = SegmentElement.REGULAR;
+        this.averageColor = segmentElement.getColor();
         segmentType = extractSegmentType(segment.getPropertiesList());
     }
 
-    public void setColor(Color color){
-        this.averageColor = color;
+    public TileVertex getTileVertex1(){
+        return this.tileVertex1;
     }
+
+    public TileVertex getTileVertex2(){
+        return this.tileVertex2;
+    }
+
 
     public void setTileVertex1(TileVertex vertex){
         this.tileVertex1 = vertex;
@@ -41,10 +48,16 @@ public class TileSegment extends ExtractSegmentInfo implements TileProperties{
     }
 
     public void setRiver(){
-        isRiver = true;
+        segmentElement = SegmentElement.River;
         numRivers++;
         updateThickness();
     }
+
+    public void setSegmentRoad(){
+        segmentElement = SegmentElement.ROAD;
+        thicknessDouble = thicknessDouble * 1.5;
+    }
+
     private void updateThickness(){
         thicknessDouble = 0.75 * numRivers;
     }
@@ -81,8 +94,8 @@ public class TileSegment extends ExtractSegmentInfo implements TileProperties{
     }
 
     public Segment getSegment(){
-        if (isRiver){
-            averageColor = new Color(15,94,196, 254);
+        if (!segmentElement.equals(SegmentElement.REGULAR)){
+            averageColor = segmentElement.getColor();
         }
         else{
             setAverageColor();
@@ -121,11 +134,15 @@ public class TileSegment extends ExtractSegmentInfo implements TileProperties{
                 blue += color.getBlue();
                 alpha += color.getAlpha();
             }
-                        red /= colorList.size();
+            red /= colorList.size();
             green /= colorList.size();
             blue /= colorList.size();
             alpha /= colorList.size();
             averageColor = new Color(red, green, blue, alpha);
         }
+    }
+
+    public void setColor(Color color) {
+        averageColor = color;
     }   
 }

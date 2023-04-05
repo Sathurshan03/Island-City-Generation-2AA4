@@ -7,8 +7,8 @@ import ca.mcmaster.cas.se2aa4.a3.island.IslandCommandLineReader;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.Tile;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.TileSegment;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.TileVertex;
+import ca.mcmaster.cas.se2aa4.a3.island.Elements.TileTypes;
 import ca.mcmaster.cas.se2aa4.a3.island.Terrains.Generator;
-import ca.mcmaster.cas.se2aa4.a3.island.TilesTypes.TileTypes;
 
 public class RiverGenerator implements Generator{
     private int maxNumRivers;
