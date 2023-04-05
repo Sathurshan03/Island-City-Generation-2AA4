@@ -28,10 +28,10 @@ public class ShortestPathTest {
     @BeforeAll
     public static void setup(){
         //setup for the test case, creates a graph to evaluate the base cases
-        n1 = new Node("1");
-        n2 = new Node("2");
-        Node n3 = new Node("3");
-        n4 = new Node("4");
+        n1 = new Node(1);
+        n2 = new Node(2);
+        Node n3 = new Node(3);
+        n4 = new Node(4);
 
         Edge e1 = new Edge(n1, n2, 10);
         e2 = new Edge(n1, n3, 2);

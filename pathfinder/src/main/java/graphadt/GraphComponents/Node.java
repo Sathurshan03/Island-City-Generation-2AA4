@@ -1,13 +1,13 @@
 package graphadt.GraphComponents;
 
 public class Node {
-    private String id;
+    private int id;
     
-    public Node(String id){
+    public Node(int id){
         this.id = id;
     }
 
-    public String getId(){
+    public int getId(){
         return id;
     }
 }

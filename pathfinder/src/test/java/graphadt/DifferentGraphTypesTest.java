@@ -16,11 +16,11 @@ public class DifferentGraphTypesTest {
     @Test
     public void linearGraphTest(){
         //Test on a linear graph, the path should follow the linear path
-        Node n1 = new Node("1");
-        Node n2 = new Node("2");
-        Node n3 = new Node("3");
-        Node n4 = new Node("4");
-        Node n5 = new Node("5");
+        Node n1 = new Node(1);
+        Node n2 = new Node(2);
+        Node n3 = new Node(3);
+        Node n4 = new Node(4);
+        Node n5 = new Node(5);
 
         Edge e1 = new Edge(n1, n2, 10);
         Edge e2 = new Edge(n2, n3, 2);
@@ -70,11 +70,11 @@ public class DifferentGraphTypesTest {
     @Test
     public  void cyclicGraphTest(){
         //Test in a cyclic graph, the shortest path would cycle around without closing the cicle
-        Node n1 = new Node("1");
-        Node n2 = new Node("2");
-        Node n3 = new Node("3");
-        Node n4 = new Node("4");
-        Node n5 = new Node("5");
+        Node n1 = new Node(1);
+        Node n2 = new Node(2);
+        Node n3 = new Node(3);
+        Node n4 = new Node(4);
+        Node n5 = new Node(5);
 
         Edge e1 = new Edge(n1, n2, 10);
         Edge e2 = new Edge(n2, n3, 2);
@@ -119,11 +119,11 @@ public class DifferentGraphTypesTest {
     @Test
     public  void midCyclicGraphTest(){
         //Test in a cyclic graph where the starting node is not part of the cycle and the end node is part of the cycle
-        Node n1 = new Node("1");
-        Node n2 = new Node("2");
-        Node n3 = new Node("3");
-        Node n4 = new Node("4");
-        Node n5 = new Node("5");
+        Node n1 = new Node(1);
+        Node n2 = new Node(2);
+        Node n3 = new Node(3);
+        Node n4 = new Node(4);
+        Node n5 = new Node(5);
 
         Edge e1 = new Edge(n1, n2, 10);
         Edge e2 = new Edge(n2, n3, 2);
@@ -172,10 +172,10 @@ public class DifferentGraphTypesTest {
     @Test
     public  void biDirectionalGraphTest(){
         //Test if we can get the same resutls ad ShortestPathTest using a Bidirectional graph
-        Node n1 = new Node("1");
-        Node n2 = new Node("2");
-        Node n3 = new Node("3");
-        Node n4 = new Node("4");
+        Node n1 = new Node(1);
+        Node n2 = new Node(2);
+        Node n3 = new Node(3);
+        Node n4 = new Node(4);
 
         Edge e1 = new Edge(n1, n2, 10);
         Edge e2 = new Edge(n1, n3, 2);
@@ -228,13 +228,14 @@ public class DifferentGraphTypesTest {
     @Test
     public  void treeGrapTest(){
         //Test pn a tree graph
-        Node n1 = new Node("1");
-        Node n2 = new Node("2");
-        Node n3 = new Node("3");
-        Node n4 = new Node("4");
-        Node n5 = new Node("5");
-        Node n6 = new Node("6");
-        Node n7 = new Node("7");
+        Node n1 = new Node(1);
+        Node n2 = new Node(2);
+        Node n3 = new Node(3);
+        Node n4 = new Node(4);
+        Node n5 = new Node(5);
+        Node n6 = new Node(6);
+        Node n7 = new Node(7);
+
 
         Edge e1 = new Edge(n1, n2, 10);
         Edge e2 = new Edge(n1, n3, 2);
@@ -286,12 +287,12 @@ public class DifferentGraphTypesTest {
     @Test
     public void unConnectedGraphTest(){
         //Test on an unconnected graph and test to see that a path will never be created 
-        Node n1 = new Node("1");
-        Node n2 = new Node("2");
-        Node n3 = new Node("3");
-        Node n4 = new Node("4");
-        Node n5 = new Node("5");
-        Node n6 = new Node("6");
+        Node n1 = new Node(1);
+        Node n2 = new Node(2);
+        Node n3 = new Node(3);
+        Node n4 = new Node(4);
+        Node n5 = new Node(5);
+        Node n6 = new Node(6);
 
         Edge e1 = new Edge(n1, n2, 10);
         Edge e2 = new Edge(n1, n3, 2);
@@ -337,8 +338,8 @@ public class DifferentGraphTypesTest {
         Graph graph = new Graph(nodes, edges);
         ShortestPathFinder path = new ShortestPathFinder(graph);
 
-        Node n1 = new Node("1");
-        Node n6 = new Node("6");
+        Node n1 = new Node(1);
+        Node n6 = new Node(6);
 
         try{
             Queue<Edge> shortestPath = path.findPath(n1, n6); 
@@ -352,7 +353,7 @@ public class DifferentGraphTypesTest {
         @Test 
     public void oneNodeGraphTest(){
         //Test on a graph that only has one node
-        Node n1 = new Node("1");
+        Node n1 = new Node(1);
         Set<Node> nodes = new HashSet<>();
         nodes.add(n1);
 

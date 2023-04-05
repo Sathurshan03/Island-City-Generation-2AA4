@@ -39,9 +39,9 @@ public class GraphGenerator implements Generator{
 
     private void createNodes(){
         //create nodes for the graph
-        String id;
+        int id;
         for (TileVertex vertex: tileVerticies){
-            id = String.valueOf(vertex.hashCode());
+            id = vertex.hashCode();
             nodeMap.put(vertex, new Node(id));
         }
     }
