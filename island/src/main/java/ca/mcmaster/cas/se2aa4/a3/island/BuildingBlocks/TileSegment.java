@@ -4,6 +4,7 @@ import ca.mcmaster.cas.se2aa4.a2.io.Structs.Property;
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Segment;
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Vertex;
 import ca.mcmaster.cas.se2aa4.a3.island.Elements.SegmentElement;
+import ca.mcmaster.cas.se2aa4.a3.island.Elements.VertexElement;
 import ca.mcmaster.cas.se2aa4.a3.tools.ExtractSegmentInfo;
 
 import java.awt.Color;
@@ -55,7 +56,7 @@ public class TileSegment extends ExtractSegmentInfo implements TileProperties{
 
     public void setSegmentRoad(){
         segmentElement = SegmentElement.ROAD;
-        thicknessDouble = thicknessDouble * 1.5;
+        thicknessDouble = super.thickness * 1.5;
         setVertexThicknessSimilar();
     }
 
@@ -71,8 +72,13 @@ public class TileSegment extends ExtractSegmentInfo implements TileProperties{
 
     public void setVertexThicknessSimilar(){
         //sets the vertex size to be same as the segment thickeness
-        tileVertex1.setThickness(thicknessDouble*Math.sqrt(2));
-        tileVertex2.setThickness(thicknessDouble*Math.sqrt(2));
+        if (!tileVertex1.vertexElement.equals(VertexElement.CITY) && !tileVertex1.vertexElement.equals(VertexElement.CENTRALCITY)){
+            tileVertex1.setThickness(thicknessDouble*Math.sqrt(2));
+        }
+        
+        if (!tileVertex2.vertexElement.equals(VertexElement.CITY) && !tileVertex2.vertexElement.equals(VertexElement.CENTRALCITY)){
+            tileVertex2.setThickness(thicknessDouble*Math.sqrt(2));
+        } 
     }
 
     public double getThickness(){

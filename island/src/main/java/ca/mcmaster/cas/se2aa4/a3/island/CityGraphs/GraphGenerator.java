@@ -72,7 +72,7 @@ public class GraphGenerator implements Generator{
             //Create 2 IslandEdge to represent bidirectional edge
             node1 = vertex1.getNodeRepresentation();
             node2 = vertex2.getNodeRepresentation();
-            weight = calculateWeight(vertex1.getX(), vertex1.getY(), vertex2.getX(), vertex2.getY());
+            weight = calculateWeight(vertex1.getX(), vertex1.getY(), vertex1.getElevation(), vertex2.getX(), vertex2.getY(), vertex2.getElevation());
             islandEdge1 = new IslandEdge(node1, node2, weight, observer);
             islandEdge2 = new IslandEdge(node2, node1, weight, observer);
 
@@ -83,9 +83,9 @@ public class GraphGenerator implements Generator{
         }
     }
 
-    private double calculateWeight(double v1x, double v1y, double v2x, double v2y){
+    private double calculateWeight(double v1x, double v1y, double v1z, double v2x, double v2y, double v2z){
         //calculate the weight of an edge based on distance 
-        double distance = Math.sqrt(Math.pow((v1x - v2x),2) + Math.pow((v1y - v2y),2));
+        double distance = Math.sqrt(Math.pow((v1x - v2x),2) + Math.pow((v1y - v2y),2) + Math.pow((v1z - v2z),2));
         return distance; 
     }
 

@@ -73,7 +73,7 @@ public class TileVertex extends ExtractVertexInfo implements TileProperties{
 
     public void setVertexCity(){
         vertexElement = VertexElement.CITY;
-        thicknessDouble = thicknessDouble * IslandCommandLineReader.randomGenerator.getNextDouble(1.5,3.5);
+        thicknessDouble = thicknessDouble * IslandCommandLineReader.randomGenerator.getNextDouble(1,3.5);
     }
 
     public void setCentralVertexCity(){
@@ -93,7 +93,7 @@ public class TileVertex extends ExtractVertexInfo implements TileProperties{
     }
 
     public void setVertexRoad(){
-        if (!vertexElement.equals(VertexElement.CITY)){
+        if (!vertexElement.equals(VertexElement.CITY) && !vertexElement.equals(VertexElement.CENTRALCITY)){
             vertexElement = VertexElement.ROAD;
         }
     }
