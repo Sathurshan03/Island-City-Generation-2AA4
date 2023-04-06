@@ -15,20 +15,23 @@ import graphadt.GraphComponents.Graph;
 import graphadt.GraphComponents.Node;
 
 public class ShortestPathFinder implements NodeDistance{
-    protected Set<Node> nodes;
-    protected Set<Edge> edges;
-    protected HashMap<Node,Optional<Node>> path;
-    protected HashMap<Node,Double> cost;
-    protected Stack<Node> shortestPathNodes;
+    private Set<Node> nodes;
+    private Set<Edge> edges;
+    private HashMap<Node,Optional<Node>> path;
+    private HashMap<Node,Double> cost;
+    private Stack<Node> shortestPathNodes;
     private Queue<Edge> shortestPath;
+    private Node start;
 
-    public ShortestPathFinder(Graph graph){
+    public ShortestPathFinder(Graph graph, Node start){
         this.nodes = graph.getNodes();
         this.edges = graph.getEdges();
+        this.start = start; 
+        runDijkstra();
     }
 
-    public Queue<Edge> findPath(Node start, Node target) throws Exception{
-        //Dijkstra algorithm implementation 
+    private void runDijkstra(){
+    //Dijkstra algorithm implementation 
         
         //Create path and cost set
         Optional<Node> holder = Optional.empty();
@@ -66,14 +69,15 @@ public class ShortestPathFinder implements NodeDistance{
                 }
             }
         }
+    }
 
-        getNodeStack(start, target);
-        getEdgeStack();
-
+    public Queue<Edge> findPath(Node target) throws Exception{
+        getNodeStack(target);
+        getEdgeQueue();
         return shortestPath;
     }
 
-    protected void getNodeStack(Node start, Node target) throws Exception{
+    private void getNodeStack(Node target) throws Exception{
         //Get the node representation of the shortest path
         shortestPathNodes = new Stack<>();
         shortestPathNodes.push(target);
@@ -88,14 +92,13 @@ public class ShortestPathFinder implements NodeDistance{
                 currentNode = val.get();
             }
             else{
-                System.out.println("tes");
                 throw new Exception("Shortest Path is not a complete path");
             }
             shortestPathNodes.add(currentNode);
         }
     }
 
-    protected void getEdgeStack(){
+    private void getEdgeQueue(){
         //get the edge representation of the stack
         shortestPath = new LinkedList<>();
         Node node1;
@@ -113,6 +116,10 @@ public class ShortestPathFinder implements NodeDistance{
                 }
             } 
         }
+    }
+
+    public double getPathCost(Node targetNode){
+        return cost.get(targetNode);
     }
 
     public class nodeCostComparator implements Comparator<Node>{

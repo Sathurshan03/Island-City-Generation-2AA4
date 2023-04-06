@@ -15,16 +15,18 @@ import graphadt.GraphComponents.Node;
 public class GraphGenerator implements Generator{
     private List<TileVertex> tileVerticies;
     private List<TileSegment> tileSegments;
-    private HashMap<TileVertex, Node> nodeMap;
-    private HashMap<Integer, IslandEdge> islandEdges;
+    private HashMap<Node, IslandNode> islandNodeMap;
+    private HashMap<Edge, IslandEdge> islandEdgesMap;
+    private Set<Node> nodes;
     private Set<Edge> edges;
     private Graph graph;
 
     public GraphGenerator(List<TileVertex> tileVertices, List<TileSegment> tileSegments){
         this.tileSegments = tileSegments;
         this.tileVerticies = tileVertices;
-        nodeMap = new HashMap<>();
-        islandEdges = new HashMap<>();
+        islandNodeMap = new HashMap<>();
+        islandEdgesMap = new HashMap<>();
+        nodes = new HashSet<>();
         edges = new HashSet<>();
     }
 
@@ -33,22 +35,26 @@ public class GraphGenerator implements Generator{
         //generates a graph to on the nodes and eddges from the island
         createNodes();
         createEdges();
-        Set<Node> nodes = new HashSet<Node>(nodeMap.values());
         graph = new Graph(nodes, edges);
     }
 
     private void createNodes(){
         //create nodes for the graph
-        int id;
+        IslandNode islandNode;
+        NodeObserver nodeObserver;
+
         for (TileVertex vertex: tileVerticies){
-            id = vertex.hashCode();
-            nodeMap.put(vertex, new Node(id));
+            nodeObserver = new NodeObserver(vertex);
+            islandNode = new IslandNode(nodeObserver);
+            vertex.associateIslandNode(islandNode);
+            islandNodeMap.put(islandNode.getNode(), islandNode);
+            nodes.add(islandNode.getNode());
         }
     }
 
     private void createEdges(){
         //create edges for the graph
-        Observer observer;
+        RoadObserver observer;
         Node node1; 
         Node node2;
         TileVertex vertex1;
@@ -61,17 +67,17 @@ public class GraphGenerator implements Generator{
             //create observer
             vertex1 = segment.getTileVertex1();
             vertex2 = segment.getTileVertex2();
-            observer = new Observer(segment, vertex1, vertex2);
+            observer = new RoadObserver(segment, vertex1, vertex2);
 
             //Create 2 IslandEdge to represent bidirectional edge
-            node1 = nodeMap.get(vertex1);
-            node2 = nodeMap.get(vertex2);
+            node1 = vertex1.getNodeRepresentation();
+            node2 = vertex2.getNodeRepresentation();
             weight = calculateWeight(vertex1.getX(), vertex1.getY(), vertex2.getX(), vertex2.getY());
             islandEdge1 = new IslandEdge(node1, node2, weight, observer);
             islandEdge2 = new IslandEdge(node2, node1, weight, observer);
 
-            islandEdges.put(islandEdge1.hashCode(), islandEdge1);
-            islandEdges.put(islandEdge2.hashCode(), islandEdge2);
+            islandEdgesMap.put(islandEdge1.getEdge(), islandEdge1);
+            islandEdgesMap.put(islandEdge2.getEdge(), islandEdge2);
             edges.add(islandEdge1.getEdge());
             edges.add(islandEdge2.getEdge());
         }
@@ -87,12 +93,11 @@ public class GraphGenerator implements Generator{
         return this.graph;
     }
 
-    public Node returnNode(TileVertex vertex){
-        return nodeMap.get(vertex);
+    public HashMap<Node, IslandNode> getIslandNodeMap(){
+        return islandNodeMap;
     }
 
-    public void islandEdgeSetRoad(int id){
-        IslandEdge islandEdge = islandEdges.get(id);
-        islandEdge.setRoad();
+    public HashMap<Edge, IslandEdge> getIslandEdgesMap(){
+        return islandEdgesMap;
     }
 }

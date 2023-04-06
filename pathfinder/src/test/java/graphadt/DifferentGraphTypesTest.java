@@ -41,7 +41,7 @@ public class DifferentGraphTypesTest {
         edges.add(e4);
 
         Graph graph = new Graph(nodes, edges);
-        ShortestPathFinder path = new ShortestPathFinder(graph);
+        ShortestPathFinder path = new ShortestPathFinder(graph, n1);
 
         Queue<Edge> myDefinedShortestPath;
     
@@ -54,7 +54,7 @@ public class DifferentGraphTypesTest {
                 myDefinedShortestPath.add(e3);
                 myDefinedShortestPath.add(e4);
 
-                shortestPath = path.findPath(n1, node);
+                shortestPath = path.findPath(node);
 
                 while (shortestPath.peek() != null){
                     assertEquals(myDefinedShortestPath.poll(), shortestPath.poll());
@@ -97,7 +97,7 @@ public class DifferentGraphTypesTest {
         edges.add(e5);
 
         Graph graph = new Graph(nodes, edges);
-        ShortestPathFinder path = new ShortestPathFinder(graph);
+        ShortestPathFinder path = new ShortestPathFinder(graph, n1);
 
         Queue<Edge> myDefinedShortestPath = new LinkedList<>();
         myDefinedShortestPath.add(e1);
@@ -106,7 +106,7 @@ public class DifferentGraphTypesTest {
         myDefinedShortestPath.add(e4);
 
         try{
-            Queue<Edge> shortestPath = path.findPath(n1, n5);
+            Queue<Edge> shortestPath = path.findPath(n5);
             while (myDefinedShortestPath.peek() != null){
                 assertEquals(myDefinedShortestPath.poll(), shortestPath.poll());
             }
@@ -150,7 +150,7 @@ public class DifferentGraphTypesTest {
         edges.add(e7);
 
         Graph graph = new Graph(nodes, edges);
-        ShortestPathFinder path = new ShortestPathFinder(graph);
+        ShortestPathFinder path = new ShortestPathFinder(graph, n1);
 
         Queue<Edge> myDefinedShortestPath = new LinkedList<>();
         myDefinedShortestPath.add(e1);
@@ -159,7 +159,7 @@ public class DifferentGraphTypesTest {
         myDefinedShortestPath.add(e4);
 
         try{
-            Queue<Edge> shortestPath = path.findPath(n1, n4);
+            Queue<Edge> shortestPath = path.findPath(n4);
             while (myDefinedShortestPath.peek() != null){
                 assertEquals(myDefinedShortestPath.poll(), shortestPath.poll());
             }
@@ -207,7 +207,7 @@ public class DifferentGraphTypesTest {
         edges.add(e5r);
 
         Graph graph = new Graph(nodes, edges);
-        ShortestPathFinder path = new ShortestPathFinder(graph);
+        ShortestPathFinder path = new ShortestPathFinder(graph, n1);
 
         Queue<Edge> myDefinedShortestPath = new LinkedList<>();
         myDefinedShortestPath.add(e2);
@@ -215,7 +215,7 @@ public class DifferentGraphTypesTest {
         myDefinedShortestPath.add(e4);
 
         try{
-            Queue<Edge> shortestPath = path.findPath(n1, n2);
+            Queue<Edge> shortestPath = path.findPath(n2);
             while (myDefinedShortestPath.peek() != null){
                 assertEquals(myDefinedShortestPath.poll(), shortestPath.poll());
             }
@@ -264,7 +264,7 @@ public class DifferentGraphTypesTest {
         edges.add(e7);
 
         Graph graph = new Graph(nodes, edges);
-        ShortestPathFinder path = new ShortestPathFinder(graph);
+        ShortestPathFinder path = new ShortestPathFinder(graph, n1);
 
         Queue<Edge> myDefinedShortestPath = new LinkedList<>();
         myDefinedShortestPath.add(e2);
@@ -274,7 +274,7 @@ public class DifferentGraphTypesTest {
 
 
         try{
-            Queue<Edge> shortestPath = path.findPath(n1, n7);
+            Queue<Edge> shortestPath = path.findPath(n7);
             while (myDefinedShortestPath.peek() != null){
                 assertEquals(myDefinedShortestPath.poll(), shortestPath.poll());
             }
@@ -317,10 +317,10 @@ public class DifferentGraphTypesTest {
         edges.add(e6);
 
         Graph graph = new Graph(nodes, edges);
-        ShortestPathFinder path = new ShortestPathFinder(graph);
+        ShortestPathFinder path = new ShortestPathFinder(graph, n1);
     
         try{
-            Queue<Edge> shortestPath = path.findPath(n1, n6); 
+            Queue<Edge> shortestPath = path.findPath(n6); 
             assertTrue(false);
         }
         catch(Exception e){
@@ -335,14 +335,14 @@ public class DifferentGraphTypesTest {
         Set<Node> nodes = new HashSet<>();
         Set<Edge> edges = new HashSet<>();
 
-        Graph graph = new Graph(nodes, edges);
-        ShortestPathFinder path = new ShortestPathFinder(graph);
-
         Node n1 = new Node(1);
         Node n6 = new Node(6);
 
+        Graph graph = new Graph(nodes, edges);
+        ShortestPathFinder path = new ShortestPathFinder(graph, n1);
+
         try{
-            Queue<Edge> shortestPath = path.findPath(n1, n6); 
+            Queue<Edge> shortestPath = path.findPath(n6); 
             assertTrue(false);
         }
         catch(Exception e){
@@ -360,10 +360,10 @@ public class DifferentGraphTypesTest {
         Set<Edge> edges = new HashSet<>();
 
         Graph graph = new Graph(nodes, edges);
-        ShortestPathFinder path = new ShortestPathFinder(graph);
+        ShortestPathFinder path = new ShortestPathFinder(graph, n1);
 
         try{
-            Queue<Edge> shortestPath = path.findPath(n1, n1); 
+            Queue<Edge> shortestPath = path.findPath(n1); 
             assertEquals(shortestPath.size(), 0);;
         }
         catch(Exception e){

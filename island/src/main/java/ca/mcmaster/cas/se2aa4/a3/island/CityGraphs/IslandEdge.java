@@ -4,10 +4,10 @@ import graphadt.GraphComponents.Edge;
 import graphadt.GraphComponents.Node;
 
 public class IslandEdge{
-    private Observer observer; 
+    private RoadObserver observer; 
     private Edge edge;
 
-    public IslandEdge (Node node1, Node node2, double weight, Observer observer){
+    public IslandEdge (Node node1, Node node2, double weight, RoadObserver observer){
         this.observer = observer; 
         this.edge = new Edge(node1, node2, weight, this.hashCode());
     }
@@ -19,5 +19,4 @@ public class IslandEdge{
     public void setRoad(){
         observer.update();
     }
-    
 }

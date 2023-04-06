@@ -53,7 +53,7 @@ public class ShortestPathTest {
         edges.add(e5);
 
         Graph graph = new Graph(nodes, edges);
-        path = new ShortestPathFinder(graph);
+        path = new ShortestPathFinder(graph, n1);
     }
 
     @Test
@@ -66,7 +66,7 @@ public class ShortestPathTest {
         myDefinedShortestPath.add(e4);
 
         try{
-            Queue<Edge> shortestPath = path.findPath(n1, n2);
+            Queue<Edge> shortestPath = path.findPath(n2);
             while (myDefinedShortestPath.peek() != null){
                 assertEquals(myDefinedShortestPath.poll(), shortestPath.poll());
             }
@@ -80,7 +80,7 @@ public class ShortestPathTest {
     public  void startNodePathTest(){
         //Test that the shortest path for start node to itself is nothing
         try{
-            Queue<Edge> shortestPath = path.findPath(n1, n1);
+            Queue<Edge> shortestPath = path.findPath(n1);
             assertEquals(0, shortestPath.size());
         }
         catch(Exception e){
@@ -92,7 +92,7 @@ public class ShortestPathTest {
     public void startNodeTest(){
         //Test if the path starts at starting node
         try{
-            Queue<Edge> shortestPath = path.findPath(n1, n4);
+            Queue<Edge> shortestPath = path.findPath(n4);
             Edge firstEdge = shortestPath.poll();
             assertEquals(n1, firstEdge.getNode1());
         }
@@ -105,7 +105,7 @@ public class ShortestPathTest {
     public void endNodeTest(){
         //Test if the path ends at ending node
         try{
-            Queue<Edge> shortestPath = path.findPath(n1, n4);
+            Queue<Edge> shortestPath = path.findPath(n4);
 
             Edge lastEdge = null;
             for (Edge edge: shortestPath){
@@ -123,7 +123,7 @@ public class ShortestPathTest {
     public void connectedPathTest(){
         //Checks to see if the path is connected
         try{
-            Queue<Edge> shortestPath = path.findPath(n1, n2);
+            Queue<Edge> shortestPath = path.findPath(n2);
             Node currentNode = shortestPath.poll().getNode2();
             for (Edge edge: shortestPath){
                 assertEquals(currentNode, edge.getNode1());
@@ -139,7 +139,7 @@ public class ShortestPathTest {
     public void noDuplicateEdgesTest(){
         //Test to ensure that there are not any duplciate edges in the shortest path
         try{
-            Queue<Edge> shortestPath = path.findPath(n1, n2);
+            Queue<Edge> shortestPath = path.findPath(n2);
             
             Edge currentEdge; 
 

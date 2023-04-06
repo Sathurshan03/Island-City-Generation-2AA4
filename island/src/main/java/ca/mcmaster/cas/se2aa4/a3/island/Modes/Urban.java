@@ -6,12 +6,16 @@ import java.util.Queue;
 import java.io.IOException;
 import ca.mcmaster.cas.se2aa4.a3.island.Altitude.AltitudeType;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.TileVertex;
+import ca.mcmaster.cas.se2aa4.a3.island.CityGraphs.ConvertCityNodes;
 import ca.mcmaster.cas.se2aa4.a3.island.CityGraphs.GraphGenerator;
+import ca.mcmaster.cas.se2aa4.a3.island.CityGraphs.CentralNodeFinder;
+import ca.mcmaster.cas.se2aa4.a3.island.CityGraphs.CitySetter;
 import ca.mcmaster.cas.se2aa4.a3.island.GeneralBiome.BiomeTypes;
 import ca.mcmaster.cas.se2aa4.a3.island.Shape.ShapeType;
 import ca.mcmaster.cas.se2aa4.a3.island.SoilProfile.SoilTypes;
 import ca.mcmaster.cas.se2aa4.a3.island.Terrains.LandTerrains.CityGenerator;
 import graphadt.GraphComponents.Edge;
+import graphadt.GraphComponents.Node;
 import graphadt.PathCreator.ShortestPathFinder;
 
 public class Urban extends Regular{
@@ -34,26 +38,27 @@ public class Urban extends Regular{
 
     public void generate(){
         //Create an urban island map
-        CityGenerator cityGenerator = new CityGenerator(numCities, landVerticies);
-        cityGenerator.generate();
-        List<TileVertex> cityVerticies = cityGenerator.getCityVerticies();
 
+        //Create a graph from the mesh
         GraphGenerator graphGenerator = new GraphGenerator(verticesInfoList, segmentInfoList);
         graphGenerator.generate();
 
-        ShortestPathFinder shortestPathFinder = new ShortestPathFinder(graphGenerator.getGraph());
-        Queue<Edge> path = null;
-        try{
-            path = shortestPathFinder.findPath(cityGenerator.getCityNode(graphGenerator, cityVerticies.get(0)), cityGenerator.getCityNode(graphGenerator, cityVerticies.get(4)));
-        }
-        catch(Exception e){
+        //Generate cities
+        CityGenerator cityGenerator = new CityGenerator(numCities, landVerticies);
+        cityGenerator.generate();
 
-        }
+        ConvertCityNodes convertCityNodes = new ConvertCityNodes(cityGenerator.getCityVerticies());
 
-        while (!path.isEmpty()){
-            Edge g = path.poll();
-            graphGenerator.islandEdgeSetRoad(g.getID());
-        }
+        //Find the central node
+        CentralNodeFinder centralNodefinder = new CentralNodeFinder(graphGenerator.getGraph(), convertCityNodes.getCityNodes());
+        CitySetter citySetter = new CitySetter(graphGenerator.getIslandNodeMap(), graphGenerator.getIslandEdgesMap());
+        citySetter.setCentralCity(centralNodefinder.getCentralNode());
+
+        
+        // while (!path.isEmpty()){
+        //     Edge g = path.poll();
+        //     graphGenerator.islandEdgeSetRoad(g.getID());
+        // }
         
     }
 }

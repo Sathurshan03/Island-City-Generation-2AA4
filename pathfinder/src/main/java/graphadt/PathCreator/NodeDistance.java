@@ -6,5 +6,6 @@ import graphadt.GraphComponents.Edge;
 import graphadt.GraphComponents.Node;
 
 public interface NodeDistance {
-    public Queue<Edge> findPath(Node start, Node target) throws Exception;
+    
+    public Queue<Edge> findPath(Node target) throws Exception;
 }

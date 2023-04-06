@@ -3,8 +3,10 @@ package ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks;
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Property;
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Vertex;
 import ca.mcmaster.cas.se2aa4.a3.island.IslandCommandLineReader;
+import ca.mcmaster.cas.se2aa4.a3.island.CityGraphs.IslandNode;
 import ca.mcmaster.cas.se2aa4.a3.island.Elements.VertexElement;
 import ca.mcmaster.cas.se2aa4.a3.tools.ExtractVertexInfo;
+import graphadt.GraphComponents.Node;
 
 import java.awt.Color;
 import java.util.List;
@@ -18,6 +20,7 @@ public class TileVertex extends ExtractVertexInfo implements TileProperties{
     VertexElement vertexElement;
     Double elevation;
     Double thicknessDouble;
+    IslandNode islandNode;
 
 
     public TileVertex(Vertex vertex)
@@ -29,6 +32,7 @@ public class TileVertex extends ExtractVertexInfo implements TileProperties{
         this.colorList = new ArrayList<>();
         this.vertexElement = VertexElement.LAND;
         this.vertexType = extractVertexType(vertex.getPropertiesList());
+        this.islandNode = null;
     }
 
     public void setColor(Color color){
@@ -70,6 +74,22 @@ public class TileVertex extends ExtractVertexInfo implements TileProperties{
     public void setVertexCity(){
         vertexElement = VertexElement.CITY;
         thicknessDouble = thicknessDouble * IslandCommandLineReader.randomGenerator.getNextDouble(1.5,3.5);
+    }
+
+    public void setCentralVertexCity(){
+        vertexElement = VertexElement.CENTRALCITY;
+    }
+
+    public void associateIslandNode(IslandNode node){
+        islandNode = node;
+    }
+
+    public IslandNode getIslandNode(){
+        return islandNode;
+    }
+
+    public Node getNodeRepresentation(){
+        return islandNode.getNode();
     }
 
     public void setVertexRoad(){

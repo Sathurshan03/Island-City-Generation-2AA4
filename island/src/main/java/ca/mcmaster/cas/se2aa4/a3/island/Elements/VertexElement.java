@@ -7,7 +7,8 @@ public enum VertexElement {
     RIVER(new Color(15,94,196, 254)),
     LAND(new Color(255, 255, 255, 0)),
     CITY(new Color(212, 199, 88, 254)), 
-    ROAD(new Color(0, 0, 0, 254));
+    ROAD(new Color(0, 0, 0, 254)), 
+    CENTRALCITY(new Color(255,0,0,255));
 
     public final Color vertexColor;
     private VertexElement(Color color){
