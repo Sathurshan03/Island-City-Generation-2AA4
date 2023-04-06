@@ -56,7 +56,7 @@ public class TileSegment extends ExtractSegmentInfo implements TileProperties{
 
     public void setSegmentRoad(){
         segmentElement = SegmentElement.ROAD;
-        thicknessDouble = super.thickness * 1.5;
+        thicknessDouble = super.thickness * 2;
         setVertexThicknessSimilar();
     }
 
