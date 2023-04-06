@@ -10,10 +10,12 @@ import graphadt.PathCreator.ShortestPathFinder;
 
 public class CentralNodeFinder {
     private Node centralNode;
+    private ShortestPathFinder minimalPath;
 
     public CentralNodeFinder(Graph graph, Set<Node> cityNodes){
         //Find the central node from all the city nodes
         ShortestPathFinder shortestPathFinder;
+        
         Queue<Edge> path = null;
         
         double startNodeTotalCost;
@@ -36,12 +38,16 @@ public class CentralNodeFinder {
             if (startNodeTotalCost < minTotalCost){
                 minTotalCost = startNodeTotalCost;
                 centralNode = startNode;
+                minimalPath = shortestPathFinder;
             }
         }
-
     }
 
     public Node getCentralNode(){
         return centralNode; 
     }  
+
+    public ShortestPathFinder getMinimalPath(){
+        return minimalPath;
+    }
 }

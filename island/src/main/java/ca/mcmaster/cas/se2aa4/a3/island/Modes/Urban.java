@@ -54,11 +54,7 @@ public class Urban extends Regular{
         CitySetter citySetter = new CitySetter(graphGenerator.getIslandNodeMap(), graphGenerator.getIslandEdgesMap());
         citySetter.setCentralCity(centralNodefinder.getCentralNode());
 
-        
-        // while (!path.isEmpty()){
-        //     Edge g = path.poll();
-        //     graphGenerator.islandEdgeSetRoad(g.getID());
-        // }
-        
+        //Set the roads of the paths
+        citySetter.setRoads(centralNodefinder.getMinimalPath(), convertCityNodes.getCityNodes());    
     }
 }
