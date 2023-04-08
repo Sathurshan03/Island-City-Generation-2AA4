@@ -1,5 +1,5 @@
 cd island
-java -jar island.jar -i ../generator/regular.mesh -o sample.mesh --mode urban --shape irregular --altitude volcanic --biomes arctic --lakes 15 --rivers 15 -soil humid --aquifers 10 --cities 30
+java -jar island.jar -i ../generator/sample.mesh -o sample.mesh --mode urban --shape irregular --altitude volcanic --biomes arctic --lakes 15 --rivers 15 -soil humid --aquifers 10 --cities 30
 cd ..
 cd visualizer
 java -jar visualizer.jar ../island/sample.mesh urban.svg 
