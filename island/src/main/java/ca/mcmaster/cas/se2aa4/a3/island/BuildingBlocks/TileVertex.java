@@ -98,6 +98,12 @@ public class TileVertex extends ExtractVertexInfo implements TileProperties{
         }
     }
 
+    public void setVertexDirtRoad(){
+        if (!vertexElement.equals(VertexElement.CITY) && !vertexElement.equals(VertexElement.CENTRALCITY) && !vertexElement.equals(VertexElement.ROAD)){
+            vertexElement = VertexElement.DIRTROAD;
+        }
+    }
+
     public Boolean isVertexWater(){
         if (vertexElement.equals(VertexElement.WATER)){
             return true;

@@ -15,10 +15,15 @@ public class RoadObserver {
         this.vertex2 = vertex2;
     }
 
-    public void update(){
+    public void callRoad(){
         tileSegment.setSegmentRoad();
         vertex1.setVertexRoad();
         vertex2.setVertexRoad();
     }
 
+    public void callDirtRoad(){
+        tileSegment.setSegmentDirtRoad();
+        vertex1.setVertexDirtRoad();
+        vertex2.setVertexDirtRoad();
+    }
 }

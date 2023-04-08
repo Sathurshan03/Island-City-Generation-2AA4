@@ -17,6 +17,10 @@ public class IslandEdge{
     }
 
     public void setRoad(){
-        observer.update();
+        observer.callRoad();
+    }
+
+    public void setDirtRoad(){
+        observer.callDirtRoad();
     }
 }

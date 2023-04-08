@@ -60,6 +60,14 @@ public class TileSegment extends ExtractSegmentInfo implements TileProperties{
         setVertexThicknessSimilar();
     }
 
+    public void setSegmentDirtRoad(){
+        if (!segmentElement.equals(SegmentElement.ROAD)){
+            segmentElement = SegmentElement.DIRTROAD;
+            thicknessDouble = super.thickness * 2;
+            setVertexThicknessSimilar();
+        }
+    }
+
     private void updateThickness(){
         thicknessDouble = 0.75 * numRivers;
     }

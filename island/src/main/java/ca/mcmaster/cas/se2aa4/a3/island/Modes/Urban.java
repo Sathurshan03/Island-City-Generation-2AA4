@@ -8,6 +8,7 @@ import ca.mcmaster.cas.se2aa4.a3.island.Altitude.AltitudeType;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.TileVertex;
 import ca.mcmaster.cas.se2aa4.a3.island.CityGraphs.ConvertCityNodes;
 import ca.mcmaster.cas.se2aa4.a3.island.CityGraphs.GraphGenerator;
+import ca.mcmaster.cas.se2aa4.a3.island.CityGraphs.NearestCityFinder;
 import ca.mcmaster.cas.se2aa4.a3.island.CityGraphs.CentralNodeFinder;
 import ca.mcmaster.cas.se2aa4.a3.island.CityGraphs.CitySetter;
 import ca.mcmaster.cas.se2aa4.a3.island.GeneralBiome.BiomeTypes;
@@ -56,5 +57,9 @@ public class Urban extends Regular{
 
         //Set the roads of the paths
         citySetter.setRoads(centralNodefinder.getMinimalPath(), convertCityNodes.getCityNodes());    
+
+        //Create a Non-star network
+        NearestCityFinder nearestCityFinder = new NearestCityFinder(graphGenerator.getGraph(), convertCityNodes.getCityNodes(), centralNodefinder.getCentralNode());
+        citySetter.setNonStarRoads(nearestCityFinder.getShortestPaths());
     }
 }

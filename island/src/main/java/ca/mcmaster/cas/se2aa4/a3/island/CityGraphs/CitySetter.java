@@ -1,6 +1,7 @@
 package ca.mcmaster.cas.se2aa4.a3.island.CityGraphs;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Queue;
 import java.util.Set;
 
@@ -42,6 +43,18 @@ public class CitySetter {
                 System.exit(0);
             }
         }
+    }
 
+    public void setNonStarRoads(List<Queue<Edge>> shortestPaths){
+        //Set the paths as dirt roads to show non-star network
+
+        IslandEdge dirtRoad;
+
+        for (Queue<Edge> path: shortestPaths){
+            for(Edge road: path){
+                dirtRoad = islandEdgesMap.get(road);
+                dirtRoad.setDirtRoad();
+            }
+        }
     }
 }
