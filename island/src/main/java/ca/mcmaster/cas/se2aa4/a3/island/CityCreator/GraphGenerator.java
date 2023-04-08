@@ -92,7 +92,7 @@ public class GraphGenerator implements Generator{
         double distance = Math.sqrt(Math.pow((v1x - v2x),2) + Math.pow((v1y - v2y),2) + Math.pow((v1z - v2z),2));
 
         if (v1isWater || v2isWater){
-            distance *= 10;
+            distance *= 100;
         }
 
         return distance; 

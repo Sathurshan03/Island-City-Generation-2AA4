@@ -100,7 +100,7 @@ Pending (P), Started (S), Blocked (B), Done (D)
 | F87   | Islands have random shape option  | Sathurshan     | 03/13/2023 | 03/14/2023 | D  |
 | F88   | Cities are generatable on island  | Sathurshan     | 04/03/2023 | 04/03/2023 | D  |
 | F89   | Cities can have different size attributes - corresponds to type of city  | Sathurshan     | 04/03/2023 | 04/03/2023 | D  |
-| F90   | Cities are connected via roads  | Sathurshan     |  |  | B(F88)  |
-| F91   | Central city is determined and visualized  | Sathurshan     |  |  | B(F88)  |
-| F92   | City road connection forms a star network  | Sathurshan     |  |  | B(F91)  |
-| F93   | Number of generatable cities can be entered via command line  | Sathurshan     |  |  | B(F88)  |
+| F90   | Cities are connected via roads  | Sathurshan     | 04/05/2023 | 04/05/2023 | D  |
+| F91   | Central city is determined and visualized  | Sathurshan     | 04/06/2023  | 04/06/2023 | D  |
+| F92   | City road connection forms a star network  | Sathurshan     | 04/06/2023 | 04/06/2023 | D  |
+| F93   | Number of generatable cities can be entered via command line  | Sathurshan     | 04/06/2023 | 04/06/2023 | D  |

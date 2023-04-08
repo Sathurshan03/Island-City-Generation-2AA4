@@ -105,6 +105,7 @@ public class IslandCommandLineReader implements CommandLineReader {
             System.out.println("Create Sandbox Island: java -jar island.jar -inputMesh -outputMesh --mode sandbox");
             System.out.println("Create Regular Island: java -jar island.jar -inputMesh -outputMesh --mode regular -shape -altitude -biomes [-lakes] [-rivers] -soil [-aquifers] [-seed]");
             System.out.println("Create Heatmap: java -jar island.jar -inputMesh -outputMesh --mode heatmap -shape -altitude -biomes [-lakes] [-rivers] -soil [-aquifers] [-seed]");
+            System.out.println("Create Heatmap: java -jar island.jar -inputMesh -outputMesh --mode heatmap -shape -altitude -biomes -cities [-lakes] [-rivers] -soil [-aquifers] [-seed]");
             System.out.println("Options in square brackets are optional and the rest of the parameters are required to be defines");
             System.out.println("");
             HelpFormatter formatter = new HelpFormatter();

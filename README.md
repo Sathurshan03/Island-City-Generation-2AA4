@@ -92,6 +92,26 @@ Example: `java -jar island.jar -i ../generator/regular.mesh -o desert.mesh --mod
 `aquifers`: Number of aquifers to generate on the island: (positive integer).\
 `seed`: Seed to use for all random variables: (long type)
 
+#### Urbanism
+To run the Urban mode of the island generator, go to the `island` directory, and use `java -jar` to run the product. Use the mesh created by the generator as input mesh and enter .mesh file name to save the island generated map. The urban mode wil create an island with cities. The cities are connected using a star network with roads and in a non-star nework with dirt roads. 
+
+```
+cd island
+java -jar island.jar -input (input.mesh) -output (output.mesh) --mode urban -shape {circle, rectangle, oval, irregular, random} -altitude {volcanic, cliff, hills, flat, random} -biomes {arctic, tropical, temperate, desert} [-lakes] [-rivers] -soil {dry, humid, wet} [-aquifers] [-seed] --cities
+```
+
+Example: `java -jar island.jar -i ../generator/regular.mesh -o desert.mesh --mode regular --shape irregular --altitude hills --biomes desert --lakes 2 --rivers 2 -soil dry --aquifers 2 -seed -2116125981790618405`
+
+`shape`: General shape of the island: {circle, rectangle, oval, irregular, random}.\
+`altitude` : The altitude behaviour of the island: {volcanic, cliff, hills, flat, random}.\
+`biomes`: General biome to use for the whole map: {arctic, tropical, temperate, desert}.\
+`lakes`: Maximum number of lakes in the island: (positive integer).\
+`rivers`: Maximum number of rivers in the island: (positive integer).\
+`soil`: The soil profile to apply to the whole island: {dry, humid, wet}.\
+`aquifers`: Number of aquifers to generate on the island: (positive integer).\
+`seed`: Seed to use for all random variables: (long type)
+`cities`: Number of cities to generate on the island: (int type)
+
 
 ##### Whittaker Diagrams
 The following graphs are the Whittaker diagrams used in this project. Note: These Whittaker diagrams are not accurate to real the world and are just created by our team for this project. The colors on the diagram also correspond to the colors to the generated map. Note: darker looking tiles are area where humidity levels are higher. 
@@ -170,6 +190,10 @@ To see a examples of the mesh, run any one of the scripts below in the main dire
 ```sh Scripts/runTemperateHeatmap```
 
 ![My Image](images/heatmap.png)
+
+```sh Scripts/runUrbanExample```
+
+![My Image](images/urban.png)
 
 
 ## How to contribute to the project
