@@ -1,12 +1,16 @@
-package ca.mcmaster.cas.se2aa4.a3.island.CityGraphs;
+package ca.mcmaster.cas.se2aa4.a3.island.CityCreator;
 
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.IslandEdge;
+import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.IslandNode;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.TileSegment;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.TileVertex;
+import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.Observers.NodeObserver;
+import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.Observers.RoadObserver;
 import ca.mcmaster.cas.se2aa4.a3.island.Terrains.Generator;
 import graphadt.GraphComponents.Edge;
 import graphadt.GraphComponents.Graph;

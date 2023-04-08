@@ -1,5 +1,6 @@
-package ca.mcmaster.cas.se2aa4.a3.island.CityGraphs;
+package ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks;
 
+import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.Observers.NodeObserver;
 import graphadt.GraphComponents.Node;
 
 public class IslandNode {

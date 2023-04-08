@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ca.mcmaster.cas.se2aa4.a3.island.IslandCommandLineReader;
+import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.IslandNode;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.TileVertex;
-import ca.mcmaster.cas.se2aa4.a3.island.CityGraphs.IslandNode;
 import ca.mcmaster.cas.se2aa4.a3.island.Terrains.Generator;
 
 public class CityGenerator implements Generator {

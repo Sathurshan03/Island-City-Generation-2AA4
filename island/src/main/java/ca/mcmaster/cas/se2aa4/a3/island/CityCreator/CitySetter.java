@@ -1,10 +1,12 @@
-package ca.mcmaster.cas.se2aa4.a3.island.CityGraphs;
+package ca.mcmaster.cas.se2aa4.a3.island.CityCreator;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Queue;
 import java.util.Set;
 
+import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.IslandEdge;
+import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.IslandNode;
 import graphadt.GraphComponents.Edge;
 import graphadt.GraphComponents.Node;
 import graphadt.PathCreator.ShortestPathFinder;

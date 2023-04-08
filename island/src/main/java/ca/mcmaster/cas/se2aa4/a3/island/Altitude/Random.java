@@ -1,7 +1,6 @@
 package ca.mcmaster.cas.se2aa4.a3.island.Altitude;
 
 import ca.mcmaster.cas.se2aa4.a3.island.IslandCommandLineReader;
-import ca.mcmaster.cas.se2aa4.a3.island.Modes.Mode;
 
 public class Random implements LandAltitude{
 

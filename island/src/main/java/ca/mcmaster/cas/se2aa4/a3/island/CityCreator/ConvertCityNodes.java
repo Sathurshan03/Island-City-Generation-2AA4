@@ -1,8 +1,10 @@
-package ca.mcmaster.cas.se2aa4.a3.island.CityGraphs;
+package ca.mcmaster.cas.se2aa4.a3.island.CityCreator;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
+import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.IslandNode;
 import graphadt.GraphComponents.Node;
 
 public class ConvertCityNodes {

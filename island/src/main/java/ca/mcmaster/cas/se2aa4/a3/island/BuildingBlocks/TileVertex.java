@@ -3,7 +3,6 @@ package ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks;
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Property;
 import ca.mcmaster.cas.se2aa4.a2.io.Structs.Vertex;
 import ca.mcmaster.cas.se2aa4.a3.island.IslandCommandLineReader;
-import ca.mcmaster.cas.se2aa4.a3.island.CityGraphs.IslandNode;
 import ca.mcmaster.cas.se2aa4.a3.island.Elements.VertexElement;
 import ca.mcmaster.cas.se2aa4.a3.tools.ExtractVertexInfo;
 import graphadt.GraphComponents.Node;

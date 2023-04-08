@@ -1,4 +1,4 @@
-package ca.mcmaster.cas.se2aa4.a3.island.CityGraphs;
+package ca.mcmaster.cas.se2aa4.a3.island.CityCreator;
 
 import java.util.ArrayList;
 import java.util.List;

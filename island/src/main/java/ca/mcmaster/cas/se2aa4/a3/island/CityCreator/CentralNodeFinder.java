@@ -1,9 +1,7 @@
-package ca.mcmaster.cas.se2aa4.a3.island.CityGraphs;
+package ca.mcmaster.cas.se2aa4.a3.island.CityCreator;
 
-import java.util.Queue;
 import java.util.Set;
 
-import graphadt.GraphComponents.Edge;
 import graphadt.GraphComponents.Graph;
 import graphadt.GraphComponents.Node;
 import graphadt.PathCreator.ShortestPathFinder;
@@ -16,8 +14,6 @@ public class CentralNodeFinder {
         //Find the central node from all the city nodes
         ShortestPathFinder shortestPathFinder;
         
-        Queue<Edge> path = null;
-        
         double startNodeTotalCost;
         double minTotalCost = Double.MAX_VALUE;
 
@@ -26,7 +22,7 @@ public class CentralNodeFinder {
             shortestPathFinder = new ShortestPathFinder(graph, startNode);
             for (Node targetNode: cityNodes){
                 try{
-                    path = shortestPathFinder.findPath(targetNode);
+                    shortestPathFinder.findPath(targetNode);
                     startNodeTotalCost += shortestPathFinder.getPathCost(targetNode);
                 }
                 catch(Exception e){
