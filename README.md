@@ -149,7 +149,7 @@ In debug mode, it will visualize the polygon's segments and vertices as black, c
  ```
 
 ### Example runs
-To see a examples of the mesh, run any one of the scripts below in the main directory. The mesh will be saved as ../generator/sample.mesh.
+To see a examples of the mesh, run any one of the scripts below in the main directory. The mesh will be saved as generator/sample.mesh, and the svg file will be saved in the visualizer folder. Remember to run `mvn install` before running the scripts.
 
 ```sh Scripts/runAll```
 
