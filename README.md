@@ -1,4 +1,4 @@
-# Assignment A2: Mesh Generator
+# Island Generator
   - Mithun Paramathasan [paramatm@mcmaster.ca]
   - Nirmal Chaudhari [chaudn12@mcmaster.ca]
   - Sathurshan Arulmohan [arulmohs@mcmaster.ca]
